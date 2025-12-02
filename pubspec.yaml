@@ -18,19 +18,22 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
-  flutter_launcher_icons: ^0.13.1  # Add this line
+  flutter_launcher_icons: ^0.13.1
 
-# Add this new section for app icons
+# App icons configuration
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: "assets/images/logo.png"  # Using your existing logo image
-  # Remove the adaptive_icon lines if you don't need them
-  # adaptive_icon_foreground: "assets/images/icon_foreground.png"
-  # adaptive_icon_background: "#FFFFFF"
+  image_path: "assets/images/logo.png"
 
 flutter:
   uses-material-design: true
   
   assets:
     - assets/images/
+    # Specific image files used in your onboarding screens
+    - assets/images/onboarding_background.jpg  # Single background for all slides
+    - assets/images/imag2.1.png                # First slide foreground image
+    - assets/images/visibilite (1).png         # Second slide foreground image  
+    - assets/images/collaborez.png             # Third slide foreground image
+    - assets/images/logo.png                   # Your app logo

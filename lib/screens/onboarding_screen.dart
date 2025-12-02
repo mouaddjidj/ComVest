@@ -14,97 +14,169 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _controller = PageController();
   bool isLastPage = false;
 
+  // Function to skip everything and go to TypeSelectionScreen
+  void _skipOnboarding() {
+    print('⏩ Skipping onboarding - Going to Type Selection');
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (context) => const TypeSelectionScreen(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.only(bottom: 80),
-        child: PageView(
-          controller: _controller,
-          onPageChanged: (index) {
-            setState(() => isLastPage = index == 2);
-          },
-          children: const [
-            OnboardingPage(
-              color: Color.fromARGB(255, 137, 0, 242),
-              image: 'assets/images/imag2.1.png',
-              title: 'Discover ComVest ',
-              subtitle:
-                  'The platform that connects startups, founders, and investors ',
-            ),
-            OnboardingPage(
-              color: Color.fromARGB(255, 137, 0, 242),
-              image: 'assets/images/visibilite (1).png',
-              title: 'Need visibility ?',
-              subtitle: 'Our marketing service will boost your reach',
-
-            ),
-            OnboardingPage(
-              color: Color.fromARGB(255, 137, 0, 242),
-              image: 'assets/images/collaborez.png',
-              title: 'Build Powerful Connections',
-              subtitle:
-                  'Collaborate with entrepreneurs and expand your network',
-            ),
-          ],
-        ),
-      ),
-      bottomSheet: isLastPage
-          ? TextButton(
-              style: TextButton.styleFrom(
-                foregroundColor: Colors.white,
-                backgroundColor: Colors.indigo,
-                minimumSize: const Size.fromHeight(80),
+      body: Stack(
+        children: [
+          // Single background image for all 3 slides
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/onboarding_background.jpg'),
+                fit: BoxFit.cover,
               ),
-              child: const Text(
-                'Get Started',
-                style: TextStyle(fontSize: 22),
-              ),
-              onPressed: () {
-                print('🎯 Get Started Pressed - Going to Type Selection');
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                      builder: (context) => const TypeSelectionScreen()),
-                );
+            ),
+          ),
+          
+          // Dark overlay for better text readability
+          Container(
+            color: Colors.black.withOpacity(0.4),
+          ),
+          
+          // Page content
+          Container(
+            padding: const EdgeInsets.only(bottom: 100),
+            child: PageView(
+              controller: _controller,
+              onPageChanged: (index) {
+                setState(() => isLastPage = index == 2);
               },
-            )
-          : Container(
-              height: 80,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextButton(
-                    child: const Text('Skip'),
-                    onPressed: () => _controller.jumpToPage(2),
-                  ),
-                  Center(
-                    child: SmoothPageIndicator(
-                      controller: _controller,
-                      count: 3,
-                      effect: const WormEffect(
-                        dotColor: Colors.black26,
-                        activeDotColor: Colors.indigo,
-                        dotHeight: 12,
-                        dotWidth: 12,
-                      ),
-                      onDotClicked: (index) => _controller.animateToPage(
-                        index,
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.easeInOut,
-                      ),
-                    ),
-                  ),
-                  TextButton(
-                    child: const Text('Next'),
-                    onPressed: () => _controller.nextPage(
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.easeInOut,
-                    ),
-                  ),
-                ],
-              ),
+              children: const [
+                OnboardingPage(
+                  image: 'assets/images/imag2.1.png',
+                  title: 'Discover ComVest',
+                  subtitle: 'The platform that connects startups, founders, and investors',
+                ),
+                OnboardingPage(
+                  image: 'assets/images/visibilite (1).png',
+                  title: 'Need visibility?',
+                  subtitle: 'Our marketing service will boost your reach',
+                ),
+                OnboardingPage(
+                  image: 'assets/images/collaborez.png',
+                  title: 'Build Powerful Connections',
+                  subtitle: 'Collaborate with entrepreneurs and expand your network',
+                ),
+              ],
             ),
+          ),
+          
+          // Floating bottom buttons
+          Positioned(
+            bottom: 40,
+            left: 0,
+            right: 0,
+            child: Column(
+              children: [
+                // Page Indicator (only show when not on last page)
+                if (!isLastPage)
+                  SmoothPageIndicator(
+                    controller: _controller,
+                    count: 3,
+                    effect: const WormEffect(
+                      dotColor: Colors.white30,
+                      activeDotColor: Colors.white,
+                      dotHeight: 8,
+                      dotWidth: 8,
+                      spacing: 8,
+                    ),
+                  )
+                else
+                  const SizedBox(height: 8),
+                
+                const SizedBox(height: 30),
+                
+                // Buttons Row
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // Skip Button - ONLY SHOW ON PAGES 1 & 2, NOT ON LAST PAGE
+                      if (!isLastPage) // <-- This condition hides Skip on last page
+                        TextButton(
+                          onPressed: _skipOnboarding,
+                          style: TextButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 20,
+                              vertical: 10,
+                            ),
+                          ),
+                          child: const Text(
+                            'Skip',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                        )
+                      else
+                        // Empty container or Spacer to push Get Started button to center
+                        const Spacer(), // <-- This takes the space where Skip was
+                      
+                      // Next/Get Started Button
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          gradient: const LinearGradient(
+                            colors: [Colors.white, Color(0xFFE8E8E8)],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.15),
+                              blurRadius: 8,
+                              offset: const Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        child: TextButton(
+                          onPressed: isLastPage
+                              ? _skipOnboarding // On last page, Get Started goes to next screen
+                              : () => _controller.nextPage(
+                                    duration: const Duration(milliseconds: 500),
+                                    curve: Curves.easeInOut,
+                                  ),
+                          style: TextButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 35,
+                              vertical: 12,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                          child: Text(
+                            isLastPage ? 'Get Started' : 'Next',
+                            style: const TextStyle(
+                              color: Colors.indigo,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

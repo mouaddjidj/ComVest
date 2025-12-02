@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
 class OnboardingPage extends StatelessWidget {
-  final Color color;
   final String image;
   final String title;
   final String subtitle;
 
   const OnboardingPage({
     super.key,
-    required this.color,
     required this.image,
     required this.title,
     required this.subtitle,
@@ -16,36 +14,35 @@ class OnboardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 800),
-      color: color,
+    return Container(
+      // Transparent container - background is handled by parent
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const SizedBox(height: 60),
-          Image.asset(image, fit: BoxFit.cover, height: 300),
-          const SizedBox(height: 40),
+          Image.asset(
+            image,
+            height: 250,
+          ),
+          const SizedBox(height: 32),
           Text(
             title,
+            textAlign: TextAlign.center,
             style: const TextStyle(
-              color: Colors.white,
               fontSize: 28,
               fontWeight: FontWeight.bold,
-              letterSpacing: 1.2,
+              color: Colors.white,
             ),
-            textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 16),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
+          const SizedBox(height: 24),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
             child: Text(
               subtitle,
-              style: const TextStyle(
-                color: Colors.white70,
-                fontSize: 18,
-                height: 1.4,
-              ),
               textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 18,
+                color: Colors.white70,
+              ),
             ),
           ),
         ],
@@ -53,4 +50,3 @@ class OnboardingPage extends StatelessWidget {
     );
   }
 }
-
