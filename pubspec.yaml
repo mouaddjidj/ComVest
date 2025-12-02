@@ -1,0 +1,36 @@
+name: my_onboarding_app
+description: A Flutter onboarding app
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  smooth_page_indicator: ^1.1.0
+  shared_preferences: ^2.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.13.1  # Add this line
+
+# Add this new section for app icons
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/logo.png"  # Using your existing logo image
+  # Remove the adaptive_icon lines if you don't need them
+  # adaptive_icon_foreground: "assets/images/icon_foreground.png"
+  # adaptive_icon_background: "#FFFFFF"
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/images/
