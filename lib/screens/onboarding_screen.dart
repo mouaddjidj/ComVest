@@ -33,7 +33,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/onboarding_background.jpg'),
+                image: AssetImage('assets/images/onboarding_background.png'),
                 fit: BoxFit.cover,
               ),
             ),

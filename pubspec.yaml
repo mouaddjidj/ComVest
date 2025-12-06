@@ -32,7 +32,7 @@ flutter:
   assets:
     - assets/images/
     # Specific image files used in your onboarding screens
-    - assets/images/onboarding_background.jpg  # Single background for all slides
+    - assets/images/onboarding_background.png  # Single background for all slides
     - assets/images/imag2.1.png                # First slide foreground image
     - assets/images/visibilite (1).png         # Second slide foreground image  
     - assets/images/collaborez.png             # Third slide foreground image
