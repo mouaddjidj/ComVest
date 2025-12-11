@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'TypeSelectionLoginScreen.dart'; // استيراد شاشة تسجيل الدخول للمؤسسات
-import 'InvestorLoginScreen.dart'; // استيراد شاشة تسجيل الدخول للمستثمرين
+import 'companyLogin.dart'; // استيراد شاشة تسجيل الدخول للمؤسسات
+import 'InvestorLogin.dart'; // استيراد شاشة تسجيل الدخول للمستثمرين
 
 class TypeSelectionScreen extends StatelessWidget {
   const TypeSelectionScreen({super.key});

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'create_investor_account.dart'; // Add this import
+import 'companyRegister.dart'; // ⬅ ADD THIS IMPORT
 
-class InvestorLoginScreen extends StatefulWidget {
-  const InvestorLoginScreen({super.key});
+class TypeSelectionLoginScreen extends StatefulWidget {
+  const TypeSelectionLoginScreen({super.key});
 
   @override
-  State<InvestorLoginScreen> createState() => _InvestorLoginScreenState();
+  State<TypeSelectionLoginScreen> createState() => _TypeSelectionLoginScreenState();
 }
 
-class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
+class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
   bool _isPasswordVisible = false;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -21,15 +21,13 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
         child: Column(
           children: [
             const SizedBox(height: 40),
-            // Logo
             Image.asset(
               'assets/images/logo1.png',
-              height: 100,
-              width: 100,
-              fit: BoxFit.contain,
+              height: 100,  // Increased from 300 to 400
+            width: 100,   // Increased from 300 to 400
+            fit: BoxFit.contain,
             ),
             const SizedBox(height: 20),
-            // App Name
             const Text(
               'ComVest',
               style: TextStyle(
@@ -40,7 +38,6 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
               ),
             ),
             const SizedBox(height: 10),
-            // Subtitle
             const Text(
               'COMMUNICATION + INVESTISSEMENT',
               style: TextStyle(
@@ -68,7 +65,7 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                     children: [
                       const SizedBox(height: 30),
                       const Text(
-                        "Connexion Investisseur",
+                        "Connexion Entreprise",
                         style: TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
@@ -77,15 +74,15 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                       ),
                       const SizedBox(height: 10),
                       const Text(
-                        "Connectez-vous à votre compte investisseur",
+                        "Connectez-vous à votre compte entreprise",
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey,
                         ),
                       ),
                       const SizedBox(height: 30),
-                      
-                      // Email Field
+
+                      // Email
                       const Text(
                         "Email",
                         style: TextStyle(
@@ -104,7 +101,7 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                         child: TextField(
                           controller: _emailController,
                           decoration: InputDecoration(
-                            hintText: "Entrez votre email",
+                            hintText: "Entrez votre email professionnel",
                             border: InputBorder.none,
                             contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                             prefixIcon: Icon(
@@ -116,8 +113,8 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      
-                      // Password Field
+
+                      // Password
                       const Text(
                         "Mot de passe",
                         style: TextStyle(
@@ -158,9 +155,10 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                           obscureText: !_isPasswordVisible,
                         ),
                       ),
+
                       const SizedBox(height: 10),
-                      
-                      // Forgot Password
+
+                      // Forgot password
                       Align(
                         alignment: Alignment.centerRight,
                         child: TextButton(
@@ -176,8 +174,9 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                           ),
                         ),
                       ),
+
                       const SizedBox(height: 30),
-                      
+
                       // Login Button
                       SizedBox(
                         width: double.infinity,
@@ -203,17 +202,17 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                           ),
                         ),
                       ),
+
                       const SizedBox(height: 20),
-                      
-                      // Create Account Link
+
+                      // Create Account → Navigate to new page
                       Center(
                         child: TextButton(
                           onPressed: () {
-                            // Navigate to investor account creation
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (_) => const CreateInvestorAccount(),
+                                builder: (_) => const CreateCompanySortlistStyle(),
                               ),
                             );
                           },
@@ -236,6 +235,7 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                           ),
                         ),
                       ),
+
                     ],
                   ),
                 ),
@@ -250,14 +250,13 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
   void _login() {
     final email = _emailController.text.trim();
     final password = _passwordController.text.trim();
-    
+
     if (email.isEmpty || password.isEmpty) {
       _showErrorDialog('Veuillez remplir tous les champs');
       return;
     }
-    
-    print('Tentative de connexion investisseur: $email');
-    // Add your actual login logic here
+
+    print('Tentative de connexion: $email');
   }
 
   void _showForgotPasswordDialog(BuildContext context) {

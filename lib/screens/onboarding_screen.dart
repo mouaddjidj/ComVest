@@ -31,19 +31,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         children: [
           // Single background image for all 3 slides
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/onboarding_background.png'),
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          
+
           // Dark overlay for better text readability
           Container(
             color: Colors.black.withOpacity(0.4),
           ),
-          
+
           // Page content
           Container(
             padding: const EdgeInsets.only(bottom: 100),
@@ -55,23 +55,83 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               children: const [
                 OnboardingPage(
                   image: 'assets/images/imag2.1.png',
-                  title: 'Discover ComVest',
-                  subtitle: 'The platform that connects startups, founders, and investors',
+                  title: 'Découvrez ComVest',
+                  subtitle:
+                      'La plateforme qui met en relation les startups, les fondateurs et les investisseurs',
                 ),
                 OnboardingPage(
                   image: 'assets/images/visibilite (1).png',
-                  title: 'Need visibility?',
-                  subtitle: 'Our marketing service will boost your reach',
+                  title: 'Besoin de visibilité ?',
+                  subtitle:
+                      'Notre service marketing augmentera votre visibilité',
                 ),
                 OnboardingPage(
                   image: 'assets/images/collaborez.png',
-                  title: 'Build Powerful Connections',
-                  subtitle: 'Collaborate with entrepreneurs and expand your network',
+                  title: 'Établissez des relations solides',
+                  subtitle:
+                      'Collaborez avec des entrepreneurs et élargissez votre réseau',
                 ),
               ],
             ),
           ),
-          
+
+          Positioned(
+            top: 40,
+            left: 20,
+            child: PopupMenuButton<String>(
+              onSelected: (value) {
+                print("Selected: $value");
+              },
+              child: Container(
+                padding: const EdgeInsets.all(6),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Text(
+                  "Language",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              itemBuilder: (context) => [
+                const PopupMenuItem(
+                  value: "en",
+                  child: Row(
+                    children: [
+                      Text("🇺🇸  "),
+                      SizedBox(width: 8),
+                      Text("English"),
+                    ],
+                  ),
+                ),
+                const PopupMenuItem(
+                  value: "fr",
+                  child: Row(
+                    children: [
+                      Text("🇫🇷  "),
+                      SizedBox(width: 8),
+                      Text("Français"),
+                    ],
+                  ),
+                ),
+                const PopupMenuItem(
+                  value: "ar",
+                  child: Row(
+                    children: [
+                      Text("🇩🇿  "),
+                      SizedBox(width: 8),
+                      Text("العربية"),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+
           // Floating bottom buttons
           Positioned(
             bottom: 40,
@@ -94,9 +154,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   )
                 else
                   const SizedBox(height: 8),
-                
+
                 const SizedBox(height: 30),
-                
+
                 // Buttons Row
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -125,7 +185,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       else
                         // Empty container or Spacer to push Get Started button to center
                         const Spacer(), // <-- This takes the space where Skip was
-                      
+
                       // Next/Get Started Button
                       Container(
                         decoration: BoxDecoration(
@@ -169,6 +229,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           ),
                         ),
                       ),
+                      // Language change button
                     ],
                   ),
                 ),

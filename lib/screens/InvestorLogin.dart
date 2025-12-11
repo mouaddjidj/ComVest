@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'create_company_sortlist_style.dart'; // ⬅ ADD THIS IMPORT
+import 'investorRegister.dart'; // Add this import
 
-class TypeSelectionLoginScreen extends StatefulWidget {
-  const TypeSelectionLoginScreen({super.key});
+class InvestorLoginScreen extends StatefulWidget {
+  const InvestorLoginScreen({super.key});
 
   @override
-  State<TypeSelectionLoginScreen> createState() => _TypeSelectionLoginScreenState();
+  State<InvestorLoginScreen> createState() => _InvestorLoginScreenState();
 }
 
-class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
+class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
   bool _isPasswordVisible = false;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -21,13 +21,15 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
         child: Column(
           children: [
             const SizedBox(height: 40),
+            // Logo
             Image.asset(
               'assets/images/logo1.png',
-              height: 100,  // Increased from 300 to 400
-            width: 100,   // Increased from 300 to 400
-            fit: BoxFit.contain,
+              height: 100,
+              width: 100,
+              fit: BoxFit.contain,
             ),
             const SizedBox(height: 20),
+            // App Name
             const Text(
               'ComVest',
               style: TextStyle(
@@ -38,6 +40,7 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
               ),
             ),
             const SizedBox(height: 10),
+            // Subtitle
             const Text(
               'COMMUNICATION + INVESTISSEMENT',
               style: TextStyle(
@@ -65,7 +68,7 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                     children: [
                       const SizedBox(height: 30),
                       const Text(
-                        "Connexion Entreprise",
+                        "Connexion Investisseur",
                         style: TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
@@ -74,15 +77,15 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                       ),
                       const SizedBox(height: 10),
                       const Text(
-                        "Connectez-vous à votre compte entreprise",
+                        "Connectez-vous à votre compte investisseur",
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey,
                         ),
                       ),
                       const SizedBox(height: 30),
-
-                      // Email
+                      
+                      // Email Field
                       const Text(
                         "Email",
                         style: TextStyle(
@@ -101,7 +104,7 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                         child: TextField(
                           controller: _emailController,
                           decoration: InputDecoration(
-                            hintText: "Entrez votre email professionnel",
+                            hintText: "Entrez votre email",
                             border: InputBorder.none,
                             contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                             prefixIcon: Icon(
@@ -113,8 +116,8 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                         ),
                       ),
                       const SizedBox(height: 20),
-
-                      // Password
+                      
+                      // Password Field
                       const Text(
                         "Mot de passe",
                         style: TextStyle(
@@ -155,10 +158,9 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                           obscureText: !_isPasswordVisible,
                         ),
                       ),
-
                       const SizedBox(height: 10),
-
-                      // Forgot password
+                      
+                      // Forgot Password
                       Align(
                         alignment: Alignment.centerRight,
                         child: TextButton(
@@ -174,9 +176,8 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                           ),
                         ),
                       ),
-
                       const SizedBox(height: 30),
-
+                      
                       // Login Button
                       SizedBox(
                         width: double.infinity,
@@ -202,17 +203,17 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                           ),
                         ),
                       ),
-
                       const SizedBox(height: 20),
-
-                      // Create Account → Navigate to new page
+                      
+                      // Create Account Link
                       Center(
                         child: TextButton(
                           onPressed: () {
+                            // Navigate to investor account creation
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (_) => const CreateCompanySortlistStyle(),
+                                builder: (_) => const CreateInvestorAccount(),
                               ),
                             );
                           },
@@ -235,7 +236,6 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                           ),
                         ),
                       ),
-
                     ],
                   ),
                 ),
@@ -250,13 +250,14 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
   void _login() {
     final email = _emailController.text.trim();
     final password = _passwordController.text.trim();
-
+    
     if (email.isEmpty || password.isEmpty) {
       _showErrorDialog('Veuillez remplir tous les champs');
       return;
     }
-
-    print('Tentative de connexion: $email');
+    
+    print('Tentative de connexion investisseur: $email');
+    // Add your actual login logic here
   }
 
   void _showForgotPasswordDialog(BuildContext context) {

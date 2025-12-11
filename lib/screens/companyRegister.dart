@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-
+import './AdsServices.dart';
 class CreateCompanySortlistStyle extends StatefulWidget {
   const CreateCompanySortlistStyle({super.key});
 
   @override
-  State<CreateCompanySortlistStyle> createState() => _CreateCompanySortlistStyleState();
+  State<CreateCompanySortlistStyle> createState() =>
+      _CreateCompanySortlistStyleState();
 }
 
-class _CreateCompanySortlistStyleState extends State<CreateCompanySortlistStyle> {
+class _CreateCompanySortlistStyleState
+    extends State<CreateCompanySortlistStyle> {
   int _currentStep = 0;
   final TextEditingController _companyNameController = TextEditingController();
   final TextEditingController _addressController = TextEditingController();
@@ -15,13 +17,19 @@ class _CreateCompanySortlistStyleState extends State<CreateCompanySortlistStyle>
   final TextEditingController _websiteController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _aboutController = TextEditingController();
-  
+
   bool _hasAuthority = false;
   bool _isManagerAccount = false;
-  
+
   final List<String> _selectedLanguages = [];
-  final List<String> _availableLanguages = ['Français', 'Anglais', 'Espagnol', 'Allemand', 'Italien'];
-  
+  final List<String> _availableLanguages = [
+    'Français',
+    'Anglais',
+    'Espagnol',
+    'Allemand',
+    'Italien'
+  ];
+
   String? _teamSize;
   String? _selectedVillage;
 
@@ -117,7 +125,7 @@ class _CreateCompanySortlistStyleState extends State<CreateCompanySortlistStyle>
               ],
             ),
           ),
-          
+
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(20.0),
@@ -178,7 +186,7 @@ class _CreateCompanySortlistStyleState extends State<CreateCompanySortlistStyle>
   Widget _buildStepIndicator(int stepNumber, String title) {
     bool isActive = stepNumber == _currentStep;
     bool isCompleted = stepNumber < _currentStep;
-    
+
     return Expanded(
       child: Column(
         children: [
@@ -188,8 +196,8 @@ class _CreateCompanySortlistStyleState extends State<CreateCompanySortlistStyle>
                 width: 24,
                 height: 24,
                 decoration: BoxDecoration(
-                  color: isActive || isCompleted 
-                      ? const Color(0xFF7533E8) 
+                  color: isActive || isCompleted
+                      ? const Color(0xFF7533E8)
                       : Colors.grey[300],
                   shape: BoxShape.circle,
                 ),
@@ -206,13 +214,15 @@ class _CreateCompanySortlistStyleState extends State<CreateCompanySortlistStyle>
                         ),
                 ),
               ),
-              if (stepNumber < 3) 
+              if (stepNumber < 3)
                 Expanded(
                   child: Container(
                     height: 2,
                     margin: const EdgeInsets.symmetric(horizontal: 8),
                     decoration: BoxDecoration(
-                      color: stepNumber < _currentStep ? const Color(0xFF7533E8) : Colors.grey[300],
+                      color: stepNumber < _currentStep
+                          ? const Color(0xFF7533E8)
+                          : Colors.grey[300],
                     ),
                   ),
                 ),
@@ -278,7 +288,8 @@ class _CreateCompanySortlistStyleState extends State<CreateCompanySortlistStyle>
             decoration: const InputDecoration(
               hintText: 'Entrez le nom de votre entreprise...',
               border: InputBorder.none,
-              contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             ),
           ),
         ),
@@ -307,7 +318,7 @@ class _CreateCompanySortlistStyleState extends State<CreateCompanySortlistStyle>
           ),
         ),
         const SizedBox(height: 16),
-        
+
         // Manager account checkbox
         Row(
           children: [
@@ -324,10 +335,10 @@ class _CreateCompanySortlistStyleState extends State<CreateCompanySortlistStyle>
             ),
           ],
         ),
-        
+
         const Divider(),
         const SizedBox(height: 16),
-        
+
         // Company name display - MODIFIÉ ICI
         Container(
           padding: const EdgeInsets.all(16),
@@ -339,8 +350,8 @@ class _CreateCompanySortlistStyleState extends State<CreateCompanySortlistStyle>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                _companyNameController.text.isEmpty 
-                    ? 'Nom de l\'entreprise' 
+                _companyNameController.text.isEmpty
+                    ? 'Nom de l\'entreprise'
                     : _companyNameController.text,
                 style: const TextStyle(
                   fontSize: 18,
@@ -348,7 +359,7 @@ class _CreateCompanySortlistStyleState extends State<CreateCompanySortlistStyle>
                 ),
               ),
               const SizedBox(height: 16),
-              
+
               // Authorization checkbox
               Row(
                 children: [
@@ -361,50 +372,20 @@ class _CreateCompanySortlistStyleState extends State<CreateCompanySortlistStyle>
                     },
                   ),
                   const Expanded(
-                    child: Text('Je confirme que j\'ai l\'autorité nécessaire pour créer ce profil'),
+                    child: Text(
+                        'Je confirme que j\'ai l\'autorité nécessaire pour créer ce profil'),
                   ),
                 ],
               ),
-              
+
               // Success section
               if (_hasAuthority) ...[
-                const SizedBox(height: 16),
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: Colors.green[50],
-                    border: Border.all(color: Colors.green),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: const Row(
-                    children: [
-                      Icon(Icons.check_circle, color: Colors.green),
-                      SizedBox(width: 8),
-                      Text(
-                        'Success!',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.green,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  _companyNameController.text.isEmpty 
-                      ? 'NOM DE L\'ENTREPRISE' 
-                      : _companyNameController.text.toUpperCase(),
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const Text('Diseur : Jean'),
+             
               ],
             ],
           ),
         ),
-        
+
         const SizedBox(height: 16),
         TextButton(
           onPressed: () {},
@@ -432,7 +413,7 @@ class _CreateCompanySortlistStyleState extends State<CreateCompanySortlistStyle>
           ),
         ),
         const SizedBox(height: 24),
-        
+
         // Village Selection
         const Text(
           'Village',
@@ -482,7 +463,7 @@ class _CreateCompanySortlistStyleState extends State<CreateCompanySortlistStyle>
           ),
         ),
         const SizedBox(height: 24),
-        
+
         // Address
         const Text(
           'Adresse de l\'entreprise',
@@ -510,12 +491,13 @@ class _CreateCompanySortlistStyleState extends State<CreateCompanySortlistStyle>
             decoration: const InputDecoration(
               hintText: 'Entrez votre adresse...',
               border: InputBorder.none,
-              contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             ),
           ),
         ),
         const SizedBox(height: 24),
-        
+
         // Phone
         const Text(
           'Numéro de téléphone de l\'entreprise',
@@ -543,12 +525,13 @@ class _CreateCompanySortlistStyleState extends State<CreateCompanySortlistStyle>
             decoration: const InputDecoration(
               hintText: 'es (+213) Algérie | 7712 34 56 78',
               border: InputBorder.none,
-              contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             ),
           ),
         ),
         const SizedBox(height: 24),
-        
+
         // Website
         const Text(
           'Site web de l\'entreprise',
@@ -566,14 +549,16 @@ class _CreateCompanySortlistStyleState extends State<CreateCompanySortlistStyle>
           child: TextField(
             controller: _websiteController,
             decoration: const InputDecoration(
-              hintText: 'Entrez votre site web... (ex: https://votre-entreprise.com)',
+              hintText:
+                  'Entrez votre site web... (ex: https://votre-entreprise.com)',
               border: InputBorder.none,
-              contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             ),
           ),
         ),
         const SizedBox(height: 24),
-        
+
         // Email
         const Text(
           'Adresse électronique de l\'entreprise',
@@ -601,7 +586,8 @@ class _CreateCompanySortlistStyleState extends State<CreateCompanySortlistStyle>
             decoration: const InputDecoration(
               hintText: 'Entrez l\'email de contact de l\'entreprise...',
               border: InputBorder.none,
-              contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             ),
           ),
         ),
@@ -630,7 +616,7 @@ class _CreateCompanySortlistStyleState extends State<CreateCompanySortlistStyle>
           ),
         ),
         const SizedBox(height: 24),
-        
+
         // About Section
         const Text(
           'About',
@@ -640,7 +626,7 @@ class _CreateCompanySortlistStyleState extends State<CreateCompanySortlistStyle>
           ),
         ),
         const SizedBox(height: 16),
-        
+
         // Company Name - MODIFIÉ ICI
         const Text(
           'Nom de l\'entreprise',
@@ -658,17 +644,18 @@ class _CreateCompanySortlistStyleState extends State<CreateCompanySortlistStyle>
             controller: _aboutController,
             maxLength: 60,
             decoration: InputDecoration(
-              hintText: _companyNameController.text.isEmpty 
-                  ? 'Nom de l\'entreprise' 
+              hintText: _companyNameController.text.isEmpty
+                  ? 'Nom de l\'entreprise'
                   : _companyNameController.text,
               border: InputBorder.none,
-              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               counterText: '0/60',
             ),
           ),
         ),
         const SizedBox(height: 16),
-        
+
         // Languages
         const Text(
           'Langues parlées (facultatif)',
@@ -722,7 +709,7 @@ class _CreateCompanySortlistStyleState extends State<CreateCompanySortlistStyle>
           ),
         ),
         const SizedBox(height: 16),
-        
+
         // Team Size
         const Text(
           'Taille de votre équipe',
@@ -748,9 +735,12 @@ class _CreateCompanySortlistStyleState extends State<CreateCompanySortlistStyle>
               items: const [
                 DropdownMenuItem(value: '1-10', child: Text('1-10 employés')),
                 DropdownMenuItem(value: '11-50', child: Text('11-50 employés')),
-                DropdownMenuItem(value: '51-200', child: Text('51-200 employés')),
-                DropdownMenuItem(value: '201-500', child: Text('201-500 employés')),
-                DropdownMenuItem(value: '500+', child: Text('Plus de 500 employés')),
+                DropdownMenuItem(
+                    value: '51-200', child: Text('51-200 employés')),
+                DropdownMenuItem(
+                    value: '201-500', child: Text('201-500 employés')),
+                DropdownMenuItem(
+                    value: '500+', child: Text('Plus de 500 employés')),
               ],
               onChanged: (String? newValue) {
                 setState(() {
@@ -794,26 +784,13 @@ class _CreateCompanySortlistStyleState extends State<CreateCompanySortlistStyle>
     print('About: ${_aboutController.text}');
     print('Languages: $_selectedLanguages');
     print('Team Size: $_teamSize');
-    
-    // Show success dialog and navigate back
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Succès'),
-          content: const Text('Votre profil a été créé avec succès!'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).pop(); // Go back to login
-              },
-              child: const Text('OK'),
-            ),
-          ],
-        );
-      },
-    );
+
+// Navigate to AdsServices
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const PricingScreen ()),
+);
+
   }
 
   @override
