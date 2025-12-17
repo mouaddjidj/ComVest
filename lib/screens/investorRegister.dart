@@ -1394,7 +1394,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
             ],
           ),
           const SizedBox(height: 15),
-          ..._companies.take(3).map((company) => _buildCompanyCard(company)).toList(),
+          ..._companies.take(3).map((company) => _buildCompanyCard(company)),
         ],
       ),
     );
@@ -1523,7 +1523,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
                     onSelected: (_) {},
                   ),
                 );
-              }).toList(),
+              }),
             ],
           ),
         ),
@@ -1818,7 +1818,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
                     value: true,
                     onChanged: (value) {},
                   );
-                }).toList(),
+                }),
                 const SizedBox(height: 20),
                 const Text('Taille:'),
                 ...['Grande cap', 'Moyenne cap', 'Petite cap'].map((size) {
@@ -1827,7 +1827,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
                     value: true,
                     onChanged: (value) {},
                   );
-                }).toList(),
+                }),
               ],
             ),
           ),
@@ -2040,9 +2040,9 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('Actualités - ${company.name}'),
-          content: SizedBox(
+          content: const SizedBox(
             width: double.maxFinite,
-            child: const SingleChildScrollView(
+            child: SingleChildScrollView(
               child: Column(
                 children: [
                   ListTile(

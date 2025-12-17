@@ -46,7 +46,7 @@ class PricingPackage {
 // Menu Screen
 class MenuScreen extends StatelessWidget {
   final Color primaryColor;
-  
+
   const MenuScreen({super.key, required this.primaryColor});
 
   @override
@@ -117,9 +117,9 @@ class MenuScreen extends StatelessWidget {
                 ],
               ),
             ),
-            
+
             const SizedBox(height: 30),
-            
+
             // Menu Options
             Text(
               'Get Started',
@@ -129,9 +129,9 @@ class MenuScreen extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
             ),
-            
+
             const SizedBox(height: 20),
-            
+
             // Menu Grid
             GridView.count(
               shrinkWrap: true,
@@ -147,7 +147,7 @@ class MenuScreen extends StatelessWidget {
                   color: primaryColor,
                 ),
                 _buildMenuItem(
-                  icon:  Icons.dashboard,
+                  icon: Icons.dashboard,
                   title: 'Templates',
                   subtitle: 'Browse templates',
                   color: primaryColor,
@@ -178,9 +178,9 @@ class MenuScreen extends StatelessWidget {
                 ),
               ],
             ),
-            
+
             const SizedBox(height: 30),
-            
+
             // Project Stats
             Container(
               padding: const EdgeInsets.all(20),
@@ -230,9 +230,9 @@ class MenuScreen extends StatelessWidget {
                 ],
               ),
             ),
-            
+
             const SizedBox(height: 30),
-            
+
             // Quick Actions
             Text(
               'Quick Actions',
@@ -242,9 +242,9 @@ class MenuScreen extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
             ),
-            
+
             const SizedBox(height: 15),
-            
+
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -466,46 +466,40 @@ class _PricingScreenState extends State<PricingScreen> {
       isFree: true,
     ),
     PricingPackage(
-      title: 'STANDARD',
-      description: 'Perfect for individuals',
+      title: 'PACK DE LANCEMENT',
+      description: 'Nouvelles Start-ups',
       price: '\$35',
       features: [
-        '5 Projects',
-        '10 GB Storage',
-        'Email Support',
-        'Basic Analytics',
-        'API Access',
+        'Création de 3 comptes sociaux',
+        'Branding personnalisé',
+        '5 posts initiaux',
+        'Site vitrine simple',
       ],
       primaryColor: const Color(0xFF4A90E2),
       secondaryColor: const Color(0xFF357ABD),
     ),
     PricingPackage(
-      title: 'PREMIUM',
-      description: 'Best for professionals',
+      title: 'ABONNEMENT MENSUEL',
+      description: 'Startup / Micro-entreprises ',
       price: '\$65',
       features: [
-        'Unlimited Projects',
-        '100 GB Storage',
-        'Priority Support',
-        'Advanced Analytics',
-        'API Access',
-        'Custom Integrations',
+        'Gestion de 2 réseaux sociaux',
+        'Calendrier éditorial',
+        '12 posts/mois',
+        'reporting léger',
       ],
       primaryColor: const Color(0xFF9B59B6),
       secondaryColor: const Color(0xFFE91E8C),
     ),
     PricingPackage(
-      title: 'BUSINESS',
-      description: 'For teams & enterprises',
+      title: 'SERVICES A LA CARTE',
+      description: 'Tous clients',
       price: '\$120',
       features: [
-        'Unlimited Everything',
-        '1 TB Storage',
-        '24/7 Phone Support',
-        'Enterprise Analytics',
-        'Full API Access',
-        'Dedicated Manager',
-        'Custom SLA',
+        'Audit SEO',
+        'Campagnes de publicité (Ads)',
+        'Création de contenu vidéo avancé',
+        'Analyse d\'entreprise',
       ],
       primaryColor: const Color(0xFFE67E22),
       secondaryColor: const Color(0xFFF39C12),
@@ -600,7 +594,8 @@ class _PricingScreenState extends State<PricingScreen> {
                         scale: value,
                         child: PricingCard(
                           package: packages[index],
-                          onGetStarted: () => _navigateToMenu(context, packages[index]),
+                          onGetStarted: () =>
+                              _navigateToMenu(context, packages[index]),
                         ),
                       ),
                     );
@@ -682,7 +677,8 @@ class PricingCard extends StatelessWidget {
                   end: Alignment.bottomRight,
                   colors: [
                     package.primaryColor,
-                    package.secondaryColor ?? package.primaryColor.withOpacity(0.8),
+                    package.secondaryColor ??
+                        package.primaryColor.withOpacity(0.8),
                   ],
                 ),
               ),
@@ -774,7 +770,8 @@ class PricingCard extends StatelessWidget {
             // Features List
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                 child: ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: package.features.length,
@@ -822,10 +819,10 @@ class PricingCard extends StatelessWidget {
                 height: 55,
                 decoration: BoxDecoration(
                   gradient: package.isFree
-                      ? LinearGradient(
+                      ? const LinearGradient(
                           colors: [
-                            const Color(0xFF2ECC71),
-                            const Color(0xFF27AE60),
+                            Color(0xFF2ECC71),
+                            Color(0xFF27AE60),
                           ],
                         )
                       : LinearGradient(
