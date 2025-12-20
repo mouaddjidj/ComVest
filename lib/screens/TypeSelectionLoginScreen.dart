@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'companyLogin.dart'; // استيراد شاشة تسجيل الدخول للمؤسسات
-import 'InvestorLogin.dart'; // استيراد شاشة تسجيل الدخول للمستثمرين
+import 'companyLogin.dart';
+import 'InvestorLogin.dart';
 
 class TypeSelectionScreen extends StatelessWidget {
   const TypeSelectionScreen({super.key});
@@ -8,20 +8,23 @@ class TypeSelectionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       backgroundColor: const Color.fromARGB(255, 117, 51, 232),
+      backgroundColor: const Color.fromARGB(255, 117, 51, 232),
       body: SafeArea(
         child: Column(
           children: [
             const SizedBox(height: 40),
-            // صورة اللوجو
+
+            // LOGO
             Image.asset(
               'assets/images/logo1.png',
               height: 200,
               width: 200,
               fit: BoxFit.contain,
             ),
+
             const SizedBox(height: 20),
-            // الشعار COMMVEST
+
+            // TITLE
             const Text(
               'ComVest',
               style: TextStyle(
@@ -31,8 +34,10 @@ class TypeSelectionScreen extends StatelessWidget {
                 letterSpacing: 2.0,
               ),
             ),
+
             const SizedBox(height: 10),
-            // النص تحت الشعار
+
+            // SUBTITLE
             const Text(
               'COMMUNICATION + INVESTISSEMENT',
               style: TextStyle(
@@ -42,7 +47,10 @@ class TypeSelectionScreen extends StatelessWidget {
                 letterSpacing: 1.0,
               ),
             ),
+
             const SizedBox(height: 40),
+
+            /// BOTTOM WHITE PART
             Expanded(
               child: Container(
                 width: double.infinity,
@@ -53,11 +61,14 @@ class TypeSelectionScreen extends StatelessWidget {
                     topRight: Radius.circular(30),
                   ),
                 ),
-                child: Padding(
+
+                // ✅ FIX: add scroll
+                child: SingleChildScrollView(
                   padding: const EdgeInsets.all(20.0),
                   child: Column(
                     children: [
                       const SizedBox(height: 40),
+
                       const Text(
                         "Bienvenue sur l'application ComVest",
                         textAlign: TextAlign.center,
@@ -67,40 +78,53 @@ class TypeSelectionScreen extends StatelessWidget {
                           color: Colors.black87,
                         ),
                       ),
+
                       const SizedBox(height: 15),
+
                       Text(
                         "Tous vos besoins en matière de services sont ici",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey[700],
-                          fontWeight: FontWeight.normal,
                         ),
                       ),
+
                       const SizedBox(height: 40),
+
                       _buildServiceCard(
                         title: 'Entreprise',
-                        subtitle: 'Si vous cherchez un entreprise. inscrivez-vous ici',
+                        subtitle:
+                            'Si vous cherchez une entreprise, inscrivez-vous ici',
                         icon: Icons.business,
                         onTap: () {
-                          print('clique sur entreprise');
                           Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => const TypeSelectionLoginScreen()),
+                            MaterialPageRoute(
+                              builder: (_) =>
+                                  const TypeSelectionLoginScreen(),
+                            ),
                           );
                         },
                       ),
+
                       const SizedBox(height: 20),
+
                       _buildServiceCard(
                         title: 'Investisseur',
-                        subtitle: 'Si vous souhaitez investir dans un projet. cliquez ici',
+                        subtitle:
+                            'Si vous souhaitez investir dans un projet, cliquez ici',
                         icon: Icons.trending_up,
                         onTap: () {
-                          print('clique sur investisseur');
                           Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => const InvestorLoginScreen()),
+                            MaterialPageRoute(
+                              builder: (_) =>
+                                  const InvestorLoginScreen(),
+                            ),
                           );
                         },
                       ),
+
+                      const SizedBox(height: 30),
                     ],
                   ),
                 ),
@@ -112,6 +136,7 @@ class TypeSelectionScreen extends StatelessWidget {
     );
   }
 
+  /// CARD
   Widget _buildServiceCard({
     required String title,
     required String subtitle,
@@ -124,12 +149,14 @@ class TypeSelectionScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       child: ListTile(
-        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
         leading: Container(
           width: 50,
           height: 50,
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 117, 51, 232).withOpacity(0.1),
+            color:
+                const Color.fromARGB(255, 117, 51, 232).withOpacity(0.1),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Icon(

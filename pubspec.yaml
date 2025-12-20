@@ -14,6 +14,8 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   shared_preferences: ^2.2.2
   google_fonts: ^6.3.3
+  video_player: ^2.8.3
+  chewie: ^1.5.0
 
 dev_dependencies:
   flutter_test:
@@ -32,9 +34,9 @@ flutter:
   
   assets:
     - assets/images/
-    # Specific image files used in your onboarding screens
-    - assets/images/onboarding_background.png  # Single background for all slides
-    - assets/images/imag2.1.png                # First slide foreground image
-    - assets/images/visibilite (1).png         # Second slide foreground image  
-    - assets/images/collaborez.png             # Third slide foreground image
-    - assets/images/logo.png                   # Your app logo
+    - assets/images/onboarding_background.png
+    - assets/images/imag2.1.png
+    - assets/images/visibilite (1).png
+    - assets/images/collaborez.png
+    - assets/images/logo.png
+    
