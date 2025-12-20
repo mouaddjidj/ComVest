@@ -45,6 +45,37 @@ class AppLocalizationsEn extends AppLocalizations {
   String get investorLogin => 'Investor Login';
 
   @override
+  String get connectInvestorAccount => 'Connect to your investor account';
+
+  @override
+  String get connectCompanyAccount => 'Connect to your company account';
+
+  @override
+  String get noAccountQuestion => 'Don\'t have an account?';
+
+  @override
+  String get submit => 'Login';
+
+  @override
+  String get enterEmailResetPassword =>
+      'Enter your email to reset your password.';
+
+  @override
+  String get send => 'Send';
+
+  @override
+  String get instructionsSent => 'Instructions have been sent to your email';
+
+  @override
+  String get success => 'Success';
+
+  @override
+  String get error => 'Error';
+
+  @override
+  String get ok => 'OK';
+
+  @override
   String get createAccount => 'Create Account';
 
   @override
@@ -138,4 +169,7 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get investorCardSubtitle =>
       'If you want to invest in a project, click here';
+
+  @override
+  String get fillAllFields => 'Please fill in all fields';
 }

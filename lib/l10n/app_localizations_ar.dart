@@ -45,6 +45,38 @@ class AppLocalizationsAr extends AppLocalizations {
   String get investorLogin => 'تسجيل دخول المستثمر';
 
   @override
+  String get connectInvestorAccount =>
+      'تسجيل الدخول إلى حساب المستثمر الخاص بك';
+
+  @override
+  String get connectCompanyAccount => 'تسجيل الدخول إلى حساب الشركة الخاص بك';
+
+  @override
+  String get noAccountQuestion => 'ليس لديك حساب؟';
+
+  @override
+  String get submit => 'تسجيل الدخول';
+
+  @override
+  String get enterEmailResetPassword =>
+      'أدخل بريدك الإلكتروني لإعادة تعيين كلمة المرور الخاصة بك.';
+
+  @override
+  String get send => 'إرسال';
+
+  @override
+  String get instructionsSent => 'تم إرسال التعليمات إلى بريدك الإلكتروني';
+
+  @override
+  String get success => 'نجاح';
+
+  @override
+  String get error => 'خطأ';
+
+  @override
+  String get ok => 'موافق';
+
+  @override
   String get createAccount => 'إنشاء حساب';
 
   @override
@@ -136,4 +168,7 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get investorCardSubtitle =>
       'إذا كنت ترغب في الاستثمار في مشروع، انقر هنا';
+
+  @override
+  String get fillAllFields => 'يرجى ملء جميع الحقول';
 }

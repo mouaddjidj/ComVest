@@ -45,6 +45,39 @@ class AppLocalizationsFr extends AppLocalizations {
   String get investorLogin => 'Connexion Investisseur';
 
   @override
+  String get connectInvestorAccount =>
+      'Connectez-vous à votre compte investisseur';
+
+  @override
+  String get connectCompanyAccount =>
+      'Connectez-vous à votre compte entreprise';
+
+  @override
+  String get noAccountQuestion => 'Vous n\'avez pas de compte ?';
+
+  @override
+  String get submit => 'Valider';
+
+  @override
+  String get enterEmailResetPassword =>
+      'Entrez votre email pour réinitialiser votre mot de passe.';
+
+  @override
+  String get send => 'Envoyer';
+
+  @override
+  String get instructionsSent => 'Instructions envoyées à votre email';
+
+  @override
+  String get success => 'Succès';
+
+  @override
+  String get error => 'Erreur';
+
+  @override
+  String get ok => 'OK';
+
+  @override
   String get createAccount => 'Créer un compte';
 
   @override
@@ -139,4 +172,7 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get investorCardSubtitle =>
       'Si vous souhaitez investir dans un projet, cliquez ici';
+
+  @override
+  String get fillAllFields => 'Veuillez remplir tous les champs';
 }

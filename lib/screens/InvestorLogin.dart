@@ -79,9 +79,9 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      const Text(
-                        'Connect to your investor account',
-                        style: TextStyle(
+                      Text(
+                        localizations?.connectInvestorAccount ?? 'Connect to your investor account',
+                        style: const TextStyle(
                           fontSize: 16,
                           color: Colors.grey,
                         ),
@@ -187,7 +187,7 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                         height: 60,
                         child: ElevatedButton(
                           onPressed: () {
-                            _login();
+                            _login(context);
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: const Color.fromARGB(255, 117, 51, 232),
@@ -197,9 +197,9 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                             ),
                             elevation: 4,
                           ),
-                          child: const Text(
-                            'Login',
-                            style: TextStyle(
+                          child: Text(
+                            localizations?.login ?? 'Login',
+                            style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
@@ -221,7 +221,7 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                           },
                           child: RichText(
                             text: TextSpan(
-                              text: "Don't have an account? ",
+                              text: localizations?.noAccountQuestion ?? "Don't have an account? ",
                               style: const TextStyle(
                                 color: Colors.grey,
                               ),
@@ -249,58 +249,45 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
     );
   }
 
-  void _login() {
+  void _login(BuildContext context) {
+    final localizations = AppLocalizations.of(context);
     final email = _emailController.text.trim();
     final password = _passwordController.text.trim();
     
     if (email.isEmpty || password.isEmpty) {
-      _showErrorDialog('Please fill in all fields');
+      _showErrorDialog(context, localizations?.fillAllFields ?? 'Please fill in all fields');
       return;
     }
     
     print('Investor login attempt: $email');
+    // Add your login logic here
   }
 
   void _showForgotPasswordDialog(BuildContext context) {
+    final localizations = AppLocalizations.of(context);
+    
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Forgot Password'),
-          content: const Text('Enter your email to reset your password'),
+          title: Text(localizations?.forgotPassword ?? 'Forgot Password'),
+          content: Text(localizations?.enterEmailResetPassword ?? 'Enter your email to reset your password'),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text('Cancel'),
+              child: Text(localizations?.cancel ?? 'Cancel'),
             ),
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
-                _showSuccessDialog('Instructions have been sent to your email');
+                _showSuccessDialog(
+                  context, 
+                  localizations?.instructionsSent ?? 'Instructions have been sent to your email'
+                );
               },
-              child: const Text('Send'),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  void _showErrorDialog(String message) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Error'),
-          content: Text(message),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text('OK'),
+              child: Text(localizations?.send ?? 'Send'),
             ),
           ],
         );
@@ -308,19 +295,43 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
     );
   }
 
-  void _showSuccessDialog(String message) {
+  void _showErrorDialog(BuildContext context, String message) {
+    final localizations = AppLocalizations.of(context);
+    
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Success'),
+          title: Text(localizations?.error ?? 'Error'),
           content: Text(message),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text('OK'),
+              child: Text(localizations?.ok ?? 'OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showSuccessDialog(BuildContext context, String message) {
+    final localizations = AppLocalizations.of(context);
+    
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(localizations?.success ?? 'Success'),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(localizations?.ok ?? 'OK'),
             ),
           ],
         );

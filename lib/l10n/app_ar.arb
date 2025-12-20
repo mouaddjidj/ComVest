@@ -12,6 +12,16 @@
   "forgotPassword": "نسيت كلمة المرور؟",
   "companyLogin": "تسجيل دخول الشركة",
   "investorLogin": "تسجيل دخول المستثمر",
+  "connectInvestorAccount": "تسجيل الدخول إلى حساب المستثمر الخاص بك",
+  "connectCompanyAccount": "تسجيل الدخول إلى حساب الشركة الخاص بك",
+  "noAccountQuestion": "ليس لديك حساب؟",
+  "submit": "تسجيل الدخول",
+  "enterEmailResetPassword": "أدخل بريدك الإلكتروني لإعادة تعيين كلمة المرور الخاصة بك.",
+  "send": "إرسال",
+  "instructionsSent": "تم إرسال التعليمات إلى بريدك الإلكتروني",
+  "success": "نجاح",
+  "error": "خطأ",
+  "ok": "موافق",
   "createAccount": "إنشاء حساب",
   "companyName": "اسم الشركة",
   "firstName": "الاسم الأول",
@@ -41,5 +51,6 @@
   "companyCardTitle": "شركة",
   "companyCardSubtitle": "إذا كنت تبحث عن شركة، قم بالتسجيل هنا",
   "investorCardTitle": "مستثمر",
-  "investorCardSubtitle": "إذا كنت ترغب في الاستثمار في مشروع، انقر هنا"
+  "investorCardSubtitle": "إذا كنت ترغب في الاستثمار في مشروع، انقر هنا",
+  "fillAllFields": "يرجى ملء جميع الحقول"
 }

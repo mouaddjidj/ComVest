@@ -12,6 +12,16 @@
   "forgotPassword": "Mot de passe oublié?",
   "companyLogin": "Connexion Entreprise",
   "investorLogin": "Connexion Investisseur",
+  "connectInvestorAccount": "Connectez-vous à votre compte investisseur",
+  "connectCompanyAccount": "Connectez-vous à votre compte entreprise",
+  "noAccountQuestion": "Vous n'avez pas de compte ?",
+  "submit": "Valider",
+  "enterEmailResetPassword": "Entrez votre email pour réinitialiser votre mot de passe.",
+  "send": "Envoyer",
+  "instructionsSent": "Instructions envoyées à votre email",
+  "success": "Succès",
+  "error": "Erreur",
+  "ok": "OK",
   "createAccount": "Créer un compte",
   "companyName": "Nom de l'entreprise",
   "firstName": "Prénom",
@@ -41,5 +51,6 @@
   "companyCardTitle": "Entreprise",
   "companyCardSubtitle": "Si vous cherchez une entreprise, inscrivez-vous ici",
   "investorCardTitle": "Investisseur",
-  "investorCardSubtitle": "Si vous souhaitez investir dans un projet, cliquez ici"
+  "investorCardSubtitle": "Si vous souhaitez investir dans un projet, cliquez ici",
+  "fillAllFields": "Veuillez remplir tous les champs"
 }

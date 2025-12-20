@@ -12,6 +12,46 @@
   "forgotPassword": "Forgot Password?",
   "companyLogin": "Company Login",
   "investorLogin": "Investor Login",
+  "connectInvestorAccount": "Connect to your investor account",
+  "@connectInvestorAccount": {
+    "description": "Subtitle shown on the investor login screen"
+  },
+  "connectCompanyAccount": "Connect to your company account",
+  "@connectCompanyAccount": {
+    "description": "Subtitle shown on the company login screen"
+  },
+  "noAccountQuestion": "Don't have an account?",
+  "@noAccountQuestion": {
+    "description": "Question shown before the create account link"
+  },
+  "submit": "Login",
+  "@submit": {
+    "description": "Submit/login button text"
+  },
+  "enterEmailResetPassword": "Enter your email to reset your password.",
+  "@enterEmailResetPassword": {
+    "description": "Instruction text in forgot password dialog"
+  },
+  "send": "Send",
+  "@send": {
+    "description": "Send button text"
+  },
+  "instructionsSent": "Instructions have been sent to your email",
+  "@instructionsSent": {
+    "description": "Success message after sending password reset instructions"
+  },
+  "success": "Success",
+  "@success": {
+    "description": "Success dialog title"
+  },
+  "error": "Error",
+  "@error": {
+    "description": "Error dialog title"
+  },
+  "ok": "OK",
+  "@ok": {
+    "description": "OK button text in dialogs"
+  },
   "createAccount": "Create Account",
   "companyName": "Company Name",
   "firstName": "First Name",
@@ -41,5 +81,9 @@
   "companyCardTitle": "Company",
   "companyCardSubtitle": "If you're looking for a company, register here",
   "investorCardTitle": "Investor",
-  "investorCardSubtitle": "If you want to invest in a project, click here"
+  "investorCardSubtitle": "If you want to invest in a project, click here",
+  "fillAllFields": "Please fill in all fields",
+  "@fillAllFields": {
+    "description": "Error message when form fields are empty"
+  }
 }

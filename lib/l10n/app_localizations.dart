@@ -172,6 +172,66 @@ abstract class AppLocalizations {
   /// **'Investor Login'**
   String get investorLogin;
 
+  /// Subtitle shown on the investor login screen
+  ///
+  /// In en, this message translates to:
+  /// **'Connect to your investor account'**
+  String get connectInvestorAccount;
+
+  /// Subtitle shown on the company login screen
+  ///
+  /// In en, this message translates to:
+  /// **'Connect to your company account'**
+  String get connectCompanyAccount;
+
+  /// Question shown before the create account link
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t have an account?'**
+  String get noAccountQuestion;
+
+  /// Submit/login button text
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get submit;
+
+  /// Instruction text in forgot password dialog
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email to reset your password.'**
+  String get enterEmailResetPassword;
+
+  /// Send button text
+  ///
+  /// In en, this message translates to:
+  /// **'Send'**
+  String get send;
+
+  /// Success message after sending password reset instructions
+  ///
+  /// In en, this message translates to:
+  /// **'Instructions have been sent to your email'**
+  String get instructionsSent;
+
+  /// Success dialog title
+  ///
+  /// In en, this message translates to:
+  /// **'Success'**
+  String get success;
+
+  /// Error dialog title
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get error;
+
+  /// OK button text in dialogs
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get ok;
+
   /// No description provided for @createAccount.
   ///
   /// In en, this message translates to:
@@ -351,6 +411,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'If you want to invest in a project, click here'**
   String get investorCardSubtitle;
+
+  /// Error message when form fields are empty
+  ///
+  /// In en, this message translates to:
+  /// **'Please fill in all fields'**
+  String get fillAllFields;
 }
 
 class _AppLocalizationsDelegate
