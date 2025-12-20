@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -207,12 +207,12 @@ class _SplashScreenState extends State<SplashScreen>
                     // Loading indicator
                     Opacity(
                       opacity: _nameOpacity.value,
-                      child: SizedBox(
+                      child: const SizedBox(
                         width: 24,
                         height: 24,
                         child: CircularProgressIndicator(
                           strokeWidth: 2,
-                          valueColor: const AlwaysStoppedAnimation<Color>(
+                          valueColor: AlwaysStoppedAnimation<Color>(
                             Color(0xFF3949AB),
                           ),
                         ),
