@@ -1,0 +1,139 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
+import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
+
+/// The translations for Arabic (`ar`).
+class AppLocalizationsAr extends AppLocalizations {
+  AppLocalizationsAr([String locale = 'ar']) : super(locale);
+
+  @override
+  String get appTitle => 'كومفيست';
+
+  @override
+  String get appSubtitle => 'الاتصالات + الاستثمار';
+
+  @override
+  String get welcome => 'مرحبًا';
+
+  @override
+  String get login => 'تسجيل الدخول';
+
+  @override
+  String get signup => 'التسجيل';
+
+  @override
+  String get email => 'البريد الإلكتروني';
+
+  @override
+  String get emailHint => 'أدخل بريدك الإلكتروني المهني';
+
+  @override
+  String get password => 'كلمة المرور';
+
+  @override
+  String get passwordHint => 'أدخل كلمة المرور الخاصة بك';
+
+  @override
+  String get forgotPassword => 'نسيت كلمة المرور؟';
+
+  @override
+  String get companyLogin => 'تسجيل دخول الشركة';
+
+  @override
+  String get investorLogin => 'تسجيل دخول المستثمر';
+
+  @override
+  String get createAccount => 'إنشاء حساب';
+
+  @override
+  String get companyName => 'اسم الشركة';
+
+  @override
+  String get firstName => 'الاسم الأول';
+
+  @override
+  String get lastName => 'اسم العائلة';
+
+  @override
+  String get phone => 'الهاتف';
+
+  @override
+  String get country => 'البلد';
+
+  @override
+  String get next => 'التالي';
+
+  @override
+  String get back => 'رجوع';
+
+  @override
+  String get skip => 'تخطي';
+
+  @override
+  String get done => 'تم';
+
+  @override
+  String get save => 'حفظ';
+
+  @override
+  String get cancel => 'إلغاء';
+
+  @override
+  String get selectLanguage => 'اختر اللغة';
+
+  @override
+  String get language => 'اللغة';
+
+  @override
+  String get english => 'الإنجليزية';
+
+  @override
+  String get french => 'الفرنسية';
+
+  @override
+  String get arabic => 'العربية';
+
+  @override
+  String get discoverComvest => 'اكتشف كومفيست';
+
+  @override
+  String get discoverDescription =>
+      'المنصة التي تربط الشركات الناشئة والمؤسسين والمستثمرين';
+
+  @override
+  String get needVisibility => 'هل تحتاج إلى رؤية؟';
+
+  @override
+  String get visibilityDescription => 'ستزيد خدمتنا التسويقية من ظهورك';
+
+  @override
+  String get buildRelationships => 'بناء علاقات قوية';
+
+  @override
+  String get relationshipsDescription =>
+      'تعاون مع رواد الأعمال وقم بتوسيع شبكتك';
+
+  @override
+  String get getStarted => 'ابدأ الآن';
+
+  @override
+  String get welcomeToApp => 'مرحبًا بك في تطبيق كومفيست';
+
+  @override
+  String get allServicesHere => 'جميع احتياجاتك من الخدمات هنا';
+
+  @override
+  String get companyCardTitle => 'شركة';
+
+  @override
+  String get companyCardSubtitle => 'إذا كنت تبحث عن شركة، قم بالتسجيل هنا';
+
+  @override
+  String get investorCardTitle => 'مستثمر';
+
+  @override
+  String get investorCardSubtitle =>
+      'إذا كنت ترغب في الاستثمار في مشروع، انقر هنا';
+}

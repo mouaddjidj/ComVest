@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'companyRegister.dart'; // ⬅ ADD THIS IMPORT
+import 'companyRegister.dart';
+import '../l10n/app_localizations.dart';   // ADD THIS IMPORT
 
 class TypeSelectionLoginScreen extends StatefulWidget {
   const TypeSelectionLoginScreen({super.key});
@@ -15,6 +16,8 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!;
+    
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 117, 51, 232),
       body: SafeArea(
@@ -23,14 +26,14 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
             const SizedBox(height: 40),
             Image.asset(
               'assets/images/logo1.png',
-              height: 100,  // Increased from 300 to 400
-            width: 100,   // Increased from 300 to 400
-            fit: BoxFit.contain,
+              height: 100,
+              width: 100,
+              fit: BoxFit.contain,
             ),
             const SizedBox(height: 20),
-            const Text(
-              'ComVest',
-              style: TextStyle(
+            Text(
+              localizations.appTitle, // CHANGED
+              style: const TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
@@ -38,9 +41,9 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
               ),
             ),
             const SizedBox(height: 10),
-            const Text(
-              'COMMUNICATION + INVESTISSEMENT',
-              style: TextStyle(
+            Text(
+              localizations.appSubtitle, // CHANGED
+              style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
                 color: Colors.white,
@@ -64,9 +67,9 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 30),
-                      const Text(
-                        "Connexion Entreprise",
-                        style: TextStyle(
+                      Text(
+                        localizations.companyLogin, // CHANGED
+                        style: const TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
                           color: Colors.black87,
@@ -74,7 +77,7 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                       ),
                       const SizedBox(height: 10),
                       const Text(
-                        "Connectez-vous à votre compte entreprise",
+                        "Connectez-vous à votre compte entreprise", // You might want to add this to localizations
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey,
@@ -83,9 +86,9 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                       const SizedBox(height: 30),
 
                       // Email
-                      const Text(
-                        "Email",
-                        style: TextStyle(
+                      Text(
+                        localizations.email, // CHANGED
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
                           color: Colors.black87,
@@ -101,7 +104,7 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                         child: TextField(
                           controller: _emailController,
                           decoration: InputDecoration(
-                            hintText: "Entrez votre email professionnel",
+                            hintText: localizations.emailHint, // CHANGED
                             border: InputBorder.none,
                             contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                             prefixIcon: Icon(
@@ -115,9 +118,9 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                       const SizedBox(height: 20),
 
                       // Password
-                      const Text(
-                        "Mot de passe",
-                        style: TextStyle(
+                      Text(
+                        localizations.password, // CHANGED
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
                           color: Colors.black87,
@@ -133,7 +136,7 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                         child: TextField(
                           controller: _passwordController,
                           decoration: InputDecoration(
-                            hintText: "Entrez votre mot de passe",
+                            hintText: localizations.passwordHint, // CHANGED
                             border: InputBorder.none,
                             contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                             prefixIcon: Icon(
@@ -165,9 +168,9 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                           onPressed: () {
                             _showForgotPasswordDialog(context);
                           },
-                          child: const Text(
-                            "Mot de passe oublié?",
-                            style: TextStyle(
+                          child: Text(
+                            localizations.forgotPassword, // CHANGED
+                            style: const TextStyle(
                               color: Color.fromARGB(255, 117, 51, 232),
                               fontWeight: FontWeight.w500,
                             ),
@@ -194,7 +197,7 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                             elevation: 4,
                           ),
                           child: const Text(
-                            "Valider",
+                            "Valider", // Consider adding to localizations
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -205,7 +208,7 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
 
                       const SizedBox(height: 20),
 
-                      // Create Account → Navigate to new page
+                      // Create Account
                       Center(
                         child: TextButton(
                           onPressed: () {
@@ -217,15 +220,15 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                             );
                           },
                           child: RichText(
-                            text: const TextSpan(
-                              text: "Vous n'avez pas de compte? ",
-                              style: TextStyle(
+                            text: TextSpan(
+                              text: "Vous n'avez pas de compte? ", // Consider adding
+                              style: const TextStyle(
                                 color: Colors.grey,
                               ),
                               children: [
                                 TextSpan(
-                                  text: "Créer un compte",
-                                  style: TextStyle(
+                                  text: localizations.createAccount, // CHANGED
+                                  style: const TextStyle(
                                     color: Color.fromARGB(255, 117, 51, 232),
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -235,7 +238,6 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                           ),
                         ),
                       ),
-
                     ],
                   ),
                 ),
@@ -264,14 +266,14 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text("Mot de passe oublié"),
+          title: Text(AppLocalizations.of(context)!.forgotPassword),
           content: const Text("Entrez votre email pour réinitialiser votre mot de passe."),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text("Annuler"),
+              child: Text(AppLocalizations.of(context)!.cancel),
             ),
             TextButton(
               onPressed: () {

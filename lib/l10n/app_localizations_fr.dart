@@ -1,0 +1,142 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
+import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
+
+/// The translations for French (`fr`).
+class AppLocalizationsFr extends AppLocalizations {
+  AppLocalizationsFr([String locale = 'fr']) : super(locale);
+
+  @override
+  String get appTitle => 'ComVest';
+
+  @override
+  String get appSubtitle => 'COMMUNICATION + INVESTISSEMENT';
+
+  @override
+  String get welcome => 'Bienvenue';
+
+  @override
+  String get login => 'Connexion';
+
+  @override
+  String get signup => 'S\'inscrire';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get emailHint => 'Entrez votre email professionnel';
+
+  @override
+  String get password => 'Mot de passe';
+
+  @override
+  String get passwordHint => 'Entrez votre mot de passe';
+
+  @override
+  String get forgotPassword => 'Mot de passe oublié?';
+
+  @override
+  String get companyLogin => 'Connexion Entreprise';
+
+  @override
+  String get investorLogin => 'Connexion Investisseur';
+
+  @override
+  String get createAccount => 'Créer un compte';
+
+  @override
+  String get companyName => 'Nom de l\'entreprise';
+
+  @override
+  String get firstName => 'Prénom';
+
+  @override
+  String get lastName => 'Nom';
+
+  @override
+  String get phone => 'Téléphone';
+
+  @override
+  String get country => 'Pays';
+
+  @override
+  String get next => 'Suivant';
+
+  @override
+  String get back => 'Retour';
+
+  @override
+  String get skip => 'Passer';
+
+  @override
+  String get done => 'Terminer';
+
+  @override
+  String get save => 'Enregistrer';
+
+  @override
+  String get cancel => 'Annuler';
+
+  @override
+  String get selectLanguage => 'Sélectionner la langue';
+
+  @override
+  String get language => 'Langue';
+
+  @override
+  String get english => 'Anglais';
+
+  @override
+  String get french => 'Français';
+
+  @override
+  String get arabic => 'Arabe';
+
+  @override
+  String get discoverComvest => 'Découvrez ComVest';
+
+  @override
+  String get discoverDescription =>
+      'La plateforme qui met en relation les startups, les fondateurs et les investisseurs';
+
+  @override
+  String get needVisibility => 'Besoin de visibilité ?';
+
+  @override
+  String get visibilityDescription =>
+      'Notre service marketing augmentera votre visibilité';
+
+  @override
+  String get buildRelationships => 'Établissez des relations solides';
+
+  @override
+  String get relationshipsDescription =>
+      'Collaborez avec des entrepreneurs et élargissez votre réseau';
+
+  @override
+  String get getStarted => 'Commencer';
+
+  @override
+  String get welcomeToApp => 'Bienvenue sur l\'application ComVest';
+
+  @override
+  String get allServicesHere =>
+      'Tous vos besoins en matière de services sont ici';
+
+  @override
+  String get companyCardTitle => 'Entreprise';
+
+  @override
+  String get companyCardSubtitle =>
+      'Si vous cherchez une entreprise, inscrivez-vous ici';
+
+  @override
+  String get investorCardTitle => 'Investisseur';
+
+  @override
+  String get investorCardSubtitle =>
+      'Si vous souhaitez investir dans un projet, cliquez ici';
+}

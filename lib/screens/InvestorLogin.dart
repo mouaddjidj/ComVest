@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'investorRegister.dart'; // Add this import
+import 'investorRegister.dart';
+import '../l10n/app_localizations.dart';
 
 class InvestorLoginScreen extends StatefulWidget {
   const InvestorLoginScreen({super.key});
@@ -15,6 +16,8 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context);
+    
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 117, 51, 232),
       body: SafeArea(
@@ -30,9 +33,9 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
             ),
             const SizedBox(height: 20),
             // App Name
-            const Text(
-              'ComVest',
-              style: TextStyle(
+            Text(
+              localizations?.appTitle ?? 'ComVest',
+              style: const TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
@@ -41,9 +44,9 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
             ),
             const SizedBox(height: 10),
             // Subtitle
-            const Text(
-              'COMMUNICATION + INVESTISSEMENT',
-              style: TextStyle(
+            Text(
+              localizations?.appSubtitle ?? 'COMMUNICATION + INVESTMENT',
+              style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
                 color: Colors.white,
@@ -67,9 +70,9 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 30),
-                      const Text(
-                        "Connexion Investisseur",
-                        style: TextStyle(
+                      Text(
+                        localizations?.investorLogin ?? 'Investor Login',
+                        style: const TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
                           color: Colors.black87,
@@ -77,7 +80,7 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                       ),
                       const SizedBox(height: 10),
                       const Text(
-                        "Connectez-vous à votre compte investisseur",
+                        'Connect to your investor account',
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.grey,
@@ -86,9 +89,9 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                       const SizedBox(height: 30),
                       
                       // Email Field
-                      const Text(
-                        "Email",
-                        style: TextStyle(
+                      Text(
+                        localizations?.email ?? 'Email',
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
                           color: Colors.black87,
@@ -104,7 +107,7 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                         child: TextField(
                           controller: _emailController,
                           decoration: InputDecoration(
-                            hintText: "Entrez votre email",
+                            hintText: localizations?.emailHint ?? 'Enter your professional email',
                             border: InputBorder.none,
                             contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                             prefixIcon: Icon(
@@ -118,9 +121,9 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                       const SizedBox(height: 20),
                       
                       // Password Field
-                      const Text(
-                        "Mot de passe",
-                        style: TextStyle(
+                      Text(
+                        localizations?.password ?? 'Password',
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
                           color: Colors.black87,
@@ -136,7 +139,7 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                         child: TextField(
                           controller: _passwordController,
                           decoration: InputDecoration(
-                            hintText: "Entrez votre mot de passe",
+                            hintText: localizations?.passwordHint ?? 'Enter your password',
                             border: InputBorder.none,
                             contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                             prefixIcon: Icon(
@@ -167,9 +170,9 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                           onPressed: () {
                             _showForgotPasswordDialog(context);
                           },
-                          child: const Text(
-                            "Mot de passe oublié?",
-                            style: TextStyle(
+                          child: Text(
+                            localizations?.forgotPassword ?? 'Forgot Password?',
+                            style: const TextStyle(
                               color: Color.fromARGB(255, 117, 51, 232),
                               fontWeight: FontWeight.w500,
                             ),
@@ -195,7 +198,7 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                             elevation: 4,
                           ),
                           child: const Text(
-                            "Valider",
+                            'Login',
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -209,7 +212,6 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                       Center(
                         child: TextButton(
                           onPressed: () {
-                            // Navigate to investor account creation
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -218,15 +220,15 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                             );
                           },
                           child: RichText(
-                            text: const TextSpan(
-                              text: "Vous n'avez pas de compte? ",
-                              style: TextStyle(
+                            text: TextSpan(
+                              text: "Don't have an account? ",
+                              style: const TextStyle(
                                 color: Colors.grey,
                               ),
                               children: [
                                 TextSpan(
-                                  text: "Créer un compte",
-                                  style: TextStyle(
+                                  text: localizations?.createAccount ?? 'Create Account',
+                                  style: const TextStyle(
                                     color: Color.fromARGB(255, 117, 51, 232),
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -252,12 +254,11 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
     final password = _passwordController.text.trim();
     
     if (email.isEmpty || password.isEmpty) {
-      _showErrorDialog('Veuillez remplir tous les champs');
+      _showErrorDialog('Please fill in all fields');
       return;
     }
     
-    print('Tentative de connexion investisseur: $email');
-    // Add your actual login logic here
+    print('Investor login attempt: $email');
   }
 
   void _showForgotPasswordDialog(BuildContext context) {
@@ -265,21 +266,21 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text("Mot de passe oublié"),
-          content: const Text("Entrez votre email pour réinitialiser votre mot de passe."),
+          title: const Text('Forgot Password'),
+          content: const Text('Enter your email to reset your password'),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text("Annuler"),
+              child: const Text('Cancel'),
             ),
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
-                _showSuccessDialog("Instructions envoyées à votre email");
+                _showSuccessDialog('Instructions have been sent to your email');
               },
-              child: const Text("Envoyer"),
+              child: const Text('Send'),
             ),
           ],
         );
@@ -292,14 +293,14 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text("Erreur"),
+          title: const Text('Error'),
           content: Text(message),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text("OK"),
+              child: const Text('OK'),
             ),
           ],
         );
@@ -312,14 +313,14 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text("Succès"),
+          title: const Text('Success'),
           content: Text(message),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text("OK"),
+              child: const Text('OK'),
             ),
           ],
         );

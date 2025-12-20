@@ -3,6 +3,9 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../widgets/onboarding_page.dart';
 import 'TypeSelectionLoginScreen.dart';
+import '../services/language_service.dart';  // CHANGED
+import '../l10n/app_localizations.dart';  // CHANGED
+import '../main.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -41,11 +44,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     }
   }
 
-  void _skipOnboarding() {
-    print('⏭️ Skipping onboarding');
-    _saveAndNavigate();
-  }
-
   @override
   Widget build(BuildContext context) {
     print('🔄 Building OnboardingScreen UI');
@@ -71,69 +69,72 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           // Main Content
           Column(
             children: [
-              // Language Button
+              // Language Button - UPDATED
               SafeArea(
                 child: Align(
-                  alignment: Alignment.topLeft,
+                  alignment: Alignment.topRight,
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: PopupMenuButton<String>(
-                      onSelected: (value) {
-                        print("🌐 Language selected: $value");
+                    child: PopupMenuButton<Locale>(
+                      onSelected: (Locale newLocale) {
+                        print("🌐 Language selected: ${newLocale.languageCode}");
+                        // Change app language
+                        MyApp.of(context)?.changeLanguage(newLocale);
                       },
                       child: Container(
-                        padding: const EdgeInsets.all(10),
+                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                         decoration: BoxDecoration(
                           color: Colors.white.withOpacity(0.2),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: const Text(
-                          "Language",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              LanguageService.getLanguageFlag(
+                                Localizations.localeOf(context).languageCode,
+                              ),
+                              style: const TextStyle(fontSize: 18),
+                            ),
+                            const SizedBox(width: 8),
+                            Text(
+                              AppLocalizations.of(context)!.language,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const Icon(Icons.arrow_drop_down, color: Colors.white),
+                          ],
                         ),
                       ),
-                      itemBuilder: (context) => [
-                        const PopupMenuItem(
-                          value: "en",
+                      itemBuilder: (context) => LanguageService.supportedLocales.map((locale) {
+                        return PopupMenuItem<Locale>(
+                          value: locale,
                           child: Row(
                             children: [
-                              Text("🇺🇸  "),
-                              SizedBox(width: 8),
-                              Text("English"),
+                              Text(
+                                LanguageService.getLanguageFlag(locale.languageCode),
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                              const SizedBox(width: 12),
+                              Text(
+                                LanguageService.getLanguageName(locale.languageCode),
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
                             ],
                           ),
-                        ),
-                        const PopupMenuItem(
-                          value: "fr",
-                          child: Row(
-                            children: [
-                              Text("🇫🇷  "),
-                              SizedBox(width: 8),
-                              Text("Français"),
-                            ],
-                          ),
-                        ),
-                        const PopupMenuItem(
-                          value: "ar",
-                          child: Row(
-                            children: [
-                              Text("🇩🇿  "),
-                              SizedBox(width: 8),
-                              Text("العربية"),
-                            ],
-                          ),
-                        ),
-                      ],
+                        );
+                      }).toList(),
                     ),
                   ),
                 ),
               ),
 
-              // PageView Content
+              // PageView Content - UPDATED with localization
               Expanded(
                 child: PageView(
                   controller: _controller,
@@ -141,30 +142,27 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     print('📄 Page changed to: $index');
                     setState(() => isLastPage = index == 2);
                   },
-                  children: const [
+                  children: [
                     OnboardingPage(
                       image: 'assets/images/imag2.1.png',
-                      title: 'Découvrez ComVest',
-                      subtitle:
-                          'La plateforme qui met en relation les startups, les fondateurs et les investisseurs',
+                      title: AppLocalizations.of(context)!.discoverComvest,
+                      subtitle: AppLocalizations.of(context)!.discoverDescription,
                     ),
                     OnboardingPage(
                       image: 'assets/images/visibilite (1).png',
-                      title: 'Besoin de visibilité ?',
-                      subtitle:
-                          'Notre service marketing augmentera votre visibilité',
+                      title: AppLocalizations.of(context)!.needVisibility,
+                      subtitle: AppLocalizations.of(context)!.visibilityDescription,
                     ),
                     OnboardingPage(
                       image: 'assets/images/collaborez.png',
-                      title: 'Établissez des relations solides',
-                      subtitle:
-                          'Collaborez avec des entrepreneurs et élargissez votre réseau',
+                      title: AppLocalizations.of(context)!.buildRelationships,
+                      subtitle: AppLocalizations.of(context)!.relationshipsDescription,
                     ),
                   ],
                 ),
               ),
 
-              // Bottom Navigation
+              // Bottom Navigation - UPDATED
               Padding(
                 padding: const EdgeInsets.only(
                   left: 30,
@@ -175,20 +173,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 child: Column(
                   children: [
                     // Page Indicator
-                    if (!isLastPage)
-                      SmoothPageIndicator(
-                        controller: _controller,
-                        count: 3,
-                        effect: const WormEffect(
-                          dotColor: Colors.white30,
-                          activeDotColor: Colors.white,
-                          dotHeight: 8,
-                          dotWidth: 8,
-                          spacing: 8,
-                        ),
-                      )
-                    else
-                      const SizedBox(height: 8),
+                    SmoothPageIndicator(
+                      controller: _controller,
+                      count: 3,
+                      effect: const WormEffect(
+                        dotColor: Colors.white30,
+                        activeDotColor: Colors.white,
+                        dotHeight: 8,
+                        dotWidth: 8,
+                        spacing: 8,
+                      ),
+                    ),
 
                     const SizedBox(height: 30),
 
@@ -196,27 +191,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        // Skip Button
-                        if (!isLastPage)
-                          TextButton(
-                            onPressed: _skipOnboarding,
-                            style: TextButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 20,
-                                vertical: 10,
-                              ),
-                            ),
-                            child: const Text(
-                              'Skip',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                              ),
-                            ),
-                          )
-                        else
-                          const Spacer(),
-
+                        const Spacer(),
+                        
                         // Next/Get Started Button
                         Container(
                           decoration: BoxDecoration(
@@ -236,7 +212,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           ),
                           child: TextButton(
                             onPressed: isLastPage
-                                ? _skipOnboarding
+                                ? _saveAndNavigate
                                 : () {
                                     print('➡️ Next button pressed');
                                     _controller.nextPage(
@@ -254,7 +230,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               ),
                             ),
                             child: Text(
-                              isLastPage ? 'Get Started' : 'Next',
+                              isLastPage 
+                                ? AppLocalizations.of(context)!.getStarted 
+                                : AppLocalizations.of(context)!.next,
                               style: const TextStyle(
                                 color: Colors.indigo,
                                 fontSize: 16,

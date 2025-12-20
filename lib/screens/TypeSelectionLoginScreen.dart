@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'companyLogin.dart';
-import 'InvestorLogin.dart';
+import 'companyLogin.dart'; // This import is correct
+import 'InvestorLogin.dart'; // This is correct - matches InvestorLogin.dart
+import '../l10n/app_localizations.dart';  
 
 class TypeSelectionScreen extends StatelessWidget {
   const TypeSelectionScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!;
+    
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 117, 51, 232),
       body: SafeArea(
@@ -25,9 +28,9 @@ class TypeSelectionScreen extends StatelessWidget {
             const SizedBox(height: 20),
 
             // TITLE
-            const Text(
-              'ComVest',
-              style: TextStyle(
+            Text(
+              localizations.appTitle,
+              style: const TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
@@ -38,9 +41,9 @@ class TypeSelectionScreen extends StatelessWidget {
             const SizedBox(height: 10),
 
             // SUBTITLE
-            const Text(
-              'COMMUNICATION + INVESTISSEMENT',
-              style: TextStyle(
+            Text(
+              localizations.appSubtitle,
+              style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
                 color: Colors.white,
@@ -62,17 +65,16 @@ class TypeSelectionScreen extends StatelessWidget {
                   ),
                 ),
 
-                // ✅ FIX: add scroll
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.all(20.0),
                   child: Column(
                     children: [
                       const SizedBox(height: 40),
 
-                      const Text(
-                        "Bienvenue sur l'application ComVest",
+                      Text(
+                        localizations.welcomeToApp,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
                           color: Colors.black87,
@@ -82,7 +84,7 @@ class TypeSelectionScreen extends StatelessWidget {
                       const SizedBox(height: 15),
 
                       Text(
-                        "Tous vos besoins en matière de services sont ici",
+                        localizations.allServicesHere,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 16,
@@ -93,15 +95,14 @@ class TypeSelectionScreen extends StatelessWidget {
                       const SizedBox(height: 40),
 
                       _buildServiceCard(
-                        title: 'Entreprise',
-                        subtitle:
-                            'Si vous cherchez une entreprise, inscrivez-vous ici',
+                        title: localizations.companyCardTitle,
+                        subtitle: localizations.companyCardSubtitle,
                         icon: Icons.business,
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (_) =>
-                                  const TypeSelectionLoginScreen(),
+                              // This is correct - TypeSelectionLoginScreen is companyLogin.dart
+                              builder: (_) => const TypeSelectionLoginScreen(),
                             ),
                           );
                         },
@@ -110,15 +111,14 @@ class TypeSelectionScreen extends StatelessWidget {
                       const SizedBox(height: 20),
 
                       _buildServiceCard(
-                        title: 'Investisseur',
-                        subtitle:
-                            'Si vous souhaitez investir dans un projet, cliquez ici',
+                        title: localizations.investorCardTitle,
+                        subtitle: localizations.investorCardSubtitle,
                         icon: Icons.trending_up,
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (_) =>
-                                  const InvestorLoginScreen(),
+                              // This is correct - InvestorLoginScreen is InvestorLogin.dart
+                              builder: (_) => const InvestorLoginScreen(),
                             ),
                           );
                         },

@@ -1,4 +1,4 @@
-name: my_onboarding_app
+name: comvest 
 description: A Flutter onboarding app
 
 publish_to: 'none'
@@ -11,11 +11,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   smooth_page_indicator: ^1.1.0
   shared_preferences: ^2.2.2
   google_fonts: ^6.3.3
   video_player: ^2.8.3
   chewie: ^1.5.0
+  # ADD THIS LINE:
+  intl: 0.20.2  # Required for localization
 
 dev_dependencies:
   flutter_test:
@@ -23,7 +27,6 @@ dev_dependencies:
   flutter_lints: ^3.0.0
   flutter_launcher_icons: ^0.13.1
 
-# App icons configuration
 flutter_launcher_icons:
   android: true
   ios: true
@@ -31,6 +34,7 @@ flutter_launcher_icons:
 
 flutter:
   uses-material-design: true
+  generate: true
   
   assets:
     - assets/images/
@@ -39,4 +43,3 @@ flutter:
     - assets/images/visibilite (1).png
     - assets/images/collaborez.png
     - assets/images/logo.png
-    
