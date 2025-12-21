@@ -52,5 +52,7 @@
   "companyCardSubtitle": "Si vous cherchez une entreprise, inscrivez-vous ici",
   "investorCardTitle": "Investisseur",
   "investorCardSubtitle": "Si vous souhaitez investir dans un projet, cliquez ici",
-  "fillAllFields": "Veuillez remplir tous les champs"
+  "fillAllFields": "Veuillez remplir tous les champs",
+  "invite": "Inviter",
+  "continueAsGuest": "Continuer en tant qu'invité"
 }

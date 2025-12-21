@@ -52,5 +52,7 @@
   "companyCardSubtitle": "إذا كنت تبحث عن شركة، قم بالتسجيل هنا",
   "investorCardTitle": "مستثمر",
   "investorCardSubtitle": "إذا كنت ترغب في الاستثمار في مشروع، انقر هنا",
-  "fillAllFields": "يرجى ملء جميع الحقول"
+  "fillAllFields": "يرجى ملء جميع الحقول",
+  "invite": "دعوة",
+  "continueAsGuest": "المتابعة كضيف"
 }

@@ -85,5 +85,13 @@
   "fillAllFields": "Please fill in all fields",
   "@fillAllFields": {
     "description": "Error message when form fields are empty"
+  },
+  "invite": "Invite",
+  "@invite": {
+    "description": "Title for invite/guest access card"
+  },
+  "continueAsGuest": "Continue as guest",
+  "@continueAsGuest": {
+    "description": "Subtitle for invite/guest access card"
   }
 }

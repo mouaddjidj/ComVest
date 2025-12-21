@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './AdsServices.dart';
+
 class CreateCompanySortlistStyle extends StatefulWidget {
   const CreateCompanySortlistStyle({super.key});
 
@@ -17,6 +18,7 @@ class _CreateCompanySortlistStyleState
   final TextEditingController _websiteController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _aboutController = TextEditingController();
+  final TextEditingController _activiteController = TextEditingController();
 
   bool _hasAuthority = false;
   bool _isManagerAccount = false;
@@ -32,6 +34,7 @@ class _CreateCompanySortlistStyleState
 
   String? _teamSize;
   String? _selectedVillage;
+  String? _selectedSecteur;
 
   // List of Algerian villages
   final List<String> _algerianVillages = [
@@ -85,6 +88,35 @@ class _CreateCompanySortlistStyleState
     'Tipaza',
     'Tizi Rached',
     'Azazga'
+  ];
+
+  // List of business sectors
+  final List<String> _secteurs = [
+    'Technologie',
+    'Santé',
+    'Construction',
+    'Éducation',
+    'Finance',
+    'Commerce',
+    'Transport',
+    'Tourisme',
+    'Agriculture',
+    'Industrie',
+    'Services',
+    'Communication',
+    'Immobilier',
+    'Énergie',
+    'Environnement',
+    'Logistique',
+    'Marketing',
+    'Consulting',
+    'Art et Culture',
+    'Restauration',
+    'Mode',
+    'Sport',
+    'Médias',
+    'Assurance',
+    'Juridique'
   ];
 
   @override
@@ -339,7 +371,7 @@ class _CreateCompanySortlistStyleState
         const Divider(),
         const SizedBox(height: 16),
 
-        // Company name display - MODIFIÉ ICI
+        // Company name display
         Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
@@ -617,6 +649,74 @@ class _CreateCompanySortlistStyleState
         ),
         const SizedBox(height: 24),
 
+        // Secteur d'activité (ComboBox)
+        const Text(
+          'Secteur d\'activité',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey[300]!),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: DropdownButtonHideUnderline(
+            child: DropdownButton<String>(
+              isExpanded: true,
+              hint: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: Text('Sélectionnez votre secteur d\'activité'),
+              ),
+              value: _selectedSecteur,
+              items: _secteurs.map((String secteur) {
+                return DropdownMenuItem<String>(
+                  value: secteur,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(secteur),
+                  ),
+                );
+              }).toList(),
+              onChanged: (String? newValue) {
+                setState(() {
+                  _selectedSecteur = newValue;
+                });
+              },
+            ),
+          ),
+        ),
+        const SizedBox(height: 24),
+
+        // Activité
+        const Text(
+          'Activité',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey[300]!),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: TextField(
+            controller: _activiteController,
+            decoration: const InputDecoration(
+              hintText: 'Sélectionnez votre activité',
+              border: InputBorder.none,
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            ),
+          ),
+        ),
+        const SizedBox(height: 24),
+
         // About Section
         const Text(
           'About',
@@ -627,7 +727,7 @@ class _CreateCompanySortlistStyleState
         ),
         const SizedBox(height: 16),
 
-        // Company Name - MODIFIÉ ICI
+        // Company Name
         const Text(
           'Nom de l\'entreprise',
           style: TextStyle(
@@ -776,6 +876,8 @@ class _CreateCompanySortlistStyleState
     // Handle profile creation logic here
     print('Creating profile with:');
     print('Company: ${_companyNameController.text}');
+    print('Secteur: $_selectedSecteur');
+    print('Activité: ${_activiteController.text}');
     print('Village: $_selectedVillage');
     print('Address: ${_addressController.text}');
     print('Phone: ${_phoneController.text}');
@@ -785,12 +887,11 @@ class _CreateCompanySortlistStyleState
     print('Languages: $_selectedLanguages');
     print('Team Size: $_teamSize');
 
-// Navigate to AdsServices
+    // Navigate to AdsServices
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => const PricingScreen ()),
-);
-
+      MaterialPageRoute(builder: (context) => const PricingScreen()),
+    );
   }
 
   @override
@@ -801,6 +902,7 @@ class _CreateCompanySortlistStyleState
     _websiteController.dispose();
     _emailController.dispose();
     _aboutController.dispose();
+    _activiteController.dispose();
     super.dispose();
   }
 }

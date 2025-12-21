@@ -172,4 +172,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get fillAllFields => 'Please fill in all fields';
+
+  @override
+  String get invite => 'Invite';
+
+  @override
+  String get continueAsGuest => 'Continue as guest';
 }

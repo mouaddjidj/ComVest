@@ -171,4 +171,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get fillAllFields => 'يرجى ملء جميع الحقول';
+
+  @override
+  String get invite => 'دعوة';
+
+  @override
+  String get continueAsGuest => 'المتابعة كضيف';
 }

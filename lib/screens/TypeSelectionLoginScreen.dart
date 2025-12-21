@@ -1,7 +1,8 @@
+import 'package:comvest/screens/AdsServices.dart';
 import 'package:flutter/material.dart';
-import 'companyLogin.dart'; // This import is correct
-import 'InvestorLogin.dart'; // This is correct - matches InvestorLogin.dart
-import '../l10n/app_localizations.dart';  
+import 'companyLogin.dart';
+import 'InvestorLogin.dart';
+import '../l10n/app_localizations.dart';
 
 class TypeSelectionScreen extends StatelessWidget {
   const TypeSelectionScreen({super.key});
@@ -101,7 +102,6 @@ class TypeSelectionScreen extends StatelessWidget {
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              // This is correct - TypeSelectionLoginScreen is companyLogin.dart
                               builder: (_) => const TypeSelectionLoginScreen(),
                             ),
                           );
@@ -117,13 +117,17 @@ class TypeSelectionScreen extends StatelessWidget {
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              // This is correct - InvestorLoginScreen is InvestorLogin.dart
                               builder: (_) => const InvestorLoginScreen(),
                             ),
                           );
                         },
                       ),
 
+                      const SizedBox(height: 20),
+
+                      // ADDED INVITE BUTTON - Same style as cards
+                      _buildInviteCard(context),
+                      
                       const SizedBox(height: 30),
                     ],
                   ),
@@ -132,6 +136,61 @@ class TypeSelectionScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  /// ADDED: INVITE CARD - Same style as other cards
+  Widget _buildInviteCard(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!;
+    
+    return Card(
+      elevation: 4,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: ListTile(
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        leading: Container(
+          width: 50,
+          height: 50,
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(255, 117, 51, 232).withOpacity(0.1),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: const Icon(
+            Icons.person_add_alt_1,
+            color: Color.fromARGB(255, 117, 51, 232),
+            size: 28,
+          ),
+        ),
+        title: Text(
+          localizations.invite,
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: Colors.black87,
+          ),
+        ),
+        subtitle: Text(
+          localizations.continueAsGuest,
+          style: const TextStyle(
+            fontSize: 14,
+            color: Colors.grey,
+          ),
+        ),
+        trailing: const Icon(
+          Icons.arrow_forward_ios,
+          color: Color.fromARGB(255, 117, 51, 232),
+          size: 20,
+        ),
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const PricingScreen()),
+          );
+        },
       ),
     );
   }
@@ -155,8 +214,7 @@ class TypeSelectionScreen extends StatelessWidget {
           width: 50,
           height: 50,
           decoration: BoxDecoration(
-            color:
-                const Color.fromARGB(255, 117, 51, 232).withOpacity(0.1),
+            color: const Color.fromARGB(255, 117, 51, 232).withOpacity(0.1),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Icon(

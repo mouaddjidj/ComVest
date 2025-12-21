@@ -175,4 +175,10 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get fillAllFields => 'Veuillez remplir tous les champs';
+
+  @override
+  String get invite => 'Inviter';
+
+  @override
+  String get continueAsGuest => 'Continuer en tant qu\'invité';
 }

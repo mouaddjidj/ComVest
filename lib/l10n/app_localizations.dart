@@ -417,6 +417,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please fill in all fields'**
   String get fillAllFields;
+
+  /// Title for invite/guest access card
+  ///
+  /// In en, this message translates to:
+  /// **'Invite'**
+  String get invite;
+
+  /// Subtitle for invite/guest access card
+  ///
+  /// In en, this message translates to:
+  /// **'Continue as guest'**
+  String get continueAsGuest;
 }
 
 class _AppLocalizationsDelegate
