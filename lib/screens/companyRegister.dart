@@ -325,6 +325,74 @@ class _CreateCompanySortlistStyleState
             ),
           ),
         ),
+        const SizedBox(height: 24),
+
+        // Secteur d'activité (moved from Step 4)
+        const Text(
+          'Secteur d\'activité',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey[300]!),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: DropdownButtonHideUnderline(
+            child: DropdownButton<String>(
+              isExpanded: true,
+              hint: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: Text('Sélectionnez votre secteur d\'activité'),
+              ),
+              value: _selectedSecteur,
+              items: _secteurs.map((String secteur) {
+                return DropdownMenuItem<String>(
+                  value: secteur,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Text(secteur),
+                  ),
+                );
+              }).toList(),
+              onChanged: (String? newValue) {
+                setState(() {
+                  _selectedSecteur = newValue;
+                });
+              },
+            ),
+          ),
+        ),
+        const SizedBox(height: 24),
+
+        // Activité (moved from Step 4)
+        const Text(
+          'Activité',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey[300]!),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: TextField(
+            controller: _activiteController,
+            decoration: const InputDecoration(
+              hintText: 'Sélectionnez votre activité',
+              border: InputBorder.none,
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            ),
+          ),
+        ),
       ],
     );
   }
@@ -392,6 +460,29 @@ class _CreateCompanySortlistStyleState
               ),
               const SizedBox(height: 16),
 
+              // Show secteur and activité if they were filled in Step 1
+              if (_selectedSecteur != null) ...[
+                const SizedBox(height: 8),
+                Text(
+                  'Secteur: $_selectedSecteur',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey[700],
+                  ),
+                ),
+              ],
+              if (_activiteController.text.isNotEmpty) ...[
+                const SizedBox(height: 4),
+                Text(
+                  'Activité: ${_activiteController.text}',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey[700],
+                  ),
+                ),
+              ],
+              const SizedBox(height: 16),
+
               // Authorization checkbox
               Row(
                 children: [
@@ -409,11 +500,6 @@ class _CreateCompanySortlistStyleState
                   ),
                 ],
               ),
-
-              // Success section
-              if (_hasAuthority) ...[
-             
-              ],
             ],
           ),
         ),
@@ -649,74 +735,6 @@ class _CreateCompanySortlistStyleState
         ),
         const SizedBox(height: 24),
 
-        // Secteur d'activité (ComboBox)
-        const Text(
-          'Secteur d\'activité',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 8),
-        Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey[300]!),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: DropdownButtonHideUnderline(
-            child: DropdownButton<String>(
-              isExpanded: true,
-              hint: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: Text('Sélectionnez votre secteur d\'activité'),
-              ),
-              value: _selectedSecteur,
-              items: _secteurs.map((String secteur) {
-                return DropdownMenuItem<String>(
-                  value: secteur,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Text(secteur),
-                  ),
-                );
-              }).toList(),
-              onChanged: (String? newValue) {
-                setState(() {
-                  _selectedSecteur = newValue;
-                });
-              },
-            ),
-          ),
-        ),
-        const SizedBox(height: 24),
-
-        // Activité
-        const Text(
-          'Activité',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 8),
-        Container(
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey[300]!),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: TextField(
-            controller: _activiteController,
-            decoration: const InputDecoration(
-              hintText: 'Sélectionnez votre activité',
-              border: InputBorder.none,
-              contentPadding:
-                  EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-            ),
-          ),
-        ),
-        const SizedBox(height: 24),
-
         // About Section
         const Text(
           'About',
@@ -755,6 +773,58 @@ class _CreateCompanySortlistStyleState
           ),
         ),
         const SizedBox(height: 16),
+
+        // Show secteur and activité info (read-only)
+        if (_selectedSecteur != null) ...[
+          const Text(
+            'Secteur d\'activité',
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey[300]!),
+              borderRadius: BorderRadius.circular(8),
+              color: Colors.grey[50],
+            ),
+            child: Text(
+              _selectedSecteur!,
+              style: const TextStyle(
+                fontSize: 16,
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
+        ],
+        if (_activiteController.text.isNotEmpty) ...[
+          const Text(
+            'Activité',
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey[300]!),
+              borderRadius: BorderRadius.circular(8),
+              color: Colors.grey[50],
+            ),
+            child: Text(
+              _activiteController.text,
+              style: const TextStyle(
+                fontSize: 16,
+              ),
+            ),
+          ),
+          const SizedBox(height: 16),
+        ],
 
         // Languages
         const Text(
