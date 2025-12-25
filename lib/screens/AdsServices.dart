@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// Model Class
+// Model Class - Enhanced with more details
 class PricingPackage {
   final String title;
   final String description;
@@ -30,6 +30,8 @@ class PricingPackage {
   final List<String> features;
   final Color primaryColor;
   final Color? secondaryColor;
+  final String details; // Added detailed description
+  final List<String> additionalInfo; // Added additional information
 
   PricingPackage({
     required this.title,
@@ -38,398 +40,285 @@ class PricingPackage {
     required this.features,
     required this.primaryColor,
     this.secondaryColor,
+    required this.details,
+    required this.additionalInfo,
   });
 }
 
-// Menu Screen
-class MenuScreen extends StatelessWidget {
-  final Color primaryColor;
+// Detail Dialog Widget with Scroll
+class PackageDetailDialog extends StatelessWidget {
+  final PricingPackage package;
 
-  const MenuScreen({super.key, required this.primaryColor});
+  const PackageDetailDialog({super.key, required this.package});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFF5F7FA),
-      appBar: AppBar(
-        backgroundColor: primaryColor,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text(
-          'Dashboard',
-          style: GoogleFonts.poppins(
-            color: Colors.white,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
+    return Dialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30),
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Welcome Card
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(25),
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    primaryColor,
-                    primaryColor.withOpacity(0.8),
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      child: Container(
+        width: MediaQuery.of(context).size.width * 0.9,
+        height: MediaQuery.of(context).size.height * 0.8,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(30),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Header with gradient
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      package.primaryColor,
+                      package.secondaryColor ??
+                          package.primaryColor.withOpacity(0.8),
+                    ],
+                  ),
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30),
+                  ),
+                ),
+                child: Column(
+                  children: [
+                    Text(
+                      package.title,
+                      style: GoogleFonts.poppins(
+                        color: Colors.white,
+                        fontSize: 28,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 1.5,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      package.description,
+                      style: GoogleFonts.poppins(
+                        color: Colors.white.withOpacity(0.9),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
                   ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
                 ),
-                borderRadius: BorderRadius.circular(20),
-                boxShadow: [
-                  BoxShadow(
-                    color: primaryColor.withOpacity(0.3),
-                    blurRadius: 20,
-                    offset: const Offset(0, 10),
-                  ),
-                ],
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '🎉 Welcome!',
-                    style: GoogleFonts.poppins(
-                      color: Colors.white,
-                      fontSize: 24,
-                      fontWeight: FontWeight.w700,
+              
+              // Price section
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 25),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      package.price,
+                      style: GoogleFonts.poppins(
+                        color: const Color(0xFF2D3748),
+                        fontSize: 48,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    'You\'ve successfully activated your plan. Start exploring all the features available to you.',
-                    style: GoogleFonts.poppins(
-                      color: Colors.white.withOpacity(0.9),
-                      fontSize: 14,
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8),
+                      child: Text(
+                        '/month',
+                        style: GoogleFonts.poppins(
+                          color: const Color(0xFF718096),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
                     ),
+                  ],
+                ),
+              ),
+              
+              // Detailed description
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: Text(
+                  package.details,
+                  style: GoogleFonts.poppins(
+                    color: const Color(0xFF4A5568),
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    height: 1.6,
                   ),
-                ],
+                  textAlign: TextAlign.center,
+                ),
               ),
-            ),
-
-            const SizedBox(height: 30),
-
-            // Menu Options
-            Text(
-              'Get Started',
-              style: GoogleFonts.poppins(
-                color: const Color(0xFF2D3748),
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-
-            const SizedBox(height: 20),
-
-            // Menu Grid
-            GridView.count(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              crossAxisCount: 2,
-              crossAxisSpacing: 15,
-              mainAxisSpacing: 15,
-              children: [
-                _buildMenuItem(
-                  icon: Icons.add_circle_outline,
-                  title: 'Create Project',
-                  subtitle: 'Start your first project',
-                  color: primaryColor,
-                ),
-                _buildMenuItem(
-                  icon: Icons.dashboard,
-                  title: 'Templates',
-                  subtitle: 'Browse templates',
-                  color: primaryColor,
-                ),
-                _buildMenuItem(
-                  icon: Icons.analytics_outlined,
-                  title: 'Analytics',
-                  subtitle: 'View your stats',
-                  color: primaryColor,
-                ),
-                _buildMenuItem(
-                  icon: Icons.help_outline,
-                  title: 'Help Center',
-                  subtitle: 'Get support',
-                  color: primaryColor,
-                ),
-                _buildMenuItem(
-                  icon: Icons.settings,
-                  title: 'Settings',
-                  subtitle: 'Configure your account',
-                  color: primaryColor,
-                ),
-                _buildMenuItem(
-                  icon: Icons.upgrade,
-                  title: 'Change Plan',
-                  subtitle: 'Modify your subscription',
-                  color: primaryColor,
-                ),
-              ],
-            ),
-
-            const SizedBox(height: 30),
-
-            // Project Stats
-            Container(
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(15),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
-                    blurRadius: 10,
-                    offset: const Offset(0, 5),
-                  ),
-                ],
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Your Plan Status',
-                    style: GoogleFonts.poppins(
-                      color: const Color(0xFF2D3748),
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
+              
+              const SizedBox(height: 20),
+              
+              // Features section
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Key Features:',
+                      style: GoogleFonts.poppins(
+                        color: const Color(0xFF2D3748),
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 15),
-                  _buildProgressItem(
-                    label: 'Project Usage',
-                    value: '3/3',
-                    percentage: 1.0,
-                    color: primaryColor,
-                  ),
-                  const SizedBox(height: 10),
-                  _buildProgressItem(
-                    label: 'Storage Used',
-                    value: '0/2 GB',
-                    percentage: 0.0,
-                    color: primaryColor,
-                  ),
-                  const SizedBox(height: 10),
-                  _buildProgressItem(
-                    label: 'Features Unlocked',
-                    value: '12/12',
-                    percentage: 1.0,
-                    color: primaryColor,
-                  ),
-                ],
+                    const SizedBox(height: 15),
+                    ...package.features.map((feature) => Padding(
+                      padding: const EdgeInsets.only(bottom: 12),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 24,
+                            height: 24,
+                            margin: const EdgeInsets.only(top: 2),
+                            decoration: BoxDecoration(
+                              color: package.primaryColor.withOpacity(0.15),
+                              shape: BoxShape.circle,
+                            ),
+                            child: Icon(
+                              Icons.check,
+                              color: package.primaryColor,
+                              size: 16,
+                            ),
+                          ),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Text(
+                              feature,
+                              style: GoogleFonts.poppins(
+                                color: const Color(0xFF4A5568),
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )),
+                  ],
+                ),
               ),
-            ),
-
-            const SizedBox(height: 30),
-
-            // Quick Actions
-            Text(
-              'Quick Actions',
-              style: GoogleFonts.poppins(
-                color: const Color(0xFF2D3748),
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-
-            const SizedBox(height: 15),
-
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  _buildQuickAction(
-                    icon: Icons.video_library,
-                    label: 'Watch Tutorial',
-                    color: primaryColor,
-                  ),
-                  const SizedBox(width: 10),
-                  _buildQuickAction(
-                    icon: Icons.document_scanner,
-                    label: 'Read Docs',
-                    color: primaryColor,
-                  ),
-                  const SizedBox(width: 10),
-                  _buildQuickAction(
-                    icon: Icons.group,
-                    label: 'Join Community',
-                    color: primaryColor,
-                  ),
-                  const SizedBox(width: 10),
-                  _buildQuickAction(
-                    icon: Icons.share,
-                    label: 'Invite Friends',
-                    color: primaryColor,
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildMenuItem({
-    required IconData icon,
-    required String title,
-    required String subtitle,
-    required Color color,
-  }) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 5),
-          ),
-        ],
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          borderRadius: BorderRadius.circular(15),
-          onTap: () {},
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              
+              // Additional information
+              if (package.additionalInfo.isNotEmpty) ...[
+                const SizedBox(height: 20),
                 Container(
-                  width: 50,
-                  height: 50,
+                  width: double.infinity,
+                  margin: const EdgeInsets.symmetric(horizontal: 25),
+                  padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    color: color.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(12),
+                    color: const Color(0xFFF8FAFC),
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      color: const Color(0xFFE2E8F0),
+                      width: 1,
+                    ),
                   ),
-                  child: Icon(
-                    icon,
-                    color: color,
-                    size: 28,
-                  ),
-                ),
-                const SizedBox(height: 15),
-                Text(
-                  title,
-                  style: GoogleFonts.poppins(
-                    color: const Color(0xFF2D3748),
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                const SizedBox(height: 5),
-                Text(
-                  subtitle,
-                  style: GoogleFonts.poppins(
-                    color: const Color(0xFF718096),
-                    fontSize: 12,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Additional Information:',
+                        style: GoogleFonts.poppins(
+                          color: const Color(0xFF2D3748),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      const SizedBox(height: 15),
+                      ...package.additionalInfo.map((info) => Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: 6,
+                              height: 6,
+                              margin: const EdgeInsets.only(top: 8),
+                              decoration: BoxDecoration(
+                                color: package.primaryColor,
+                                shape: BoxShape.circle,
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                            Expanded(
+                              child: Text(
+                                info,
+                                style: GoogleFonts.poppins(
+                                  color: const Color(0xFF4A5568),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                  height: 1.5,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )),
+                    ],
                   ),
                 ),
               ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildProgressItem({
-    required String label,
-    required String value,
-    required double percentage,
-    required Color color,
-  }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              label,
-              style: GoogleFonts.poppins(
-                color: const Color(0xFF4A5568),
-                fontSize: 14,
+              
+              const SizedBox(height: 25),
+              
+              // Action buttons - ONLY CLOSE BUTTON
+              Padding(
+                padding: const EdgeInsets.fromLTRB(25, 0, 25, 25),
+                child: Row(
+                  children: [
+                    // Close button only
+                    Expanded(
+                      child: Container(
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                            color: const Color(0xFFE2E8F0),
+                            width: 1.5,
+                          ),
+                        ),
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                            borderRadius: BorderRadius.circular(12),
+                            onTap: () => Navigator.pop(context),
+                            child: Center(
+                              child: Text(
+                                'CLOSE',
+                                style: GoogleFonts.poppins(
+                                  color: const Color(0xFF4A5568),
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Text(
-              value,
-              style: GoogleFonts.poppins(
-                color: const Color(0xFF2D3748),
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
-        const SizedBox(height: 8),
-        LinearProgressIndicator(
-          value: percentage,
-          backgroundColor: color.withOpacity(0.1),
-          valueColor: AlwaysStoppedAnimation<Color>(color),
-          borderRadius: BorderRadius.circular(10),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildQuickAction({
-    required IconData icon,
-    required String label,
-    required Color color,
-  }) {
-    return Container(
-      width: 120,
-      padding: const EdgeInsets.all(15),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 8,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Column(
-        children: [
-          Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
-              shape: BoxShape.circle,
-            ),
-            child: Icon(
-              icon,
-              color: color,
-              size: 20,
-            ),
-          ),
-          const SizedBox(height: 10),
-          Text(
-            label,
-            style: GoogleFonts.poppins(
-              color: const Color(0xFF2D3748),
-              fontSize: 13,
-              fontWeight: FontWeight.w500,
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ],
       ),
     );
   }
@@ -460,19 +349,33 @@ class _PricingScreenState extends State<PricingScreen> {
       ],
       primaryColor: const Color(0xFF4A90E2),
       secondaryColor: const Color(0xFF357ABD),
+      details: 'Perfect for new startups looking to establish their online presence. This package includes everything you need to get started with digital marketing.',
+      additionalInfo: [
+        '30-day money back guarantee',
+        'Email support within 24 hours',
+        'Free setup assistance',
+        'Cancel anytime',
+      ],
     ),
     PricingPackage(
       title: 'ABONNEMENT MENSUEL',
-      description: 'Startup / Micro-entreprises ',
+      description: 'Startup / Micro-entreprises',
       price: '\$65',
       features: [
         'Gestion de 2 réseaux sociaux',
         'Calendrier éditorial',
         '12 posts/mois',
-        'reporting léger',
+        'Reporting léger',
       ],
       primaryColor: const Color(0xFF9B59B6),
       secondaryColor: const Color(0xFFE91E8C),
+      details: 'Ideal for growing startups and micro-businesses. This monthly subscription provides ongoing social media management and content planning.',
+      additionalInfo: [
+        'Priority support within 12 hours',
+        'Monthly strategy review',
+        'Content calendar planning',
+        'Performance analytics dashboard',
+      ],
     ),
     PricingPackage(
       title: 'SERVICES A LA CARTE',
@@ -486,6 +389,13 @@ class _PricingScreenState extends State<PricingScreen> {
       ],
       primaryColor: const Color(0xFFE67E22),
       secondaryColor: const Color(0xFFF39C12),
+      details: 'Premium à la carte services for established businesses. Choose from advanced marketing services tailored to your specific needs.',
+      additionalInfo: [
+        'Dedicated account manager',
+        '24/7 phone support',
+        'Custom reporting',
+        'Strategy consultation sessions',
+      ],
     ),
   ];
 
@@ -504,12 +414,10 @@ class _PricingScreenState extends State<PricingScreen> {
     super.dispose();
   }
 
-  void _navigateToMenu(BuildContext context, PricingPackage package) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => MenuScreen(primaryColor: package.primaryColor),
-      ),
+  void _showPackageDetails(BuildContext context, PricingPackage package) {
+    showDialog(
+      context: context,
+      builder: (context) => PackageDetailDialog(package: package),
     );
   }
 
@@ -564,8 +472,8 @@ class _PricingScreenState extends State<PricingScreen> {
                         scale: value,
                         child: PricingCard(
                           package: packages[index],
-                          onGetStarted: () =>
-                              _navigateToMenu(context, packages[index]),
+                          onViewDetails: () =>
+                              _showPackageDetails(context, packages[index]),
                         ),
                       ),
                     );
@@ -602,15 +510,15 @@ class _PricingScreenState extends State<PricingScreen> {
   }
 }
 
-// Pricing Card Widget
+// Pricing Card Widget - Updated with detail button ONLY
 class PricingCard extends StatelessWidget {
   final PricingPackage package;
-  final VoidCallback onGetStarted;
+  final VoidCallback onViewDetails;
 
   const PricingCard({
     super.key,
     required this.package,
-    required this.onGetStarted,
+    required this.onViewDetails,
   });
 
   @override
@@ -704,9 +612,50 @@ class PricingCard extends StatelessWidget {
                 ],
               ),
             ),
+            // Detail Button
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: Container(
+                width: double.infinity,
+                height: 45,
+                decoration: BoxDecoration(
+                  color: package.primaryColor.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(25),
+                  border: Border.all(
+                    color: package.primaryColor.withOpacity(0.2),
+                  ),
+                ),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(25),
+                    onTap: onViewDetails,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.info_outline,
+                          color: package.primaryColor,
+                          size: 18,
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          'VIEW DETAILS',
+                          style: GoogleFonts.poppins(
+                            color: package.primaryColor,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
             // Divider
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 30),
+              margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
               height: 1,
               color: const Color(0xFFE2E8F0),
             ),
@@ -754,7 +703,7 @@ class PricingCard extends StatelessWidget {
                 ),
               ),
             ),
-            // Action Button
+            // BUY NOW Button - STATIC (does nothing)
             Padding(
               padding: const EdgeInsets.fromLTRB(30, 0, 30, 30),
               child: Container(
@@ -776,21 +725,14 @@ class PricingCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    borderRadius: BorderRadius.circular(30),
-                    onTap: onGetStarted,
-                    child: Center(
-                      child: Text(
-                        'BUY NOW',
-                        style: GoogleFonts.poppins(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: 1.5,
-                        ),
-                      ),
+                child: Center(
+                  child: Text(
+                    'BUY NOW',
+                    style: GoogleFonts.poppins(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 1.5,
                     ),
                   ),
                 ),
