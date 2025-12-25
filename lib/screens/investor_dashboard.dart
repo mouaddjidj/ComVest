@@ -1,3 +1,4 @@
+import 'package:comvest/screens/company_detail_page.dart';
 import 'package:comvest/widgets/models.dart';
 import 'package:flutter/material.dart';
 import 'analyse_marcket.dart';
@@ -5,6 +6,7 @@ import 'settings_page.dart';
 import 'followed_companies.dart';
 import 'actualites_page.dart';
 import 'portefeuille_page.dart';
+
 class InvestorDashboard extends StatefulWidget {
   final Investor investor;
 
@@ -18,147 +20,114 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
   int _selectedTab = 0;
   final List<Company> _companies = [
     Company(
-      name: 'LVMH',
+      name: 'TalabaStore',
       description:
-          'Leader mondial du luxe, portefeuille de 75 maisons prestigieuses',
-      industry: 'Luxe',
-      sector: 'Produits de consommation',
-      valuation: 380.5,
-      employees: 196000,
-      location: 'Paris, France',
-      founded: '1854',
-      ceo: 'Bernard Arnault',
-      revenue: 86.2,
+          'Plateforme e‑commerce destinée aux étudiants, offrant des réductions sur des produits variés (électronique, vêtements, accessoires, loisirs) et facilitant l\'accès aux services éducatifs.',
+      industry: 'E-commerce',
+      sector: 'Technologie',
+       type: 'SARL / Startup digitale',
+      valuation: 12.5,
+      employees: 50,
+      location: 'Alger, Algérie',
+      founded: 'Juin 2017',
+      ceo: 'Sami Aliouche',
+      revenue: 3.2,
       products: [
-        'Mode',
-        'Parfums',
-        'Vins & Spiritueux',
-        'Montres & Joaillerie'
+        'Électronique',
+        'Vêtements',
+        'Accessoires',
+        'Loisirs',
+        'Services éducatifs'
       ],
-      cardColor: const Color(0xFF2C3E50),
-      logo: '👜',
+      cardColor: const Color(0xFF2ECC71),
+      logo: '🎓',
+      imagePath: 'assets/images/talabastore.png',
+      website: 'https://www.talabastore.dz/',
+      mobileApps: ['Android', 'iOS'],
+      users: 'Plus de 50 000 étudiants actifs',
+      coverage: 'Livraison dans 48 wilayas en Algérie',
+      businessModel: 'Commission sur ventes + partenariats avec entreprises locales',
     ),
     Company(
-      name: 'Airbus',
+      name: 'TemTem',
       description:
-          'Leader mondial de l\'aéronautique, de l\'espace et des services associés',
-      industry: 'Aéronautique',
-      sector: 'Industrie',
-      valuation: 112.3,
-      employees: 134000,
-      location: 'Toulouse, France',
-      founded: '1970',
-      ceo: 'Guillaume Faury',
-      revenue: 58.8,
+          'Application de mobilité urbaine offrant des services de taxi/VTC, livraison de produits et services urbains digitaux (réservation et paiements).',
+      industry: 'Mobilité',
+      sector: 'Services',
+       type: ' Startup mobilité ',
+      valuation: 8.7,
+      employees: 120,
+      location: 'Alger, Algérie',
+      founded: '2018',
+      ceo: 'Jeunes  algériens',
+      revenue: 2.8,
       products: [
-        'Avions commerciaux',
-        'Hélicoptères',
-        'Systèmes de défense',
-        'Spatial'
+        'Taxi / VTC',
+        'Livraison de produits',
+        'Services urbains digitaux'
+      ],
+      cardColor: const Color(0xFFE67E22),
+      logo: '🚗',
+       imagePath: 'assets/images/temtem.png',
+      website: 'temtem.taxi',
+      mobileApps: ['Android', 'iOS'],
+      users: 'Plusieurs milliers d\'utilisateurs actifs',
+      coverage: 'Alger, Oran, Constantine',
+      businessModel: 'Commissions sur trajets + partenariats avec commerces locaux',
+    ),
+    Company(
+      name: 'ALPAY',
+      description:
+          'Solution de paiement digital et e-wallet pour particuliers et commerçants, offrant des paiements sécurisés et une gestion de comptes digitaux.',
+      industry: 'Fintech',
+      sector: 'Finance',
+       type: 'Fintech ',
+      valuation: 15.3,
+      employees: 85,
+      location: 'Alger, Algérie',
+      founded: '2019',
+      ceo: 'Jeunes algériens',
+      revenue: 4.1,
+      products: [
+        'Paiements sécurisés',
+        'Gestion de comptes digitaux',
+        'Paiement en ligne et mobile'
+      ],
+      cardColor: const Color.fromARGB(255, 114, 233, 18),
+      logo: '💳',
+      imagePath: 'assets/images/alpay.png',
+      website: 'https://alpay.dz/',
+      mobileApps: ['Android', 'iOS'],
+      users: 'Plusieurs milliers d\'utilisateurs',
+      coverage: 'Services en ligne à l\'échelle nationale',
+      businessModel: 'Commissions sur transactions + abonnements entreprises',
+    ),
+    Company(
+      name: 'Okadoo',
+      description:
+          'Marketplace numérique connectant entreprises, fournisseurs et acheteurs, permettant aux entreprises de vendre ou d\'acheter en ligne avec suivi digital des transactions.',
+      industry: 'Marketplace B2B',
+      sector: 'E-commerce',
+       type: 'Marketplace B2B ',
+      valuation: 10.2,
+      employees: 65,
+      location: 'Algérie',
+      founded: '2019',
+      ceo: 'Jeunes ',
+      revenue: 2.5,
+      products: [
+        'Marketplace B2B',
+        'Suivi digital des transactions',
+        'Connexion fournisseurs-acheteurs'
       ],
       cardColor: const Color(0xFF3498DB),
-      logo: '✈️',
-    ),
-    Company(
-      name: 'Sanofi',
-      description:
-          'Groupe pharmaceutique mondial, spécialisé dans la santé humaine',
-      industry: 'Pharmaceutique',
-      sector: 'Santé',
-      valuation: 124.8,
-      employees: 100000,
-      location: 'Paris, France',
-      founded: '1973',
-      ceo: 'Paul Hudson',
-      revenue: 43.0,
-      products: ['Vaccins', 'Médicaments', 'Soins de santé', 'Biotechnologies'],
-      cardColor: const Color(0xFF2ECC71),
-      logo: '💊',
-    ),
-    Company(
-      name: 'BNP Paribas',
-      description:
-          'Première banque de la zone euro, services financiers internationaux',
-      industry: 'Banque',
-      sector: 'Finance',
-      valuation: 77.5,
-      employees: 190000,
-      location: 'Paris, France',
-      founded: '1848',
-      ceo: 'Jean-Laurent Bonnafé',
-      revenue: 50.6,
-      products: [
-        'Banque de détail',
-        'Banque d\'investissement',
-        'Asset Management',
-        'Assurance'
-      ],
-      cardColor: const Color(0xFF9B59B6),
-      logo: '🏦',
-    ),
-    Company(
-      name: 'Capgemini',
-      description:
-          'Leader mondial du conseil, des services informatiques et de la transformation digitale',
-      industry: 'Technologie',
-      sector: 'Services professionnels',
-      valuation: 36.2,
-      employees: 340000,
-      location: 'Paris, France',
-      founded: '1967',
-      ceo: 'Aiman Ezzat',
-      revenue: 22.5,
-      products: ['Conseil', 'Services IT', 'Transformation digitale', 'Cloud'],
-      cardColor: const Color(0xFFE74C3C),
-      logo: '💻',
-    ),
-    Company(
-      name: 'L\'Oréal',
-      description:
-          'Leader mondial de la beauté, présent dans tous les circuits de distribution',
-      industry: 'Cosmétique',
-      sector: 'Produits de consommation',
-      valuation: 236.4,
-      employees: 88000,
-      location: 'Clichy, France',
-      founded: '1909',
-      ceo: 'Nicolas Hieronimus',
-      revenue: 41.2,
-      products: ['Soins', 'Maquillage', 'Parfums', 'Produits capillaires'],
-      cardColor: const Color(0xFFE67E22),
-      logo: '💄',
-    ),
-    Company(
-      name: 'TotalEnergies',
-      description:
-          'Compagnie énergétique mondiale, producteur et fournisseur d\'énergies',
-      industry: 'Énergie',
-      sector: 'Énergie',
-      valuation: 156.9,
-      employees: 105000,
-      location: 'Courbevoie, France',
-      founded: '1924',
-      ceo: 'Patrick Pouyanné',
-      revenue: 285.6,
-      products: ['Pétrole', 'Gaz', 'Électricité', 'Énergies renouvelables'],
-      cardColor: const Color(0xFFF1C40F),
-      logo: '⛽',
-    ),
-    Company(
-      name: 'Hermès',
-      description:
-          'Maison française de luxe réputée pour ses produits artisanaux de haute qualité',
-      industry: 'Luxe',
-      sector: 'Produits de consommation',
-      valuation: 215.3,
-      employees: 19700,
-      location: 'Paris, France',
-      founded: '1837',
-      ceo: 'Axel Dumas',
-      revenue: 13.4,
-      products: ['Maroquinerie', 'Soieries', 'Prêt-à-porter', 'Accessoires'],
-      cardColor: const Color(0xFF16A085),
-      logo: '🧣',
+      logo: '🛒',
+       imagePath: 'assets/images/okadoo.png',
+      website: 'https://okadoo.com/',
+      mobileApps: [],
+      users: 'Non spécifié',
+      coverage: 'Algérie',
+      businessModel: 'Commission sur transactions + abonnements entreprises', 
     ),
   ];
 
@@ -199,12 +168,18 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
             onPressed: () {
               _showNotifications();
             },
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            hoverColor: Colors.transparent,
           ),
           IconButton(
             icon: const Icon(Icons.search, color: Colors.black),
             onPressed: () {
               _showSearch();
             },
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            hoverColor: Colors.transparent,
           ),
         ],
       ),
@@ -266,6 +241,8 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
+                  strutStyle: const StrutStyle(
+    forceStrutHeight: true,)
                 ),
                 Text(
                   widget.investor.email,
@@ -365,32 +342,32 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
             },
           ),
           ListTile(
-  leading: const Icon(Icons.account_balance_wallet,
-      color: Color(0xFF7533E8)),
-  title: const Text('Portefeuille'),
-  onTap: () {
-    Navigator.pop(context);
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => PortefeuillePage(investor: widget.investor),
-      ),
-    );
-  },
-),
-ListTile(
-  leading: const Icon(Icons.newspaper, color: Color(0xFF7533E8)),
-  title: const Text('Actualités'),
-  onTap: () {
-    Navigator.pop(context);
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => ActualitesPage(investor: widget.investor),
-      ),
-    );
-  },
-),
+            leading: const Icon(Icons.account_balance_wallet,
+                color: Color(0xFF7533E8)),
+            title: const Text('Portefeuille'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PortefeuillePage(investor: widget.investor),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.newspaper, color: Color(0xFF7533E8)),
+            title: const Text('Actualités'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ActualitesPage(investor: widget.investor),
+                ),
+              );
+            },
+          ),
           const Divider(),
           ListTile(
             leading: const Icon(Icons.settings, color: Color(0xFF7533E8)),
@@ -536,7 +513,7 @@ ListTile(
               Expanded(
                 child: _buildStatCard(
                   title: 'Capitalisation',
-                  value: '1.4T€',
+                  value: '46.7B DA',
                   icon: Icons.trending_up,
                   color: const Color(0xFF2ECC71),
                 ),
@@ -549,7 +526,7 @@ ListTile(
               Expanded(
                 child: _buildStatCard(
                   title: 'Secteurs',
-                  value: '8',
+                  value: '4',
                   icon: Icons.category,
                   color: const Color(0xFF9B59B6),
                 ),
@@ -557,8 +534,8 @@ ListTile(
               const SizedBox(width: 10),
               Expanded(
                 child: _buildStatCard(
-                  title: 'Perform.',
-                  value: '+12.5%',
+                  title: 'Croissance',
+                  value: '+25.3%',
                   icon: Icons.attach_money,
                   color: const Color(0xFFE67E22),
                 ),
@@ -645,7 +622,7 @@ ListTile(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text(
-                'Top entreprises françaises',
+                'Top entreprises',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -750,7 +727,12 @@ ListTile(
                   icon: Icons.newspaper,
                   color: const Color(0xFF9B59B6),
                   onTap: () {
-                    _showComingSoon('Actualités');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ActualitesPage(investor: widget.investor),
+                      ),
+                    );
                   },
                 ),
               ),
@@ -904,6 +886,9 @@ ListTile(
                 onPressed: () {
                   _showFilterDialog();
                 },
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                hoverColor: Colors.transparent,
               ),
             ],
           ),
@@ -925,12 +910,11 @@ ListTile(
               ),
               const SizedBox(width: 8),
               ...[
-                'Luxe',
+                'E-commerce',
+                'Fintech',
+                'Mobilité',
                 'Technologie',
-                'Santé',
-                'Finance',
-                'Énergie',
-                'Industrie'
+                'Services'
               ].map((industry) {
                 return Padding(
                   padding: const EdgeInsets.only(right: 8),
@@ -960,27 +944,52 @@ ListTile(
     );
   }
 
-  Widget _buildCompanyCard(Company company) {
-    final isFollowed = _followedCompanies.any((c) => c.name == company.name);
-    
-    return Container(
-      margin: const EdgeInsets.only(bottom: 15),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 5),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Header
-          Container(
+Widget _buildCompanyCard(Company company) {
+  final isFollowed = _followedCompanies.any((c) => c.name == company.name);
+  
+  // Map pour contrôler la taille de chaque image d'entreprise
+  final Map<String, Size> companyImageSizes = {
+    'TalabaStore': const Size(60, 60),    // Plus grande
+     'TemTem': const Size(55, 55),          // Légèrement plus grande
+    'ALPAY': const Size(50, 50),          // Taille standard
+    'Okadoo': const Size(45, 45),         // Plus petite
+  };
+  
+  // Récupérer la taille spécifique ou utiliser une taille par défaut
+  final Size imageSize = companyImageSizes[company.name] ?? const Size(50, 50);
+  
+  // Map pour contrôler le mode d'ajustement de chaque image
+  final Map<String, BoxFit> companyImageFit = {
+    'TalabaStore': BoxFit.contain,  // Garde les proportions
+    'TemTem': BoxFit.fitWidth,         // Remplit l'espace
+    'ALPAY': BoxFit.fitWidth,       // S'adapte à la largeur
+    'Okadoo': BoxFit.fitHeight,     // S'adapte à la hauteur
+  };
+  
+  final BoxFit imageFit = companyImageFit[company.name] ?? BoxFit.cover;
+
+  return Container(
+    margin: const EdgeInsets.only(bottom: 15),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(15),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.05),
+          blurRadius: 10,
+          offset: const Offset(0, 5),
+        ),
+      ],
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Header - Make this part clickable
+        GestureDetector(
+          onTap: () {
+            _showCompanyDetails(company);
+          },
+          child: Container(
             padding: const EdgeInsets.all(15),
             decoration: BoxDecoration(
               color: company.cardColor.withOpacity(0.1),
@@ -991,18 +1000,55 @@ ListTile(
             ),
             child: Row(
               children: [
+                // CONTAINER AVEC TAILLE DYNAMIQUE
                 Container(
-                  width: 50,
-                  height: 50,
+                  width: imageSize.width,
+                  height: imageSize.height,
                   decoration: BoxDecoration(
-                    color: company.cardColor,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 5,
+                        offset: const Offset(0, 3),
+                      ),
+                    ],
                   ),
-                  child: Center(
-                    child: Text(
-                      company.logo,
-                      style: const TextStyle(fontSize: 24),
-                    ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: company.imagePath.isNotEmpty 
+                      ? Image.asset(
+                          company.imagePath,
+                          width: imageSize.width,
+                          height: imageSize.height,
+                          fit: imageFit,
+                          errorBuilder: (context, error, stackTrace) {
+                            // Fallback si l'image n'existe pas
+                            return Container(
+                              color: company.cardColor,
+                              child: Center(
+                                child: Text(
+                                  company.logo,
+                                  style: TextStyle(
+                                    fontSize: imageSize.width * 0.35, // Taille proportionnelle
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        )
+                      : Container(
+                          color: company.cardColor,
+                          child: Center(
+                            child: Text(
+                              company.logo,
+                              style: TextStyle(
+                                fontSize: imageSize.width * 0.35,
+                              ),
+                            ),
+                          ),
+                        ),
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -1033,13 +1079,21 @@ ListTile(
                   onPressed: () {
                     _showCompanyOptions(company);
                   },
+                  splashColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
                 ),
               ],
             ),
           ),
+        ),
 
-          // Content
-          Padding(
+        // Content - Make this part clickable too
+        GestureDetector(
+          onTap: () {
+            _showCompanyDetails(company);
+          },
+          child: Padding(
             padding: const EdgeInsets.all(15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -1063,6 +1117,19 @@ ListTile(
                     _buildInfoItem('Employés', '${company.employees}'),
                   ],
                 ),
+                const SizedBox(height: 15),
+
+                // Additional Info
+                if (company.website.isNotEmpty)
+                  _buildInfoRow('Site web', company.website),
+                if (company.mobileApps.isNotEmpty)
+                  _buildInfoRow('Applications', company.mobileApps.join(', ')),
+                if (company.users.isNotEmpty)
+                  _buildInfoRow('Utilisateurs', company.users),
+                if (company.coverage.isNotEmpty)
+                  _buildInfoRow('Couverture', company.coverage),
+                if (company.businessModel.isNotEmpty)
+                  _buildInfoRow('Modèle économique', company.businessModel),
                 const SizedBox(height: 15),
 
                 // Products/Services
@@ -1096,14 +1163,14 @@ ListTile(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Text(
-                          'Capitalisation',
+                          'Valuation',
                           style: TextStyle(
                             fontSize: 12,
                             color: Colors.grey,
                           ),
                         ),
                         Text(
-                          '${company.valuation}B€',
+                          '${company.valuation}B DA',
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -1123,7 +1190,7 @@ ListTile(
                           ),
                         ),
                         Text(
-                          '${company.revenue}B€',
+                          '${company.revenue}B DA',
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -1154,82 +1221,123 @@ ListTile(
                     ),
                   ],
                 ),
-
-                // Action Buttons
-                const SizedBox(height: 20),
-                Row(
-                  children: [
-                    Expanded(
-                      child: OutlinedButton.icon(
-                        onPressed: () {
-                          _showCompanyDetails(company);
-                        },
-                        icon: const Icon(Icons.info_outline),
-                        label: const Text('Détails'),
-                        style: OutlinedButton.styleFrom(
-                          side: BorderSide(color: company.cardColor),
-                          foregroundColor: company.cardColor,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: isFollowed
-                          ? OutlinedButton.icon(
-                              onPressed: () {
-                                _unfollowCompany(company);
-                              },
-                              icon: const Icon(Icons.star, size: 16),
-                              label: const Text('Suivie'),
-                              style: OutlinedButton.styleFrom(
-                                side: const BorderSide(color: Color(0xFFF1C40F)),
-                                foregroundColor: const Color(0xFFF1C40F),
-                              ),
-                            )
-                          : ElevatedButton.icon(
-                              onPressed: () {
-                                _followCompany(company);
-                              },
-                              icon: const Icon(Icons.star_border, size: 16),
-                              label: const Text('Suivre'),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: company.cardColor,
-                                foregroundColor: Colors.white,
-                              ),
-                            ),
-                    ),
-                  ],
-                ),
               ],
             ),
           ),
-        ],
-      ),
-    );
-  }
+        ),
 
-  Widget _buildInfoItem(String label, String value) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: const TextStyle(
-            fontSize: 12,
-            color: Colors.grey,
+        // Action Buttons - KEEP BOTH BUTTONS
+        const SizedBox(height: 20),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: Row(
+            children: [
+              Expanded(
+                child: OutlinedButton.icon(
+                  onPressed: () {
+                    _showCompanyDetails(company);
+                  },
+                  icon: const Icon(Icons.info_outline),
+                  label: const Text('Détails'),
+                  style: OutlinedButton.styleFrom(
+                    side: BorderSide(color: company.cardColor),
+                    foregroundColor: company.cardColor,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                child: isFollowed
+                    ? OutlinedButton.icon(
+                        onPressed: () {
+                          _unfollowCompany(company);
+                        },
+                        icon: const Icon(Icons.star, size: 16),
+                        label: const Text('Suivie'),
+                        style: OutlinedButton.styleFrom(
+                          side: const BorderSide(color: Color(0xFFF1C40F)),
+                          foregroundColor: const Color(0xFFF1C40F),
+                        ),
+                      )
+                    : ElevatedButton.icon(
+                        onPressed: () {
+                          _followCompany(company);
+                        },
+                        icon: const Icon(Icons.star_border, size: 16),
+                        label: const Text('Suivre'),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: company.cardColor,
+                          foregroundColor: Colors.white,
+                        ),
+                      ),
+              ),
+            ],
           ),
         ),
-        Text(
+        const SizedBox(height: 15),
+      ],
+    ),
+  );
+}
+ Widget _buildInfoItem(String label, String value) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        label,
+        style: const TextStyle(
+          fontSize: 12,
+          color: Colors.grey,
+        ),
+      ),
+      ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 100), // Limits width
+        child: Text(
           value,
           style: const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.bold,
             color: Colors.black87,
           ),
+          maxLines: 2, // Allows text to wrap to 2 lines
+          overflow: TextOverflow.ellipsis,
+        ),
+      ),
+    ],
+  );
+}
+
+  Widget _buildInfoRow(String label, String value) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 4),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          width: 120,
+          child: Text(
+            '$label:',
+            style: const TextStyle(
+              fontSize: 12,
+              color: Colors.grey,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        Expanded(
+          child: Text(
+            value,
+            style: const TextStyle(
+              fontSize: 12,
+              color: Colors.black87,
+            ),
+          ),
         ),
       ],
-    );
-  }
+    ),
+  );
+}
+
 
   // ==================== HELPER FUNCTIONS ====================
 
@@ -1246,16 +1354,6 @@ ListTile(
     showSearch(
       context: context,
       delegate: _CompanySearchDelegate(_companies),
-    );
-  }
-
-  void _showComingSoon(String feature) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('$feature - Bientôt disponible !'),
-        backgroundColor: const Color(0xFF7533E8),
-        duration: const Duration(seconds: 2),
-      ),
     );
   }
 
@@ -1276,7 +1374,7 @@ ListTile(
               ListTile(
                 leading: Icon(Icons.phone, color: Color(0xFF7533E8)),
                 title: Text('Téléphone'),
-                subtitle: Text('+33 1 23 45 67 89'),
+                subtitle: Text('+213 23 45 67 89'),
               ),
               ListTile(
                 leading: Icon(Icons.schedule, color: Color(0xFF7533E8)),
@@ -1337,12 +1435,10 @@ ListTile(
               children: [
                 const Text('Secteur:'),
                 ...[
+                  'E-commerce',
+                  'Fintech',
+                  'Mobilité',
                   'Technologie',
-                  'Santé',
-                  'Finance',
-                  'Énergie',
-                  'Industrie',
-                  'Luxe',
                   'Services'
                 ].map((sector) {
                   return CheckboxListTile(
@@ -1353,7 +1449,7 @@ ListTile(
                 }),
                 const SizedBox(height: 20),
                 const Text('Taille:'),
-                ...['Grande cap', 'Moyenne cap', 'Petite cap'].map((size) {
+                ...['Startup', 'PME', 'Grande entreprise'].map((size) {
                   return CheckboxListTile(
                     title: Text(size),
                     value: true,
@@ -1455,93 +1551,27 @@ ListTile(
   }
 
   void _showCompanyDetails(Company company) {
-    final isFollowed = _followedCompanies.any((c) => c.name == company.name);
-    
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Row(
-            children: [
-              Text(company.logo),
-              const SizedBox(width: 10),
-              Text(company.name),
-              if (isFollowed)
-                const Padding(
-                  padding: EdgeInsets.only(left: 8),
-                  child: Icon(Icons.star, color: Color(0xFFF1C40F), size: 16),
-                ),
-            ],
-          ),
-          content: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  company.description,
-                  style: const TextStyle(fontSize: 14),
-                ),
-                const SizedBox(height: 20),
-                const Text(
-                  'Informations clés:',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 10),
-                _buildDetailItem('Industrie', company.industry),
-                _buildDetailItem('Secteur', company.sector),
-                _buildDetailItem('Localisation', company.location),
-                _buildDetailItem('Année de création', company.founded),
-                _buildDetailItem('CEO', company.ceo),
-                _buildDetailItem('Nombre d\'employés', '${company.employees}'),
-                _buildDetailItem('Capitalisation', '${company.valuation}B€'),
-                _buildDetailItem('Revenus annuels', '${company.revenue}B€'),
-              ],
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('Fermer'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-                if (isFollowed) {
-                  _unfollowCompany(company);
-                } else {
-                  _followCompany(company);
-                }
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: isFollowed ? Colors.grey : const Color(0xFF7533E8),
-              ),
-              child: Text(isFollowed ? 'Ne plus suivre' : 'Suivre'),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  Widget _buildDetailItem(String label, String value) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            label,
-            style: const TextStyle(color: Colors.grey),
-          ),
-          Text(
-            value,
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
-        ],
+  final isFollowed = _followedCompanies.any((c) => c.name == company.name);
+  
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => CompanyDetailPage(
+        company: company,
+        isFollowed: isFollowed,
+        onFollowToggle: () {
+          Navigator.pop(context); // Close detail page
+          if (isFollowed) {
+            _unfollowCompany(company);
+          } else {
+            _followCompany(company);
+          }
+        },
       ),
-    );
-  }
+    ),
+  );
+}
+
 
   void _followCompany(Company company) {
     setState(() {
@@ -1579,27 +1609,26 @@ ListTile(
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('Analyse financière - ${company.name}'),
-          content: const SingleChildScrollView(
+          content: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'Performance financière:',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
-                Text('• Croissance annuelle: +8.2%'),
-                Text('• Marge bénéficiaire: 15.3%'),
-                Text('• Ratio P/E: 24.5'),
-                Text('• Dette/Capital: 0.42'),
-                SizedBox(height: 20),
-                Text(
+                const SizedBox(height: 10),
+                Text('• Croissance annuelle: ${company.name == "ALPAY" ? "+35.2%" : company.name == "TalabaStore" ? "+28.7%" : company.name == "TemTem" ? "+22.4%" : "+18.9%"}'),
+                Text('• Marge bénéficiaire: ${company.name == "ALPAY" ? "18.3%" : company.name == "TalabaStore" ? "12.5%" : company.name == "TemTem" ? "15.7%" : "10.8%"}'),
+                Text('• ROI attendu: ${company.name == "ALPAY" ? "42%" : company.name == "TalabaStore" ? "38%" : company.name == "TemTem" ? "35%" : "32%"}'),
+                const SizedBox(height: 20),
+                const Text(
                   'Recommandation:',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
-                Text('Analyst consensus: ACHETER'),
-                Text('Target price: +15%'),
+                const SizedBox(height: 10),
+                Text('Analyst consensus: ${company.name == "ALPAY" || company.name == "TalabaStore" ? "ACHETER FORTEMENT" : "ACHETER"}'),
+                Text('Target price: ${company.name == "ALPAY" ? "+45%" : company.name == "TalabaStore" ? "+38%" : company.name == "TemTem" ? "+32%" : "+28%"}'),
               ],
             ),
           ),
@@ -1620,22 +1649,22 @@ ListTile(
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('Actualités - ${company.name}'),
-          content: const SizedBox(
+          content: SizedBox(
             width: double.maxFinite,
             child: SingleChildScrollView(
               child: Column(
                 children: [
                   ListTile(
-                    title: Text('Publication des résultats Q4 2023'),
-                    subtitle: Text('Croissance de 12% vs. année précédente'),
+                    title: Text('${company.name} annonce une nouvelle levée de fonds'),
+                    subtitle: Text('La startup algérienne confirme son expansion régionale'),
                   ),
                   ListTile(
-                    title: Text('Nouvelle acquisition stratégique'),
-                    subtitle: Text('Acquisition de TechSolutions pour 2.1B€'),
+                    title: Text('Partnership stratégique pour ${company.name}'),
+                    subtitle: Text('Collaboration avec des acteurs majeurs du secteur'),
                   ),
                   ListTile(
-                    title: Text('Nomination nouveau Directeur Financier'),
-                    subtitle: Text('Marie Dupont rejoint le comité exécutif'),
+                    title: Text('${company.name} lance de nouvelles fonctionnalités'),
+                    subtitle: Text('Innovation technologique pour améliorer l\'expérience utilisateur'),
                   ),
                 ],
               ),
@@ -1677,6 +1706,9 @@ class _CompanySearchDelegate extends SearchDelegate<String> {
         onPressed: () {
           query = '';
         },
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        hoverColor: Colors.transparent,
       ),
     ];
   }
@@ -1688,6 +1720,9 @@ class _CompanySearchDelegate extends SearchDelegate<String> {
       onPressed: () {
         close(context, '');
       },
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      hoverColor: Colors.transparent,
     );
   }
 
@@ -1742,4 +1777,4 @@ class _CompanySearchDelegate extends SearchDelegate<String> {
       },
     );
   }
-}
+} 

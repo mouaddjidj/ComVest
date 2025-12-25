@@ -16,39 +16,39 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
   final List<String> _filters = ['Tous', 'Croissance', 'Rendement', 'Risque'];
   final List<MarketTrend> _marketTrends = [
     MarketTrend(
-      sector: 'Technologie',
-      trend: '+12.5%',
-      description: 'Croissance forte grâce aux innovations IA',
-      companies: ['Capgemini', 'Dassault Systèmes'],
-      color: Colors.blue,
-    ),
-    MarketTrend(
-      sector: 'Énergie',
-      trend: '+8.3%',
-      description: 'Transition énergétique booste les investissements',
-      companies: ['TotalEnergies', 'EDF'],
-      color: Colors.orange,
-    ),
-    MarketTrend(
-      sector: 'Santé',
+      sector: 'E-commerce',
       trend: '+15.2%',
-      description: 'Biotechnologies en forte progression',
-      companies: ['Sanofi', 'Biomérieux'],
-      color: Colors.green,
+      description: 'Fort développement du commerce en ligne en Algérie',
+      companies: ['TalabaStore', 'Okadoo'],
+      color: Color(0xFF2ECC71),
     ),
     MarketTrend(
-      sector: 'Luxe',
-      trend: '+10.7%',
-      description: 'Demande asiatique soutient la croissance',
-      companies: ['LVMH', 'Hermès'],
-      color: Colors.purple,
+      sector: 'Fintech',
+      trend: '+18.7%',
+      description: 'Adoption rapide des solutions de paiement digital',
+      companies: ['ALPAY'],
+      color: Color(0xFF3498DB),
     ),
     MarketTrend(
-      sector: 'Finance',
-      trend: '+5.9%',
-      description: 'Stabilité malgré l\'environnement de taux',
-      companies: ['BNP Paribas', 'Société Générale'],
-      color: Colors.red,
+      sector: 'Mobilité',
+      trend: '+12.4%',
+      description: 'Services de transport digital en pleine expansion',
+      companies: ['TemTem'],
+      color: Color(0xFFE67E22),
+    ),
+    MarketTrend(
+      sector: 'Technologie',
+      trend: '+22.3%',
+      description: 'Startups technologiques algériennes en forte croissance',
+      companies: ['TalabaStore', 'ALPAY'],
+      color: Color(0xFF9B59B6),
+    ),
+    MarketTrend(
+      sector: 'Services',
+      trend: '+8.9%',
+      description: 'Services digitaux B2B en développement constant',
+      companies: ['Okadoo', 'TemTem'],
+      color: Color(0xFF7533E8),
     ),
   ];
 
@@ -77,7 +77,7 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Welcome Card
+            // Welcome Card - Même style que le dashboard
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(20),
@@ -100,7 +100,7 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Bonjour, ${widget.investor.firstName}!',
+                    'Analyses marché',
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 22,
@@ -108,8 +108,16 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
                     ),
                   ),
                   const SizedBox(height: 8),
+                  Text(
+                    'Bonjour, ${widget.investor.firstName}!',
+                    style: TextStyle(
+                      color: Colors.white.withOpacity(0.9),
+                      fontSize: 16,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
                   const Text(
-                    'Analysez les tendances du marché et identifiez les opportunités',
+                    'Suivez les tendances et identifiez les opportunités en Algérie',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 14,
@@ -120,9 +128,9 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
             ),
             const SizedBox(height: 20),
 
-            // Market Overview
+            // Market Overview - Adapter pour le marché algérien
             const Text(
-              'Vue d\'ensemble du marché',
+              'Vue d\'ensemble du marché algérien',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -133,16 +141,16 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
             
             Row(
               children: [
-                _buildMarketOverviewCard('CAC 40', '+7.8%', '7200 pts', Colors.green),
+                _buildMarketOverviewCard('Startups', '+25.3%', '46.7B DA', Color(0xFF2ECC71)),
                 const SizedBox(width: 10),
-                _buildMarketOverviewCard('S&P 500', '+12.3%', '5200 pts', Colors.blue),
+                _buildMarketOverviewCard('Investissements', '+18.7%', '12.4B DA', Color(0xFF3498DB)),
                 const SizedBox(width: 10),
-                _buildMarketOverviewCard('DAX', '+5.4%', '18200 pts', Colors.orange),
+                _buildMarketOverviewCard('PME Tech', '+22.1%', '8.9B DA', Color(0xFF9B59B6)),
               ],
             ),
             const SizedBox(height: 20),
 
-            // Filters
+            // Filters - Garder le même style
             const Text(
               'Filtrer par tendance',
               style: TextStyle(
@@ -180,9 +188,9 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
             ),
             const SizedBox(height: 20),
 
-            // Market Trends
+            // Market Trends - Adapter aux entreprises algériennes
             const Text(
-              'Tendances par secteur',
+              'Tendances par secteur en Algérie',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -194,7 +202,7 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
             ..._marketTrends.map((trend) => _buildTrendCard(trend)),
             const SizedBox(height: 20),
 
-            // Investment Recommendations
+            // Investment Recommendations - Basé sur les entreprises du dashboard
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(20),
@@ -222,7 +230,7 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
                   ),
                   const SizedBox(height: 10),
                   const Text(
-                    'Basé sur votre profil et les tendances actuelles',
+                    'Basé sur les entreprises disponibles et votre profil',
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 14,
@@ -235,30 +243,56 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
                       children: widget.investor.selectedIndustries.map((industry) {
                         return ListTile(
                           leading: const Icon(Icons.star, color: Color(0xFF7533E8)),
-                          title: Text('Augmenter l\'exposition en $industry'),
-                          subtitle: Text('Croissance attendue: +10-15%'),
+                          title: Text('Opportunités en $industry'),
+                          subtitle: Text('Croissance attendue: +15-20%'),
+                          trailing: IconButton(
+                            icon: const Icon(Icons.arrow_forward_ios, size: 16),
+                            onPressed: () {
+                              // Naviguer vers les entreprises de ce secteur
+                            },
+                            splashColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                          ),
                         );
                       }).toList(),
                     ),
                   
-                  const ListTile(
-                    leading: Icon(Icons.trending_up, color: Colors.green),
-                    title: Text('Diversifier vers les énergies renouvelables'),
-                    subtitle: Text('Potentiel de croissance: +20%'),
+                  const SizedBox(height: 10),
+                  
+                  // Recommandations spécifiques pour les entreprises du dashboard
+                  ListTile(
+                    leading: const Icon(Icons.trending_up, color: Colors.green),
+                    title: const Text('Fintech: Fort potentiel de croissance'),
+                    subtitle: const Text('ALPAY: +35% de croissance prévue'),
+                    trailing: const Icon(Icons.business, color: Color(0xFF7533E8)),
                   ),
-                  const ListTile(
-                    leading: Icon(Icons.security, color: Colors.blue),
-                    title: Text('Maintenir une position défensive en finance'),
-                    subtitle: Text('Rendement stable: 4-6%'),
+                  ListTile(
+                    leading: const Icon(Icons.shopping_cart, color: Colors.orange),
+                    title: const Text('E-commerce: Marché en expansion'),
+                    subtitle: const Text('TalabaStore: +28% de croissance'),
+                    trailing: const Icon(Icons.business, color: Color(0xFF7533E8)),
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.directions_car, color: Colors.blue),
+                    title: const Text('Mobilité: Services en demande'),
+                    subtitle: const Text('TemTem: +22% de croissance'),
+                    trailing: const Icon(Icons.business, color: Color(0xFF7533E8)),
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.business, color: Colors.purple),
+                    title: const Text('Marketplace B2B: Opportunité stable'),
+                    subtitle: const Text('Okadoo: +18% de croissance'),
+                    trailing: const Icon(Icons.business, color: Color(0xFF7533E8)),
                   ),
                 ],
               ),
             ),
             const SizedBox(height: 20),
 
-            // Market News
+            // Market News - Actualités algériennes
             const Text(
-              '📰 Actualités marché',
+              '📰 Actualités marché algérien',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -268,19 +302,24 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
             const SizedBox(height: 15),
             
             _buildNewsCard(
-              'Banque Centrale Européenne maintient ses taux',
-              'Les taux directeurs restent stables, impact positif attendu sur les marchés',
-              'Il y a 2h',
+              'Levée de fonds record pour une startup algérienne',
+              'Une startup de fintech algérienne lève 5M Dollar pour son expansion régionale',
+              'Il y a 2 jours',
             ),
             _buildNewsCard(
-              'Nouveaux records pour l\'IA en bourse',
-              'Les valeurs technologiques atteignent de nouveaux sommets',
-              'Il y a 5h',
+              'Croissance du e-commerce en Algérie',
+              'Le marché du e-commerce enregistre une croissance de 40% cette année',
+              'Il y a 3 jours',
             ),
             _buildNewsCard(
-              'Accord commercial UE-Asie signé',
-              'Nouvelles opportunités pour les exportateurs européens',
-              'Il y a 1 jour',
+              'Nouvelle régulation pour les fintech',
+              'La banque centrale algérienne simplifie les régulations pour les startups fintech',
+              'Il y a 1 semaine',
+            ),
+            _buildNewsCard(
+              'Investissement dans la mobilité urbaine',
+              'Plusieurs investisseurs s\'intéressent aux solutions de mobilité en Algérie',
+              'Il y a 1 semaine',
             ),
           ],
         ),
@@ -403,11 +442,11 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Entreprises clés: ${trend.companies.join(", ")}',
+                  'Entreprises: ${trend.companies.join(", ")}',
                   style: const TextStyle(
                     fontSize: 12,
                     fontStyle: FontStyle.italic,
-                    color: Colors.blue,
+                    color: Color(0xFF7533E8),
                   ),
                 ),
               ],

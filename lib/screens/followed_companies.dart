@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:comvest/screens/company_detail_page.dart';
 import 'package:comvest/widgets/models.dart';
 
 class FollowedCompaniesPage extends StatefulWidget {
   final Investor investor;
   final List<Company> followedCompanies;
+  final Function(Company) onUnfollow;
   
   const FollowedCompaniesPage({
     super.key,
     required this.investor,
-    required this.followedCompanies, required Null Function(dynamic company) onUnfollow,
+    required this.followedCompanies,
+    required this.onUnfollow,
   });
 
   @override
@@ -18,13 +21,13 @@ class FollowedCompaniesPage extends StatefulWidget {
 class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
   List<Company> _filteredCompanies = [];
   String _selectedFilter = 'Tous';
-  final List<String> _filters = ['Tous', 'Luxe', 'Technologie', 'Santé', 'Finance', 'Énergie'];
+  final List<String> _filters = ['Tous', 'E-commerce', 'Fintech', 'Mobilité', 'Services'];
   final TextEditingController _searchController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    _filteredCompanies = widget.followedCompanies;
+    _filteredCompanies = List.from(widget.followedCompanies);
   }
 
   @override
@@ -136,12 +139,12 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
               children: [
                 _buildStatItem('${widget.followedCompanies.length}', 'Entreprises'),
                 _buildStatItem(
-                  '${_calculateTotalValuation()}B€',
-                  'Valeur totale',
+                  '${_calculateTotalValuation()}B DA',
+                  'Valuation totale',
                 ),
                 _buildStatItem(
-                  '${_calculateAverageGrowth()}%',
-                  'Croissance moy.',
+                  '${_calculateAverageRevenue()}B DA',
+                  'Revenus moyens',
                 ),
               ],
             ),
@@ -188,166 +191,225 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
   }
 
   Widget _buildFollowedCompanyCard(Company company) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 15),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 5),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Header
-          Container(
-            padding: const EdgeInsets.all(15),
-            decoration: BoxDecoration(
-              color: company.cardColor.withOpacity(0.1),
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(15),
-                topRight: Radius.circular(15),
-              ),
+    // Map pour contrôler la taille de chaque image d'entreprise
+    final Map<String, Size> companyImageSizes = {
+      'TalabaStore': const Size(60, 60),
+      'TemTem': const Size(55, 55),
+      'ALPAY': const Size(50, 50),
+      'Okadoo': const Size(45, 45),
+    };
+    
+    // Récupérer la taille spécifique ou utiliser une taille par défaut
+    final Size imageSize = companyImageSizes[company.name] ?? const Size(50, 50);
+    
+    // Map pour contrôler le mode d'ajustement de chaque image
+    final Map<String, BoxFit> companyImageFit = {
+      'TalabaStore': BoxFit.contain,
+      'TemTem': BoxFit.fitWidth,
+      'ALPAY': BoxFit.fitWidth,
+      'Okadoo': BoxFit.fitHeight,
+    };
+    
+    final BoxFit imageFit = companyImageFit[company.name] ?? BoxFit.cover;
+
+    return GestureDetector(
+      onTap: () {
+        _showCompanyDetails(company);
+      },
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 15),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 10,
+              offset: const Offset(0, 5),
             ),
-            child: Row(
-              children: [
-                Container(
-                  width: 50,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: company.cardColor,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Center(
-                    child: Text(
-                      company.logo,
-                      style: const TextStyle(fontSize: 24),
-                    ),
-                  ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Header
+            Container(
+              padding: const EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                color: company.cardColor.withOpacity(0.1),
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(15),
+                  topRight: Radius.circular(15),
                 ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        company.name,
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
+              ),
+              child: Row(
+                children: [
+                  // CONTAINER AVEC IMAGE OU LOGO - MODIFIÉ
+                  Container(
+                    width: imageSize.width,
+                    height: imageSize.height,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          blurRadius: 5,
+                          offset: const Offset(0, 3),
                         ),
-                      ),
-                      Text(
-                        '${company.industry} • ${company.location}',
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Row(
-                        children: [
-                          Icon(Icons.trending_up, color: company.cardColor, size: 14),
-                          const SizedBox(width: 4),
-                          Text(
-                            '+${_calculateCompanyGrowth(company)}%',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: company.cardColor,
-                              fontWeight: FontWeight.bold,
+                      ],
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: company.imagePath.isNotEmpty 
+                        ? Image.asset(
+                            company.imagePath,
+                            width: imageSize.width,
+                            height: imageSize.height,
+                            fit: imageFit,
+                            errorBuilder: (context, error, stackTrace) {
+                              // Fallback si l'image n'existe pas
+                              return Container(
+                                color: company.cardColor,
+                                child: Center(
+                                  child: Text(
+                                    company.logo,
+                                    style: TextStyle(
+                                      fontSize: imageSize.width * 0.35,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          )
+                        : Container(
+                            color: company.cardColor,
+                            child: Center(
+                              child: Text(
+                                company.logo,
+                                style: TextStyle(
+                                  fontSize: imageSize.width * 0.35,
+                                ),
+                              ),
                             ),
                           ),
-                        ],
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          company.name,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                        Text(
+                          '${company.industry} • ${company.location}',
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        Row(
+                          children: [
+                            Icon(Icons.trending_up, color: company.cardColor, size: 14),
+                            const SizedBox(width: 4),
+                            Text(
+                              '+${_calculateCompanyGrowth(company)}%',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: company.cardColor,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.more_vert, color: Colors.grey),
+                    onPressed: () {
+                      _showCompanyOptions(company);
+                    },
+                  ),
+                ],
+              ),
+            ),
+
+            // Content
+            Padding(
+              padding: const EdgeInsets.all(15),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _buildFinancialInfo('Valuation', '${company.valuation}B DA'),
+                      _buildFinancialInfo('Revenus', '${company.revenue}B DA'),
+                      _buildFinancialInfo('Employés', '${company.employees}'),
+                    ],
+                  ),
+                  const SizedBox(height: 15),
+                  
+                  // Informations supplémentaires
+                  _buildInfoRow('CEO', company.ceo),
+                  _buildInfoRow('Fondé', company.founded),
+                  _buildInfoRow('Secteur', company.sector),
+                  
+                  const SizedBox(height: 15),
+                  
+                  // Performance Indicator
+                  const Text(
+                    'Performance:',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black87,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  LinearProgressIndicator(
+                    value: _calculateCompanyGrowth(company) / 100,
+                    backgroundColor: Colors.grey[200],
+                    valueColor: AlwaysStoppedAnimation<Color>(company.cardColor),
+                    minHeight: 8,
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  const SizedBox(height: 8),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Croissance: +${_calculateCompanyGrowth(company)}%',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: company.cardColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        'Recommandation: ACHETER',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: company.cardColor,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ],
                   ),
-                ),
-                PopupMenuButton(
-                  icon: const Icon(Icons.more_vert, color: Colors.grey),
-                  itemBuilder: (context) => [
-                    PopupMenuItem(
-                      child: const Text('Voir les détails'),
-                      onTap: () => _showCompanyDetails(company),
-                    ),
-                    PopupMenuItem(
-                      child: const Text('Analyses financières'),
-                      onTap: () => _showFinancialAnalysis(company),
-                    ),
-                    PopupMenuItem(
-                      child: const Text('Arrêter de suivre', style: TextStyle(color: Colors.red)),
-                      onTap: () => _unfollowCompany(company),
-                    ),
-                  ],
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-
-          // Content
-          Padding(
-            padding: const EdgeInsets.all(15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    _buildFinancialInfo('Capitalisation', '${company.valuation}B€'),
-                    _buildFinancialInfo('Revenus', '${company.revenue}B€'),
-                    _buildFinancialInfo('Employés', '${company.employees}'),
-                  ],
-                ),
-                const SizedBox(height: 15),
-                
-                // Performance Indicator
-                const Text(
-                  'Performance:',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black87,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                LinearProgressIndicator(
-                  value: _calculateCompanyGrowth(company) / 100,
-                  backgroundColor: Colors.grey[200],
-                  valueColor: AlwaysStoppedAnimation<Color>(company.cardColor),
-                  minHeight: 8,
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                const SizedBox(height: 8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Croissance: +${_calculateCompanyGrowth(company)}%',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: company.cardColor,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      'Recommandation: ACHETER',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: company.cardColor,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -372,6 +434,37 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildInfoRow(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 80,
+            child: Text(
+              '$label:',
+              style: const TextStyle(
+                fontSize: 12,
+                color: Colors.grey,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Expanded(
+            child: Text(
+              value,
+              style: const TextStyle(
+                fontSize: 12,
+                color: Colors.black87,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -442,7 +535,7 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
   void _onSearchChanged(String query) {
     setState(() {
       if (query.isEmpty) {
-        _filteredCompanies = widget.followedCompanies;
+        _filteredCompanies = List.from(widget.followedCompanies);
       } else {
         _filteredCompanies = widget.followedCompanies.where((company) {
           return company.name.toLowerCase().contains(query.toLowerCase()) ||
@@ -455,12 +548,14 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
   }
 
   void _applyFilters() {
+    if (_selectedFilter == 'Tous') {
+      return;
+    }
+    
     setState(() {
-      if (_selectedFilter == 'Tous') {
-        return;
-      }
       _filteredCompanies = _filteredCompanies
-          .where((company) => company.industry == _selectedFilter)
+          .where((company) => company.industry == _selectedFilter || 
+                             company.sector == _selectedFilter)
           .toList();
     });
   }
@@ -469,26 +564,21 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
     return widget.followedCompanies.fold(0.0, (sum, company) => sum + company.valuation);
   }
 
-  double _calculateAverageGrowth() {
+  double _calculateAverageRevenue() {
     if (widget.followedCompanies.isEmpty) return 0.0;
-    double totalGrowth = widget.followedCompanies.fold(0.0, (sum, company) => sum + _calculateCompanyGrowth(company));
-    return double.parse((totalGrowth / widget.followedCompanies.length).toStringAsFixed(1));
+    double totalRevenue = widget.followedCompanies.fold(0.0, (sum, company) => sum + company.revenue);
+    return double.parse((totalRevenue / widget.followedCompanies.length).toStringAsFixed(1));
   }
 
   double _calculateCompanyGrowth(Company company) {
-    // Simuler une croissance basée sur l'industrie
-    Map<String, double> industryGrowth = {
-      'Luxe': 10.7,
-      'Technologie': 12.5,
-      'Santé': 15.2,
-      'Finance': 5.9,
-      'Énergie': 8.3,
-      'Aéronautique': 7.2,
-      'Pharmaceutique': 14.5,
-      'Banque': 6.1,
-      'Cosmétique': 9.8,
+    // Simuler une croissance basée sur le nom de l'entreprise
+    Map<String, double> companyGrowth = {
+      'TalabaStore': 28.7,
+      'TemTem': 22.4,
+      'ALPAY': 35.2,
+      'Okadoo': 18.9,
     };
-    return industryGrowth[company.industry] ?? 8.0;
+    return companyGrowth[company.name] ?? 15.0;
   }
 
   void _showSortOptions() {
@@ -550,65 +640,64 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
   }
 
   void _showCompanyDetails(Company company) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Row(
-            children: [
-              Text(company.logo),
-              const SizedBox(width: 10),
-              Text(company.name),
-            ],
-          ),
-          content: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  company.description,
-                  style: const TextStyle(fontSize: 14),
-                ),
-                const SizedBox(height: 20),
-                const Text(
-                  'Performance de suivi:',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 10),
-                _buildDetailItem('Croissance moyenne', '+${_calculateCompanyGrowth(company)}%'),
-                _buildDetailItem('Rendement estimé', '+${(_calculateCompanyGrowth(company) * 0.8).toStringAsFixed(1)}%'),
-                _buildDetailItem('Risque', 'Modéré'),
-              ],
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('Fermer'),
-            ),
-          ],
-        );
-      },
+    final isFollowed = widget.followedCompanies.any((c) => c.name == company.name);
+    
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => CompanyDetailPage(
+          company: company,
+          isFollowed: isFollowed,
+          onFollowToggle: () {
+            if (isFollowed) {
+              _unfollowCompany(company);
+            }
+          },
+        ),
+      ),
     );
   }
 
-  Widget _buildDetailItem(String label, String value) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            label,
-            style: const TextStyle(color: Colors.grey),
+  void _showCompanyOptions(Company company) {
+    final isFollowed = widget.followedCompanies.any((c) => c.name == company.name);
+    
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                leading: const Icon(Icons.info, color: Color(0xFF7533E8)),
+                title: const Text('Voir les détails'),
+                onTap: () {
+                  Navigator.pop(context);
+                  _showCompanyDetails(company);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.analytics, color: Color(0xFF7533E8)),
+                title: const Text('Analyses financières'),
+                onTap: () {
+                  Navigator.pop(context);
+                  _showFinancialAnalysis(company);
+                },
+              ),
+              if (isFollowed)
+                ListTile(
+                  leading: const Icon(Icons.star, color: Colors.red),
+                  title: const Text('Arrêter de suivre', style: TextStyle(color: Colors.red)),
+                  onTap: () {
+                    Navigator.pop(context);
+                    _unfollowCompany(company);
+                  },
+                ),
+            ],
           ),
-          Text(
-            value,
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 
@@ -618,27 +707,26 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('Analyse financière - ${company.name}'),
-          content: const SingleChildScrollView(
+          content: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'Performance financière:',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
-                Text('• Croissance annuelle: +8.2%'),
-                Text('• Marge bénéficiaire: 15.3%'),
-                Text('• Ratio P/E: 24.5'),
-                Text('• Dette/Capital: 0.42'),
-                SizedBox(height: 20),
-                Text(
+                const SizedBox(height: 10),
+                Text('• Croissance annuelle: +${_calculateCompanyGrowth(company)}%'),
+                Text('• Marge bénéficiaire: ${company.name == "ALPAY" ? "18.3%" : company.name == "TalabaStore" ? "12.5%" : company.name == "TemTem" ? "15.7%" : "10.8%"}'),
+                Text('• ROI attendu: ${company.name == "ALPAY" ? "42%" : company.name == "TalabaStore" ? "38%" : company.name == "TemTem" ? "35%" : "32%"}'),
+                const SizedBox(height: 20),
+                const Text(
                   'Recommandation:',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
-                Text('Analyst consensus: ACHETER'),
-                Text('Target price: +15%'),
+                const SizedBox(height: 10),
+                Text('Analyst consensus: ${company.name == "ALPAY" || company.name == "TalabaStore" ? "ACHETER FORTEMENT" : "ACHETER"}'),
+                Text('Target price: ${company.name == "ALPAY" ? "+45%" : company.name == "TalabaStore" ? "+38%" : company.name == "TemTem" ? "+32%" : "+28%"}'),
               ],
             ),
           ),
@@ -682,10 +770,13 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
   }
 
   void _removeCompany(Company company) {
-    // Dans une vraie application, vous enverriez cela à une base de données
+    // Appeler le callback pour mettre à jour le dashboard principal
+    widget.onUnfollow(company);
+    
+    // Mettre à jour l'état local
     setState(() {
-      widget.followedCompanies.remove(company);
-      _filteredCompanies.remove(company);
+      widget.followedCompanies.removeWhere((c) => c.name == company.name);
+      _filteredCompanies.removeWhere((c) => c.name == company.name);
     });
     
     ScaffoldMessenger.of(context).showSnackBar(

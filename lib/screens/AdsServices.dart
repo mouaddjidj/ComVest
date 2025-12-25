@@ -30,7 +30,6 @@ class PricingPackage {
   final List<String> features;
   final Color primaryColor;
   final Color? secondaryColor;
-  final bool isFree;
 
   PricingPackage({
     required this.title,
@@ -39,7 +38,6 @@ class PricingPackage {
     required this.features,
     required this.primaryColor,
     this.secondaryColor,
-    this.isFree = false,
   });
 }
 
@@ -61,7 +59,7 @@ class MenuScreen extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
-          'Free Plan Dashboard',
+          'Dashboard',
           style: GoogleFonts.poppins(
             color: Colors.white,
             fontWeight: FontWeight.w600,
@@ -108,7 +106,7 @@ class MenuScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    'You\'ve successfully activated your FREE plan. Start exploring all the features available to you.',
+                    'You\'ve successfully activated your plan. Start exploring all the features available to you.',
                     style: GoogleFonts.poppins(
                       color: Colors.white.withOpacity(0.9),
                       fontSize: 14,
@@ -172,8 +170,8 @@ class MenuScreen extends StatelessWidget {
                 ),
                 _buildMenuItem(
                   icon: Icons.upgrade,
-                  title: 'Upgrade Plan',
-                  subtitle: 'Unlock more features',
+                  title: 'Change Plan',
+                  subtitle: 'Modify your subscription',
                   color: primaryColor,
                 ),
               ],
@@ -199,7 +197,7 @@ class MenuScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Your Free Plan Status',
+                    'Your Plan Status',
                     style: GoogleFonts.poppins(
                       color: const Color(0xFF2D3748),
                       fontSize: 18,
@@ -209,21 +207,21 @@ class MenuScreen extends StatelessWidget {
                   const SizedBox(height: 15),
                   _buildProgressItem(
                     label: 'Project Usage',
-                    value: '1/1',
+                    value: '3/3',
                     percentage: 1.0,
                     color: primaryColor,
                   ),
                   const SizedBox(height: 10),
                   _buildProgressItem(
                     label: 'Storage Used',
-                    value: '0/500 MB',
+                    value: '0/2 GB',
                     percentage: 0.0,
                     color: primaryColor,
                   ),
                   const SizedBox(height: 10),
                   _buildProgressItem(
                     label: 'Features Unlocked',
-                    value: '5/5',
+                    value: '12/12',
                     percentage: 1.0,
                     color: primaryColor,
                   ),
@@ -451,21 +449,6 @@ class _PricingScreenState extends State<PricingScreen> {
 
   final List<PricingPackage> packages = [
     PricingPackage(
-      title: 'FREE',
-      description: 'Get started for free',
-      price: '\$0',
-      features: [
-        '1 Project',
-        '500 MB Storage',
-        'Community Support',
-        'Basic Templates',
-        'Limited Analytics',
-      ],
-      primaryColor: const Color(0xFF2ECC71),
-      secondaryColor: const Color(0xFF27AE60),
-      isFree: true,
-    ),
-    PricingPackage(
       title: 'PACK DE LANCEMENT',
       description: 'Nouvelles Start-ups',
       price: '\$35',
@@ -522,25 +505,12 @@ class _PricingScreenState extends State<PricingScreen> {
   }
 
   void _navigateToMenu(BuildContext context, PricingPackage package) {
-    if (package.isFree) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => MenuScreen(primaryColor: package.primaryColor),
-        ),
-      );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            'Selected ${package.title} plan',
-          ),
-          backgroundColor: package.primaryColor,
-          duration: const Duration(seconds: 2),
-          behavior: SnackBarBehavior.floating,
-        ),
-      );
-    }
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => MenuScreen(primaryColor: package.primaryColor),
+      ),
+    );
   }
 
   @override
@@ -702,32 +672,6 @@ class PricingCard extends StatelessWidget {
                       fontWeight: FontWeight.w400,
                     ),
                   ),
-                  // Free badge for free plan
-                  if (package.isFree)
-                    Container(
-                      margin: const EdgeInsets.only(top: 10),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 6,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(
-                          color: Colors.white,
-                          width: 1,
-                        ),
-                      ),
-                      child: Text(
-                        'POPULAR CHOICE',
-                        style: GoogleFonts.poppins(
-                          color: Colors.white,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: 1,
-                        ),
-                      ),
-                    ),
                 ],
               ),
             ),
@@ -746,18 +690,17 @@ class PricingCard extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  if (!package.isFree)
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: Text(
-                        '/mo',
-                        style: GoogleFonts.poppins(
-                          color: const Color(0xFF718096),
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                        ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: Text(
+                      '/mo',
+                      style: GoogleFonts.poppins(
+                        color: const Color(0xFF718096),
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
+                  ),
                 ],
               ),
             ),
@@ -818,19 +761,12 @@ class PricingCard extends StatelessWidget {
                 width: double.infinity,
                 height: 55,
                 decoration: BoxDecoration(
-                  gradient: package.isFree
-                      ? const LinearGradient(
-                          colors: [
-                            Color(0xFF2ECC71),
-                            Color(0xFF27AE60),
-                          ],
-                        )
-                      : LinearGradient(
-                          colors: [
-                            package.primaryColor,
-                            package.secondaryColor ?? package.primaryColor,
-                          ],
-                        ),
+                  gradient: LinearGradient(
+                    colors: [
+                      package.primaryColor,
+                      package.secondaryColor ?? package.primaryColor,
+                    ],
+                  ),
                   borderRadius: BorderRadius.circular(30),
                   boxShadow: [
                     BoxShadow(
@@ -847,7 +783,7 @@ class PricingCard extends StatelessWidget {
                     onTap: onGetStarted,
                     child: Center(
                       child: Text(
-                        package.isFree ? 'GET STARTED FREE' : 'BUY NOW',
+                        'BUY NOW',
                         style: GoogleFonts.poppins(
                           color: Colors.white,
                           fontSize: 16,

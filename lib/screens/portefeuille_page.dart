@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:comvest/widgets/models.dart';
+import 'package:intl/intl.dart';
 
 class PortefeuillePage extends StatefulWidget {
   final Investor investor;
@@ -12,105 +13,113 @@ class PortefeuillePage extends StatefulWidget {
 
 class _PortefeuillePageState extends State<PortefeuillePage> {
   String _selectedFilter = 'Tous';
-  final List<String> _filters = ['Tous', 'Actions', 'Obligations', 'ETF', 'Cryptos'];
+  final List<String> _filters = ['Tous', 'Startups', 'E-commerce', 'Fintech', 'Mobilité'];
 
-  // Données simulées du portefeuille
+  // Données simulées du portefeuille avec entreprises algériennes
   final List<Asset> _assets = [
     Asset(
-      name: 'LVMH',
-      symbol: 'MC.PA',
-      type: 'Action',
-      quantity: 15,
-      buyPrice: 650.5,
-      currentPrice: 720.3,
-      value: 10804.5,
-      change: 10.7,
-      sector: 'Luxe',
-      logo: '👜',
+      name: 'ALPAY',
+      symbol: 'ALPAY',
+      type: 'Fintech',
+      quantity: 1600,
+      buyPrice: 8500,
+      currentPrice: 15000,
+      value: 24000000,
+      change: 76.5,
+      sector: 'Fintech',
+      logo: '💳',
+      imagePath: 'assets/images/alpay.png',
     ),
     Asset(
-      name: 'Airbus',
-      symbol: 'AIR.PA',
-      type: 'Action',
-      quantity: 25,
-      buyPrice: 120.2,
-      currentPrice: 135.8,
-      value: 3395.0,
-      change: 13.0,
-      sector: 'Aéronautique',
-      logo: '✈️',
+      name: 'TalabaStore',
+      symbol: 'TALABA',
+      type: 'E-commerce',
+      quantity: 600,
+      buyPrice: 1250,
+      currentPrice: 2100,
+      value: 1260000,
+      change: 68.0,
+      sector: 'E-commerce',
+      logo: '🎓',
+      imagePath: 'assets/images/talabastore.png',
     ),
     Asset(
-      name: 'Sanofi',
-      symbol: 'SAN.PA',
-      type: 'Action',
-      quantity: 40,
-      buyPrice: 85.4,
-      currentPrice: 92.7,
-      value: 3708.0,
-      change: 8.5,
-      sector: 'Pharmaceutique',
-      logo: '💊',
+      name: 'TemTem',
+      symbol: 'TEMTEM',
+      type: 'Mobilité',
+      quantity: 2000,
+      buyPrice: 4350,
+      currentPrice: 10000,
+      value: 20000000,
+      change: 129.9,
+      sector: 'Mobilité',
+      logo: '🚗',
+      imagePath: 'assets/images/temtem.png',
     ),
     Asset(
-      name: 'ETF CAC 40',
-      symbol: 'CAC.PA',
-      type: 'ETF',
-      quantity: 8,
-      buyPrice: 5500.0,
-      currentPrice: 6100.5,
-      value: 48804.0,
-      change: 10.9,
-      sector: 'Indice',
-      logo: '📈',
+      name: 'Okadoo',
+      symbol: 'OKADOO',
+      type: 'Marketplace',
+      quantity: 1200,
+      buyPrice: 8500,
+      currentPrice: 11016,
+      value: 13219200,
+      change: 29.6,
+      sector: 'E-commerce',
+      logo: '🛒',
+      imagePath: 'assets/images/okadoo.png',
     ),
     Asset(
-      name: 'OAT 10 ans',
-      symbol: 'FR0013',
-      type: 'Obligation',
-      quantity: 10000,
-      buyPrice: 98.5,
-      currentPrice: 99.2,
-      value: 9920.0,
-      change: 0.7,
-      sector: 'État',
-      logo: '📊',
-    ),
-    Asset(
-      name: 'Ethereum',
-      symbol: 'ETH',
-      type: 'Crypto',
-      quantity:  15,
-      buyPrice: 2800.0,
-      currentPrice: 3200.5,
-      value: 1600.25,
+      name: 'Djezzy',
+      symbol: 'DJEZZY',
+      type: 'Télécom',
+      quantity: 500,
+      buyPrice: 28000,
+      currentPrice: 32000,
+      value: 16000000,
       change: 14.3,
-      sector: 'Crypto',
-      logo: '₿',
+      sector: 'Télécommunications',
+      logo: '📱',
+      imagePath: 'assets/images/djezzy.png',
     ),
     Asset(
-      name: 'TotalEnergies',
-      symbol: 'TTE.PA',
-      type: 'Action',
-      quantity: 20,
-      buyPrice: 55.3,
-      currentPrice: 60.1,
-      value: 1202.0,
-      change: 8.7,
-      sector: 'Énergie',
-      logo: '⛽',
+      name: 'NCA-Rouiba',
+      symbol: 'NCA',
+      type: 'Agroalimentaire',
+      quantity: 800,
+      buyPrice: 18500,
+      currentPrice: 21000,
+      value: 16800000,
+      change: 13.5,
+      sector: 'Agroalimentaire',
+      logo: '🥫',
+      imagePath: 'assets/images/nca.png',
     ),
     Asset(
-      name: 'BNP Paribas',
-      symbol: 'BNP.PA',
-      type: 'Action',
-      quantity: 30,
-      buyPrice: 52.8,
-      currentPrice: 58.4,
-      value: 1752.0,
-      change: 10.6,
+      name: 'Cevital',
+      symbol: 'CEVITAL',
+      type: 'Conglomérat',
+      quantity: 300,
+      buyPrice: 45000,
+      currentPrice: 52000,
+      value: 15600000,
+      change: 15.6,
+      sector: 'Industrie',
+      logo: '🏭',
+      imagePath: 'assets/images/cevital.png',
+    ),
+    Asset(
+      name: 'Sofac',
+      symbol: 'SOFAC',
+      type: 'Finance',
+      quantity: 1000,
+      buyPrice: 12000,
+      currentPrice: 14500,
+      value: 14500000,
+      change: 20.8,
       sector: 'Finance',
       logo: '🏦',
+      imagePath: 'assets/images/sofac.png',
     ),
   ];
 
@@ -118,12 +127,16 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
   Widget build(BuildContext context) {
     final filteredAssets = _selectedFilter == 'Tous'
         ? _assets
-        : _assets.where((asset) => asset.type == _selectedFilter).toList();
+        : _assets.where((asset) => _selectedFilter == 'Startups'
+            ? ['Fintech', 'E-commerce', 'Mobilité', 'Marketplace'].contains(asset.type)
+            : asset.type == _selectedFilter).toList();
 
     final totalValue = _assets.fold(0.0, (sum, asset) => sum + asset.value);
     final totalInvested = _assets.fold(0.0, (sum, asset) => sum + (asset.buyPrice * asset.quantity));
     final totalGain = totalValue - totalInvested;
     final totalGainPercentage = totalInvested > 0 ? (totalGain / totalInvested) * 100 : 0;
+
+    final currencyFormat = NumberFormat.currency(locale: 'fr_DZ', symbol: 'DA', decimalDigits: 0);
 
     return Scaffold(
       appBar: AppBar(
@@ -164,7 +177,7 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  '${totalValue.toStringAsFixed(2)}€',
+                  '${currencyFormat.format(totalValue)}',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 32,
@@ -176,7 +189,7 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      '${totalGain >= 0 ? '+' : ''}${totalGain.toStringAsFixed(2)}€',
+                      '${totalGain >= 0 ? '+' : ''}${currencyFormat.format(totalGain)}',
                       style: TextStyle(
                         color: totalGain >= 0 ? Colors.green[300] : Colors.red[300],
                         fontSize: 16,
@@ -208,7 +221,7 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
                   children: [
                     _buildPortfolioStat(
                       label: 'Investi',
-                      value: '${totalInvested.toStringAsFixed(2)}€',
+                      value: '${currencyFormat.format(totalInvested)}',
                       color: Colors.white70,
                     ),
                     _buildPortfolioStat(
@@ -254,7 +267,7 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
             ),
           ),
 
-          // Répartition par type
+          // Répartition par secteur
           Container(
             margin: const EdgeInsets.all(16),
             padding: const EdgeInsets.all(16),
@@ -273,7 +286,7 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  'Répartition par type',
+                  'Répartition par secteur',
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -285,18 +298,27 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
                     Expanded(
                       child: Column(
                         children: [
-                          _buildTypeChip('Actions', Colors.blue, 65),
+                          _buildTypeChip('Fintech', Colors.purple, 25),
                           const SizedBox(height: 10),
-                          _buildTypeChip('ETF', Colors.green, 20),
+                          _buildTypeChip('E-commerce', Colors.blue, 20),
                         ],
                       ),
                     ),
                     Expanded(
                       child: Column(
                         children: [
-                          _buildTypeChip('Obligations', Colors.purple, 10),
+                          _buildTypeChip('Mobilité', Colors.orange, 15),
                           const SizedBox(height: 10),
-                          _buildTypeChip('Cryptos', Colors.orange, 5),
+                          _buildTypeChip('Télécom', Colors.green, 12),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          _buildTypeChip('Industrie', Colors.red, 18),
+                          const SizedBox(height: 10),
+                          _buildTypeChip('Finance', Colors.teal, 10),
                         ],
                       ),
                     ),
@@ -313,7 +335,7 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
               itemCount: filteredAssets.length,
               itemBuilder: (context, index) {
                 final asset = filteredAssets[index];
-                return _buildAssetCard(asset);
+                return _buildAssetCard(asset, currencyFormat);
               },
             ),
           ),
@@ -393,7 +415,7 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
     );
   }
 
-  Widget _buildAssetCard(Asset asset) {
+  Widget _buildAssetCard(Asset asset, NumberFormat currencyFormat) {
     final gain = asset.currentPrice - asset.buyPrice;
     final gainPercentage = (gain / asset.buyPrice) * 100;
 
@@ -419,19 +441,33 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
             padding: const EdgeInsets.all(16),
             child: Row(
               children: [
-                // Logo
+                // Logo/Image
                 Container(
                   width: 40,
                   height: 40,
                   decoration: BoxDecoration(
                     color: _getAssetColor(asset.type).withOpacity(0.1),
                     borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: _getAssetColor(asset.type).withOpacity(0.3)),
                   ),
                   child: Center(
-                    child: Text(
-                      asset.logo,
-                      style: const TextStyle(fontSize: 20),
-                    ),
+                    child: asset.imagePath.isNotEmpty
+                        ? Image.asset(
+                            asset.imagePath,
+                            width: 35,
+                            height: 35,
+                            fit: BoxFit.contain,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Text(
+                                asset.logo,
+                                style: const TextStyle(fontSize: 20),
+                              );
+                            },
+                          )
+                        : Text(
+                            asset.logo,
+                            style: const TextStyle(fontSize: 20),
+                          ),
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -449,7 +485,7 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
                         ),
                       ),
                       Text(
-                        '${asset.symbol} • ${asset.quantity} ${asset.type == 'Action' || asset.type == 'ETF' ? 'actions' : 'unités'}',
+                        '${asset.symbol} • ${asset.quantity} actions',
                         style: const TextStyle(
                           fontSize: 12,
                           color: Colors.grey,
@@ -464,7 +500,7 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      '${asset.value.toStringAsFixed(2)}€',
+                      currencyFormat.format(asset.value),
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
@@ -480,7 +516,7 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
-                        '${gain >= 0 ? '+' : ''}${gainPercentage.toStringAsFixed(2)}%',
+                        '${gain >= 0 ? '+' : ''}${gainPercentage.toStringAsFixed(1)}%',
                         style: TextStyle(
                           color: gain >= 0 ? Colors.green : Colors.red,
                           fontSize: 12,
@@ -500,20 +536,29 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
 
   Color _getAssetColor(String type) {
     switch (type) {
-      case 'Action':
-        return Colors.blue;
-      case 'ETF':
-        return Colors.green;
-      case 'Obligation':
+      case 'Fintech':
         return Colors.purple;
-      case 'Crypto':
+      case 'E-commerce':
+        return Colors.blue;
+      case 'Mobilité':
         return Colors.orange;
+      case 'Marketplace':
+        return Colors.blueAccent;
+      case 'Télécom':
+        return Colors.green;
+      case 'Agroalimentaire':
+        return Colors.brown;
+      case 'Conglomérat':
+        return Colors.red;
+      case 'Finance':
+        return Colors.teal;
       default:
         return Colors.grey;
     }
   }
 
   void _showAddInvestment() {
+    
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -531,13 +576,39 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
                 ),
               ),
               const SizedBox(height: 20),
-              _buildFormField('Type d\'actif', Icons.category),
+              DropdownButtonFormField<String>(
+                decoration: const InputDecoration(
+                  labelText: 'Entreprise',
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.business, color: Color(0xFF7533E8)),
+                ),
+                items: _assets.map((asset) {
+                  return DropdownMenuItem(
+                    value: asset.name,
+                    child: Text(asset.name),
+                  );
+                }).toList(),
+                onChanged: (value) {},
+              ),
               const SizedBox(height: 15),
-              _buildFormField('Symbole', Icons.tag),
+              TextField(
+                decoration: const InputDecoration(
+                  labelText: 'Nombre d\'actions',
+                  prefixIcon: Icon(Icons.numbers, color: Color(0xFF7533E8)),
+                  border: OutlineInputBorder(),
+                ),
+                keyboardType: TextInputType.number,
+              ),
               const SizedBox(height: 15),
-              _buildFormField('Quantité', Icons.numbers),
-              const SizedBox(height: 15),
-              _buildFormField('Prix d\'achat', Icons.euro),
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'Prix par action',
+                  prefixIcon: const Icon(Icons.money, color: Color(0xFF7533E8)),
+                  suffixText: 'DA',
+                  border: const OutlineInputBorder(),
+                ),
+                keyboardType: TextInputType.number,
+              ),
               const SizedBox(height: 20),
               SizedBox(
                 width: double.infinity,
@@ -566,23 +637,8 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
     );
   }
 
-  Widget _buildFormField(String label, IconData icon) {
-    return TextField(
-      decoration: InputDecoration(
-        labelText: label,
-        prefixIcon: Icon(icon, color: const Color(0xFF7533E8)),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: Color(0xFF7533E8)),
-        ),
-      ),
-    );
-  }
-
   void _showAnalytics() {
+    
     showDialog(
       context: context,
       builder: (context) {
@@ -596,17 +652,22 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
                 const ListTile(
                   leading: Icon(Icons.trending_up, color: Colors.green),
                   title: Text('Performance mensuelle'),
-                  subtitle: Text('+5.2% ce mois'),
+                  subtitle: Text('+8.2% ce mois'),
                 ),
                 const ListTile(
                   leading: Icon(Icons.pie_chart, color: Colors.blue),
                   title: Text('Diversification'),
-                  subtitle: Text('Score: 8.5/10'),
+                  subtitle: Text('Score: 7.8/10'),
                 ),
                 const ListTile(
                   leading: Icon(Icons.warning, color: Colors.orange),
                   title: Text('Niveau de risque'),
-                  subtitle: Text('Modéré'),
+                  subtitle: Text('Modéré-Élevé'),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.star, color: Color(0xFF7533E8)),
+                  title: const Text('Meilleure performance'),
+                  subtitle: Text('TemTem: +129.9%'),
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton.icon(
@@ -635,7 +696,6 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
   }
 
   void _showDetailedAnalytics() {
-    // Implémentation pour un rapport détaillé
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('Génération du rapport d\'analyses...'),
@@ -645,6 +705,7 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
   }
 
   void _showAssetDetails(Asset asset) {
+    final currencyFormat = NumberFormat.currency(locale: 'fr_DZ', symbol: 'DA', decimalDigits: 0);
     final gain = asset.currentPrice - asset.buyPrice;
     final gainPercentage = (gain / asset.buyPrice) * 100;
 
@@ -665,12 +726,20 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
                     decoration: BoxDecoration(
                       color: _getAssetColor(asset.type).withOpacity(0.1),
                       borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: _getAssetColor(asset.type).withOpacity(0.3)),
                     ),
                     child: Center(
-                      child: Text(
-                        asset.logo,
-                        style: const TextStyle(fontSize: 24),
-                      ),
+                      child: asset.imagePath.isNotEmpty
+                          ? Image.asset(
+                              asset.imagePath,
+                              width: 40,
+                              height: 40,
+                              fit: BoxFit.contain,
+                            )
+                          : Text(
+                              asset.logo,
+                              style: const TextStyle(fontSize: 24),
+                            ),
                     ),
                   ),
                   const SizedBox(width: 12),
@@ -703,8 +772,8 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _buildAssetStat('Quantité', '${asset.quantity}'),
-                  _buildAssetStat('Prix actuel', '${asset.currentPrice}€'),
-                  _buildAssetStat('Valeur', '${asset.value.toStringAsFixed(2)}€'),
+                  _buildAssetStat('Prix actuel', currencyFormat.format(asset.currentPrice)),
+                  _buildAssetStat('Valeur', currencyFormat.format(asset.value)),
                 ],
               ),
               const SizedBox(height: 20),
@@ -732,7 +801,7 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
                           ),
                         ),
                         Text(
-                          '${gain >= 0 ? '+' : ''}${gain.toStringAsFixed(2)}€',
+                          '${gain >= 0 ? '+' : ''}${currencyFormat.format(asset.currentPrice * asset.quantity - asset.buyPrice * asset.quantity)}',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -752,7 +821,7 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
                           ),
                         ),
                         Text(
-                          '${gain >= 0 ? '+' : ''}${gainPercentage.toStringAsFixed(2)}%',
+                          '${gain >= 0 ? '+' : ''}${gainPercentage.toStringAsFixed(1)}%',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -824,19 +893,23 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
   }
 
   void _showSellDialog(Asset asset) {
+    final currencyFormat = NumberFormat.currency(locale: 'fr_DZ', symbol: 'DA', decimalDigits: 0);
+    
     showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text('Vendre cet actif'),
+          title: Text('Vendre ${asset.name}'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text('Combien d\'unités souhaitez-vous vendre ?'),
+              Text('Prix actuel: ${currencyFormat.format(asset.currentPrice)} par action'),
+              const SizedBox(height: 10),
+              Text('Actions disponibles: ${asset.quantity}'),
               const SizedBox(height: 20),
               TextField(
                 decoration: InputDecoration(
-                  labelText: 'Quantité (max: ${asset.quantity})',
+                  labelText: 'Quantité à vendre (max: ${asset.quantity})',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -873,15 +946,17 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
   }
 
   void _showBuyMoreDialog(Asset asset) {
+    final currencyFormat = NumberFormat.currency(locale: 'fr_DZ', symbol: 'DA', decimalDigits: 0);
+    
     showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text('Acheter plus d\'actions'),
+          title: Text('Acheter ${asset.name}'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text('Combien d\'unités supplémentaires souhaitez-vous acheter ?'),
+              Text('Prix actuel: ${currencyFormat.format(asset.currentPrice)} par action'),
               const SizedBox(height: 20),
               TextField(
                 decoration: InputDecoration(
@@ -893,9 +968,16 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
                 keyboardType: TextInputType.number,
               ),
               const SizedBox(height: 10),
+              const Text(
+                'Montant estimé:',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               Text(
-                'Prix actuel: ${asset.currentPrice}€ par unité',
+                currencyFormat.format(asset.currentPrice * 10), // Exemple pour 10 actions
                 style: const TextStyle(
+                  fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -929,7 +1011,7 @@ class _PortefeuillePageState extends State<PortefeuillePage> {
   }
 }
 
-// Modèle pour les actifs
+// Modèle pour les actifs avec image
 class Asset {
   final String name;
   final String symbol;
@@ -941,6 +1023,7 @@ class Asset {
   final double change;
   final String sector;
   final String logo;
+  final String imagePath;
 
   Asset({
     required this.name,
@@ -953,5 +1036,6 @@ class Asset {
     required this.change,
     required this.sector,
     required this.logo,
+    this.imagePath = '',
   });
 }
