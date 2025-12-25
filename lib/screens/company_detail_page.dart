@@ -7,14 +7,22 @@ class CompanyDetailPage extends StatelessWidget {
   final VoidCallback onFollowToggle;
 
   // Map pour les tailles d'images spécifiques aux entreprises
-  final Map<String, Size> companyImageSizes = {
-    'TalabaStore': const Size(100, 100),    // Plus grande
-    'TemTem': const Size(90, 90),          // Légèrement plus grande
-    'ALPAY': const Size(80, 80),          // Taille standard
-    'Okadoo': const Size(70, 70),         // Plus petite
+  final Map<String, BoxFit> companyImageFit = {
+    'TalabaStore': BoxFit.contain,  // Garde les proportions
+    'TemTem': BoxFit.fitWidth,      // Remplit l'espace
+    'ALPAY': BoxFit.fitWidth,       // S'adapte à la largeur
+    'Okadoo': BoxFit.fitHeight,     // S'adapte à la hauteur
   };
 
-   CompanyDetailPage({
+  // Map pour les tailles spécifiques des logos
+  final Map<String, Size> companyLogoSize = {
+    'TalabaStore': const Size(100, 100), // Taille personnalisée
+    'TemTem': const Size(90, 90),       // Taille personnalisée
+    'ALPAY': const Size(80, 80),        // Taille par défaut
+    'Okadoo': const Size(70, 70),       // Taille plus petite
+  };
+
+  CompanyDetailPage({
     super.key,
     required this.company,
     required this.isFollowed,
@@ -24,7 +32,8 @@ class CompanyDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Obtenir la taille spécifique pour cette entreprise, ou utiliser la taille par défaut
-    final Size imageSize = companyImageSizes[company.name] ?? const Size(80, 80);
+    final Size logoSize = companyLogoSize[company.name] ?? const Size(80, 80);
+    final BoxFit imageFit = companyImageFit[company.name] ?? BoxFit.contain;
     final double logoFontSize = _getLogoFontSizeForCompany(company.name);
 
     return Scaffold(
@@ -54,8 +63,8 @@ class CompanyDetailPage extends StatelessWidget {
                 children: [
                   // Logo de l'entreprise avec taille personnalisée
                   Container(
-                    width: imageSize.width,
-                    height: imageSize.height,
+                    width: logoSize.width,
+                    height: logoSize.height,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(12),
@@ -72,7 +81,7 @@ class CompanyDetailPage extends StatelessWidget {
                       child: company.imagePath.isNotEmpty
                           ? Image.asset(
                               company.imagePath,
-                              fit: BoxFit.contain,
+                              fit: imageFit, // Utiliser le fit personnalisé
                               errorBuilder: (context, error, stackTrace) {
                                 return Center(
                                   child: Text(
@@ -185,9 +194,9 @@ class CompanyDetailPage extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: Colors.grey[50],
+                    color: company.cardColor.withOpacity(0.1), // Changé ici
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.grey[200]!),
+                    border: Border.all(color: company.cardColor.withOpacity(0.3)), // Changé ici
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -339,9 +348,9 @@ class CompanyDetailPage extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.grey[50],
+        color: company.cardColor.withOpacity(0.1), // Changé ici
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.grey[200]!),
+        border: Border.all(color: company.cardColor.withOpacity(0.3)), // Changé ici
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -376,9 +385,9 @@ class CompanyDetailPage extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.grey[50],
+        color: company.cardColor.withOpacity(0.1), // Changé ici
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.grey[200]!),
+        border: Border.all(color: company.cardColor.withOpacity(0.3)), // Changé ici
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
