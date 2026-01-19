@@ -19,7 +19,8 @@ class _CreateCompanySortlistStyleState
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _aboutController = TextEditingController();
   final TextEditingController _activiteController = TextEditingController();
-
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
 
   final List<String> _selectedLanguages = [];
   final List<String> _availableLanguages = [
@@ -33,9 +34,11 @@ class _CreateCompanySortlistStyleState
   String? _teamSize;
   String? _selectedVillage;
   String? _selectedSecteur;
+  bool _obscurePassword = true;
+  bool _obscureConfirmPassword = true;
 
-  // List of Algerian villages
-  final List<String> _algerianVillages = [
+  // List of Algerian locations
+  final List<String> _algerianLocations = [
     'Aïn El Hammam',
     'Tizi Ouzou',
     'Béjaïa',
@@ -198,7 +201,7 @@ class _CreateCompanySortlistStyleState
                   padding: const EdgeInsets.symmetric(vertical: 16),
                 ),
                 child: Text(
-                  _currentStep == 3 ? 'Créer le profil' : 'Continuer',
+                  _currentStep == 2 ? 'Créer le profil' : 'Continuer',
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -243,7 +246,7 @@ class _CreateCompanySortlistStyleState
                         ),
                 ),
               ),
-              if (stepNumber < 3)
+              if (stepNumber < 2)
                 Expanded(
                   child: Container(
                     height: 2,
@@ -276,9 +279,9 @@ class _CreateCompanySortlistStyleState
       case 0:
         return _buildStep1();
       case 1:
-        return _buildStep3();
+        return _buildStep2();
       case 2:
-        return _buildStep4();
+        return _buildStep3();
       default:
         return _buildStep1();
     }
@@ -322,7 +325,7 @@ class _CreateCompanySortlistStyleState
         ),
         const SizedBox(height: 24),
 
-        // Secteur d'activité (moved from Step 4)
+        // Secteur d'activité
         const Text(
           'Secteur d\'activité',
           style: TextStyle(
@@ -364,7 +367,7 @@ class _CreateCompanySortlistStyleState
         ),
         const SizedBox(height: 24),
 
-        // Activité (moved from Step 4)
+        // Activité
         const Text(
           'Activité',
           style: TextStyle(
@@ -388,11 +391,87 @@ class _CreateCompanySortlistStyleState
             ),
           ),
         ),
+        const SizedBox(height: 24),
+
+        // Mot de passe
+        const Text(
+          'Mot de passe',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey[300]!),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: TextField(
+            controller: _passwordController,
+            obscureText: _obscurePassword,
+            decoration: InputDecoration(
+              hintText: 'Entrez votre mot de passe...',
+              border: InputBorder.none,
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              suffixIcon: IconButton(
+                icon: Icon(
+                  _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                  color: Colors.grey,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _obscurePassword = !_obscurePassword;
+                  });
+                },
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: 16),
+
+        // Confirmation du mot de passe
+        const Text(
+          'Confirmer le mot de passe',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey[300]!),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: TextField(
+            controller: _confirmPasswordController,
+            obscureText: _obscureConfirmPassword,
+            decoration: InputDecoration(
+              hintText: 'Confirmez votre mot de passe...',
+              border: InputBorder.none,
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              suffixIcon: IconButton(
+                icon: Icon(
+                  _obscureConfirmPassword ? Icons.visibility_off : Icons.visibility,
+                  color: Colors.grey,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _obscureConfirmPassword = !_obscureConfirmPassword;
+                  });
+                },
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }
 
-  Widget _buildStep3() {
+  Widget _buildStep2() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -406,9 +485,9 @@ class _CreateCompanySortlistStyleState
         ),
         const SizedBox(height: 24),
 
-        // Village Selection
+        // Localisation Selection
         const Text(
-          'Village',
+          'Localisation',
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
@@ -416,7 +495,7 @@ class _CreateCompanySortlistStyleState
         ),
         const SizedBox(height: 8),
         const Text(
-          'Sélectionnez le village où votre entreprise est basée',
+          'Sélectionnez la localisation où votre entreprise est basée',
           style: TextStyle(
             fontSize: 14,
             color: Colors.grey,
@@ -434,15 +513,15 @@ class _CreateCompanySortlistStyleState
               isExpanded: true,
               hint: const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
-                child: Text('Sélectionnez votre village'),
+                child: Text('Sélectionnez votre localisation'),
               ),
               value: _selectedVillage,
-              items: _algerianVillages.map((String village) {
+              items: _algerianLocations.map((String location) {
                 return DropdownMenuItem<String>(
-                  value: village,
+                  value: location,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Text(village),
+                    child: Text(location),
                   ),
                 );
               }).toList(),
@@ -587,7 +666,7 @@ class _CreateCompanySortlistStyleState
     );
   }
 
-  Widget _buildStep4() {
+  Widget _buildStep3() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -799,7 +878,56 @@ class _CreateCompanySortlistStyleState
   }
 
   void _nextStep() {
-    if (_currentStep < 3) {
+    if (_currentStep < 2) {
+      // Validation before proceeding to next step
+      if (_currentStep == 0) {
+        // Validate step 1 fields
+        if (_companyNameController.text.isEmpty) {
+          _showError('Veuillez entrer le nom de votre entreprise');
+          return;
+        }
+        if (_selectedSecteur == null) {
+          _showError('Veuillez sélectionner un secteur d\'activité');
+          return;
+        }
+        if (_activiteController.text.isEmpty) {
+          _showError('Veuillez entrer votre activité');
+          return;
+        }
+        if (_passwordController.text.isEmpty) {
+          _showError('Veuillez entrer un mot de passe');
+          return;
+        }
+        if (_passwordController.text.length < 6) {
+          _showError('Le mot de passe doit contenir au moins 6 caractères');
+          return;
+        }
+        if (_passwordController.text != _confirmPasswordController.text) {
+          _showError('Les mots de passe ne correspondent pas');
+          return;
+        }
+      }
+      
+      if (_currentStep == 1) {
+        // Validate step 2 fields
+        if (_selectedVillage == null) {
+          _showError('Veuillez sélectionner une localisation');
+          return;
+        }
+        if (_addressController.text.isEmpty) {
+          _showError('Veuillez entrer votre adresse');
+          return;
+        }
+        if (_phoneController.text.isEmpty) {
+          _showError('Veuillez entrer votre numéro de téléphone');
+          return;
+        }
+        if (_emailController.text.isEmpty) {
+          _showError('Veuillez entrer votre adresse email');
+          return;
+        }
+      }
+      
       setState(() {
         _currentStep += 1;
       });
@@ -816,13 +944,31 @@ class _CreateCompanySortlistStyleState
     }
   }
 
+  void _showError(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: Colors.red,
+        duration: const Duration(seconds: 2),
+      ),
+    );
+  }
+
   void _createProfile() {
+    // Final validation before creation
+    if (_passwordController.text.isEmpty ||
+        _passwordController.text != _confirmPasswordController.text) {
+      _showError('Veuillez vérifier votre mot de passe');
+      return;
+    }
+
     // Handle profile creation logic here
     print('Creating profile with:');
     print('Company: ${_companyNameController.text}');
+    print('Password: ${_passwordController.text}');
     print('Secteur: $_selectedSecteur');
     print('Activité: ${_activiteController.text}');
-    print('Village: $_selectedVillage');
+    print('Localisation: $_selectedVillage');
     print('Address: ${_addressController.text}');
     print('Phone: ${_phoneController.text}');
     print('Website: ${_websiteController.text}');
@@ -847,6 +993,8 @@ class _CreateCompanySortlistStyleState
     _emailController.dispose();
     _aboutController.dispose();
     _activiteController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
     super.dispose();
   }
 }
