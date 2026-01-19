@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Pricing Packages',
+      title: 'Forfaits tarifaires',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         textTheme: GoogleFonts.poppinsTextTheme(),
@@ -133,7 +133,7 @@ class PackageDetailDialog extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 8),
                       child: Text(
-                        '/month',
+                        '/mois',
                         style: GoogleFonts.poppins(
                           color: const Color(0xFF718096),
                           fontSize: 16,
@@ -169,7 +169,7 @@ class PackageDetailDialog extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Key Features:',
+                      'Fonctionnalités Clés:',
                       style: GoogleFonts.poppins(
                         color: const Color(0xFF2D3748),
                         fontSize: 18,
@@ -233,7 +233,7 @@ class PackageDetailDialog extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Additional Information:',
+                        'Informations additionnelles :',
                         style: GoogleFonts.poppins(
                           color: const Color(0xFF2D3748),
                           fontSize: 16,
@@ -301,7 +301,7 @@ class PackageDetailDialog extends StatelessWidget {
                             onTap: () => Navigator.pop(context),
                             child: Center(
                               child: Text(
-                                'CLOSE',
+                                'FERMER',
                                 style: GoogleFonts.poppins(
                                   color: const Color(0xFF4A5568),
                                   fontSize: 15,
@@ -349,12 +349,12 @@ class _PricingScreenState extends State<PricingScreen> {
       ],
       primaryColor: const Color(0xFF4A90E2),
       secondaryColor: const Color(0xFF357ABD),
-      details: 'Perfect for new startups looking to establish their online presence. This package includes everything you need to get started with digital marketing.',
+      details: 'Idéal pour les jeunes entreprises souhaitant développer leur présence en ligne. Ce pack comprend tout le nécessaire pour débuter en marketing digital.',
       additionalInfo: [
-        '30-day money back guarantee',
-        'Email support within 24 hours',
-        'Free setup assistance',
-        'Cancel anytime',
+        'Garantie de remboursement de 30 jours',
+        'Assistance par e-mail sous 24 heures',
+        'Assistance à la configuration gratuite',
+        'Annuler à tout moment',
       ],
     ),
     PricingPackage(
@@ -369,12 +369,12 @@ class _PricingScreenState extends State<PricingScreen> {
       ],
       primaryColor: const Color(0xFF9B59B6),
       secondaryColor: const Color(0xFFE91E8C),
-      details: 'Ideal for growing startups and micro-businesses. This monthly subscription provides ongoing social media management and content planning.',
+      details: 'Idéal pour les jeunes entreprises et les micro-entreprises en pleine croissance. Cet abonnement mensuel comprend la gestion continue des médias sociaux et la planification du contenu.',
       additionalInfo: [
-        'Priority support within 12 hours',
-        'Monthly strategy review',
-        'Content calendar planning',
-        'Performance analytics dashboard',
+        'Assistance prioritaire sous 12 heures',
+        'Review stratégique mensuel',
+        'Planification du calendrier éditorial',
+        'Tableau de bord d\'analyse de performance',
       ],
     ),
     PricingPackage(
@@ -389,12 +389,12 @@ class _PricingScreenState extends State<PricingScreen> {
       ],
       primaryColor: const Color(0xFFE67E22),
       secondaryColor: const Color(0xFFF39C12),
-      details: 'Premium à la carte services for established businesses. Choose from advanced marketing services tailored to your specific needs.',
+      details: 'Services à la carte haut de gamme pour les entreprises établies. Choisissez parmi des services marketing avancés adaptés à vos besoins spécifiques.',
       additionalInfo: [
-        'Dedicated account manager',
-        '24/7 phone support',
-        'Custom reporting',
-        'Strategy consultation sessions',
+        'Gestionnaire de compte dédié',
+        'Assistance téléphonique 24/7',
+        'Rapports personnalisés',
+        'Séances de consultation stratégique',
       ],
     ),
   ];
@@ -430,7 +430,7 @@ class _PricingScreenState extends State<PricingScreen> {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          'Choose Your Plan',
+          'Choisissez votre Plan',
           style: GoogleFonts.poppins(
             color: const Color(0xFF2D3748),
             fontWeight: FontWeight.w600,
@@ -442,7 +442,7 @@ class _PricingScreenState extends State<PricingScreen> {
         children: [
           const SizedBox(height: 20),
           Text(
-            'Select the perfect plan for your needs',
+            'Sélectionnez le plan parfait pour vos besoins',
             style: GoogleFonts.poppins(
               color: const Color(0xFF718096),
               fontSize: 14,
@@ -640,7 +640,7 @@ class PricingCard extends StatelessWidget {
                         ),
                         const SizedBox(width: 8),
                         Text(
-                          'VIEW DETAILS',
+                          'VOIR LES DÉTAILS',
                           style: GoogleFonts.poppins(
                             color: package.primaryColor,
                             fontSize: 14,
@@ -727,7 +727,7 @@ class PricingCard extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    'BUY NOW',
+                    'ACHETEZ MAINTENANT',
                     style: GoogleFonts.poppins(
                       color: Colors.white,
                       fontSize: 16,

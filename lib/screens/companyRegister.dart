@@ -151,9 +151,8 @@ class _CreateCompanySortlistStyleState
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _buildStepIndicator(0, 'Nom'),
-                _buildStepIndicator(1, 'Sélection'),
-                _buildStepIndicator(2, 'Contact'),
-                _buildStepIndicator(3, 'Profil'),
+                _buildStepIndicator(1, 'Contact'),
+                _buildStepIndicator(2, 'Profil'),
               ],
             ),
           ),
@@ -279,10 +278,8 @@ class _CreateCompanySortlistStyleState
       case 0:
         return _buildStep1();
       case 1:
-        return _buildStep2();
-      case 2:
         return _buildStep3();
-      case 3:
+      case 2:
         return _buildStep4();
       default:
         return _buildStep1();
@@ -390,127 +387,6 @@ class _CreateCompanySortlistStyleState
               border: InputBorder.none,
               contentPadding:
                   EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildStep2() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          'Sélectionnez votre entreprise',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
-        ),
-        const SizedBox(height: 16),
-        const Text(
-          'Ajoutez ses informations',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 16),
-
-        // Manager account checkbox
-        Row(
-          children: [
-            Checkbox(
-              value: _isManagerAccount,
-              onChanged: (value) {
-                setState(() {
-                  _isManagerAccount = value!;
-                });
-              },
-            ),
-            const Expanded(
-              child: Text('Créez un compte de gestionnaire d\'entreprise'),
-            ),
-          ],
-        ),
-
-        const Divider(),
-        const SizedBox(height: 16),
-
-        // Company name display
-        Container(
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey[300]!),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                _companyNameController.text.isEmpty
-                    ? 'Nom de l\'entreprise'
-                    : _companyNameController.text,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 16),
-
-              // Show secteur and activité if they were filled in Step 1
-              if (_selectedSecteur != null) ...[
-                const SizedBox(height: 8),
-                Text(
-                  'Secteur: $_selectedSecteur',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey[700],
-                  ),
-                ),
-              ],
-              if (_activiteController.text.isNotEmpty) ...[
-                const SizedBox(height: 4),
-                Text(
-                  'Activité: ${_activiteController.text}',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey[700],
-                  ),
-                ),
-              ],
-              const SizedBox(height: 16),
-
-              // Authorization checkbox
-              Row(
-                children: [
-                  Checkbox(
-                    value: _hasAuthority,
-                    onChanged: (value) {
-                      setState(() {
-                        _hasAuthority = value!;
-                      });
-                    },
-                  ),
-                  const Expanded(
-                    child: Text(
-                        'Je confirme que j\'ai l\'autorité nécessaire pour créer ce profil'),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-
-        const SizedBox(height: 16),
-        TextButton(
-          onPressed: () {},
-          child: const Text(
-            'Sélectionner un autre profil',
-            style: TextStyle(
-              color: Color(0xFF7533E8),
             ),
           ),
         ),
@@ -737,7 +613,7 @@ class _CreateCompanySortlistStyleState
 
         // About Section
         const Text(
-          'About',
+          'À propos',
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
