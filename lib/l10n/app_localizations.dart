@@ -361,13 +361,13 @@ abstract class AppLocalizations {
   /// No description provided for @buildRelationships.
   ///
   /// In en, this message translates to:
-  /// **'Build strong relationships'**
+  /// **'How to successfully launch your project on the market?'**
   String get buildRelationships;
 
   /// No description provided for @relationshipsDescription.
   ///
   /// In en, this message translates to:
-  /// **'Collaborate with entrepreneurs and expand your network'**
+  /// **'We support you from BMC structuring to pitching, for successful market entry and obtaining the label'**
   String get relationshipsDescription;
 
   /// No description provided for @getStarted.
@@ -391,13 +391,13 @@ abstract class AppLocalizations {
   /// No description provided for @companyCardTitle.
   ///
   /// In en, this message translates to:
-  /// **'Company'**
+  /// **'Startup/SME'**
   String get companyCardTitle;
 
   /// No description provided for @companyCardSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'If you\'re looking for a company, register here'**
+  /// **'Si vous cherchez une Startup ou PME, inscrivez-vous ici'**
   String get companyCardSubtitle;
 
   /// No description provided for @investorCardTitle.

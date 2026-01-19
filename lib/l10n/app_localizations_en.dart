@@ -141,11 +141,12 @@ class AppLocalizationsEn extends AppLocalizations {
       'Our marketing service will increase your visibility';
 
   @override
-  String get buildRelationships => 'Build strong relationships';
+  String get buildRelationships =>
+      'How to successfully launch your project on the market?';
 
   @override
   String get relationshipsDescription =>
-      'Collaborate with entrepreneurs and expand your network';
+      'We support you from BMC structuring to pitching, for successful market entry and obtaining the label';
 
   @override
   String get getStarted => 'Get Started';
@@ -157,11 +158,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get allServicesHere => 'All your service needs are here';
 
   @override
-  String get companyCardTitle => 'Company';
+  String get companyCardTitle => 'Startup/SME';
 
   @override
   String get companyCardSubtitle =>
-      'If you\'re looking for a company, register here';
+      'Si vous cherchez une Startup ou PME, inscrivez-vous ici';
 
   @override
   String get investorCardTitle => 'Investor';

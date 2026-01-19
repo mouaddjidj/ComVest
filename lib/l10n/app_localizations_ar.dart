@@ -141,11 +141,11 @@ class AppLocalizationsAr extends AppLocalizations {
   String get visibilityDescription => 'ستزيد خدمتنا التسويقية من ظهورك';
 
   @override
-  String get buildRelationships => 'بناء علاقات قوية';
+  String get buildRelationships => 'كيف تطلق مشروعك بنجاح في السوق؟';
 
   @override
   String get relationshipsDescription =>
-      'تعاون مع رواد الأعمال وقم بتوسيع شبكتك';
+      'نقدم لكم الدعم من مرحلة هيكلة إلى مرحلة العرض التقديمي، من أجل دخول ناجح إلى السوق والحصول على العلامة التجارية';
 
   @override
   String get getStarted => 'ابدأ الآن';
@@ -157,10 +157,11 @@ class AppLocalizationsAr extends AppLocalizations {
   String get allServicesHere => 'جميع احتياجاتك من الخدمات هنا';
 
   @override
-  String get companyCardTitle => 'شركة';
+  String get companyCardTitle => 'شركة ناشئة/شركة صغيرة ومتوسطة';
 
   @override
-  String get companyCardSubtitle => 'إذا كنت تبحث عن شركة، قم بالتسجيل هنا';
+  String get companyCardSubtitle =>
+      'إذا كنت تبحث عن شركة ناشئة أو شركة صغيرة ومتوسطة، فسجل هنا.';
 
   @override
   String get investorCardTitle => 'مستثمر';

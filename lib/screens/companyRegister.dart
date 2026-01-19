@@ -20,8 +20,6 @@ class _CreateCompanySortlistStyleState
   final TextEditingController _aboutController = TextEditingController();
   final TextEditingController _activiteController = TextEditingController();
 
-  bool _hasAuthority = false;
-  bool _isManagerAccount = false;
 
   final List<String> _selectedLanguages = [];
   final List<String> _availableLanguages = [
