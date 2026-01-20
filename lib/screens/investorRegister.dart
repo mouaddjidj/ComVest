@@ -11,6 +11,7 @@ class CreateInvestorAccount extends StatefulWidget {
 
 class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
   int _currentStep = 0;
+  final TextEditingController _usernameController = TextEditingController(); // Added username controller
   final TextEditingController _firstNameController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -248,6 +249,32 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
           ),
         ),
         const SizedBox(height: 30),
+
+        // Username - NEW FIELD
+        const Text(
+          "Nom d'utilisateur",
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+            color: Colors.black87,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey[300]!),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: TextField(
+            controller: _usernameController,
+            decoration: const InputDecoration(
+              hintText: 'Choisissez un nom d\'utilisateur unique',
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            ),
+          ),
+        ),
+        const SizedBox(height: 20),
 
         // First Name
         const Text(
@@ -769,7 +796,8 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
 
   void _createAccount() {
     // Validation
-    if (_firstNameController.text.isEmpty ||
+    if (_usernameController.text.isEmpty || // Added username validation
+        _firstNameController.text.isEmpty ||
         _lastNameController.text.isEmpty ||
         _emailController.text.isEmpty ||
         _passwordController.text.isEmpty ||
@@ -784,8 +812,20 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
       return;
     }
 
-    // Create investor object
+    // Username validation rules
+    if (_usernameController.text.length < 3) {
+      _showErrorDialog('Le nom d\'utilisateur doit contenir au moins 3 caractères');
+      return;
+    }
+
+    if (!RegExp(r'^[a-zA-Z0-9_]+$').hasMatch(_usernameController.text)) {
+      _showErrorDialog('Le nom d\'utilisateur ne peut contenir que des lettres, chiffres et underscores');
+      return;
+    }
+
+    // Create investor object with username
     final investor = Investor(
+      username: _usernameController.text, // Add username to Investor model
       firstName: _firstNameController.text,
       lastName: _lastNameController.text,
       email: _emailController.text,
@@ -829,6 +869,7 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
 
   @override
   void dispose() {
+    _usernameController.dispose(); // Don't forget to dispose the new controller
     _firstNameController.dispose();
     _lastNameController.dispose();
     _emailController.dispose();

@@ -30,6 +30,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get emailHint => 'أدخل بريدك الإلكتروني المهني';
 
   @override
+  String get emailOrUsername => 'البريد الإلكتروني أو اسم المستخدم';
+
+  @override
+  String get emailOrUsernameHint => 'أدخل البريد الإلكتروني أو اسم المستخدم';
+
+  @override
   String get password => 'كلمة المرور';
 
   @override
@@ -60,6 +66,10 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get enterEmailResetPassword =>
       'أدخل بريدك الإلكتروني لإعادة تعيين كلمة المرور الخاصة بك.';
+
+  @override
+  String get enterValidEmailForReset =>
+      'يرجى إدخال عنوان بريد إلكتروني صالح لإعادة تعيين كلمة المرور';
 
   @override
   String get send => 'إرسال';
@@ -116,7 +126,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get selectLanguage => 'اختر اللغة';
 
   @override
-  String get language => 'اللغة';
+  String get language => 'العربية';
 
   @override
   String get english => 'الإنجليزية';
@@ -128,7 +138,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get arabic => 'العربية';
 
   @override
-  String get discoverComvest => 'اكتشف كومفيست';
+  String get discoverComvest => 'اكتشف ';
 
   @override
   String get discoverDescription =>
@@ -172,6 +182,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get fillAllFields => 'يرجى ملء جميع الحقول';
+
+  @override
+  String get invalidEmailOrUsername =>
+      'يرجى إدخال بريد إلكتروني أو اسم مستخدم صالح';
 
   @override
   String get invite => 'دعوة';

@@ -5,7 +5,7 @@ import 'analyse_marcket.dart';
 import 'settings_page.dart';
 import 'followed_companies.dart';
 import 'actualites_page.dart';
-import 'portefeuille_page.dart';
+
 
 class InvestorDashboard extends StatefulWidget {
   final Investor investor;
@@ -341,20 +341,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
               );
             },
           ),
-          ListTile(
-            leading: const Icon(Icons.account_balance_wallet,
-                color: Color(0xFF7533E8)),
-            title: const Text('Portefeuille'),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => PortefeuillePage(investor: widget.investor),
-                ),
-              );
-            },
-          ),
+          // SECTION PORTEFEUILLE SUPPRIMÉE ICI
           ListTile(
             leading: const Icon(Icons.newspaper, color: Color(0xFF7533E8)),
             title: const Text('Actualités'),
@@ -1777,4 +1764,4 @@ class _CompanySearchDelegate extends SearchDelegate<String> {
       },
     );
   }
-} 
+}

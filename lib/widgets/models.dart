@@ -25,7 +25,7 @@ class Investor {
     this.investmentRange,
     this.selectedIndustries = const [],
     this.professionalBackground,
-    DateTime? registrationDate,
+    DateTime? registrationDate, required String username,
   }) : registrationDate = registrationDate ?? DateTime.now();
 }
 

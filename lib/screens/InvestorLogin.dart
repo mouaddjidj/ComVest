@@ -11,7 +11,7 @@ class InvestorLoginScreen extends StatefulWidget {
 
 class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
   bool _isPasswordVisible = false;
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _emailOrUsernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   @override
@@ -79,18 +79,10 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      Text(
-                        localizations?.connectInvestorAccount ?? 'Connect to your investor account',
-                        style: const TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      const SizedBox(height: 30),
                       
-                      // Email Field
+                      // Email or Username Field
                       Text(
-                        localizations?.email ?? 'Email',
+                        localizations?.emailOrUsername ?? 'Email or Username',
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
@@ -105,13 +97,13 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                           border: Border.all(color: Colors.grey[300]!),
                         ),
                         child: TextField(
-                          controller: _emailController,
+                          controller: _emailOrUsernameController,
                           decoration: InputDecoration(
-                            hintText: localizations?.emailHint ?? 'Enter your professional email',
+                            hintText: localizations?.emailOrUsernameHint ?? 'Enter email or username',
                             border: InputBorder.none,
                             contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                             prefixIcon: Icon(
-                              Icons.email_outlined,
+                              Icons.person_outline,
                               color: Colors.grey[600],
                             ),
                           ),
@@ -206,11 +198,21 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 20),
                       
-                      // Create Account Link
-                      Center(
-                        child: TextButton(
+                      const SizedBox(height: 40),
+
+                      // BIG VISIBLE "CRÉER UN COMPTE" BUTTON - PURPLE TEXT VERSION
+                      Container(
+                        width: double.infinity,
+                        height: 65,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: const Color.fromARGB(255, 117, 51, 232),
+                            width: 2,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: ElevatedButton(
                           onPressed: () {
                             Navigator.push(
                               context,
@@ -219,21 +221,19 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
                               ),
                             );
                           },
-                          child: RichText(
-                            text: TextSpan(
-                              text: localizations?.noAccountQuestion ?? "Don't have an account? ",
-                              style: const TextStyle(
-                                color: Colors.grey,
-                              ),
-                              children: [
-                                TextSpan(
-                                  text: localizations?.createAccount ?? 'Create Account',
-                                  style: const TextStyle(
-                                    color: Color.fromARGB(255, 117, 51, 232),
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            foregroundColor: const Color.fromARGB(255, 117, 51, 232),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            elevation: 0,
+                          ),
+                          child: Text(
+                            localizations?.createAccount ?? 'Créer un nouveau compte',
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
@@ -251,15 +251,32 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
 
   void _login(BuildContext context) {
     final localizations = AppLocalizations.of(context);
-    final email = _emailController.text.trim();
+    final emailOrUsername = _emailOrUsernameController.text.trim();
     final password = _passwordController.text.trim();
     
-    if (email.isEmpty || password.isEmpty) {
+    if (emailOrUsername.isEmpty || password.isEmpty) {
       _showErrorDialog(context, localizations?.fillAllFields ?? 'Please fill in all fields');
       return;
     }
     
-    print('Investor login attempt: $email');
+    // Check if input is email or username
+    final isEmail = _isValidEmail(emailOrUsername);
+    final isUsername = !isEmail && _isValidUsername(emailOrUsername);
+    
+    if (!isEmail && !isUsername) {
+      _showErrorDialog(
+        context, 
+        localizations?.invalidEmailOrUsername ?? 'Please enter a valid email or username'
+      );
+      return;
+    }
+    
+    if (isEmail) {
+      print('Investor login with email: $emailOrUsername');
+    } else {
+      print('Investor login with username: $emailOrUsername');
+    }
+    
     // Add your login logic here
   }
 
@@ -281,6 +298,15 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
             ),
             TextButton(
               onPressed: () {
+                final email = _emailOrUsernameController.text.trim();
+                if (email.isEmpty || !_isValidEmail(email)) {
+                  _showErrorDialog(
+                    context, 
+                    localizations?.enterValidEmailForReset ?? 'Please enter a valid email address for password reset'
+                  );
+                  return;
+                }
+                
                 Navigator.of(context).pop();
                 _showSuccessDialog(
                   context, 
@@ -339,9 +365,21 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
     );
   }
 
+  // Helper method to validate email
+  bool _isValidEmail(String email) {
+    final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+    return emailRegex.hasMatch(email);
+  }
+
+  // Helper method to validate username
+  bool _isValidUsername(String username) {
+    final usernameRegex = RegExp(r'^[a-zA-Z0-9_-]{3,20}$');
+    return usernameRegex.hasMatch(username);
+  }
+
   @override
   void dispose() {
-    _emailController.dispose();
+    _emailOrUsernameController.dispose();
     _passwordController.dispose();
     super.dispose();
   }

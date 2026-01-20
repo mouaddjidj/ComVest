@@ -7,6 +7,14 @@
   "signup": "التسجيل",
   "email": "البريد الإلكتروني",
   "emailHint": "أدخل بريدك الإلكتروني المهني",
+  "emailOrUsername": "البريد الإلكتروني أو اسم المستخدم",
+  "@emailOrUsername": {
+    "description": "تسمية حقل إدخال البريد الإلكتروني أو اسم المستخدم"
+  },
+  "emailOrUsernameHint": "أدخل البريد الإلكتروني أو اسم المستخدم",
+  "@emailOrUsernameHint": {
+    "description": "نص التلميح لحقل إدخال البريد الإلكتروني أو اسم المستخدم"
+  },
   "password": "كلمة المرور",
   "passwordHint": "أدخل كلمة المرور الخاصة بك",
   "forgotPassword": "نسيت كلمة المرور؟",
@@ -17,6 +25,10 @@
   "noAccountQuestion": "ليس لديك حساب؟",
   "submit": "تسجيل الدخول",
   "enterEmailResetPassword": "أدخل بريدك الإلكتروني لإعادة تعيين كلمة المرور الخاصة بك.",
+  "enterValidEmailForReset": "يرجى إدخال عنوان بريد إلكتروني صالح لإعادة تعيين كلمة المرور",
+  "@enterValidEmailForReset": {
+    "description": "نص التعليمات للبريد الإلكتروني الصالح في نسيان كلمة المرور"
+  },
   "send": "إرسال",
   "instructionsSent": "تم إرسال التعليمات إلى بريدك الإلكتروني",
   "success": "نجاح",
@@ -35,11 +47,11 @@
   "save": "حفظ",
   "cancel": "إلغاء",
   "selectLanguage": "اختر اللغة",
-  "language": "اللغة",
+  "language": "العربية",
   "english": "الإنجليزية",
   "french": "الفرنسية",
   "arabic": "العربية",
-  "discoverComvest": "اكتشف كومفيست",
+  "discoverComvest": "اكتشف ",
   "discoverDescription": "المنصة التي تربط الشركات الناشئة والمؤسسين والمستثمرين",
   "needVisibility": "هل تحتاج إلى رؤية؟",
   "visibilityDescription": "ستزيد خدمتنا التسويقية من ظهورك",
@@ -53,6 +65,10 @@
   "investorCardTitle": "مستثمر",
   "investorCardSubtitle": "إذا كنت ترغب في الاستثمار في مشروع، انقر هنا",
   "fillAllFields": "يرجى ملء جميع الحقول",
+  "invalidEmailOrUsername": "يرجى إدخال بريد إلكتروني أو اسم مستخدم صالح",
+  "@invalidEmailOrUsername": {
+    "description": "رسالة خطأ للبريد الإلكتروني أو اسم المستخدم غير الصالح"
+  },
   "invite": "دعوة",
   "continueAsGuest": "المتابعة كضيف"
 }

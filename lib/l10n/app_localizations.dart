@@ -142,6 +142,18 @@ abstract class AppLocalizations {
   /// **'Enter your professional email'**
   String get emailHint;
 
+  /// Label for email or username input field
+  ///
+  /// In en, this message translates to:
+  /// **'Email or Username'**
+  String get emailOrUsername;
+
+  /// Hint text for email or username input field
+  ///
+  /// In en, this message translates to:
+  /// **'Enter email or username'**
+  String get emailOrUsernameHint;
+
   /// No description provided for @password.
   ///
   /// In en, this message translates to:
@@ -201,6 +213,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Enter your email to reset your password.'**
   String get enterEmailResetPassword;
+
+  /// Instruction text for valid email in forgot password
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid email address for password reset'**
+  String get enterValidEmailForReset;
 
   /// Send button text
   ///
@@ -313,7 +331,7 @@ abstract class AppLocalizations {
   /// No description provided for @language.
   ///
   /// In en, this message translates to:
-  /// **'Language'**
+  /// **'English'**
   String get language;
 
   /// No description provided for @english.
@@ -337,7 +355,7 @@ abstract class AppLocalizations {
   /// No description provided for @discoverComvest.
   ///
   /// In en, this message translates to:
-  /// **'Discover ComVest'**
+  /// **'Discover'**
   String get discoverComvest;
 
   /// No description provided for @discoverDescription.
@@ -417,6 +435,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please fill in all fields'**
   String get fillAllFields;
+
+  /// Error message for invalid email or username
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid email or username'**
+  String get invalidEmailOrUsername;
 
   /// Title for invite/guest access card
   ///

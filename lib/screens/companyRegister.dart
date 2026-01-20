@@ -17,7 +17,8 @@ class _CreateCompanySortlistStyleState
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _websiteController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _aboutController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController(); // Added username controller
+  final TextEditingController _descriptionController = TextEditingController();
   final TextEditingController _activiteController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController = TextEditingController();
@@ -26,6 +27,7 @@ class _CreateCompanySortlistStyleState
   final List<String> _availableLanguages = [
     'Français',
     'Anglais',
+    'Espagnol',
     'Espagnol',
     'Allemand',
     'Italien'
@@ -151,7 +153,7 @@ class _CreateCompanySortlistStyleState
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _buildStepIndicator(0, 'Nom'),
+                _buildStepIndicator(0, 'Information'),
                 _buildStepIndicator(1, 'Contact'),
                 _buildStepIndicator(2, 'Profil'),
               ],
@@ -317,6 +319,40 @@ class _CreateCompanySortlistStyleState
             controller: _companyNameController,
             decoration: const InputDecoration(
               hintText: 'Entrez le nom de votre entreprise...',
+              border: InputBorder.none,
+              contentPadding:
+                  EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            ),
+          ),
+        ),
+        const SizedBox(height: 24),
+
+        // Nom d'utilisateur (Username)
+        const Text(
+          'Nom d\'utilisateur',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 8),
+        const Text(
+          'Ce nom d\'utilisateur sera utilisé pour vous connecter à votre compte',
+          style: TextStyle(
+            fontSize: 14,
+            color: Colors.grey,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey[300]!),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: TextField(
+            controller: _usernameController,
+            decoration: const InputDecoration(
+              hintText: 'Choisissez un nom d\'utilisateur...',
               border: InputBorder.none,
               contentPadding:
                   EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -603,12 +639,20 @@ class _CreateCompanySortlistStyleState
         ),
         const SizedBox(height: 24),
 
-        // Website
+        // Website (Optional)
         const Text(
-          'Site web de l\'entreprise',
+          'Site web de l\'entreprise (optionnel)',
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 8),
+        const Text(
+          'Ajoutez le lien vers votre site web si vous en avez un',
+          style: TextStyle(
+            fontSize: 14,
+            color: Colors.grey,
           ),
         ),
         const SizedBox(height: 16),
@@ -640,7 +684,7 @@ class _CreateCompanySortlistStyleState
         ),
         const SizedBox(height: 8),
         const Text(
-          'Cette adresse sera utilisée pour les communications liées aux projets entrants',
+          'Cette adresse sera utilisée pour les communications liées aux projets entrants. Vous pourrez vous connecter avec votre email ou votre nom d\'utilisateur.',
           style: TextStyle(
             fontSize: 14,
             color: Colors.grey,
@@ -654,6 +698,7 @@ class _CreateCompanySortlistStyleState
           ),
           child: TextField(
             controller: _emailController,
+            keyboardType: TextInputType.emailAddress,
             decoration: const InputDecoration(
               hintText: 'Entrez l\'email de contact de l\'entreprise...',
               border: InputBorder.none,
@@ -688,21 +733,12 @@ class _CreateCompanySortlistStyleState
         ),
         const SizedBox(height: 24),
 
-        // About Section
+        // Description de l'entreprise (FIRST position)
         const Text(
-          'À propos',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 16),
-
-        // Company Name
-        const Text(
-          'Nom de l\'entreprise',
+          'Description de l\'entreprise',
           style: TextStyle(
             fontWeight: FontWeight.w500,
+            fontSize: 16,
           ),
         ),
         const SizedBox(height: 8),
@@ -712,78 +748,76 @@ class _CreateCompanySortlistStyleState
             borderRadius: BorderRadius.circular(8),
           ),
           child: TextField(
-            controller: _aboutController,
-            maxLength: 60,
-            decoration: InputDecoration(
-              hintText: _companyNameController.text.isEmpty
-                  ? 'Nom de l\'entreprise'
-                  : _companyNameController.text,
+            controller: _descriptionController,
+            maxLines: 4,
+            maxLength: 500,
+            decoration: const InputDecoration(
+              hintText: 'Décrivez votre entreprise (max 500 caractères)...',
               border: InputBorder.none,
               contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-              counterText: '0/60',
+                  EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             ),
           ),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 8),
+        Text(
+          '${_descriptionController.text.length}/500 caractères',
+          style: const TextStyle(
+            fontSize: 12,
+            color: Colors.grey,
+          ),
+        ),
+        const SizedBox(height: 24),
 
-        // Show secteur and activité info (read-only)
-        if (_selectedSecteur != null) ...[
-          const Text(
-            'Secteur d\'activité',
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-            ),
+        // Taille de votre équipe (SECOND position)
+        const Text(
+          'Taille de votre équipe',
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
           ),
-          const SizedBox(height: 8),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey[300]!),
-              borderRadius: BorderRadius.circular(8),
-              color: Colors.grey[50],
-            ),
-            child: Text(
-              _selectedSecteur!,
-              style: const TextStyle(
-                fontSize: 16,
+        ),
+        const SizedBox(height: 8),
+        Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey[300]!),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: DropdownButtonHideUnderline(
+            child: DropdownButton<String>(
+              isExpanded: true,
+              hint: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: Text('Sélectionner'),
               ),
+              value: _teamSize,
+              items: const [
+                DropdownMenuItem(value: '1-10', child: Text('1-10 employés')),
+                DropdownMenuItem(value: '11-50', child: Text('11-50 employés')),
+                DropdownMenuItem(
+                    value: '51-200', child: Text('51-200 employés')),
+                DropdownMenuItem(
+                    value: '201-500', child: Text('201-500 employés')),
+                DropdownMenuItem(
+                    value: '500+', child: Text('Plus de 500 employés')),
+              ],
+              onChanged: (String? newValue) {
+                setState(() {
+                  _teamSize = newValue;
+                });
+              },
             ),
           ),
-          const SizedBox(height: 16),
-        ],
-        if (_activiteController.text.isNotEmpty) ...[
-          const Text(
-            'Activité',
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey[300]!),
-              borderRadius: BorderRadius.circular(8),
-              color: Colors.grey[50],
-            ),
-            child: Text(
-              _activiteController.text,
-              style: const TextStyle(
-                fontSize: 16,
-              ),
-            ),
-          ),
-          const SizedBox(height: 16),
-        ],
+        ),
+        const SizedBox(height: 24),
 
-        // Languages
+        // Langues parlées (THIRD position)
         const Text(
           'Langues parlées (facultatif)',
           style: TextStyle(
             fontWeight: FontWeight.w500,
+            fontSize: 16,
           ),
         ),
         const SizedBox(height: 8),
@@ -831,48 +865,6 @@ class _CreateCompanySortlistStyleState
             ),
           ),
         ),
-        const SizedBox(height: 16),
-
-        // Team Size
-        const Text(
-          'Taille de votre équipe',
-          style: TextStyle(
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        const SizedBox(height: 8),
-        Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey[300]!),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: DropdownButtonHideUnderline(
-            child: DropdownButton<String>(
-              isExpanded: true,
-              hint: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: Text('Sélectionner'),
-              ),
-              value: _teamSize,
-              items: const [
-                DropdownMenuItem(value: '1-10', child: Text('1-10 employés')),
-                DropdownMenuItem(value: '11-50', child: Text('11-50 employés')),
-                DropdownMenuItem(
-                    value: '51-200', child: Text('51-200 employés')),
-                DropdownMenuItem(
-                    value: '201-500', child: Text('201-500 employés')),
-                DropdownMenuItem(
-                    value: '500+', child: Text('Plus de 500 employés')),
-              ],
-              onChanged: (String? newValue) {
-                setState(() {
-                  _teamSize = newValue;
-                });
-              },
-            ),
-          ),
-        ),
       ],
     );
   }
@@ -884,6 +876,14 @@ class _CreateCompanySortlistStyleState
         // Validate step 1 fields
         if (_companyNameController.text.isEmpty) {
           _showError('Veuillez entrer le nom de votre entreprise');
+          return;
+        }
+        if (_usernameController.text.isEmpty) {
+          _showError('Veuillez choisir un nom d\'utilisateur');
+          return;
+        }
+        if (_usernameController.text.length < 3) {
+          _showError('Le nom d\'utilisateur doit contenir au moins 3 caractères');
           return;
         }
         if (_selectedSecteur == null) {
@@ -926,6 +926,11 @@ class _CreateCompanySortlistStyleState
           _showError('Veuillez entrer votre adresse email');
           return;
         }
+        if (!_isValidEmail(_emailController.text)) {
+          _showError('Veuillez entrer une adresse email valide');
+          return;
+        }
+        // Website is optional, so no validation needed
       }
       
       setState(() {
@@ -954,8 +959,21 @@ class _CreateCompanySortlistStyleState
     );
   }
 
+  bool _isValidEmail(String email) {
+    final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+    return emailRegex.hasMatch(email);
+  }
+
   void _createProfile() {
     // Final validation before creation
+    if (_descriptionController.text.isEmpty) {
+      _showError('Veuillez entrer une description de votre entreprise');
+      return;
+    }
+    if (_teamSize == null) {
+      _showError('Veuillez sélectionner la taille de votre équipe');
+      return;
+    }
     if (_passwordController.text.isEmpty ||
         _passwordController.text != _confirmPasswordController.text) {
       _showError('Veuillez vérifier votre mot de passe');
@@ -965,17 +983,18 @@ class _CreateCompanySortlistStyleState
     // Handle profile creation logic here
     print('Creating profile with:');
     print('Company: ${_companyNameController.text}');
+    print('Username: ${_usernameController.text}');
     print('Password: ${_passwordController.text}');
     print('Secteur: $_selectedSecteur');
     print('Activité: ${_activiteController.text}');
+    print('Email: ${_emailController.text}');
     print('Localisation: $_selectedVillage');
     print('Address: ${_addressController.text}');
     print('Phone: ${_phoneController.text}');
     print('Website: ${_websiteController.text}');
-    print('Email: ${_emailController.text}');
-    print('About: ${_aboutController.text}');
-    print('Languages: $_selectedLanguages');
+    print('Description: ${_descriptionController.text}');
     print('Team Size: $_teamSize');
+    print('Languages: $_selectedLanguages');
 
     // Navigate to AdsServices
     Navigator.pushReplacement(
@@ -987,11 +1006,12 @@ class _CreateCompanySortlistStyleState
   @override
   void dispose() {
     _companyNameController.dispose();
+    _usernameController.dispose();
     _addressController.dispose();
     _phoneController.dispose();
     _websiteController.dispose();
     _emailController.dispose();
-    _aboutController.dispose();
+    _descriptionController.dispose();
     _activiteController.dispose();
     _passwordController.dispose();
     _confirmPasswordController.dispose();

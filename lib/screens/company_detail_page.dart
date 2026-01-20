@@ -1,5 +1,6 @@
 import 'package:comvest/widgets/models.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CompanyDetailPage extends StatelessWidget {
   final Company company;
@@ -8,18 +9,43 @@ class CompanyDetailPage extends StatelessWidget {
 
   // Map pour les tailles d'images spécifiques aux entreprises
   final Map<String, BoxFit> companyImageFit = {
-    'TalabaStore': BoxFit.contain,  // Garde les proportions
-    'TemTem': BoxFit.fitWidth,      // Remplit l'espace
-    'ALPAY': BoxFit.fitWidth,       // S'adapte à la largeur
-    'Okadoo': BoxFit.fitHeight,     // S'adapte à la hauteur
+    'TalabaStore': BoxFit.contain,
+    'TemTem': BoxFit.fitWidth,
+    'ALPAY': BoxFit.fitWidth,
+    'Okadoo': BoxFit.fitHeight,
   };
 
   // Map pour les tailles spécifiques des logos
   final Map<String, Size> companyLogoSize = {
-    'TalabaStore': const Size(100, 100), // Taille personnalisée
-    'TemTem': const Size(90, 90),       // Taille personnalisée
-    'ALPAY': const Size(80, 80),        // Taille par défaut
-    'Okadoo': const Size(70, 70),       // Taille plus petite
+    'TalabaStore': const Size(100, 100),
+    'TemTem': const Size(90, 90),
+    'ALPAY': const Size(80, 80),
+    'Okadoo': const Size(70, 70),
+  };
+
+  // Map pour les coordonnées de contact des entreprises
+  final Map<String, Map<String, String>> companyContacts = {
+    'TalabaStore': {
+      'email': 'contact@talabastore.com',
+      'phone': '+213 555 123 456',
+      'address': 'Alger, Algérie',
+    },
+    'TemTem': {
+      'email': 'info@temtem.com',
+      'phone': '+213 555 234 567',
+      'address': 'Oran, Algérie',
+    },
+    'ALPAY': {
+      'email': 'support@alpay.dz',
+      'phone': '+213 555 345 678',
+      'address': 'Alger, Algérie',
+    },
+    'Okadoo': {
+      'email': 'contact@okadoo.dz',
+      'phone': '+213 555 456 789',
+      'address': 'Constantine, Algérie',
+    },
+    // Ajoutez d'autres entreprises ici
   };
 
   CompanyDetailPage({
@@ -31,7 +57,7 @@ class CompanyDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Obtenir la taille spécifique pour cette entreprise, ou utiliser la taille par défaut
+    // Obtenir la taille spécifique pour cette entreprise
     final Size logoSize = companyLogoSize[company.name] ?? const Size(80, 80);
     final BoxFit imageFit = companyImageFit[company.name] ?? BoxFit.contain;
     final double logoFontSize = _getLogoFontSizeForCompany(company.name);
@@ -61,7 +87,7 @@ class CompanyDetailPage extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  // Logo de l'entreprise avec taille personnalisée
+                  // Logo de l'entreprise
                   Container(
                     width: logoSize.width,
                     height: logoSize.height,
@@ -81,7 +107,7 @@ class CompanyDetailPage extends StatelessWidget {
                       child: company.imagePath.isNotEmpty
                           ? Image.asset(
                               company.imagePath,
-                              fit: imageFit, // Utiliser le fit personnalisé
+                              fit: imageFit,
                               errorBuilder: (context, error, stackTrace) {
                                 return Center(
                                   child: Text(
@@ -190,41 +216,7 @@ class CompanyDetailPage extends StatelessWidget {
               mainAxisSpacing: 16,
               childAspectRatio: 2.5,
               children: [
-                // Type d'entreprise
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: company.cardColor.withOpacity(0.1), // Changé ici
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: company.cardColor.withOpacity(0.3)), // Changé ici
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        'Type d\'entreprise',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Flexible(
-                        child: Text(
-                          company.type,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                _buildDetailItem('Type d\'entreprise', company.type),
                 _buildDetailItem('Secteur', company.sector),
                 _buildCEOItem(),
                 _buildDetailItem('Date de fondation', company.founded),
@@ -299,9 +291,7 @@ class CompanyDetailPage extends StatelessWidget {
               children: [
                 Expanded(
                   child: OutlinedButton.icon(
-                    onPressed: () {
-                      // Action pour contacter
-                    },
+                    onPressed: () => _showContactDialog(context),
                     icon: const Icon(Icons.email),
                     label: const Text('Contacter'),
                     style: OutlinedButton.styleFrom(
@@ -348,9 +338,9 @@ class CompanyDetailPage extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: company.cardColor.withOpacity(0.1), // Changé ici
+        color: company.cardColor.withOpacity(0.1),
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: company.cardColor.withOpacity(0.3)), // Changé ici
+        border: Border.all(color: company.cardColor.withOpacity(0.3)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -385,9 +375,9 @@ class CompanyDetailPage extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: company.cardColor.withOpacity(0.1), // Changé ici
+        color: company.cardColor.withOpacity(0.1),
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: company.cardColor.withOpacity(0.3)), // Changé ici
+        border: Border.all(color: company.cardColor.withOpacity(0.3)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -399,7 +389,6 @@ class CompanyDetailPage extends StatelessWidget {
               fontSize: 12,
               color: Colors.grey,
             ),
-              
           ),
           const SizedBox(height: 1),
           Text(
@@ -409,7 +398,7 @@ class CompanyDetailPage extends StatelessWidget {
               fontWeight: FontWeight.bold,
               color: Colors.black,
             ),
-            maxLines: 3, // Plus de lignes pour le CEO
+            maxLines: 3,
             overflow: TextOverflow.ellipsis,
           ),
         ],
@@ -467,19 +456,192 @@ class CompanyDetailPage extends StatelessWidget {
     }
   }
 
-  // Fonction pour obtenir la taille de police du logo en fonction de l'entreprise
+  // Fonction pour obtenir la taille de police du logo
   double _getLogoFontSizeForCompany(String companyName) {
     switch (companyName) {
       case 'TalabaStore':
-        return 40; // Plus grande police pour TalabaStore
+        return 40;
       case 'TemTem':
-        return 36; // Légèrement plus grande pour TemTem
+        return 36;
       case 'ALPAY':
-        return 30; // Taille standard
+        return 30;
       case 'Okadoo':
-        return 28; // Plus petite
+        return 28;
       default:
-        return 30; // Taille par défaut
+        return 30;
     }
+  }
+
+  // Fonction pour afficher la boîte de dialogue de contact
+  void _showContactDialog(BuildContext context) {
+    final contactInfo = companyContacts[company.name] ?? {};
+    final email = contactInfo['email'] ?? 'Non disponible';
+    final phone = contactInfo['phone'] ?? 'Non disponible';
+    final address = contactInfo['address'] ?? 'Non disponible';
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Coordonnées de ${company.name}'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Email
+            _buildContactRow(
+              icon: Icons.email,
+              iconColor: Colors.blue,
+              title: 'Email',
+              value: email,
+              onCopy: () => _copyToClipboard(context, email, 'Email copié'),
+              onTap: () => _launchEmail(email),
+            ),
+            
+            const SizedBox(height: 16),
+            
+            // Téléphone
+            _buildContactRow(
+              icon: Icons.phone,
+              iconColor: Colors.green,
+              title: 'Téléphone',
+              value: phone,
+              onCopy: () => _copyToClipboard(context, phone, 'Numéro copié'),
+              onTap: () => _launchPhoneCall(phone),
+            ),
+            
+            const SizedBox(height: 16),
+            
+            // Adresse
+            _buildContactRow(
+              icon: Icons.location_on,
+              iconColor: Colors.orange,
+              title: 'Adresse',
+              value: address,
+              onCopy: () => _copyToClipboard(context, address, 'Adresse copiée'),
+            ),
+            
+            if (email == 'Non disponible' && phone == 'Non disponible')
+              const Padding(
+                padding: EdgeInsets.only(top: 16),
+                child: Text(
+                  'Aucune information de contact disponible',
+                  style: TextStyle(color: Colors.grey),
+                ),
+              ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Fermer'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // Widget pour une ligne de contact
+  Widget _buildContactRow({
+    required IconData icon,
+    required Color iconColor,
+    required String title,
+    required String value,
+    required VoidCallback onCopy,
+    VoidCallback? onTap,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.grey,
+            fontSize: 14,
+          ),
+        ),
+        const SizedBox(height: 4),
+        GestureDetector(
+          onTap: value != 'Non disponible' ? onTap : null,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            decoration: BoxDecoration(
+              color: Colors.grey[50],
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: Colors.grey[200]!),
+            ),
+            child: Row(
+              children: [
+                Icon(icon, color: iconColor, size: 20),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    value,
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: value != 'Non disponible' ? Colors.black : Colors.grey,
+                      decoration: value != 'Non disponible' && onTap != null 
+                          ? TextDecoration.underline 
+                          : TextDecoration.none,
+                    ),
+                  ),
+                ),
+                if (value != 'Non disponible')
+                  IconButton(
+                    icon: const Icon(Icons.content_copy, size: 18),
+                    onPressed: onCopy,
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
+                  ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  // Fonction pour copier dans le presse-papier
+  void _copyToClipboard(BuildContext context, String text, String message) {
+    if (text == 'Non disponible') return;
+    
+    Clipboard.setData(ClipboardData(text: text));
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: const Duration(seconds: 2),
+        behavior: SnackBarBehavior.floating,
+      ),
+    );
+  }
+
+  // Fonction pour lancer un email (simulé)
+  void _launchEmail(String email) {
+    if (email == 'Non disponible') return;
+    
+    // Dans une vraie application, vous utiliseriez:
+    // final Uri emailLaunchUri = Uri(
+    //   scheme: 'mailto',
+    //   path: email,
+    // );
+    // launchUrl(emailLaunchUri);
+    
+    // Pour l'instant, on affiche juste un message
+    print('Ouverture de l\'email: $email');
+  }
+
+  // Fonction pour lancer un appel téléphonique (simulé)
+  void _launchPhoneCall(String phone) {
+    if (phone == 'Non disponible') return;
+    
+    // Dans une vraie application, vous utiliseriez:
+    // final Uri phoneLaunchUri = Uri(
+    //   scheme: 'tel',
+    //   path: phone,
+    // );
+    // launchUrl(phoneLaunchUri);
+    
+    // Pour l'instant, on affiche juste un message
+    print('Appel du numéro: $phone');
   }
 }

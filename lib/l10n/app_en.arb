@@ -7,6 +7,14 @@
   "signup": "Sign Up",
   "email": "Email",
   "emailHint": "Enter your professional email",
+  "emailOrUsername": "Email or Username",
+  "@emailOrUsername": {
+    "description": "Label for email or username input field"
+  },
+  "emailOrUsernameHint": "Enter email or username",
+  "@emailOrUsernameHint": {
+    "description": "Hint text for email or username input field"
+  },
   "password": "Password",
   "passwordHint": "Enter your password",
   "forgotPassword": "Forgot Password?",
@@ -31,6 +39,10 @@
   "enterEmailResetPassword": "Enter your email to reset your password.",
   "@enterEmailResetPassword": {
     "description": "Instruction text in forgot password dialog"
+  },
+  "enterValidEmailForReset": "Please enter a valid email address for password reset",
+  "@enterValidEmailForReset": {
+    "description": "Instruction text for valid email in forgot password"
   },
   "send": "Send",
   "@send": {
@@ -65,11 +77,11 @@
   "save": "Save",
   "cancel": "Cancel",
   "selectLanguage": "Select Language",
-  "language": "Language",
+  "language": "English",
   "english": "English",
   "french": "French",
   "arabic": "Arabic",
-  "discoverComvest": "Discover ComVest",
+  "discoverComvest": "Discover",
   "discoverDescription": "The platform connecting startups, founders and investors",
   "needVisibility": "Need visibility?",
   "visibilityDescription": "Our marketing service will increase your visibility",
@@ -85,6 +97,10 @@
   "fillAllFields": "Please fill in all fields",
   "@fillAllFields": {
     "description": "Error message when form fields are empty"
+  },
+  "invalidEmailOrUsername": "Please enter a valid email or username",
+  "@invalidEmailOrUsername": {
+    "description": "Error message for invalid email or username"
   },
   "invite": "Invite",
   "@invite": {

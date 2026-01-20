@@ -30,6 +30,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get emailHint => 'Enter your professional email';
 
   @override
+  String get emailOrUsername => 'Email or Username';
+
+  @override
+  String get emailOrUsernameHint => 'Enter email or username';
+
+  @override
   String get password => 'Password';
 
   @override
@@ -59,6 +65,10 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get enterEmailResetPassword =>
       'Enter your email to reset your password.';
+
+  @override
+  String get enterValidEmailForReset =>
+      'Please enter a valid email address for password reset';
 
   @override
   String get send => 'Send';
@@ -115,7 +125,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectLanguage => 'Select Language';
 
   @override
-  String get language => 'Language';
+  String get language => 'English';
 
   @override
   String get english => 'English';
@@ -127,7 +137,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get arabic => 'Arabic';
 
   @override
-  String get discoverComvest => 'Discover ComVest';
+  String get discoverComvest => 'Discover';
 
   @override
   String get discoverDescription =>
@@ -173,6 +183,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get fillAllFields => 'Please fill in all fields';
+
+  @override
+  String get invalidEmailOrUsername => 'Please enter a valid email or username';
 
   @override
   String get invite => 'Invite';

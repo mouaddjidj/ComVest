@@ -30,6 +30,12 @@ class AppLocalizationsFr extends AppLocalizations {
   String get emailHint => 'Entrez votre email professionnel';
 
   @override
+  String get emailOrUsername => 'Email ou Nom d\'utilisateur';
+
+  @override
+  String get emailOrUsernameHint => 'Entrez votre email ou nom d\'utilisateur';
+
+  @override
   String get password => 'Mot de passe';
 
   @override
@@ -56,11 +62,15 @@ class AppLocalizationsFr extends AppLocalizations {
   String get noAccountQuestion => 'Vous n\'avez pas de compte ?';
 
   @override
-  String get submit => 'Valider';
+  String get submit => 'Connexion';
 
   @override
   String get enterEmailResetPassword =>
       'Entrez votre email pour réinitialiser votre mot de passe.';
+
+  @override
+  String get enterValidEmailForReset =>
+      'Veuillez entrer une adresse email valide pour réinitialiser votre mot de passe';
 
   @override
   String get send => 'Envoyer';
@@ -117,7 +127,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get selectLanguage => 'Sélectionner la langue';
 
   @override
-  String get language => 'Langue';
+  String get language => 'Français';
 
   @override
   String get english => 'Anglais';
@@ -129,7 +139,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get arabic => 'Arabe';
 
   @override
-  String get discoverComvest => 'Découvrez ComVest';
+  String get discoverComvest => 'Découvrez';
 
   @override
   String get discoverDescription =>
@@ -144,11 +154,11 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get buildRelationships =>
-      'Comment réussir l’entrée de votre projet sur le marché ?';
+      'Comment réussir l\'entrée de votre projet sur le marché ?';
 
   @override
   String get relationshipsDescription =>
-      ' Nous vous accompagnons de la structuration BMC au pitch, pour une insertion réussie sur le marché et l’obtention du label';
+      'Nous vous accompagnons de la structuration BMC au pitch, pour une insertion réussie sur le marché et l\'obtention du label';
 
   @override
   String get getStarted => 'Commencer';
@@ -176,6 +186,10 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get fillAllFields => 'Veuillez remplir tous les champs';
+
+  @override
+  String get invalidEmailOrUsername =>
+      'Veuillez entrer un email ou nom d\'utilisateur valide';
 
   @override
   String get invite => 'Inviter';
