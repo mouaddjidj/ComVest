@@ -835,7 +835,7 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
       experienceLevel: _investmentExperience,
       investmentRange: _investmentRangeController.text,
       selectedIndustries: _selectedIndustries,
-      professionalBackground: _professionalBackgroundController.text,
+      professionalBackground: _professionalBackgroundController.text, id: '', password: '',
     );
 
     // Navigate to dashboard with the investor data

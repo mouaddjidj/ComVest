@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'investorRegister.dart';
+import 'investor_dashboard.dart'; // Import the dashboard
 import '../l10n/app_localizations.dart';
+import '../widgets/models.dart'; // Import models for Investor class
 
 class InvestorLoginScreen extends StatefulWidget {
   const InvestorLoginScreen({super.key});
@@ -271,13 +273,51 @@ class _InvestorLoginScreenState extends State<InvestorLoginScreen> {
       return;
     }
     
-    if (isEmail) {
-      print('Investor login with email: $emailOrUsername');
+    // Hardcoded login check for "user1234" and "1234"
+    if ((emailOrUsername == 'user1234') && (password == '1234')) {
+      print('Login successful! Navigating to investor dashboard...');
+      
+      try {
+        // Create Investor object - ADJUST THIS BASED ON YOUR ACTUAL Investor MODEL
+        // You need to check your models.dart file for the exact constructor
+        final investor = Investor(
+          id: '1',
+          firstName: 'Test',
+          lastName: 'User',
+          email: 'user1234@example.com', username: '', password: '',
+          // Add other fields based on your actual Investor model
+          // Check your models.dart file for the exact field names
+        );
+        
+        // Clear the text fields
+        _emailOrUsernameController.clear();
+        _passwordController.clear();
+        
+        // Navigate to investor dashboard
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+            builder: (_) => InvestorDashboard(investor: investor),
+          ),
+          (route) => false,
+        );
+      } catch (e) {
+        print('Error: $e');
+        // If Investor creation fails, try with minimal data or show error
+        _showErrorDialog(
+          context, 
+          'Login successful but could not create profile. Check Investor model.'
+        );
+      }
+      
     } else {
-      print('Investor login with username: $emailOrUsername');
+      // Failed login attempt - FIXED: Use direct string instead of invalidCredentials
+      print('Login failed for: $emailOrUsername');
+      _showErrorDialog(
+        context, 
+        'Invalid username or password. Please try again.' // Direct string instead of localization
+      );
     }
-    
-    // Add your login logic here
   }
 
   void _showForgotPasswordDialog(BuildContext context) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'companyRegister.dart';
 import '../l10n/app_localizations.dart';
+import 'adsServices.dart'; // Import your existing adsServices.dart file
 
 class TypeSelectionLoginScreen extends StatefulWidget {
   const TypeSelectionLoginScreen({super.key});
@@ -258,9 +259,19 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
       return;
     }
 
-    print('Login attempt with: $emailOrUsername');
-    // Add your authentication logic here
-    // The system will accept both email and username
+    // Check for specific credentials: user1234 and 1234
+    if (emailOrUsername == 'user1234' && password == '1234') {
+      // Navigate to your PricingScreen from adsServices.dart
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (_) => const PricingScreen(), // This is the class name in your adsServices.dart file
+        ),
+      );
+    } else {
+      // Show error for invalid credentials
+      _showErrorDialog('Invalid username or password');
+    }
   }
 
   void _showForgotPasswordDialog(BuildContext context) {

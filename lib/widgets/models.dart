@@ -2,6 +2,7 @@
 import 'dart:ui';
 
 class Investor {
+   final String id;
   final String firstName;
   final String lastName;
   final String email;
@@ -15,6 +16,7 @@ class Investor {
   final DateTime registrationDate;
 
   Investor({
+      required this.id,
     required this.firstName,
     required this.lastName,
     required this.email,
@@ -25,7 +27,7 @@ class Investor {
     this.investmentRange,
     this.selectedIndustries = const [],
     this.professionalBackground,
-    DateTime? registrationDate, required String username,
+    DateTime? registrationDate, required String username, required String password,
   }) : registrationDate = registrationDate ?? DateTime.now();
 }
 
