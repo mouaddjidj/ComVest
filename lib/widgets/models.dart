@@ -47,6 +47,9 @@ class Company {
   final Color cardColor;
   final String logo;
    final String imagePath;
+    final String email;
+  final String phone;
+  final String address;
     
   // New detailed information properties
   final Map<String, String>? detailedInfo;
@@ -90,6 +93,9 @@ class Company {
     this.financials,
     this.tests,
     this.milestones,
+     this.email = '',  // Add this
+    this.phone = '',  // Add this
+    this.address = '', // Add this
   });
    
 }

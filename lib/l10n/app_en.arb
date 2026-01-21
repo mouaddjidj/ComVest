@@ -701,5 +701,22 @@
   "companyOkadooProduct3": "Supplier-buyer connection",
   "companyOkadooUsers": "Not specified",
   "companyOkadooCoverage": "Algeria",
-  "companyOkadooBusinessModel": "Transaction commission + business subscriptions"
+  "companyOkadooBusinessModel": "Transaction commission + business subscriptions",
+   "keyInformation": "Key Information",
+  "businessType": "Business Type",
+  "foundationDate": "Foundation Date",
+  "location": "Location",
+  "employeeCount": "Number of Employees",
+  "annualRevenue": "Annual Revenue",
+  "additionalInformation": "Additional Information",
+  "usersCount": "Users",
+  "contact": "Contact",
+  "companyContactInfo": "Contact Information for",
+  "phone": "Phone",
+  "address": "Address",
+  "numberCopied": "Phone number copied",
+  "addressCopied": "Address copied",
+  "noContactInfoAvailable": "No contact information available",
+  "close": "Close",
+  "description": "Description"
 }

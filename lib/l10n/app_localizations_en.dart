@@ -1924,4 +1924,49 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get companyOkadooBusinessModel =>
       'Transaction commission + business subscriptions';
+
+  @override
+  String get keyInformation => 'Key Information';
+
+  @override
+  String get businessType => 'Business Type';
+
+  @override
+  String get foundationDate => 'Foundation Date';
+
+  @override
+  String get location => 'Location';
+
+  @override
+  String get employeeCount => 'Number of Employees';
+
+  @override
+  String get annualRevenue => 'Annual Revenue';
+
+  @override
+  String get additionalInformation => 'Additional Information';
+
+  @override
+  String get usersCount => 'Users';
+
+  @override
+  String get contact => 'Contact';
+
+  @override
+  String get companyContactInfo => 'Contact Information for';
+
+  @override
+  String get address => 'Address';
+
+  @override
+  String get numberCopied => 'Phone number copied';
+
+  @override
+  String get addressCopied => 'Address copied';
+
+  @override
+  String get noContactInfoAvailable => 'No contact information available';
+
+  @override
+  String get description => 'Description';
 }

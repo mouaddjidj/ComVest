@@ -662,5 +662,23 @@
   "companyOkadooProduct3": "ربط الموردين بالمشترين",
   "companyOkadooUsers": "غير محدد",
   "companyOkadooCoverage": "الجزائر",
-  "companyOkadooBusinessModel": "عمولة على المعاملات + اشتراكات الشركات"
+  "companyOkadooBusinessModel": "عمولة على المعاملات + اشتراكات الشركات",
+    "keyInformation": "المعلومات الرئيسية",
+  "businessType": "نوع الشركة",
+  "foundationDate": "تاريخ التأسيس",
+  "location": "الموقع",
+  "employeeCount": "عدد الموظفين",
+  "annualRevenue": "الإيرادات السنوية",
+  "additionalInformation": "معلومات إضافية",
+  "usersCount": "المستخدمون",
+  "contact": "اتصل",
+  "companyContactInfo": "معلومات الاتصال لـ",
+  "phone": "الهاتف",
+  "address": "العنوان",
+  "numberCopied": "تم نسخ رقم الهاتف",
+  "addressCopied": "تم نسخ العنوان",
+  "noContactInfoAvailable": "لا توجد معلومات اتصال متاحة",
+  "close": "إغلاق",
+  "description": "الوصف"
+
 }

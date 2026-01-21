@@ -1920,4 +1920,49 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get companyOkadooBusinessModel =>
       'عمولة على المعاملات + اشتراكات الشركات';
+
+  @override
+  String get keyInformation => 'المعلومات الرئيسية';
+
+  @override
+  String get businessType => 'نوع الشركة';
+
+  @override
+  String get foundationDate => 'تاريخ التأسيس';
+
+  @override
+  String get location => 'الموقع';
+
+  @override
+  String get employeeCount => 'عدد الموظفين';
+
+  @override
+  String get annualRevenue => 'الإيرادات السنوية';
+
+  @override
+  String get additionalInformation => 'معلومات إضافية';
+
+  @override
+  String get usersCount => 'المستخدمون';
+
+  @override
+  String get contact => 'اتصل';
+
+  @override
+  String get companyContactInfo => 'معلومات الاتصال لـ';
+
+  @override
+  String get address => 'العنوان';
+
+  @override
+  String get numberCopied => 'تم نسخ رقم الهاتف';
+
+  @override
+  String get addressCopied => 'تم نسخ العنوان';
+
+  @override
+  String get noContactInfoAvailable => 'لا توجد معلومات اتصال متاحة';
+
+  @override
+  String get description => 'الوصف';
 }

@@ -1,13 +1,14 @@
 import 'package:comvest/widgets/models.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../l10n/app_localizations.dart';
 
 class CompanyDetailPage extends StatelessWidget {
   final Company company;
   final bool isFollowed;
   final VoidCallback onFollowToggle;
 
-  // Map pour les tailles d'images spécifiques aux entreprises
+  // Map for company-specific image sizes
   final Map<String, BoxFit> companyImageFit = {
     'TalabaStore': BoxFit.contain,
     'TemTem': BoxFit.fitWidth,
@@ -15,37 +16,12 @@ class CompanyDetailPage extends StatelessWidget {
     'Okadoo': BoxFit.fitHeight,
   };
 
-  // Map pour les tailles spécifiques des logos
+  // Map for specific logo sizes
   final Map<String, Size> companyLogoSize = {
     'TalabaStore': const Size(100, 100),
     'TemTem': const Size(90, 90),
     'ALPAY': const Size(80, 80),
     'Okadoo': const Size(70, 70),
-  };
-
-  // Map pour les coordonnées de contact des entreprises
-  final Map<String, Map<String, String>> companyContacts = {
-    'TalabaStore': {
-      'email': 'contact@talabastore.com',
-      'phone': '+213 555 123 456',
-      'address': 'Alger, Algérie',
-    },
-    'TemTem': {
-      'email': 'info@temtem.com',
-      'phone': '+213 555 234 567',
-      'address': 'Oran, Algérie',
-    },
-    'ALPAY': {
-      'email': 'support@alpay.dz',
-      'phone': '+213 555 345 678',
-      'address': 'Alger, Algérie',
-    },
-    'Okadoo': {
-      'email': 'contact@okadoo.dz',
-      'phone': '+213 555 456 789',
-      'address': 'Constantine, Algérie',
-    },
-    // Ajoutez d'autres entreprises ici
   };
 
   CompanyDetailPage({
@@ -57,7 +33,17 @@ class CompanyDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Obtenir la taille spécifique pour cette entreprise
+    final localizations = AppLocalizations.of(context);
+    
+    // Check if localizations is null
+    if (localizations == null) {
+      return Scaffold(
+        appBar: AppBar(title: Text(company.name)),
+        body: const Center(child: CircularProgressIndicator()),
+      );
+    }
+    
+    // Get specific size for this company
     final Size logoSize = companyLogoSize[company.name] ?? const Size(80, 80);
     final BoxFit imageFit = companyImageFit[company.name] ?? BoxFit.contain;
     final double logoFontSize = _getLogoFontSizeForCompany(company.name);
@@ -69,7 +55,7 @@ class CompanyDetailPage extends StatelessWidget {
           IconButton(
             icon: Icon(isFollowed ? Icons.star : Icons.star_border),
             onPressed: onFollowToggle,
-            tooltip: isFollowed ? 'Ne plus suivre' : 'Suivre',
+            tooltip: isFollowed ? localizations.removeFromFavorites : localizations.addToFavorites,
           ),
         ],
       ),
@@ -78,7 +64,7 @@ class CompanyDetailPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Header avec logo et informations principales
+            // Header with logo and main information
             Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
@@ -87,7 +73,7 @@ class CompanyDetailPage extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  // Logo de l'entreprise
+                  // Company logo
                   Container(
                     width: logoSize.width,
                     height: logoSize.height,
@@ -147,7 +133,7 @@ class CompanyDetailPage extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 5),
-                        // Badge pour le type d'entreprise
+                        // Badge for company type
                         Container(
                           padding: const EdgeInsets.symmetric(
                             horizontal: 12,
@@ -178,7 +164,7 @@ class CompanyDetailPage extends StatelessWidget {
 
             // Description
             Text(
-              'Description',
+              localizations.description,
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -196,9 +182,9 @@ class CompanyDetailPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // Informations clés
+            // Key Information
             Text(
-              'Informations clés',
+              localizations.keyInformation,
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -207,7 +193,7 @@ class CompanyDetailPage extends StatelessWidget {
             ),
             const SizedBox(height: 15),
 
-            // Grille d'informations
+            // Information grid
             GridView.count(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
@@ -216,21 +202,21 @@ class CompanyDetailPage extends StatelessWidget {
               mainAxisSpacing: 16,
               childAspectRatio: 2.5,
               children: [
-                _buildDetailItem('Type d\'entreprise', company.type),
-                _buildDetailItem('Secteur', company.sector),
-                _buildCEOItem(),
-                _buildDetailItem('Date de fondation', company.founded),
-                _buildDetailItem('Localisation', company.location),
-                _buildDetailItem('Nombre d\'employés', '${company.employees}'),
-                _buildDetailItem('Valuation', '${company.valuation}B DA'),
-                _buildDetailItem('Revenus annuels', '${company.revenue}B DA'),
+                _buildDetailItem(localizations.businessType, company.type),
+                _buildDetailItem(localizations.sector, company.sector),
+                _buildCEOItem(localizations),
+                _buildDetailItem(localizations.foundationDate, company.founded),
+                _buildDetailItem(localizations.location, company.location),
+                _buildDetailItem(localizations.employeeCount, '${company.employees}'),
+                _buildDetailItem(localizations.valuation, '${company.valuation}B DA'),
+                _buildDetailItem(localizations.annualRevenue, '${company.revenue}B DA'),
               ],
             ),
             const SizedBox(height: 20),
 
-            // Produits & Services
+            // Products & Services
             Text(
-              'Produits & Services',
+              localizations.productsServices,
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -251,14 +237,14 @@ class CompanyDetailPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // Informations supplémentaires
+            // Additional Information
             if (company.website.isNotEmpty ||
                 company.mobileApps.isNotEmpty ||
                 company.users.isNotEmpty ||
                 company.coverage.isNotEmpty ||
                 company.businessModel.isNotEmpty) ...[
               Text(
-                'Informations supplémentaires',
+                localizations.additionalInformation,
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -270,30 +256,29 @@ class CompanyDetailPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   if (company.website.isNotEmpty)
-                    _buildAdditionalInfo('Site web', company.website),
+                    _buildAdditionalInfo(localizations.website, company.website),
                   if (company.mobileApps.isNotEmpty)
-                    _buildAdditionalInfo(
-                        'Applications', company.mobileApps.join(', ')),
+                    _buildMobileAppsInfo(localizations.applications, company.mobileApps),
                   if (company.users.isNotEmpty)
-                    _buildAdditionalInfo('Utilisateurs', company.users),
+                    _buildAdditionalInfo(localizations.usersCount, company.users),
                   if (company.coverage.isNotEmpty)
-                    _buildAdditionalInfo('Couverture', company.coverage),
+                    _buildAdditionalInfo(localizations.coverage, company.coverage),
                   if (company.businessModel.isNotEmpty)
                     _buildAdditionalInfo(
-                        'Modèle économique', company.businessModel),
+                        localizations.businessModel, company.businessModel),
                 ],
               ),
             ],
             const SizedBox(height: 30),
 
-            // Boutons d'action
+            // Action buttons
             Row(
               children: [
                 Expanded(
                   child: OutlinedButton.icon(
-                    onPressed: () => _showContactDialog(context),
+                    onPressed: () => _showContactDialog(context, localizations),
                     icon: const Icon(Icons.email),
-                    label: const Text('Contacter'),
+                    label: Text(localizations.contact),
                     style: OutlinedButton.styleFrom(
                       side: BorderSide(color: company.cardColor),
                       foregroundColor: company.cardColor,
@@ -307,7 +292,7 @@ class CompanyDetailPage extends StatelessWidget {
                       ? OutlinedButton.icon(
                           onPressed: onFollowToggle,
                           icon: const Icon(Icons.star),
-                          label: const Text('Ne plus suivre'),
+                          label: Text(localizations.removeFromFavorites),
                           style: OutlinedButton.styleFrom(
                             side: const BorderSide(color: Color(0xFFF1C40F)),
                             foregroundColor: const Color(0xFFF1C40F),
@@ -317,7 +302,7 @@ class CompanyDetailPage extends StatelessWidget {
                       : ElevatedButton.icon(
                           onPressed: onFollowToggle,
                           icon: const Icon(Icons.star_border),
-                          label: const Text('Suivre'),
+                          label: Text(localizations.addToFavorites),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: company.cardColor,
                             foregroundColor: Colors.white,
@@ -371,7 +356,7 @@ class CompanyDetailPage extends StatelessWidget {
     );
   }
 
-  Widget _buildCEOItem() {
+  Widget _buildCEOItem(AppLocalizations localizations) {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
@@ -435,7 +420,38 @@ class CompanyDetailPage extends StatelessWidget {
     );
   }
 
-  // Fonction pour obtenir la couleur du type
+  // NEW: Special widget for mobile apps (List<String>)
+  Widget _buildMobileAppsInfo(String title, List<String> apps) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+            ),
+          ),
+          const SizedBox(height: 4),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: apps.map((app) => Text(
+              '• $app',
+              style: const TextStyle(
+                fontSize: 14,
+                color: Colors.black87,
+              ),
+            )).toList(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // Function to get type color
   Color _getTypeColor(String type) {
     String typeLower = type.toLowerCase();
     
@@ -456,7 +472,7 @@ class CompanyDetailPage extends StatelessWidget {
     }
   }
 
-  // Fonction pour obtenir la taille de police du logo
+  // Function to get logo font size
   double _getLogoFontSizeForCompany(String companyName) {
     switch (companyName) {
       case 'TalabaStore':
@@ -472,75 +488,76 @@ class CompanyDetailPage extends StatelessWidget {
     }
   }
 
-  // Fonction pour afficher la boîte de dialogue de contact
-  void _showContactDialog(BuildContext context) {
-    final contactInfo = companyContacts[company.name] ?? {};
-    final email = contactInfo['email'] ?? 'Non disponible';
-    final phone = contactInfo['phone'] ?? 'Non disponible';
-    final address = contactInfo['address'] ?? 'Non disponible';
-
+  // Function to show contact dialog
+  void _showContactDialog(BuildContext context, AppLocalizations localizations) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Coordonnées de ${company.name}'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Email
-            _buildContactRow(
-              icon: Icons.email,
-              iconColor: Colors.blue,
-              title: 'Email',
-              value: email,
-              onCopy: () => _copyToClipboard(context, email, 'Email copié'),
-              onTap: () => _launchEmail(email),
-            ),
-            
-            const SizedBox(height: 16),
-            
-            // Téléphone
-            _buildContactRow(
-              icon: Icons.phone,
-              iconColor: Colors.green,
-              title: 'Téléphone',
-              value: phone,
-              onCopy: () => _copyToClipboard(context, phone, 'Numéro copié'),
-              onTap: () => _launchPhoneCall(phone),
-            ),
-            
-            const SizedBox(height: 16),
-            
-            // Adresse
-            _buildContactRow(
-              icon: Icons.location_on,
-              iconColor: Colors.orange,
-              title: 'Adresse',
-              value: address,
-              onCopy: () => _copyToClipboard(context, address, 'Adresse copiée'),
-            ),
-            
-            if (email == 'Non disponible' && phone == 'Non disponible')
-              const Padding(
-                padding: EdgeInsets.only(top: 16),
-                child: Text(
-                  'Aucune information de contact disponible',
-                  style: TextStyle(color: Colors.grey),
+        title: Text('${localizations.companyContactInfo} ${company.name}'),
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Email
+              if (company.email.isNotEmpty)
+                _buildContactRow(
+                  icon: Icons.email,
+                  iconColor: Colors.blue,
+                  title: localizations.email,
+                  value: company.email,
+                  onCopy: () => _copyToClipboard(context, company.email, 'Email copié'),
+                  onTap: () => _launchEmail(context, company.email),
                 ),
-              ),
-          ],
+              
+              if (company.email.isNotEmpty) const SizedBox(height: 16),
+              
+              // Phone
+              if (company.phone.isNotEmpty)
+                _buildContactRow(
+                  icon: Icons.phone,
+                  iconColor: Colors.green,
+                  title: localizations.phone,
+                  value: company.phone,
+                  onCopy: () => _copyToClipboard(context, company.phone, 'Numéro copié'),
+                  onTap: () => _launchPhoneCall(context, company.phone),
+                ),
+              
+              if (company.phone.isNotEmpty) const SizedBox(height: 16),
+              
+              // Address
+              if (company.address.isNotEmpty)
+                _buildContactRow(
+                  icon: Icons.location_on,
+                  iconColor: Colors.orange,
+                  title: localizations.address,
+                  value: company.address,
+                  onCopy: () => _copyToClipboard(context, company.address, 'Adresse copiée'),
+                ),
+              
+              // If no contact info is available
+              if (company.email.isEmpty && company.phone.isEmpty && company.address.isEmpty)
+                Padding(
+                  padding: const EdgeInsets.only(top: 16),
+                  child: Text(
+                    localizations.noContactInfoAvailable,
+                    style: const TextStyle(color: Colors.grey),
+                  ),
+                ),
+            ],
+          ),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Fermer'),
+            child: Text(localizations.close),
           ),
         ],
       ),
     );
   }
 
-  // Widget pour une ligne de contact
+  // Widget for a contact row
   Widget _buildContactRow({
     required IconData icon,
     required Color iconColor,
@@ -562,7 +579,7 @@ class CompanyDetailPage extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         GestureDetector(
-          onTap: value != 'Non disponible' ? onTap : null,
+          onTap: onTap,
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             decoration: BoxDecoration(
@@ -579,20 +596,19 @@ class CompanyDetailPage extends StatelessWidget {
                     value,
                     style: TextStyle(
                       fontSize: 16,
-                      color: value != 'Non disponible' ? Colors.black : Colors.grey,
-                      decoration: value != 'Non disponible' && onTap != null 
+                      color: Colors.black,
+                      decoration: onTap != null 
                           ? TextDecoration.underline 
                           : TextDecoration.none,
                     ),
                   ),
                 ),
-                if (value != 'Non disponible')
-                  IconButton(
-                    icon: const Icon(Icons.content_copy, size: 18),
-                    onPressed: onCopy,
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(),
-                  ),
+                IconButton(
+                  icon: const Icon(Icons.content_copy, size: 18),
+                  onPressed: onCopy,
+                  padding: EdgeInsets.zero,
+                  constraints: const BoxConstraints(),
+                ),
               ],
             ),
           ),
@@ -601,9 +617,9 @@ class CompanyDetailPage extends StatelessWidget {
     );
   }
 
-  // Fonction pour copier dans le presse-papier
+  // Function to copy to clipboard
   void _copyToClipboard(BuildContext context, String text, String message) {
-    if (text == 'Non disponible') return;
+    if (text.isEmpty) return;
     
     Clipboard.setData(ClipboardData(text: text));
     ScaffoldMessenger.of(context).showSnackBar(
@@ -615,33 +631,43 @@ class CompanyDetailPage extends StatelessWidget {
     );
   }
 
-  // Fonction pour lancer un email (simulé)
-  void _launchEmail(String email) {
-    if (email == 'Non disponible') return;
+  // Function to launch email (simulated)
+  void _launchEmail(BuildContext context, String email) {
+    if (email.isEmpty) return;
     
-    // Dans une vraie application, vous utiliseriez:
+    // In a real app, you would use:
     // final Uri emailLaunchUri = Uri(
     //   scheme: 'mailto',
     //   path: email,
     // );
     // launchUrl(emailLaunchUri);
     
-    // Pour l'instant, on affiche juste un message
-    print('Ouverture de l\'email: $email');
+    // For now, show a message
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Ouverture de l\'email: $email'),
+        duration: const Duration(seconds: 2),
+      ),
+    );
   }
 
-  // Fonction pour lancer un appel téléphonique (simulé)
-  void _launchPhoneCall(String phone) {
-    if (phone == 'Non disponible') return;
+  // Function to launch phone call (simulated)
+  void _launchPhoneCall(BuildContext context, String phone) {
+    if (phone.isEmpty) return;
     
-    // Dans une vraie application, vous utiliseriez:
+    // In a real app, you would use:
     // final Uri phoneLaunchUri = Uri(
     //   scheme: 'tel',
     //   path: phone,
     // );
     // launchUrl(phoneLaunchUri);
     
-    // Pour l'instant, on affiche juste un message
-    print('Appel du numéro: $phone');
+    // For now, show a message
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Appel du numéro: $phone'),
+        duration: const Duration(seconds: 2),
+      ),
+    );
   }
 }

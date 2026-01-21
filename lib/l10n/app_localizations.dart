@@ -3849,6 +3849,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Transaction commission + business subscriptions'**
   String get companyOkadooBusinessModel;
+
+  /// No description provided for @keyInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Key Information'**
+  String get keyInformation;
+
+  /// No description provided for @businessType.
+  ///
+  /// In en, this message translates to:
+  /// **'Business Type'**
+  String get businessType;
+
+  /// No description provided for @foundationDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Foundation Date'**
+  String get foundationDate;
+
+  /// No description provided for @location.
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get location;
+
+  /// No description provided for @employeeCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Number of Employees'**
+  String get employeeCount;
+
+  /// No description provided for @annualRevenue.
+  ///
+  /// In en, this message translates to:
+  /// **'Annual Revenue'**
+  String get annualRevenue;
+
+  /// No description provided for @additionalInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Additional Information'**
+  String get additionalInformation;
+
+  /// No description provided for @usersCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Users'**
+  String get usersCount;
+
+  /// No description provided for @contact.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact'**
+  String get contact;
+
+  /// No description provided for @companyContactInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Information for'**
+  String get companyContactInfo;
+
+  /// No description provided for @address.
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get address;
+
+  /// No description provided for @numberCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number copied'**
+  String get numberCopied;
+
+  /// No description provided for @addressCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Address copied'**
+  String get addressCopied;
+
+  /// No description provided for @noContactInfoAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No contact information available'**
+  String get noContactInfoAvailable;
+
+  /// No description provided for @description.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get description;
 }
 
 class _AppLocalizationsDelegate

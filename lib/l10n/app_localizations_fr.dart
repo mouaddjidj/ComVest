@@ -718,16 +718,16 @@ class AppLocalizationsFr extends AppLocalizations {
   String get resources => 'Ressources';
 
   @override
-  String get overview => 'Aperçu';
+  String get overview => 'Vue d\'ensemble';
 
   @override
   String get activeService => 'Service Actif';
 
   @override
-  String get daysRemaining => 'Jours restants';
+  String get daysRemaining => 'jours restants';
 
   @override
-  String get globalProgress => 'Progrès global';
+  String get globalProgress => 'Progression Globale';
 
   @override
   String get servicesCompleted => 'Services terminés';
@@ -739,7 +739,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get pending => 'En attente';
 
   @override
-  String get recentActivities => 'Activités récentes';
+  String get recentActivities => 'Activités Récentes';
 
   @override
   String get viewAll => 'Voir tout';
@@ -748,7 +748,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get noRecentActivity => 'Aucune activité récente';
 
   @override
-  String get quickActions => 'Actions rapides';
+  String get quickActions => 'Actions Rapides';
 
   @override
   String get report => 'Rapport';
@@ -886,7 +886,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get gotIt => 'COMPRIS';
 
   @override
-  String get dashboardTitle => 'Tableau de bord';
+  String get dashboardTitle => 'Tableau de Bord';
 
   @override
   String get startDate => 'Date de début';
@@ -934,7 +934,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get payAnnually => 'PAYER ANNUEL';
 
   @override
-  String get userGuide => 'Guide de l\'utilisateur';
+  String get userGuide => 'Guide utilisateur';
 
   @override
   String get completeDocumentation => 'Documentation complète';
@@ -976,7 +976,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get profile => 'Profil';
 
   @override
-  String get days => 'Jours';
+  String get days => 'jours';
 
   @override
   String get na => 'N/D';
@@ -1046,7 +1046,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get newReport => 'Nouveau rapport';
 
   @override
-  String get schedule => 'Planifier';
+  String get schedule => 'Programmer';
 
   @override
   String get export => 'Exporter';
@@ -1945,4 +1945,50 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get companyOkadooBusinessModel =>
       'Commission sur transactions + abonnements entreprises';
+
+  @override
+  String get keyInformation => 'Informations clés';
+
+  @override
+  String get businessType => 'Type d\'entreprise';
+
+  @override
+  String get foundationDate => 'Date de fondation';
+
+  @override
+  String get location => 'Localisation';
+
+  @override
+  String get employeeCount => 'Nombre d\'employés';
+
+  @override
+  String get annualRevenue => 'Revenus annuels';
+
+  @override
+  String get additionalInformation => 'Informations supplémentaires';
+
+  @override
+  String get usersCount => 'Utilisateurs';
+
+  @override
+  String get contact => 'Contacter';
+
+  @override
+  String get companyContactInfo => 'Coordonnées de';
+
+  @override
+  String get address => 'Adresse';
+
+  @override
+  String get numberCopied => 'Numéro copié';
+
+  @override
+  String get addressCopied => 'Adresse copiée';
+
+  @override
+  String get noContactInfoAvailable =>
+      'Aucune information de contact disponible';
+
+  @override
+  String get description => 'Description';
 }
