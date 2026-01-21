@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'companyRegister.dart';
 import '../l10n/app_localizations.dart';
+import 'adsServices.dart'; // Import your existing adsServices.dart file
 
 class TypeSelectionLoginScreen extends StatefulWidget {
   const TypeSelectionLoginScreen({super.key});
@@ -11,7 +12,7 @@ class TypeSelectionLoginScreen extends StatefulWidget {
 
 class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
   bool _isPasswordVisible = false;
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _emailOrUsernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   @override
@@ -68,7 +69,7 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                     children: [
                       const SizedBox(height: 30),
                       Text(
-                        localizations.companyLogin,
+                        localizations.companyLogin, // Using localization
                         style: const TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
@@ -76,18 +77,10 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                         ),
                       ),
                       const SizedBox(height: 10),
+                      
+                      // Email OR Username Field
                       Text(
-                        localizations.connectCompanyAccount,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      const SizedBox(height: 30),
-
-                      // Email
-                      Text(
-                        localizations.email,
+                        localizations.emailOrUsername, // Using localization
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
@@ -102,17 +95,17 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                           border: Border.all(color: Colors.grey[300]!),
                         ),
                         child: TextField(
-                          controller: _emailController,
+                          controller: _emailOrUsernameController,
                           decoration: InputDecoration(
-                            hintText: localizations.emailHint,
+                            hintText: localizations.emailOrUsernameHint, // Using localization
                             border: InputBorder.none,
                             contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                             prefixIcon: Icon(
-                              Icons.email_outlined,
+                              Icons.person_outline,
                               color: Colors.grey[600],
                             ),
                           ),
-                          keyboardType: TextInputType.emailAddress,
+                          keyboardType: TextInputType.text,
                         ),
                       ),
                       const SizedBox(height: 20),
@@ -208,9 +201,25 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
 
                       const SizedBox(height: 20),
 
-                      // Create Account
-                      Center(
-                        child: TextButton(
+                      // Don't have account question
+                      Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          localizations.noAccountQuestion,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            color: Colors.black87,
+                          ),
+                        ),
+                      ),
+
+                      const SizedBox(height: 20),
+
+                      // Create Account Button
+                      SizedBox(
+                        width: double.infinity,
+                        height: 60,
+                        child: ElevatedButton(
                           onPressed: () {
                             Navigator.push(
                               context,
@@ -219,21 +228,23 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                               ),
                             );
                           },
-                          child: RichText(
-                            text: TextSpan(
-                              text: localizations.noAccountQuestion,
-                              style: const TextStyle(
-                                color: Colors.grey,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            foregroundColor: const Color.fromARGB(255, 117, 51, 232),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              side: const BorderSide(
+                                color: Color.fromARGB(255, 117, 51, 232),
+                                width: 2,
                               ),
-                              children: [
-                                TextSpan(
-                                  text: localizations.createAccount,
-                                  style: const TextStyle(
-                                    color: Color.fromARGB(255, 117, 51, 232),
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
+                            ),
+                            elevation: 0,
+                          ),
+                          child: Text(
+                            localizations.createAccount,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
@@ -250,16 +261,31 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
   }
 
   void _login() {
-    final email = _emailController.text.trim();
-    final password = _passwordController.text.trim();
+  final emailOrUsername = _emailOrUsernameController.text.trim();
+  final password = _passwordController.text.trim();
+  
+  // Get localizations from the current context
+  final localizations = AppLocalizations.of(context)!;
 
-    if (email.isEmpty || password.isEmpty) {
-      _showErrorDialog('Veuillez remplir tous les champs');
-      return;
-    }
-
-    print('Tentative de connexion: $email');
+  if (emailOrUsername.isEmpty || password.isEmpty) {
+    _showErrorDialog(localizations.fillAllFields);
+    return;
   }
+
+  // Check for specific credentials: user1234 and 1234
+  if (emailOrUsername == 'user1234' && password == '1234') {
+    // Navigate to your PricingScreen from adsServices.dart
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const PricingScreen(), // This is the class name in your adsServices.dart file
+      ),
+    );
+  } else {
+    // Show error for invalid credentials
+    _showErrorDialog(localizations.invalidEmailOrUsername);
+  }
+}
 
   void _showForgotPasswordDialog(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
@@ -267,9 +293,26 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
     showDialog(
       context: context,
       builder: (BuildContext context) {
+        String emailOrUsername = '';
         return AlertDialog(
           title: Text(localizations.forgotPassword),
-          content: Text(localizations.enterEmailResetPassword),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(localizations.enterEmailResetPassword),
+              const SizedBox(height: 15),
+              TextField(
+                onChanged: (value) => emailOrUsername = value,
+                decoration: InputDecoration(
+                  hintText: localizations.emailOrUsername,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              ),
+            ],
+          ),
           actions: [
             TextButton(
               onPressed: () {
@@ -279,8 +322,12 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
             ),
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop();
-                _showSuccessDialog(localizations.instructionsSent);
+                if (emailOrUsername.isNotEmpty) {
+                  Navigator.of(context).pop();
+                  _showSuccessDialog(localizations.instructionsSent);
+                } else {
+                  _showErrorDialog(localizations.enterValidEmailForReset);
+                }
               },
               child: Text(localizations.send),
             ),
@@ -291,14 +338,12 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
   }
 
   void _showErrorDialog(String message) {
-    // ADD this line to get localizations
     final localizations = AppLocalizations.of(context)!;
     
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          // UPDATED: Use localization
           title: Text(localizations.error),
           content: Text(message),
           actions: [
@@ -306,7 +351,6 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              // UPDATED: Use localization
               child: Text(localizations.ok),
             ),
           ],
@@ -316,14 +360,12 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
   }
 
   void _showSuccessDialog(String message) {
-    // ADD this line to get localizations
     final localizations = AppLocalizations.of(context)!;
     
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          // UPDATED: Use localization
           title: Text(localizations.success),
           content: Text(message),
           actions: [
@@ -331,7 +373,6 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              // UPDATED: Use localization
               child: Text(localizations.ok),
             ),
           ],
@@ -342,7 +383,7 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
 
   @override
   void dispose() {
-    _emailController.dispose();
+    _emailOrUsernameController.dispose();
     _passwordController.dispose();
     super.dispose();
   }

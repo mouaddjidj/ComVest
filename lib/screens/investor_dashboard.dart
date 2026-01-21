@@ -1,3 +1,4 @@
+import 'package:comvest/screens/InvestorLogin.dart';
 import 'package:comvest/screens/company_detail_page.dart';
 import 'package:comvest/widgets/models.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +6,7 @@ import 'analyse_marcket.dart';
 import 'settings_page.dart';
 import 'followed_companies.dart';
 import 'actualites_page.dart';
-import 'portefeuille_page.dart';
+
 
 class InvestorDashboard extends StatefulWidget {
   final Investor investor;
@@ -341,20 +342,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
               );
             },
           ),
-          ListTile(
-            leading: const Icon(Icons.account_balance_wallet,
-                color: Color(0xFF7533E8)),
-            title: const Text('Portefeuille'),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => PortefeuillePage(investor: widget.investor),
-                ),
-              );
-            },
-          ),
+          // SECTION PORTEFEUILLE SUPPRIMÉE ICI
           ListTile(
             leading: const Icon(Icons.newspaper, color: Color(0xFF7533E8)),
             title: const Text('Actualités'),
@@ -1395,32 +1383,44 @@ Widget _buildCompanyCard(Company company) {
   }
 
   void _showLogoutConfirmation() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Déconnexion'),
-          content: const Text('Êtes-vous sûr de vouloir vous déconnecter ?'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('Annuler'),
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('Déconnexion'),
+        content: const Text('Êtes-vous sûr de vouloir vous déconnecter ?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Annuler'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              // Close the dialog
+              Navigator.pop(context);
+              
+              // IMPORTANT: Add a small delay to ensure dialog is closed
+              Future.delayed(const Duration(milliseconds: 100), () {
+                // Navigate to login and clear everything
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const InvestorLoginScreen(),
+                  ),
+                  (route) => false,
+                );
+              });
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF7533E8),
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context); // Ferme la dialog
-                Navigator.popUntil(context, (route) => route.isFirst);
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF7533E8),
-              ),
-              child: const Text('Déconnexion'),
-            ),
-          ],
-        );
-      },
-    );
-  }
+            child: const Text('Déconnexion'),
+          ),
+        ],
+      );
+    },
+  );
+}
 
   void _showFilterDialog() {
     showDialog(
@@ -1777,4 +1777,4 @@ class _CompanySearchDelegate extends SearchDelegate<String> {
       },
     );
   }
-} 
+}

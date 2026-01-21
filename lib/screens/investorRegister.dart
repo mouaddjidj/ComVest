@@ -1,5 +1,7 @@
+import 'package:comvest/l10n/app_localizations.dart';
 import 'package:comvest/widgets/models.dart';
 import 'package:flutter/material.dart';
+  // AJOUTEZ CET IMPORT
 import 'investor_dashboard.dart';
 
 class CreateInvestorAccount extends StatefulWidget {
@@ -11,6 +13,7 @@ class CreateInvestorAccount extends StatefulWidget {
 
 class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
   int _currentStep = 0;
+  final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _firstNameController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -27,44 +30,111 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
   bool _isPasswordVisible = false;
   bool _isConfirmPasswordVisible = false;
 
-  final List<String> _countries = [
-    'France', 'Belgique', 'Suisse', 'Canada', 'Allemagne', 'Espagne', 
-    'Italie', 'Royaume-Uni', 'États-Unis', 'Maroc', 'Tunisie', 'Algérie'
-  ];
+  // LISTES AVEC LOCALISATION
+  // Définir les clés de base (en français comme référence)
+final List<String> _countryKeys = [
+  'France', 'Belgique', 'Suisse', 'Canada', 'Allemagne', 'Espagne',
+  'Italie', 'Royaume-Uni', 'États-Unis', 'Maroc', 'Tunisie', 'Algérie'
+];
 
-  final List<String> _investorTypes = [
-    'Investisseur privé',
-    'Business Angel',
-    'Fonds d\'investissement',
-    'Family Office',
-    'Investisseur institutionnel',
-    'Corporate Venture'
-  ];
+// Traductions par langue
+final Map<String, Map<String, String>> _countryTranslations = {
+  'en': {
+    'France': 'France',
+    'Belgique': 'Belgium',
+    'Suisse': 'Switzerland',
+    'Canada': 'Canada',
+    'Allemagne': 'Germany',
+    'Espagne': 'Spain',
+    'Italie': 'Italy',
+    'Royaume-Uni': 'United Kingdom',
+    'États-Unis': 'United States',
+    'Maroc': 'Morocco',
+    'Tunisie': 'Tunisia',
+    'Algérie': 'Algeria',
+  },
+  'fr': {
+    'France': 'France',
+    'Belgique': 'Belgique',
+    'Suisse': 'Suisse',
+    'Canada': 'Canada',
+    'Allemagne': 'Allemagne',
+    'Espagne': 'Espagne',
+    'Italie': 'Italie',
+    'Royaume-Uni': 'Royaume-Uni',
+    'États-Unis': 'États-Unis',
+    'Maroc': 'Maroc',
+    'Tunisie': 'Tunisie',
+    'Algérie': 'Algérie',
+  },
+  'ar': {
+    'France': 'فرنسا',
+    'Belgique': 'بلجيكا',
+    'Suisse': 'سويسرا',
+    'Canada': 'كندا',
+    'Allemagne': 'ألمانيا',
+    'Espagne': 'إسبانيا',
+    'Italie': 'إيطاليا',
+    'Royaume-Uni': 'المملكة المتحدة',
+    'États-Unis': 'الولايات المتحدة',
+    'Maroc': 'المغرب',
+    'Tunisie': 'تونس',
+    'Algérie': 'الجزائر',
+  },
+};
 
-  final List<String> _experienceLevels = [
-    'Débutant (0-2 ans)',
-    'Intermédiaire (2-5 ans)',
-    'Expérimenté (5-10 ans)',
-    'Expert (10+ ans)'
-  ];
+List<String> _getCountries(BuildContext context) {
+  final locale = Localizations.localeOf(context).languageCode;
+  final translations = _countryTranslations[locale] ?? _countryTranslations['en']!;
+  
+  // Traduit chaque pays
+  return _countryKeys.map((key) => translations[key]!).toList();
+}
 
-  final List<String> _industries = [
-    'Technologie',
-    'Santé/Biotech',
-    'Énergie/Environnement',
-    'Finance/Fintech',
-    'Immobilier',
-    'Commerce de détail',
-    'Industrie',
-    'Services professionnels',
-    'Médias/Communication',
-    'Tourisme'
-  ];
+  List<String> _getInvestorTypes(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return [
+      l10n.privateInvestor,
+      l10n.businessAngel,
+      l10n.investmentFund,
+      l10n.familyOffice,
+      l10n.institutionalInvestor,
+      l10n.corporateVenture
+    ];
+  }
+
+  List<String> _getExperienceLevels(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return [
+      l10n.beginnerExperience,
+      l10n.intermediateExperience,
+      l10n.experiencedExperience,
+      l10n.expertExperience
+    ];
+  }
+
+  List<String> _getIndustries(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return [
+      l10n.technologySector,
+      l10n.healthBiotechSector,
+      l10n.energyEnvironmentSector,
+      l10n.financeFintechSector,
+      l10n.realEstateSector,
+      l10n.retailSector,
+      l10n.industrySector,
+      l10n.professionalServicesSector,
+      l10n.mediaCommunicationSector,
+      l10n.tourismSector
+    ];
+  }
 
   final List<String> _selectedIndustries = [];
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -74,9 +144,9 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
           icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text(
-          'Créer un compte investisseur',
-          style: TextStyle(
+        title: Text(
+          l10n.createInvestorAccountTitle,
+          style: const TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
           ),
@@ -94,9 +164,9 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _buildStepIndicator(0, 'Profil'),
-                _buildStepIndicator(1, 'Investissement'),
-                _buildStepIndicator(2, 'Sécurité'),
+                _buildStepIndicator(context, 0, l10n.profileStep),
+                _buildStepIndicator(context, 1, l10n.investmentStep),
+                _buildStepIndicator(context, 2, l10n.securityStep),
               ],
             ),
           ),
@@ -104,7 +174,7 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(20.0),
-              child: _buildStepContent(),
+              child: _buildStepContent(context),
             ),
           ),
         ],
@@ -125,9 +195,9 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     side: const BorderSide(color: Color(0xFF7533E8)),
                   ),
-                  child: const Text(
-                    'Retour',
-                    style: TextStyle(
+                  child: Text(
+                    l10n.backButton,
+                    style: const TextStyle(
                       color: Color(0xFF7533E8),
                       fontWeight: FontWeight.bold,
                     ),
@@ -143,7 +213,7 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
                   padding: const EdgeInsets.symmetric(vertical: 16),
                 ),
                 child: Text(
-                  _currentStep == 2 ? 'Créer le compte' : 'Continuer',
+                  _currentStep == 2 ? l10n.createAccountButton : l10n.continueButton,
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -157,7 +227,7 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
     );
   }
 
-  Widget _buildStepIndicator(int stepNumber, String title) {
+  Widget _buildStepIndicator(BuildContext context, int stepNumber, String title) {
     bool isActive = stepNumber == _currentStep;
     bool isCompleted = stepNumber < _currentStep;
     
@@ -214,45 +284,73 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
     );
   }
 
-  Widget _buildStepContent() {
+  Widget _buildStepContent(BuildContext context) {
     switch (_currentStep) {
       case 0:
-        return _buildStep1();
+        return _buildStep1(context);
       case 1:
-        return _buildStep2();
+        return _buildStep2(context);
       case 2:
-        return _buildStep3();
+        return _buildStep3(context);
       default:
-        return _buildStep1();
+        return _buildStep1(context);
     }
   }
 
-  Widget _buildStep1() {
+  Widget _buildStep1(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Informations personnelles',
-          style: TextStyle(
+        Text(
+          l10n.personalInformation,
+          style: const TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
         ),
         const SizedBox(height: 16),
-        const Text(
-          'Créez votre profil d\'investisseur',
-          style: TextStyle(
+        Text(
+          l10n.createInvestorProfile,
+          style: const TextStyle(
             fontSize: 16,
             color: Colors.grey,
           ),
         ),
         const SizedBox(height: 30),
 
+        // Username
+        Text(
+           l10n.usernameLabel,
+          style: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+            color: Colors.black87,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey[300]!),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: TextField(
+            controller: _usernameController,
+            decoration: InputDecoration(
+              hintText: l10n.usernameHintInvestor,
+              border: InputBorder.none,
+              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            ),
+          ),
+        ),
+        const SizedBox(height: 20),
+
         // First Name
-        const Text(
-          "Prénom",
-          style: TextStyle(
+        Text(
+          l10n.firstName,
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
             color: Colors.black87,
@@ -266,19 +364,19 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
           ),
           child: TextField(
             controller: _firstNameController,
-            decoration: const InputDecoration(
-              hintText: 'Entrez votre prénom',
+            decoration: InputDecoration(
+              hintText: l10n.firstNameHint,
               border: InputBorder.none,
-              contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             ),
           ),
         ),
         const SizedBox(height: 20),
 
         // Last Name
-        const Text(
-          "Nom",
-          style: TextStyle(
+        Text(
+          l10n.lastName,
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
             color: Colors.black87,
@@ -292,19 +390,19 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
           ),
           child: TextField(
             controller: _lastNameController,
-            decoration: const InputDecoration(
-              hintText: 'Entrez votre nom',
+            decoration: InputDecoration(
+              hintText: l10n.lastNameHint,
               border: InputBorder.none,
-              contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             ),
           ),
         ),
         const SizedBox(height: 20),
 
         // Email
-        const Text(
-          "Email",
-          style: TextStyle(
+        Text(
+          l10n.email,
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
             color: Colors.black87,
@@ -318,10 +416,10 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
           ),
           child: TextField(
             controller: _emailController,
-            decoration: const InputDecoration(
-              hintText: 'Entrez votre email',
+            decoration: InputDecoration(
+              hintText: l10n.emailHintInvestor,
               border: InputBorder.none,
-              contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             ),
             keyboardType: TextInputType.emailAddress,
           ),
@@ -329,9 +427,9 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
         const SizedBox(height: 20),
 
         // Phone
-        const Text(
-          "Téléphone",
-          style: TextStyle(
+        Text(
+          l10n.phone,
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
             color: Colors.black87,
@@ -345,10 +443,10 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
           ),
           child: TextField(
             controller: _phoneController,
-            decoration: const InputDecoration(
-              hintText: 'Entrez votre numéro de téléphone',
+            decoration: InputDecoration(
+              hintText: l10n.phoneHintInvestor,
               border: InputBorder.none,
-              contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             ),
             keyboardType: TextInputType.phone,
           ),
@@ -356,9 +454,9 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
         const SizedBox(height: 20),
 
         // Country
-        const Text(
-          "Pays de résidence",
-          style: TextStyle(
+        Text(
+          l10n.countryOfResidence,
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
             color: Colors.black87,
@@ -374,12 +472,12 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
           child: DropdownButtonHideUnderline(
             child: DropdownButton<String>(
               isExpanded: true,
-              hint: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: Text('Sélectionnez votre pays'),
+              hint: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(l10n.selectCountryHint),
               ),
               value: _selectedCountry,
-              items: _countries.map((String country) {
+              items: _getCountries(context).map((String country) {
                 return DropdownMenuItem<String>(
                   value: country,
                   child: Padding(
@@ -400,22 +498,24 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
     );
   }
 
-  Widget _buildStep2() {
+  Widget _buildStep2(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Profil d\'investissement',
-          style: TextStyle(
+        Text(
+          l10n.investmentProfile,
+          style: const TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
         ),
         const SizedBox(height: 16),
-        const Text(
-          'Définissez vos préférences d\'investissement',
-          style: TextStyle(
+        Text(
+          l10n.defineInvestmentPreferences,
+          style: const TextStyle(
             fontSize: 16,
             color: Colors.grey,
           ),
@@ -423,9 +523,9 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
         const SizedBox(height: 30),
 
         // Investor Type
-        const Text(
-          "Type d'investisseur",
-          style: TextStyle(
+        Text(
+          l10n.investorType,
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
             color: Colors.black87,
@@ -441,12 +541,12 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
           child: DropdownButtonHideUnderline(
             child: DropdownButton<String>(
               isExpanded: true,
-              hint: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: Text('Sélectionnez votre type'),
+              hint: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(l10n.selectInvestorTypeHint),
               ),
               value: _investorType,
-              items: _investorTypes.map((String type) {
+              items: _getInvestorTypes(context).map((String type) {
                 return DropdownMenuItem<String>(
                   value: type,
                   child: Padding(
@@ -466,9 +566,9 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
         const SizedBox(height: 20),
 
         // Investment Experience
-        const Text(
-          "Expérience en investissement",
-          style: TextStyle(
+        Text(
+          l10n.investmentExperience,
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
             color: Colors.black87,
@@ -484,12 +584,12 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
           child: DropdownButtonHideUnderline(
             child: DropdownButton<String>(
               isExpanded: true,
-              hint: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: Text('Sélectionnez votre niveau d\'expérience'),
+              hint: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(l10n.selectExperienceHint),
               ),
               value: _investmentExperience,
-              items: _experienceLevels.map((String level) {
+              items: _getExperienceLevels(context).map((String level) {
                 return DropdownMenuItem<String>(
                   value: level,
                   child: Padding(
@@ -509,9 +609,9 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
         const SizedBox(height: 20),
 
         // Investment Range
-        const Text(
-          "Montant d'investissement typique (€)",
-          style: TextStyle(
+        Text(
+          l10n.investmentAmount,
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
             color: Colors.black87,
@@ -525,10 +625,10 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
           ),
           child: TextField(
             controller: _investmentRangeController,
-            decoration: const InputDecoration(
-              hintText: 'Ex: 10 000 - 50 000 €',
+            decoration: InputDecoration(
+              hintText: l10n.investmentAmountHint,
               border: InputBorder.none,
-              contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             ),
             keyboardType: TextInputType.number,
           ),
@@ -536,18 +636,18 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
         const SizedBox(height: 20),
 
         // Preferred Industries
-        const Text(
-          "Secteurs d'intérêt",
-          style: TextStyle(
+        Text(
+          l10n.interestedSectors,
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
             color: Colors.black87,
           ),
         ),
         const SizedBox(height: 8),
-        const Text(
-          "Sélectionnez les secteurs qui vous intéressent",
-          style: TextStyle(
+        Text(
+          l10n.selectSectorsHint,
+          style: const TextStyle(
             fontSize: 14,
             color: Colors.grey,
           ),
@@ -556,7 +656,7 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
         Wrap(
           spacing: 8,
           runSpacing: 8,
-          children: _industries.map((industry) {
+          children: _getIndustries(context).map((industry) {
             bool isSelected = _selectedIndustries.contains(industry);
             return FilterChip(
               label: Text(industry),
@@ -579,22 +679,24 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
     );
   }
 
-  Widget _buildStep3() {
+  Widget _buildStep3(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Sécurité du compte',
-          style: TextStyle(
+        Text(
+          l10n.accountSecurity,
+          style: const TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
         ),
         const SizedBox(height: 16),
-        const Text(
-          'Créez vos identifiants de connexion',
-          style: TextStyle(
+        Text(
+          l10n.createLoginCredentials,
+          style: const TextStyle(
             fontSize: 16,
             color: Colors.grey,
           ),
@@ -602,9 +704,9 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
         const SizedBox(height: 30),
 
         // Password
-        const Text(
-          "Mot de passe",
-          style: TextStyle(
+        Text(
+          l10n.passwordLabel,
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
             color: Colors.black87,
@@ -620,7 +722,7 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
             controller: _passwordController,
             obscureText: !_isPasswordVisible,
             decoration: InputDecoration(
-              hintText: 'Créez un mot de passe sécurisé',
+              hintText: l10n.passwordHintInvestor,
               border: InputBorder.none,
               contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               suffixIcon: IconButton(
@@ -640,9 +742,9 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
         const SizedBox(height: 20),
 
         // Confirm Password
-        const Text(
-          "Confirmer le mot de passe",
-          style: TextStyle(
+        Text(
+          l10n.confirmPassword,
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
             color: Colors.black87,
@@ -658,7 +760,7 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
             controller: _confirmPasswordController,
             obscureText: !_isConfirmPasswordVisible,
             decoration: InputDecoration(
-              hintText: 'Confirmez votre mot de passe',
+              hintText: l10n.confirmPasswordHintInvestor,
               border: InputBorder.none,
               contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
               suffixIcon: IconButton(
@@ -678,9 +780,9 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
         const SizedBox(height: 20),
 
         // Professional Background
-        const Text(
-          "Background professionnel (optionnel)",
-          style: TextStyle(
+        Text(
+          l10n.professionalBackground,
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
             color: Colors.black87,
@@ -695,10 +797,10 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
           child: TextField(
             controller: _professionalBackgroundController,
             maxLines: 4,
-            decoration: const InputDecoration(
-              hintText: 'Décrivez votre expérience professionnelle...',
+            decoration: InputDecoration(
+              hintText: l10n.professionalBackgroundHint,
               border: InputBorder.none,
-              contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             ),
           ),
         ),
@@ -717,24 +819,24 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
             ),
             Expanded(
               child: RichText(
-                text: const TextSpan(
-                  text: "J'accepte les ",
-                  style: TextStyle(color: Colors.grey),
+                text: TextSpan(
+                  text: l10n.acceptTerms,
+                  style: const TextStyle(color: Colors.grey),
                   children: [
                     TextSpan(
-                      text: "conditions d'utilisation",
-                      style: TextStyle(
+                      text: l10n.termsOfUse,
+                      style: const TextStyle(
                         color: Color(0xFF7533E8),
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     TextSpan(
-                      text: " et la ",
-                      style: TextStyle(color: Colors.grey),
+                      text: l10n.and,
+                      style: const TextStyle(color: Colors.grey),
                     ),
                     TextSpan(
-                      text: "politique de confidentialité",
-                      style: TextStyle(
+                      text: l10n.privacyPolicy,
+                      style: const TextStyle(
                         color: Color(0xFF7533E8),
                         fontWeight: FontWeight.bold,
                       ),
@@ -768,24 +870,39 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
   }
 
   void _createAccount() {
+    final l10n = AppLocalizations.of(context)!;
+    
     // Validation
-    if (_firstNameController.text.isEmpty ||
+    if (_usernameController.text.isEmpty ||
+        _firstNameController.text.isEmpty ||
         _lastNameController.text.isEmpty ||
         _emailController.text.isEmpty ||
         _passwordController.text.isEmpty ||
         _confirmPasswordController.text.isEmpty ||
         !_acceptTerms) {
-      _showErrorDialog('Veuillez remplir tous les champs obligatoires');
+      _showErrorDialog(l10n.fillRequiredFields);
       return;
     }
 
     if (_passwordController.text != _confirmPasswordController.text) {
-      _showErrorDialog('Les mots de passe ne correspondent pas');
+      _showErrorDialog(l10n.passwordsDontMatch);
       return;
     }
 
-    // Create investor object
+    // Username validation rules
+    if (_usernameController.text.length < 3) {
+      _showErrorDialog(l10n.usernameMinCharacters);
+      return;
+    }
+
+    if (!RegExp(r'^[a-zA-Z0-9_]+$').hasMatch(_usernameController.text)) {
+      _showErrorDialog(l10n.usernameAllowedCharacters);
+      return;
+    }
+
+    // Create investor object with username
     final investor = Investor(
+      username: _usernameController.text,
       firstName: _firstNameController.text,
       lastName: _lastNameController.text,
       email: _emailController.text,
@@ -795,7 +912,9 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
       experienceLevel: _investmentExperience,
       investmentRange: _investmentRangeController.text,
       selectedIndustries: _selectedIndustries,
-      professionalBackground: _professionalBackgroundController.text,
+      professionalBackground: _professionalBackgroundController.text, 
+      id: '', 
+      password: '',
     );
 
     // Navigate to dashboard with the investor data
@@ -808,18 +927,20 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
   }
 
   void _showErrorDialog(String message) {
+    final l10n = AppLocalizations.of(context)!;
+    
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text("Erreur"),
+          title: Text(l10n.validationError),
           content: Text(message),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text("OK"),
+              child: Text(l10n.ok),
             ),
           ],
         );
@@ -829,6 +950,7 @@ class _CreateInvestorAccountState extends State<CreateInvestorAccount> {
 
   @override
   void dispose() {
+    _usernameController.dispose();
     _firstNameController.dispose();
     _lastNameController.dispose();
     _emailController.dispose();

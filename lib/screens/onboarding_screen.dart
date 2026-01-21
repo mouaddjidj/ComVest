@@ -3,8 +3,8 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../widgets/onboarding_page.dart';
 import 'TypeSelectionLoginScreen.dart';
-import '../services/language_service.dart';  // CHANGED
-import '../l10n/app_localizations.dart';  // CHANGED
+import '../services/language_service.dart';
+import '../l10n/app_localizations.dart';
 import '../main.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -69,7 +69,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           // Main Content
           Column(
             children: [
-              // Language Button - UPDATED
+              // Language Button
               SafeArea(
                 child: Align(
                   alignment: Alignment.topRight,
@@ -78,7 +78,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     child: PopupMenuButton<Locale>(
                       onSelected: (Locale newLocale) {
                         print("🌐 Language selected: ${newLocale.languageCode}");
-                        // Change app language
                         MyApp.of(context)?.changeLanguage(newLocale);
                       },
                       child: Container(
@@ -134,7 +133,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
               ),
 
-              // PageView Content - UPDATED with localization
+              // PageView Content
               Expanded(
                 child: PageView(
                   controller: _controller,
@@ -143,26 +142,32 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     setState(() => isLastPage = index == 2);
                   },
                   children: [
+                    // First page with text + logo in one line
                     OnboardingPage(
                       image: 'assets/images/imag2.1.png',
-                      title: AppLocalizations.of(context)!.discoverComvest,
+                      titleKey: 'discover',
                       subtitle: AppLocalizations.of(context)!.discoverDescription,
+                      showComvestLogo: true, // This triggers the combined text+logo
                     ),
+                    // Second page
                     OnboardingPage(
                       image: 'assets/images/visibilite (1).png',
-                      title: AppLocalizations.of(context)!.needVisibility,
+                      titleKey: 'needVisibility',
                       subtitle: AppLocalizations.of(context)!.visibilityDescription,
+                      showComvestLogo: false,
                     ),
+                    // Third page
                     OnboardingPage(
                       image: 'assets/images/collaborez.png',
-                      title: AppLocalizations.of(context)!.buildRelationships,
+                      titleKey: 'buildRelationships',
                       subtitle: AppLocalizations.of(context)!.relationshipsDescription,
+                      showComvestLogo: false,
                     ),
                   ],
                 ),
               ),
 
-              // Bottom Navigation - UPDATED
+              // Bottom Navigation
               Padding(
                 padding: const EdgeInsets.only(
                   left: 30,

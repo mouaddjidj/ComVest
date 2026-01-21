@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './AdsServices.dart';
+import '../l10n/app_localizations.dart';
 
 class CreateCompanySortlistStyle extends StatefulWidget {
   const CreateCompanySortlistStyle({super.key});
@@ -17,111 +18,30 @@ class _CreateCompanySortlistStyleState
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _websiteController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _aboutController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
   final TextEditingController _activiteController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController = TextEditingController();
 
   final List<String> _selectedLanguages = [];
-  final List<String> _availableLanguages = [
-    'Français',
-    'Anglais',
-    'Espagnol',
-    'Allemand',
-    'Italien'
-  ];
-
+  
   String? _teamSize;
   String? _selectedVillage;
   String? _selectedSecteur;
   bool _obscurePassword = true;
   bool _obscureConfirmPassword = true;
 
-  // List of Algerian locations
-  final List<String> _algerianLocations = [
-    'Aïn El Hammam',
-    'Tizi Ouzou',
-    'Béjaïa',
-    'Sétif',
-    'Constantine',
-    'Oran',
-    'Alger Centre',
-    'Tlemcen',
-    'Annaba',
-    'Batna',
-    'Blida',
-    'Djelfa',
-    'Sidi Bel Abbès',
-    'Biskra',
-    'Tébessa',
-    'El Oued',
-    'Skikda',
-    'Tiaret',
-    'Bechar',
-    'Mostaganem',
-    'M\'Sila',
-    'Ghardaïa',
-    'Saïda',
-    'Laghouat',
-    'Mascara',
-    'Ouargla',
-    'Relizane',
-    'Tissemsilt',
-    'Boumerdès',
-    'Chlef',
-    'Tamanrasset',
-    'Adrar',
-    'Aïn Defla',
-    'Aïn Témouchent',
-    'Bordj Bou Arreridj',
-    'Bouira',
-    'Djanet',
-    'El Bayadh',
-    'El Tarf',
-    'Guelma',
-    'Illizi',
-    'Khenchela',
-    'Mila',
-    'Naâma',
-    'Oum El Bouaghi',
-    'Souk Ahras',
-    'Tindouf',
-    'Tipaza',
-    'Tizi Rached',
-    'Azazga'
-  ];
-
-  // List of business sectors
-  final List<String> _secteurs = [
-    'Technologie',
-    'Santé',
-    'Construction',
-    'Éducation',
-    'Finance',
-    'Commerce',
-    'Transport',
-    'Tourisme',
-    'Agriculture',
-    'Industrie',
-    'Services',
-    'Communication',
-    'Immobilier',
-    'Énergie',
-    'Environnement',
-    'Logistique',
-    'Marketing',
-    'Consulting',
-    'Art et Culture',
-    'Restauration',
-    'Mode',
-    'Sport',
-    'Médias',
-    'Assurance',
-    'Juridique'
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!;
+    final locale = Localizations.localeOf(context).languageCode;
+    
+    // Get localized lists based on current locale
+    final List<String> availableLanguages = _getAvailableLanguages(locale);
+    final List<String> algerianLocations = _getAlgerianLocations(locale);
+    final List<String> secteurs = _getSecteurs(locale);
+    
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -131,9 +51,9 @@ class _CreateCompanySortlistStyleState
           icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text(
-          'Créer un compte',
-          style: TextStyle(
+        title: Text(
+          localizations.createAccountTitle,
+          style: const TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
           ),
@@ -151,9 +71,9 @@ class _CreateCompanySortlistStyleState
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _buildStepIndicator(0, 'Nom'),
-                _buildStepIndicator(1, 'Contact'),
-                _buildStepIndicator(2, 'Profil'),
+                _buildStepIndicator(0, localizations.stepInfo),
+                _buildStepIndicator(1, localizations.stepContact),
+                _buildStepIndicator(2, localizations.stepProfile),
               ],
             ),
           ),
@@ -161,7 +81,7 @@ class _CreateCompanySortlistStyleState
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(20.0),
-              child: _buildStepContent(),
+              child: _buildStepContent(localizations, availableLanguages, algerianLocations, secteurs),
             ),
           ),
         ],
@@ -183,9 +103,9 @@ class _CreateCompanySortlistStyleState
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     side: const BorderSide(color: Color(0xFF7533E8)),
                   ),
-                  child: const Text(
-                    'Retour',
-                    style: TextStyle(
+                  child: Text(
+                    localizations.back,
+                    style: const TextStyle(
                       color: Color(0xFF7533E8),
                       fontWeight: FontWeight.bold,
                     ),
@@ -201,7 +121,7 @@ class _CreateCompanySortlistStyleState
                   padding: const EdgeInsets.symmetric(vertical: 16),
                 ),
                 child: Text(
-                  _currentStep == 2 ? 'Créer le profil' : 'Continuer',
+                  _currentStep == 2 ? localizations.createProfile : localizations.continueText,
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -274,35 +194,35 @@ class _CreateCompanySortlistStyleState
     );
   }
 
-  Widget _buildStepContent() {
+  Widget _buildStepContent(AppLocalizations localizations, List<String> availableLanguages, List<String> algerianLocations, List<String> secteurs) {
     switch (_currentStep) {
       case 0:
-        return _buildStep1();
+        return _buildStep1(localizations, secteurs);
       case 1:
-        return _buildStep2();
+        return _buildStep2(localizations, algerianLocations);
       case 2:
-        return _buildStep3();
+        return _buildStep3(localizations, availableLanguages);
       default:
-        return _buildStep1();
+        return _buildStep1(localizations, secteurs);
     }
   }
 
-  Widget _buildStep1() {
+  Widget _buildStep1(AppLocalizations localizations, List<String> secteurs) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Quel est le nom de votre entreprise ?',
-          style: TextStyle(
+        Text(
+          localizations.companyNameQuestion,
+          style: const TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
         ),
         const SizedBox(height: 16),
-        const Text(
-          'Sélectionnez une entité, ou créez-en une nouvelle, pour l\'inscrire sur Sortlist',
-          style: TextStyle(
+        Text(
+          localizations.companyNameDescription,
+          style: const TextStyle(
             fontSize: 16,
             color: Colors.grey,
           ),
@@ -315,20 +235,54 @@ class _CreateCompanySortlistStyleState
           ),
           child: TextField(
             controller: _companyNameController,
-            decoration: const InputDecoration(
-              hintText: 'Entrez le nom de votre entreprise...',
+            decoration: InputDecoration(
+              hintText: localizations.companyNameHint,
               border: InputBorder.none,
               contentPadding:
-                  EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             ),
           ),
         ),
         const SizedBox(height: 24),
 
-        // Secteur d'activité
-        const Text(
-          'Secteur d\'activité',
-          style: TextStyle(
+        // Username
+        Text(
+          localizations.usernameLabel,
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          localizations.usernameDescription,
+          style: const TextStyle(
+            fontSize: 14,
+            color: Colors.grey,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey[300]!),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: TextField(
+            controller: _usernameController,
+            decoration: InputDecoration(
+              hintText: localizations.usernameHint,
+              border: InputBorder.none,
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            ),
+          ),
+        ),
+        const SizedBox(height: 24),
+
+        // Business Sector
+        Text(
+          localizations.businessSector,
+          style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
@@ -343,12 +297,12 @@ class _CreateCompanySortlistStyleState
           child: DropdownButtonHideUnderline(
             child: DropdownButton<String>(
               isExpanded: true,
-              hint: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: Text('Sélectionnez votre secteur d\'activité'),
+              hint: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(localizations.selectBusinessSectorHint),
               ),
               value: _selectedSecteur,
-              items: _secteurs.map((String secteur) {
+              items: secteurs.map((String secteur) {
                 return DropdownMenuItem<String>(
                   value: secteur,
                   child: Padding(
@@ -367,10 +321,10 @@ class _CreateCompanySortlistStyleState
         ),
         const SizedBox(height: 24),
 
-        // Activité
-        const Text(
-          'Activité',
-          style: TextStyle(
+        // Activity
+        Text(
+          localizations.activityLabel,
+          style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
@@ -383,20 +337,20 @@ class _CreateCompanySortlistStyleState
           ),
           child: TextField(
             controller: _activiteController,
-            decoration: const InputDecoration(
-              hintText: 'Sélectionnez votre activité',
+            decoration: InputDecoration(
+              hintText: localizations.selectActivityHint,
               border: InputBorder.none,
               contentPadding:
-                  EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             ),
           ),
         ),
         const SizedBox(height: 24),
 
-        // Mot de passe
-        const Text(
-          'Mot de passe',
-          style: TextStyle(
+        // Password
+        Text(
+          localizations.passwordLabel,
+          style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
@@ -411,7 +365,7 @@ class _CreateCompanySortlistStyleState
             controller: _passwordController,
             obscureText: _obscurePassword,
             decoration: InputDecoration(
-              hintText: 'Entrez votre mot de passe...',
+              hintText: localizations.passwordHint,
               border: InputBorder.none,
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -431,10 +385,10 @@ class _CreateCompanySortlistStyleState
         ),
         const SizedBox(height: 16),
 
-        // Confirmation du mot de passe
-        const Text(
-          'Confirmer le mot de passe',
-          style: TextStyle(
+        // Confirm Password
+        Text(
+          localizations.confirmPasswordLabel,
+          style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
@@ -449,7 +403,7 @@ class _CreateCompanySortlistStyleState
             controller: _confirmPasswordController,
             obscureText: _obscureConfirmPassword,
             decoration: InputDecoration(
-              hintText: 'Confirmez votre mot de passe...',
+              hintText: localizations.confirmPasswordHint,
               border: InputBorder.none,
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -471,13 +425,13 @@ class _CreateCompanySortlistStyleState
     );
   }
 
-  Widget _buildStep2() {
+  Widget _buildStep2(AppLocalizations localizations, List<String> algerianLocations) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Informations de contact',
-          style: TextStyle(
+        Text(
+          localizations.contactInformation,
+          style: const TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
             color: Colors.black,
@@ -485,18 +439,18 @@ class _CreateCompanySortlistStyleState
         ),
         const SizedBox(height: 24),
 
-        // Localisation Selection
-        const Text(
-          'Localisation',
-          style: TextStyle(
+        // Location Selection
+        Text(
+          localizations.locationLabel,
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
         ),
         const SizedBox(height: 8),
-        const Text(
-          'Sélectionnez la localisation où votre entreprise est basée',
-          style: TextStyle(
+        Text(
+          localizations.locationDescription,
+          style: const TextStyle(
             fontSize: 14,
             color: Colors.grey,
           ),
@@ -511,12 +465,12 @@ class _CreateCompanySortlistStyleState
           child: DropdownButtonHideUnderline(
             child: DropdownButton<String>(
               isExpanded: true,
-              hint: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: Text('Sélectionnez votre localisation'),
+              hint: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(localizations.selectLocationHint),
               ),
               value: _selectedVillage,
-              items: _algerianLocations.map((String location) {
+              items: algerianLocations.map((String location) {
                 return DropdownMenuItem<String>(
                   value: location,
                   child: Padding(
@@ -536,17 +490,17 @@ class _CreateCompanySortlistStyleState
         const SizedBox(height: 24),
 
         // Address
-        const Text(
-          'Adresse de l\'entreprise',
-          style: TextStyle(
+        Text(
+          localizations.addressLabel,
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
         ),
         const SizedBox(height: 8),
-        const Text(
-          'Cette adresse sera utilisée pour vous offrir une visibilité en ligne dans votre région et vous suggérer des opportunités à proximité. Vous pourrez l\'éditer et en ajouter d\'autres par la suite.',
-          style: TextStyle(
+        Text(
+          localizations.addressDescription,
+          style: const TextStyle(
             fontSize: 14,
             color: Colors.grey,
           ),
@@ -559,28 +513,28 @@ class _CreateCompanySortlistStyleState
           ),
           child: TextField(
             controller: _addressController,
-            decoration: const InputDecoration(
-              hintText: 'Entrez votre adresse...',
+            decoration: InputDecoration(
+              hintText: localizations.addressHint,
               border: InputBorder.none,
               contentPadding:
-                  EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             ),
           ),
         ),
         const SizedBox(height: 24),
 
         // Phone
-        const Text(
-          'Numéro de téléphone de l\'entreprise',
-          style: TextStyle(
+        Text(
+          localizations.phoneLabel,
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
         ),
         const SizedBox(height: 8),
-        const Text(
-          'Ce numéro de téléphone ne sera pas visible publiquement sur votre profil. Nous ne le communiquerons qu\'aux personnes qui recherchent un prestataire comme le vôtre.',
-          style: TextStyle(
+        Text(
+          localizations.phoneDescription,
+          style: const TextStyle(
             fontSize: 14,
             color: Colors.grey,
           ),
@@ -593,22 +547,30 @@ class _CreateCompanySortlistStyleState
           ),
           child: TextField(
             controller: _phoneController,
-            decoration: const InputDecoration(
-              hintText: 'es (+213) Algérie | 7712 34 56 78',
+            decoration: InputDecoration(
+              hintText: localizations.phoneHint,
               border: InputBorder.none,
               contentPadding:
-                  EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             ),
           ),
         ),
         const SizedBox(height: 24),
 
-        // Website
-        const Text(
-          'Site web de l\'entreprise',
-          style: TextStyle(
+        // Website (Optional)
+        Text(
+          localizations.websiteLabel,
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          localizations.websiteDescription,
+          style: const TextStyle(
+            fontSize: 14,
+            color: Colors.grey,
           ),
         ),
         const SizedBox(height: 16),
@@ -619,29 +581,28 @@ class _CreateCompanySortlistStyleState
           ),
           child: TextField(
             controller: _websiteController,
-            decoration: const InputDecoration(
-              hintText:
-                  'Entrez votre site web... (ex: https://votre-entreprise.com)',
+            decoration: InputDecoration(
+              hintText: localizations.websiteHint,
               border: InputBorder.none,
               contentPadding:
-                  EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             ),
           ),
         ),
         const SizedBox(height: 24),
 
         // Email
-        const Text(
-          'Adresse électronique de l\'entreprise',
-          style: TextStyle(
+        Text(
+          localizations.emailLabel,
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
         ),
         const SizedBox(height: 8),
-        const Text(
-          'Cette adresse sera utilisée pour les communications liées aux projets entrants',
-          style: TextStyle(
+        Text(
+          localizations.emailDescription,
+          style: const TextStyle(
             fontSize: 14,
             color: Colors.grey,
           ),
@@ -654,11 +615,12 @@ class _CreateCompanySortlistStyleState
           ),
           child: TextField(
             controller: _emailController,
-            decoration: const InputDecoration(
-              hintText: 'Entrez l\'email de contact de l\'entreprise...',
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+              hintText: localizations.emailHint,
               border: InputBorder.none,
               contentPadding:
-                  EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             ),
           ),
         ),
@@ -666,43 +628,34 @@ class _CreateCompanySortlistStyleState
     );
   }
 
-  Widget _buildStep3() {
+  Widget _buildStep3(AppLocalizations localizations, List<String> availableLanguages) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Bienvenue ! Configurons votre profil',
-          style: TextStyle(
+        Text(
+          localizations.welcomeProfileSetup,
+          style: const TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
         ),
         const SizedBox(height: 8),
-        const Text(
-          'Définissez les informations qui apparaîtront sur votre profil Sortlist.',
-          style: TextStyle(
+        Text(
+          localizations.profileSetupDescription,
+          style: const TextStyle(
             fontSize: 16,
             color: Colors.grey,
           ),
         ),
         const SizedBox(height: 24),
 
-        // About Section
-        const Text(
-          'À propos',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 16),
-
-        // Company Name
-        const Text(
-          'Nom de l\'entreprise',
-          style: TextStyle(
+        // Company Description
+        Text(
+          localizations.companyDescriptionLabel,
+          style: const TextStyle(
             fontWeight: FontWeight.w500,
+            fontSize: 16,
           ),
         ),
         const SizedBox(height: 8),
@@ -712,78 +665,33 @@ class _CreateCompanySortlistStyleState
             borderRadius: BorderRadius.circular(8),
           ),
           child: TextField(
-            controller: _aboutController,
-            maxLength: 60,
+            controller: _descriptionController,
+            maxLines: 4,
+            maxLength: 500,
             decoration: InputDecoration(
-              hintText: _companyNameController.text.isEmpty
-                  ? 'Nom de l\'entreprise'
-                  : _companyNameController.text,
+              hintText: localizations.companyDescriptionHint,
               border: InputBorder.none,
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-              counterText: '0/60',
             ),
           ),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 8),
+        Text(
+          '${_descriptionController.text.length}/500 ${localizations.characters}',
+          style: const TextStyle(
+            fontSize: 12,
+            color: Colors.grey,
+          ),
+        ),
+        const SizedBox(height: 24),
 
-        // Show secteur and activité info (read-only)
-        if (_selectedSecteur != null) ...[
-          const Text(
-            'Secteur d\'activité',
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey[300]!),
-              borderRadius: BorderRadius.circular(8),
-              color: Colors.grey[50],
-            ),
-            child: Text(
-              _selectedSecteur!,
-              style: const TextStyle(
-                fontSize: 16,
-              ),
-            ),
-          ),
-          const SizedBox(height: 16),
-        ],
-        if (_activiteController.text.isNotEmpty) ...[
-          const Text(
-            'Activité',
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey[300]!),
-              borderRadius: BorderRadius.circular(8),
-              color: Colors.grey[50],
-            ),
-            child: Text(
-              _activiteController.text,
-              style: const TextStyle(
-                fontSize: 16,
-              ),
-            ),
-          ),
-          const SizedBox(height: 16),
-        ],
-
-        // Languages
-        const Text(
-          'Langues parlées (facultatif)',
-          style: TextStyle(
+        // Team Size
+        Text(
+          localizations.teamSizeLabel,
+          style: const TextStyle(
             fontWeight: FontWeight.w500,
+            fontSize: 16,
           ),
         ),
         const SizedBox(height: 8),
@@ -796,11 +704,51 @@ class _CreateCompanySortlistStyleState
           child: DropdownButtonHideUnderline(
             child: DropdownButton<String>(
               isExpanded: true,
-              hint: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: Text('Sélectionner'),
+              hint: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(localizations.selectTeamSizeHint),
               ),
-              items: _availableLanguages.map((String language) {
+              value: _teamSize,
+              items: [
+                DropdownMenuItem(value: '1-10', child: Text(localizations.teamSize1_10)),
+                DropdownMenuItem(value: '11-50', child: Text(localizations.teamSize11_50)),
+                DropdownMenuItem(value: '51-200', child: Text(localizations.teamSize51_200)),
+                DropdownMenuItem(value: '201-500', child: Text(localizations.teamSize201_500)),
+                DropdownMenuItem(value: '500+', child: Text(localizations.teamSize500plus)),
+              ],
+              onChanged: (String? newValue) {
+                setState(() {
+                  _teamSize = newValue;
+                });
+              },
+            ),
+          ),
+        ),
+        const SizedBox(height: 24),
+
+        // Languages Spoken
+        Text(
+          localizations.languagesLabel,
+          style: const TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey[300]!),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: DropdownButtonHideUnderline(
+            child: DropdownButton<String>(
+              isExpanded: true,
+              hint: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(localizations.selectLanguagesHint),
+              ),
+              items: availableLanguages.map((String language) {
                 return DropdownMenuItem<String>(
                   value: language,
                   child: Padding(
@@ -831,79 +779,47 @@ class _CreateCompanySortlistStyleState
             ),
           ),
         ),
-        const SizedBox(height: 16),
-
-        // Team Size
-        const Text(
-          'Taille de votre équipe',
-          style: TextStyle(
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        const SizedBox(height: 8),
-        Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey[300]!),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: DropdownButtonHideUnderline(
-            child: DropdownButton<String>(
-              isExpanded: true,
-              hint: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: Text('Sélectionner'),
-              ),
-              value: _teamSize,
-              items: const [
-                DropdownMenuItem(value: '1-10', child: Text('1-10 employés')),
-                DropdownMenuItem(value: '11-50', child: Text('11-50 employés')),
-                DropdownMenuItem(
-                    value: '51-200', child: Text('51-200 employés')),
-                DropdownMenuItem(
-                    value: '201-500', child: Text('201-500 employés')),
-                DropdownMenuItem(
-                    value: '500+', child: Text('Plus de 500 employés')),
-              ],
-              onChanged: (String? newValue) {
-                setState(() {
-                  _teamSize = newValue;
-                });
-              },
-            ),
-          ),
-        ),
       ],
     );
   }
 
   void _nextStep() {
+    final localizations = AppLocalizations.of(context)!;
+    
     if (_currentStep < 2) {
       // Validation before proceeding to next step
       if (_currentStep == 0) {
         // Validate step 1 fields
         if (_companyNameController.text.isEmpty) {
-          _showError('Veuillez entrer le nom de votre entreprise');
+          _showError(localizations.enterCompanyName);
+          return;
+        }
+        if (_usernameController.text.isEmpty) {
+          _showError(localizations.chooseUsername);
+          return;
+        }
+        if (_usernameController.text.length < 3) {
+          _showError(localizations.usernameMinLength);
           return;
         }
         if (_selectedSecteur == null) {
-          _showError('Veuillez sélectionner un secteur d\'activité');
+          _showError(localizations.selectBusinessSector);
           return;
         }
         if (_activiteController.text.isEmpty) {
-          _showError('Veuillez entrer votre activité');
+          _showError(localizations.enterActivity);
           return;
         }
         if (_passwordController.text.isEmpty) {
-          _showError('Veuillez entrer un mot de passe');
+          _showError(localizations.enterPassword);
           return;
         }
         if (_passwordController.text.length < 6) {
-          _showError('Le mot de passe doit contenir au moins 6 caractères');
+          _showError(localizations.passwordMinLength);
           return;
         }
         if (_passwordController.text != _confirmPasswordController.text) {
-          _showError('Les mots de passe ne correspondent pas');
+          _showError(localizations.passwordsNotMatch);
           return;
         }
       }
@@ -911,21 +827,26 @@ class _CreateCompanySortlistStyleState
       if (_currentStep == 1) {
         // Validate step 2 fields
         if (_selectedVillage == null) {
-          _showError('Veuillez sélectionner une localisation');
+          _showError(localizations.selectLocation);
           return;
         }
         if (_addressController.text.isEmpty) {
-          _showError('Veuillez entrer votre adresse');
+          _showError(localizations.enterAddress);
           return;
         }
         if (_phoneController.text.isEmpty) {
-          _showError('Veuillez entrer votre numéro de téléphone');
+          _showError(localizations.enterPhone);
           return;
         }
         if (_emailController.text.isEmpty) {
-          _showError('Veuillez entrer votre adresse email');
+          _showError(localizations.enterEmail);
           return;
         }
+        if (!_isValidEmail(_emailController.text)) {
+          _showError(localizations.enterValidEmail);
+          return;
+        }
+        // Website is optional, so no validation needed
       }
       
       setState(() {
@@ -954,28 +875,44 @@ class _CreateCompanySortlistStyleState
     );
   }
 
+  bool _isValidEmail(String email) {
+    final emailRegex = RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+    return emailRegex.hasMatch(email);
+  }
+
   void _createProfile() {
+    final localizations = AppLocalizations.of(context)!;
+    
     // Final validation before creation
+    if (_descriptionController.text.isEmpty) {
+      _showError(localizations.enterCompanyDescription);
+      return;
+    }
+    if (_teamSize == null) {
+      _showError(localizations.selectTeamSize);
+      return;
+    }
     if (_passwordController.text.isEmpty ||
         _passwordController.text != _confirmPasswordController.text) {
-      _showError('Veuillez vérifier votre mot de passe');
+      _showError(localizations.checkPassword);
       return;
     }
 
     // Handle profile creation logic here
     print('Creating profile with:');
     print('Company: ${_companyNameController.text}');
+    print('Username: ${_usernameController.text}');
     print('Password: ${_passwordController.text}');
     print('Secteur: $_selectedSecteur');
     print('Activité: ${_activiteController.text}');
+    print('Email: ${_emailController.text}');
     print('Localisation: $_selectedVillage');
     print('Address: ${_addressController.text}');
     print('Phone: ${_phoneController.text}');
     print('Website: ${_websiteController.text}');
-    print('Email: ${_emailController.text}');
-    print('About: ${_aboutController.text}');
-    print('Languages: $_selectedLanguages');
+    print('Description: ${_descriptionController.text}');
     print('Team Size: $_teamSize');
+    print('Languages: $_selectedLanguages');
 
     // Navigate to AdsServices
     Navigator.pushReplacement(
@@ -984,14 +921,87 @@ class _CreateCompanySortlistStyleState
     );
   }
 
+  // Helper methods to get localized lists
+  List<String> _getAvailableLanguages(String locale) {
+    switch (locale) {
+      case 'ar':
+        return ['الفرنسية', 'الإنجليزية', 'الإسبانية', 'الألمانية', 'الإيطالية'];
+      case 'fr':
+        return ['Français', 'Anglais', 'Espagnol', 'Allemand', 'Italien'];
+      default:
+        return ['French', 'English', 'Spanish', 'German', 'Italian'];
+    }
+  }
+
+  List<String> _getAlgerianLocations(String locale) {
+    // Keep as is for English and French, use Arabic names for Arabic locale
+    if (locale == 'ar') {
+      return [
+        'عين الحمام', 'تيزي وزو', 'بجاية', 'سطيف', 'قسنطينة',
+        'وهران', 'الجزائر الوسطى', 'تلمسان', 'عنابة', 'باتنة',
+        'البليدة', 'الجلفة', 'سيدي بلعباس', 'بسكرة', 'تبسة',
+        'الوادي', 'سكيكدة', 'تيارت', 'بشار', 'مستغانم',
+        'المسيلة', 'غرداية', 'سعيدة', 'الأغواط', 'معسكر',
+        'ورقلة', 'غليزان', 'تسمسيلت', 'بومرداس', 'الشلف',
+        'تمنراست', 'أدرار', 'عين الدفلى', 'عين تموشنت',
+        'برج بوعريريج', 'البويرة', 'جانت', 'البيض', 'الطارف',
+        'قالمة', 'إليزي', 'خنشلة', 'ميلة', 'النعامة',
+        'أم البواقي', 'سوق أهراس', 'تندوف', 'تيبازة', 'تيزي راشد', 'أزازقة'
+      ];
+    } else {
+      return [
+        'Aïn El Hammam', 'Tizi Ouzou', 'Béjaïa', 'Sétif', 'Constantine',
+        'Oran', 'Alger Centre', 'Tlemcen', 'Annaba', 'Batna',
+        'Blida', 'Djelfa', 'Sidi Bel Abbès', 'Biskra', 'Tébessa',
+        'El Oued', 'Skikda', 'Tiaret', 'Bechar', 'Mostaganem',
+        'M\'Sila', 'Ghardaïa', 'Saïda', 'Laghouat', 'Mascara',
+        'Ouargla', 'Relizane', 'Tissemsilt', 'Boumerdès', 'Chlef',
+        'Tamanrasset', 'Adrar', 'Aïn Defla', 'Aïn Témouchent',
+        'Bordj Bou Arreridj', 'Bouira', 'Djanet', 'El Bayadh', 'El Tarf',
+        'Guelma', 'Illizi', 'Khenchela', 'Mila', 'Naâma',
+        'Oum El Bouaghi', 'Souk Ahras', 'Tindouf', 'Tipaza', 'Tizi Rached', 'Azazga'
+      ];
+    }
+  }
+
+  List<String> _getSecteurs(String locale) {
+    switch (locale) {
+      case 'ar':
+        return [
+          'التكنولوجيا', 'الصحة', 'البناء', 'التعليم', 'التمويل',
+          'التجارة', 'النقل', 'السياحة', 'الزراعة', 'الصناعة',
+          'الخدمات', 'الاتصالات', 'العقارات', 'الطاقة', 'البيئة',
+          'اللوجستيات', 'التسويق', 'الاستشارات', 'الفن والثقافة',
+          'المطاعم', 'الأزياء', 'الرياضة', 'الإعلام', 'التأمين', 'القانون'
+        ];
+      case 'fr':
+        return [
+          'Technologie', 'Santé', 'Construction', 'Éducation', 'Finance',
+          'Commerce', 'Transport', 'Tourisme', 'Agriculture', 'Industrie',
+          'Services', 'Communication', 'Immobilier', 'Énergie', 'Environnement',
+          'Logistique', 'Marketing', 'Consulting', 'Art et Culture',
+          'Restauration', 'Mode', 'Sport', 'Médias', 'Assurance', 'Juridique'
+        ];
+      default:
+        return [
+          'Technology', 'Health', 'Construction', 'Education', 'Finance',
+          'Commerce', 'Transport', 'Tourism', 'Agriculture', 'Industry',
+          'Services', 'Communication', 'Real Estate', 'Energy', 'Environment',
+          'Logistics', 'Marketing', 'Consulting', 'Art and Culture',
+          'Restaurant', 'Fashion', 'Sports', 'Media', 'Insurance', 'Legal'
+        ];
+    }
+  }
+
   @override
   void dispose() {
     _companyNameController.dispose();
+    _usernameController.dispose();
     _addressController.dispose();
     _phoneController.dispose();
     _websiteController.dispose();
     _emailController.dispose();
-    _aboutController.dispose();
+    _descriptionController.dispose();
     _activiteController.dispose();
     _passwordController.dispose();
     _confirmPasswordController.dispose();

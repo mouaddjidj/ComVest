@@ -30,6 +30,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get emailHint => 'أدخل بريدك الإلكتروني المهني';
 
   @override
+  String get emailOrUsername => 'البريد الإلكتروني أو اسم المستخدم';
+
+  @override
+  String get emailOrUsernameHint => 'أدخل البريد الإلكتروني أو اسم المستخدم';
+
+  @override
   String get password => 'كلمة المرور';
 
   @override
@@ -60,6 +66,10 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get enterEmailResetPassword =>
       'أدخل بريدك الإلكتروني لإعادة تعيين كلمة المرور الخاصة بك.';
+
+  @override
+  String get enterValidEmailForReset =>
+      'يرجى إدخال عنوان بريد إلكتروني صالح لإعادة تعيين كلمة المرور';
 
   @override
   String get send => 'إرسال';
@@ -116,7 +126,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get selectLanguage => 'اختر اللغة';
 
   @override
-  String get language => 'اللغة';
+  String get language => 'العربية';
 
   @override
   String get english => 'الإنجليزية';
@@ -128,7 +138,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get arabic => 'العربية';
 
   @override
-  String get discoverComvest => 'اكتشف كومفيست';
+  String get discoverComvest => 'اكتشف';
 
   @override
   String get discoverDescription =>
@@ -174,8 +184,1370 @@ class AppLocalizationsAr extends AppLocalizations {
   String get fillAllFields => 'يرجى ملء جميع الحقول';
 
   @override
+  String get invalidEmailOrUsername =>
+      'يرجى إدخال بريد إلكتروني أو اسم مستخدم صالح';
+
+  @override
   String get invite => 'دعوة';
 
   @override
   String get continueAsGuest => 'المتابعة كضيف';
+
+  @override
+  String get createAccountTitle => 'إنشاء حساب';
+
+  @override
+  String get stepInfo => 'المعلومات';
+
+  @override
+  String get stepContact => 'الاتصال';
+
+  @override
+  String get stepProfile => 'الملف الشخصي';
+
+  @override
+  String get continueText => 'متابعة';
+
+  @override
+  String get createProfile => 'إنشاء الملف الشخصي';
+
+  @override
+  String get companyNameQuestion => 'ما هو اسم شركتك؟';
+
+  @override
+  String get companyNameDescription =>
+      'حدد كيانًا، أو أنشئ كيانًا جديدًا، لتسجيله  ';
+
+  @override
+  String get usernameLabel => 'اسم المستخدم';
+
+  @override
+  String get usernameDescription =>
+      'سيتم استخدام اسم المستخدم هذا لتسجيل الدخول إلى حسابك';
+
+  @override
+  String get businessSector => 'قطاع الأعمال';
+
+  @override
+  String get activityLabel => 'النشاط';
+
+  @override
+  String get passwordLabel => 'كلمة المرور';
+
+  @override
+  String get confirmPasswordLabel => 'تأكيد كلمة المرور';
+
+  @override
+  String get locationLabel => 'الموقع';
+
+  @override
+  String get locationDescription => 'حدد الموقع الذي توجد فيه شركتك';
+
+  @override
+  String get addressLabel => 'عنوان الشركة';
+
+  @override
+  String get addressDescription =>
+      'سيتم استخدام هذا العنوان لمنحك ظهورًا عبر الإنترنت في منطقتك واقتراح الفرص القريبة. يمكنك تعديله وإضافة عناوين أخرى لاحقًا.';
+
+  @override
+  String get phoneLabel => 'رقم هاتف الشركة';
+
+  @override
+  String get phoneDescription =>
+      'لن يكون رقم الهاتف هذا مرئيًا للعموم في ملفك الشخصي. سنشاركه فقط مع الأشخاص الذين يبحثون عن مزود مثل شركتك.';
+
+  @override
+  String get websiteLabel => 'موقع الويب للشركة (اختياري)';
+
+  @override
+  String get websiteDescription =>
+      'أضف رابطًا لموقع الويب الخاص بك إذا كان لديك واحد';
+
+  @override
+  String get emailLabel => 'عنوان البريد الإلكتروني للشركة';
+
+  @override
+  String get emailDescription =>
+      'سيتم استخدام هذا البريد الإلكتروني للاتصالات المتعلقة بالمشاريع الواردة. يمكنك تسجيل الدخول باستخدام بريدك الإلكتروني أو اسم المستخدم الخاص بك.';
+
+  @override
+  String get welcomeProfileSetup => 'مرحبًا! دعنا ننشئ ملفك الشخصي';
+
+  @override
+  String get profileSetupDescription =>
+      'حدد المعلومات التي ستظهر في ملفك الشخصي  ';
+
+  @override
+  String get companyDescriptionLabel => 'وصف الشركة';
+
+  @override
+  String get teamSizeLabel => 'حجم الفريق';
+
+  @override
+  String get languagesLabel => 'اللغات المحكية (اختياري)';
+
+  @override
+  String get enterCompanyName => 'الرجاء إدخال اسم شركتك';
+
+  @override
+  String get chooseUsername => 'الرجاء اختيار اسم مستخدم';
+
+  @override
+  String get usernameMinLength =>
+      'يجب أن يحتوي اسم المستخدم على 3 أحرف على الأقل';
+
+  @override
+  String get selectBusinessSector => 'الرجاء تحديد قطاع الأعمال';
+
+  @override
+  String get enterActivity => 'الرجاء إدخال نشاطك';
+
+  @override
+  String get enterPassword => 'الرجاء إدخال كلمة مرور';
+
+  @override
+  String get passwordMinLength =>
+      'يجب أن تحتوي كلمة المرور على 6 أحرف على الأقل';
+
+  @override
+  String get passwordsNotMatch => 'كلمات المرور لا تتطابق';
+
+  @override
+  String get selectLocation => 'الرجاء تحديد موقع';
+
+  @override
+  String get enterAddress => 'الرجاء إدخال عنوانك';
+
+  @override
+  String get enterPhone => 'الرجاء إدخال رقم هاتفك';
+
+  @override
+  String get enterValidEmail => 'الرجاء إدخال عنوان بريد إلكتروني صالح';
+
+  @override
+  String get enterCompanyDescription => 'الرجاء إدخال وصف الشركة';
+
+  @override
+  String get selectTeamSize => 'الرجاء تحديد حجم فريقك';
+
+  @override
+  String get checkPassword => 'الرجاء التحقق من كلمة المرور الخاصة بك';
+
+  @override
+  String get teamSize1_10 => '1-10 موظفين';
+
+  @override
+  String get teamSize11_50 => '11-50 موظفًا';
+
+  @override
+  String get teamSize51_200 => '51-200 موظفًا';
+
+  @override
+  String get teamSize201_500 => '201-500 موظفًا';
+
+  @override
+  String get teamSize500plus => 'أكثر من 500 موظف';
+
+  @override
+  String get spanish => 'الإسبانية';
+
+  @override
+  String get german => 'الألمانية';
+
+  @override
+  String get italian => 'الإيطالية';
+
+  @override
+  String get companyNameHint => 'أدخل اسم شركتك...';
+
+  @override
+  String get usernameHint => 'اختر اسم مستخدم...';
+
+  @override
+  String get selectBusinessSectorHint => 'حدد قطاع أعمالك';
+
+  @override
+  String get selectActivityHint => 'حدد نشاطك';
+
+  @override
+  String get confirmPasswordHint => 'تأكيد كلمة المرور الخاصة بك...';
+
+  @override
+  String get contactInformation => 'معلومات الاتصال';
+
+  @override
+  String get selectLocationHint => 'حدد موقعك';
+
+  @override
+  String get addressHint => 'أدخل عنوانك...';
+
+  @override
+  String get phoneHint => 'مثال (+213) الجزائر | 7712 34 56 78';
+
+  @override
+  String get websiteHint =>
+      'أدخل موقع الويب الخاص بك... (مثال: https://شركتك.com)';
+
+  @override
+  String get emailHint2 => 'أدخل البريد الإلكتروني للشركة...';
+
+  @override
+  String get companyDescriptionHint => 'صف شركتك (بحد أقصى 500 حرف)...';
+
+  @override
+  String get selectTeamSizeHint => 'اختر';
+
+  @override
+  String get selectLanguagesHint => 'اختر';
+
+  @override
+  String get characters => 'حروف';
+
+  @override
+  String get enterEmail => 'الرجاء إدخال عنوان بريدك الإلكتروني';
+
+  @override
+  String get createInvestorAccountTitle => 'إنشاء حساب مستثمر';
+
+  @override
+  String get profileStep => 'الملف الشخصي';
+
+  @override
+  String get investmentStep => 'الاستثمار';
+
+  @override
+  String get securityStep => 'الأمان';
+
+  @override
+  String get backButton => 'رجوع';
+
+  @override
+  String get continueButton => 'متابعة';
+
+  @override
+  String get createAccountButton => 'إنشاء الحساب';
+
+  @override
+  String get personalInformation => 'المعلومات الشخصية';
+
+  @override
+  String get createInvestorProfile => 'أنشئ ملفك الشخصي كمستثمر';
+
+  @override
+  String get usernameHintInvestor => 'اختر اسم مستخدم فريد';
+
+  @override
+  String get firstNameHint => 'أدخل اسمك الأول';
+
+  @override
+  String get lastNameHint => 'أدخل اسم العائلة';
+
+  @override
+  String get emailHintInvestor => 'أدخل عنوان بريدك الإلكتروني';
+
+  @override
+  String get phoneHintInvestor => 'أدخل رقم هاتفك';
+
+  @override
+  String get countryOfResidence => 'بلد الإقامة';
+
+  @override
+  String get selectCountryHint => 'اختر بلدك';
+
+  @override
+  String get investmentProfile => 'ملف الاستثمار';
+
+  @override
+  String get defineInvestmentPreferences => 'حدد تفضيلاتك الاستثمارية';
+
+  @override
+  String get investorType => 'نوع المستثمر';
+
+  @override
+  String get selectInvestorTypeHint => 'اختر نوع المستثمر';
+
+  @override
+  String get investmentExperience => 'خبرة الاستثمار';
+
+  @override
+  String get selectExperienceHint => 'اختر مستوى خبرتك';
+
+  @override
+  String get investmentAmount => 'مبلغ الاستثمار';
+
+  @override
+  String get investmentAmountHint => 'مثال: 10,000 - 50,000 دولار';
+
+  @override
+  String get interestedSectors => 'القطاعات المفضلة';
+
+  @override
+  String get selectSectorsHint => 'اختر القطاعات التي تهمك';
+
+  @override
+  String get accountSecurity => 'أمان الحساب';
+
+  @override
+  String get createLoginCredentials => 'أنشئ بيانات تسجيل الدخول الخاصة بك';
+
+  @override
+  String get passwordHintInvestor => 'أنشئ كلمة مرور قوية';
+
+  @override
+  String get confirmPassword => 'تأكيد كلمة المرور';
+
+  @override
+  String get confirmPasswordHintInvestor => 'أعد إدخال كلمة المرور';
+
+  @override
+  String get professionalBackground => 'خلفية مهنية';
+
+  @override
+  String get professionalBackgroundHint => 'صف بإيجاز خبرتك المهنية...';
+
+  @override
+  String get acceptTerms => 'أوافق على ';
+
+  @override
+  String get termsOfUse => 'شروط الاستخدام';
+
+  @override
+  String get and => ' و ';
+
+  @override
+  String get privacyPolicy => 'سياسة الخصوصية';
+
+  @override
+  String get fillRequiredFields => 'يرجى ملء جميع الحقول المطلوبة';
+
+  @override
+  String get passwordsDontMatch => 'كلمات المرور غير متطابقة';
+
+  @override
+  String get usernameMinCharacters =>
+      'يجب أن يكون اسم المستخدم 3 أحرف على الأقل';
+
+  @override
+  String get usernameAllowedCharacters =>
+      'يمكن أن يحتوي اسم المستخدم على أحرف وأرقام وشرطات سفلية فقط';
+
+  @override
+  String get validationError => 'خطأ في التحقق';
+
+  @override
+  String get privateInvestor => 'مستثمر خاص';
+
+  @override
+  String get businessAngel => 'ملاك الأعمال';
+
+  @override
+  String get investmentFund => 'صندوق استثماري';
+
+  @override
+  String get familyOffice => 'مكتب عائلي';
+
+  @override
+  String get institutionalInvestor => 'مستثمر مؤسسي';
+
+  @override
+  String get corporateVenture => 'مشروع مؤسسي';
+
+  @override
+  String get beginnerExperience => 'مبتدئ (0-2 سنوات)';
+
+  @override
+  String get intermediateExperience => 'متوسط (2-5 سنوات)';
+
+  @override
+  String get experiencedExperience => 'ذو خبرة (5-10 سنوات)';
+
+  @override
+  String get expertExperience => 'خبير (10+ سنوات)';
+
+  @override
+  String get technologySector => 'التكنولوجيا';
+
+  @override
+  String get healthBiotechSector => 'الصحة والتكنولوجيا الحيوية';
+
+  @override
+  String get energyEnvironmentSector => 'الطاقة والبيئة';
+
+  @override
+  String get financeFintechSector => 'التمويل والتكنولوجيا المالية';
+
+  @override
+  String get realEstateSector => 'العقارات';
+
+  @override
+  String get retailSector => 'التجزئة والاستهلاك';
+
+  @override
+  String get industrySector => 'الصناعة والتصنيع';
+
+  @override
+  String get professionalServicesSector => 'الخدمات المهنية';
+
+  @override
+  String get mediaCommunicationSector => 'الإعلام والاتصالات';
+
+  @override
+  String get tourismSector => 'السياحة والضيافة';
+
+  @override
+  String get pricingTitle => 'اختر خطتك';
+
+  @override
+  String get pricingSubtitle => 'اختر الخطة المثالية لاحتياجاتك';
+
+  @override
+  String get packStart => 'حزمة البداية';
+
+  @override
+  String get packStartDesc => 'مثالي للبداية';
+
+  @override
+  String get packPremium => 'الحزمة المميزة';
+
+  @override
+  String get packPremiumDesc => 'حل كامل';
+
+  @override
+  String get customService => 'خدمة مخصصة';
+
+  @override
+  String get customServiceDesc => 'حل مخصص';
+
+  @override
+  String get monthly => 'شهري';
+
+  @override
+  String get annually => 'سنوي';
+
+  @override
+  String get viewFullDetails => 'عرض التفاصيل الكاملة';
+
+  @override
+  String get buyNow => 'اشتر الآن';
+
+  @override
+  String get contactForQuote => 'اتصل للحصول على عرض سعر';
+
+  @override
+  String get choosePaymentMethod => 'اختر طريقة الدفع';
+
+  @override
+  String get mobilePayment => 'دفع عبر الهاتف';
+
+  @override
+  String get algerianCard => 'بطاقة بنكية جزائرية';
+
+  @override
+  String get customServiceTitle => 'خدمة مخصصة';
+
+  @override
+  String get contactForCustomQuote => 'اتصل بنا للحصول على عرض سعر مخصص';
+
+  @override
+  String get fullName => 'الاسم الكامل';
+
+  @override
+  String get describeYourNeeds => 'صف احتياجاتك';
+
+  @override
+  String get sendRequest => 'إرسال الطلب';
+
+  @override
+  String get paymentSuccessful => 'تم الدفع بنجاح!';
+
+  @override
+  String get subscriptionActivated => 'تم تفعيل اشتراكك بنجاح';
+
+  @override
+  String get plan => 'الباقة';
+
+  @override
+  String get paymentMethod => 'طريقة الدفع';
+
+  @override
+  String get period => 'الفترة';
+
+  @override
+  String get amount => 'المبلغ';
+
+  @override
+  String get invoiceNumber => 'رقم الفاتورة';
+
+  @override
+  String get transactionId => 'معرف المعاملة';
+
+  @override
+  String get date => 'التاريخ';
+
+  @override
+  String get returnHome => 'العودة للرئيسية';
+
+  @override
+  String get accessDashboard => 'الوصول إلى لوحة التحكم';
+
+  @override
+  String get dashboard => 'لوحة التحكم';
+
+  @override
+  String get services => 'الخدمات';
+
+  @override
+  String get resources => 'الموارد';
+
+  @override
+  String get overview => 'نظرة عامة';
+
+  @override
+  String get activeService => 'الخدمة النشطة';
+
+  @override
+  String get daysRemaining => 'الأيام المتبقية';
+
+  @override
+  String get globalProgress => 'التقدم الإجمالي';
+
+  @override
+  String get servicesCompleted => 'الخدمات المكتملة';
+
+  @override
+  String get inProgress => 'قيد التنفيذ';
+
+  @override
+  String get pending => 'قيد الانتظار';
+
+  @override
+  String get recentActivities => 'الأنشطة الأخيرة';
+
+  @override
+  String get viewAll => 'عرض الكل';
+
+  @override
+  String get noRecentActivity => 'لا توجد أنشطة حديثة';
+
+  @override
+  String get quickActions => 'إجراءات سريعة';
+
+  @override
+  String get report => 'تقرير';
+
+  @override
+  String get share => 'مشاركة';
+
+  @override
+  String get print => 'طباعة';
+
+  @override
+  String get renew => 'تجديد';
+
+  @override
+  String get upgrade => 'ترقية';
+
+  @override
+  String get support => 'الدعم';
+
+  @override
+  String get serviceDetails => 'تفاصيل الخدمة';
+
+  @override
+  String get nextBilling => 'الفواتير القادمة';
+
+  @override
+  String get billingCycle => 'دورة الفواتير';
+
+  @override
+  String get serviceHistory => 'تاريخ الخدمات';
+
+  @override
+  String get noHistory => 'لا يوجد تاريخ';
+
+  @override
+  String get communityLearning => 'المجتمع والتعلم';
+
+  @override
+  String get communityForum => 'المنتدى المجتمعي';
+
+  @override
+  String get technicalBlog => 'المدونة التقنية';
+
+  @override
+  String get webinars => 'الندوات عبر الإنترنت';
+
+  @override
+  String get learningCenter => 'مركز التعلم';
+
+  @override
+  String get quickSettings => 'إعدادات سريعة';
+
+  @override
+  String get notifications => 'الإشعارات';
+
+  @override
+  String get security => 'الأمان';
+
+  @override
+  String get payments => 'المدفوعات';
+
+  @override
+  String get privacy => 'الخصوصية';
+
+  @override
+  String get downloads => 'التنزيلات';
+
+  @override
+  String get helpCenter => 'مركز المساعدة';
+
+  @override
+  String get feedback => 'تقديم ملاحظات';
+
+  @override
+  String get about => 'حول';
+
+  @override
+  String get logout => 'تسجيل الخروج';
+
+  @override
+  String get confirmLogout => 'هل أنت متأكد من تسجيل الخروج؟';
+
+  @override
+  String get logoutConfirm => 'تسجيل الخروج';
+
+  @override
+  String get downloadReport => 'جارٍ تنزيل التقرير...';
+
+  @override
+  String get renewService => 'تجديد الخدمة';
+
+  @override
+  String get renewConfirmation => 'هل تريد تجديد اشتراكك لشهر إضافي؟';
+
+  @override
+  String get later => 'لاحقًا';
+
+  @override
+  String get renewedSuccess => 'تم تجديد الخدمة بنجاح!';
+
+  @override
+  String get upgradePlan => 'ترقية خطتك';
+
+  @override
+  String get premiumPlan => 'الخطة المميزة';
+
+  @override
+  String get upgradeOptions => 'عرض الخيارات';
+
+  @override
+  String get contactSupport => 'اتصل بالدعم';
+
+  @override
+  String get howToContact => 'كيف تريد التواصل مع فريق الدعم؟';
+
+  @override
+  String get chat => 'دردشة';
+
+  @override
+  String get call => 'مكالمة';
+
+  @override
+  String get serviceHistoryFull => 'التاريخ الكامل';
+
+  @override
+  String get howToChoose => 'كيف تختار؟';
+
+  @override
+  String get advice => 'نصيحة: ابدأ بحزمة البداية وقم بالترقية حسب الحاجة!';
+
+  @override
+  String get gotIt => 'فهمت';
+
+  @override
+  String get dashboardTitle => 'لوحة تحكم الخدمة';
+
+  @override
+  String get startDate => 'تاريخ البدء';
+
+  @override
+  String get endDate => 'تاريخ الانتهاء';
+
+  @override
+  String get performance => 'الأداء';
+
+  @override
+  String get users => 'المستخدمين';
+
+  @override
+  String get storage => 'التخزين';
+
+  @override
+  String get includedServices => 'خدمات مُدرجة';
+
+  @override
+  String get keyFeatures => 'الميزات الرئيسية:';
+
+  @override
+  String get additionalInfo => 'معلومات إضافية:';
+
+  @override
+  String get paymentInstructions => 'تعليمات الدفع:';
+
+  @override
+  String get securePayment => 'دفع آمن';
+
+  @override
+  String get cardNumber => 'رقم البطاقة';
+
+  @override
+  String get expirationDate => 'تاريخ الانتهاء';
+
+  @override
+  String get cvv => 'CVV';
+
+  @override
+  String get payMonthly => 'الدفع شهريًا';
+
+  @override
+  String get payAnnually => 'الدفع سنويًا';
+
+  @override
+  String get userGuide => 'دليل المستخدم';
+
+  @override
+  String get completeDocumentation => 'الوثائق الكاملة';
+
+  @override
+  String get videoTutorials => 'دروس الفيديو';
+
+  @override
+  String get videoTraining => 'تدريب الفيديو';
+
+  @override
+  String get faq => 'الأسئلة الشائعة';
+
+  @override
+  String get frequentQuestions => 'الأسئلة المتكررة';
+
+  @override
+  String get templates => 'القوالب';
+
+  @override
+  String get readyToUseTemplates => 'قوالب جاهزة للاستخدام';
+
+  @override
+  String get community => 'المجتمع';
+
+  @override
+  String get forumAndDiscussions => 'المنتدى والمناقشات';
+
+  @override
+  String get home => 'الرئيسية';
+
+  @override
+  String get settings => 'الإعدادات';
+
+  @override
+  String get help => 'المساعدة';
+
+  @override
+  String get profile => 'الملف الشخصي';
+
+  @override
+  String get days => 'أيام';
+
+  @override
+  String get na => 'غير متوفر';
+
+  @override
+  String get discussWithOtherUsers => 'ناقش مع مستخدمين آخرين';
+
+  @override
+  String get advancedArticlesAndTutorials => 'مقالات ودروس متقدمة';
+
+  @override
+  String get onlineTrainingSessions => 'جلسات تدريبية عبر الإنترنت';
+
+  @override
+  String get coursesAndCertifications => 'دورات وشهادات';
+
+  @override
+  String get access => 'الوصول';
+
+  @override
+  String get creditCard => 'بطاقة ائتمان';
+
+  @override
+  String get other => 'أخرى';
+
+  @override
+  String get newMessage => 'رسالة جديدة';
+
+  @override
+  String get receivedNewMessageFromSupport => 'تلقت رسالة جديدة من الدعم';
+
+  @override
+  String get invoiceAvailable => 'فاتورة متاحة';
+
+  @override
+  String get yourJuneInvoiceIsAvailable => 'فاتورة يونيو متاحة';
+
+  @override
+  String get systemUpdate => 'تحديث النظام';
+
+  @override
+  String get newUpdateAvailable => 'تحديث جديد متاح';
+
+  @override
+  String get paymentReminder => 'تذكير بالدفع';
+
+  @override
+  String get yourPaymentIsDueIn3Days => 'دفعك مستحق خلال 3 أيام';
+
+  @override
+  String get serviceCompleted => 'الخدمة مكتملة';
+
+  @override
+  String get yourSeoAuditIsCompleted => 'تم الانتهاء من تدقيق SEO الخاص بك';
+
+  @override
+  String get markAllAsRead => 'تحديد الكل كمقروء';
+
+  @override
+  String get close => 'إغلاق';
+
+  @override
+  String get myProfile => 'ملفي الشخصي';
+
+  @override
+  String get newReport => 'تقرير جديد';
+
+  @override
+  String get schedule => 'جدولة';
+
+  @override
+  String get export => 'تصدير';
+
+  @override
+  String get backup => 'نسخ احتياطي';
+
+  @override
+  String get allActivities => 'جميع الأنشطة';
+
+  @override
+  String get downloadingReport => 'جارٍ تنزيل التقرير...';
+
+  @override
+  String get shareService => 'مشاركة الخدمة';
+
+  @override
+  String get choosePlatformToShare => 'اختر المنصة للمشاركة';
+
+  @override
+  String get printInvoice => 'طباعة الفاتورة';
+
+  @override
+  String get completed => 'مكتمل';
+
+  @override
+  String get notificationManagement => 'إدارة الإشعارات';
+
+  @override
+  String get notificationManagementPage => 'صفحة إدارة الإشعارات';
+
+  @override
+  String get securitySettings => 'إعدادات الأمان';
+
+  @override
+  String get securitySettingsPage => 'صفحة إعدادات الأمان';
+
+  @override
+  String get paymentSettings => 'إعدادات الدفع';
+
+  @override
+  String get paymentSettingsPage => 'صفحة إعدادات الدفع';
+
+  @override
+  String get privacySettingsPage => 'صفحة إعدادات الخصوصية';
+
+  @override
+  String get downloadSettingsPage => 'صفحة إعدادات التنزيل';
+
+  @override
+  String get changeLanguage => 'تغيير اللغة';
+
+  @override
+  String get userProfilePage => 'صفحة الملف الشخصي';
+
+  @override
+  String get generalSettingsPage => 'صفحة الإعدادات العامة';
+
+  @override
+  String get helpCenterPage => 'صفحة مركز المساعدة';
+
+  @override
+  String get giveFeedback => 'قدم ملاحظاتك';
+
+  @override
+  String get writeYourFeedbackHere => 'اكتب ملاحظاتك هنا';
+
+  @override
+  String get thanksForYourFeedback => 'شكرًا على ملاحظاتك';
+
+  @override
+  String get serviceDashboard => 'لوحة تحكم الخدمات';
+
+  @override
+  String get secureMobilePayment => 'دفع عبر الهاتف الآمن';
+
+  @override
+  String get dialCodeOnYourMobile => 'اتصل بالرمز على هاتفك';
+
+  @override
+  String get selectBillPayment => 'اختر دفع الفاتورة';
+
+  @override
+  String get enterCodeBARIDI12345 => 'أدخل الرمز BARIDI12345';
+
+  @override
+  String get monthlyPrice => 'السعر الشهري';
+
+  @override
+  String get annualPrice => 'السعر السنوي';
+
+  @override
+  String get secureCardPayment => 'دفع بالبطاقة الآمن';
+
+  @override
+  String get idealForNewBusinesses => 'مثالي للشركات الجديدة';
+
+  @override
+  String get perfectForGrowingBusinesses => 'مثالي للشركات النامية';
+
+  @override
+  String get forEstablishedBusinesses => 'للشركات الراسخة';
+
+  @override
+  String get serviceActivated => 'تم تفعيل الخدمة';
+
+  @override
+  String get yourPlan => 'خطتك';
+
+  @override
+  String get hasBeenActivated => 'تم تفعيلها';
+
+  @override
+  String get paymentConfirmed => 'تم تأكيد الدفع';
+
+  @override
+  String get paymentConfirmedDesc => 'تم تأكيد الدفع بنجاح';
+
+  @override
+  String get initialSetup => 'الإعداد الأولي';
+
+  @override
+  String get settingUpYourDashboard => 'جاري إعداد لوحة التحكم';
+
+  @override
+  String get welcomeAboard => 'مرحبًا بك على متن';
+
+  @override
+  String get yourAccountCreatedSuccessfully => 'تم إنشاء حسابك بنجاح';
+
+  @override
+  String get requestSentWeWillContactYou => 'تم إرسال الطلب، سنتصل بك';
+
+  @override
+  String get yourCompany => 'شركتك';
+
+  @override
+  String get allRightsReserved => 'جميع الحقوق محفوظة';
+
+  @override
+  String get thisAppHelpsManageServices => 'تساعد هذه التطبيق في إدارة الخدمات';
+
+  @override
+  String get otherServices => 'خدمات أخرى';
+
+  @override
+  String get payment => 'الدفع';
+
+  @override
+  String get packStartMonthlyPrice => 'دج 4,500';
+
+  @override
+  String get packStartAnnualPrice => 'دج 48,000';
+
+  @override
+  String get packPremiumMonthlyPrice => 'دج 8,500';
+
+  @override
+  String get packPremiumAnnualPrice => 'دج 91,800';
+
+  @override
+  String get customServiceMonthlyPrice => 'حسب العرض';
+
+  @override
+  String get customServiceAnnualPrice => 'حسب العرض';
+
+  @override
+  String get feature1 => 'إنشاء 3 حسابات اجتماعية';
+
+  @override
+  String get feature2 => 'هوية بصرية مخصصة';
+
+  @override
+  String get feature3 => '5 منشورات أولية';
+
+  @override
+  String get feature4 => 'موقع عرض بسيط';
+
+  @override
+  String get feature5 => 'الوصول إلى لوحة التحكم';
+
+  @override
+  String get feature6 => 'دعم بريد إلكتروني 24/7';
+
+  @override
+  String get info1 => 'ضمان استرداد الأموال لمدة 30 يومًا';
+
+  @override
+  String get info2 => 'مساعدة عبر البريد الإلكتروني خلال 24 ساعة';
+
+  @override
+  String get info3 => 'مساعدة مجانية في الإعداد';
+
+  @override
+  String get info4 => 'إلغاء في أي وقت';
+
+  @override
+  String get info5 => 'التحديثات المنتظمة مشمولة';
+
+  @override
+  String get info6 => 'الوصول إلى المجتمع';
+
+  @override
+  String get packStartDetails =>
+      'مثالي للشركات الناشئة التي ترغب في تطوير وجودها عبر الإنترنت. تتضمن هذه الحزمة كل ما تحتاجه للبدء في التسويق الرقمي.';
+
+  @override
+  String get serviceFeature1Title => 'إنشاء حساب';
+
+  @override
+  String get serviceFeature1Desc => 'إعداد وسائل التواصل الاجتماعي';
+
+  @override
+  String get serviceFeature2Title => 'الهوية البصرية';
+
+  @override
+  String get serviceFeature2Desc => 'تصميم الشعار والهوية البصرية';
+
+  @override
+  String get serviceFeature3Title => 'المحتوى الأولي';
+
+  @override
+  String get serviceFeature3Desc => 'إنشاء المنشورات الأولى';
+
+  @override
+  String get serviceFeature4Title => 'موقع العرض';
+
+  @override
+  String get serviceFeature4Desc => 'تطوير ويب بسيط';
+
+  @override
+  String get start => 'بدء';
+
+  @override
+  String get configure => 'تهيئة';
+
+  @override
+  String get view => 'عرض';
+
+  @override
+  String get edit => 'تحرير';
+
+  @override
+  String get optimize => 'تحسين';
+
+  @override
+  String get viewReport => 'عرض التقرير';
+
+  @override
+  String get viewAnalysis => 'عرض التحليل';
+
+  @override
+  String get step1 => 'تحليل';
+
+  @override
+  String get step2 => 'إعداد';
+
+  @override
+  String get step3 => 'تحقق';
+
+  @override
+  String get step4 => 'إنهاء';
+
+  @override
+  String get wireframe => 'النموذج الهيكلي';
+
+  @override
+  String get development => 'التطوير';
+
+  @override
+  String get test => 'اختبار';
+
+  @override
+  String get launch => 'إطلاق';
+
+  @override
+  String get strategy => 'إستراتيجية';
+
+  @override
+  String get creation => 'إبداع';
+
+  @override
+  String get approval => 'موافقة';
+
+  @override
+  String get publication => 'نشر';
+
+  @override
+  String get audit => 'تدقيق';
+
+  @override
+  String get execution => 'تنفيذ';
+
+  @override
+  String get optimization => 'تحسين';
+
+  @override
+  String get planning => 'تخطيط';
+
+  @override
+  String get validation => 'التحقق';
+
+  @override
+  String get briefing => 'الإحاطة';
+
+  @override
+  String get revision => 'المراجعة';
+
+  @override
+  String get setup => 'الإعداد';
+
+  @override
+  String get collection => 'جمع';
+
+  @override
+  String get analysis => 'التحليل';
+
+  @override
+  String get reporting => 'تقرير';
+
+  @override
+  String get script => 'سيناريو';
+
+  @override
+  String get shooting => 'تصوير';
+
+  @override
+  String get editing => 'مونتاج';
+
+  @override
+  String get diagnosis => 'تشخيص';
+
+  @override
+  String get recommendations => 'توصيات';
+
+  @override
+  String get actionPlan => 'خطة عمل';
+
+  @override
+  String get technicalAnalysis => 'تحليل تقني';
+
+  @override
+  String get contentAudit => 'تدقيق المحتوى';
+
+  @override
+  String get competitiveAnalysis => 'تحليل المنافسة';
+
+  @override
+  String get premiumFeature1 => 'إدارة شبكتين اجتماعيتين';
+
+  @override
+  String get premiumFeature2 => 'تقويم تحريري';
+
+  @override
+  String get premiumFeature3 => '12 منشورًا/شهر';
+
+  @override
+  String get premiumFeature4 => 'تقارير خفيفة';
+
+  @override
+  String get premiumFeature5 => 'تحليلات متقدمة';
+
+  @override
+  String get premiumFeature6 => 'دعم ذو أولوية';
+
+  @override
+  String get premiumInfo1 => 'مساعدة ذات أولوية خلال 12 ساعة';
+
+  @override
+  String get premiumInfo2 => 'مراجعة إستراتيجية شهرية';
+
+  @override
+  String get premiumInfo3 => 'تخطيط التقويم التحريري';
+
+  @override
+  String get premiumInfo4 => 'لوحة تحكم تحليل الأداء';
+
+  @override
+  String get premiumInfo5 => 'الوصول إلى ندوات عبر الإنترنت حصرية';
+
+  @override
+  String get premiumInfo6 => 'إرشاد شهري';
+
+  @override
+  String get packPremiumDetails =>
+      'مثالي للشركات الناشئة والشركات الصغيرة والمتوسطة في نمو كامل. يتضمن هذا الاشتراك الشهري إدارة مستمرة لوسائل التواصل الاجتماعي وتخطيط المحتوى.';
+
+  @override
+  String get premiumService1Title => 'إدارة وسائل التواصل الاجتماعي';
+
+  @override
+  String get premiumService1Desc => 'إدارة يومية للحسابات';
+
+  @override
+  String get premiumService2Title => 'التقويم التحريري';
+
+  @override
+  String get premiumService2Desc => 'تخطيط محتوى شهري';
+
+  @override
+  String get premiumService3Title => 'إنشاء محتوى';
+
+  @override
+  String get premiumService3Desc => '12 منشورًا شهريًا';
+
+  @override
+  String get premiumService4Title => 'تحليلات';
+
+  @override
+  String get premiumService4Desc => 'تقارير الأداء';
+
+  @override
+  String get customFeature1 => 'تدقيق SEO كامل';
+
+  @override
+  String get customFeature2 => 'حملات إعلانية (إعلانات)';
+
+  @override
+  String get customFeature3 => 'إنشاء محتوى فيديو متقدم';
+
+  @override
+  String get customFeature4 => 'تحليل الأعمال';
+
+  @override
+  String get customFeature5 => 'استشارة إستراتيجية';
+
+  @override
+  String get customFeature6 => 'دعم VIP 24/7';
+
+  @override
+  String get customInfo1 => 'مدير حساب مخصص';
+
+  @override
+  String get customInfo2 => 'دعم هاتفي 24/7';
+
+  @override
+  String get customInfo3 => 'تقارير مخصصة';
+
+  @override
+  String get customInfo4 => 'جلسات استشارة إستراتيجية';
+
+  @override
+  String get customInfo5 => 'وصول غير محدود للموارد';
+
+  @override
+  String get customInfo6 => 'تدريبات مخصصة';
+
+  @override
+  String get customServiceDetails =>
+      'خدمات متميزة حسب الطلب للشركات الراسخة. اختر من بين خدمات التسويق المتقدمة المصممة خصيصًا لاحتياجاتك المحددة. اتصل بنا للحصول على عرض أسعار مخصص.';
+
+  @override
+  String get customService1Title => 'تدقيق SEO';
+
+  @override
+  String get customService1Desc => 'تحليل SEO كامل';
+
+  @override
+  String get customService2Title => 'حملات إعلانية';
+
+  @override
+  String get customService2Desc => 'إدارة الإعلانات الرقمية';
+
+  @override
+  String get customService3Title => 'تسويق الفيديو';
+
+  @override
+  String get customService3Desc => 'إنشاء محتوى فيديو';
+
+  @override
+  String get customService4Title => 'تحليل إستراتيجي';
+
+  @override
+  String get customService4Desc => 'استشارة أعمال';
+
+  @override
+  String get packStartFeatures =>
+      'Création de 3 comptes sociaux, Identité visuelle personnalisée, 5 publications initiales, Site vitrine simple, Accès au tableau de bord, Support email 24/7';
+
+  @override
+  String get packStartAdditionalInfo =>
+      'ضمان استرداد الأموال لمدة 30 يومًا • مساعدة عبر البريد الإلكتروني خلال 24 ساعة • مساعدة مجانية في الإعداد • إلغاء في أي وقت • تشمل التحديثات المنتظمة • الوصول إلى المجتمع';
+
+  @override
+  String get accountCreation => 'إنشاء الحساب';
+
+  @override
+  String get accountCreationDesc => 'إعداد وسائل التواصل الاجتماعي';
+
+  @override
+  String get accountCreationAction => 'ابدأ';
+
+  @override
+  String get branding => 'العلامة التجارية';
+
+  @override
+  String get brandingDesc => 'تصميم الشعار والهوية البصرية';
+
+  @override
+  String get brandingAction => 'ابدأ';
+
+  @override
+  String get initialContent => 'المحتوى الأولي';
+
+  @override
+  String get initialContentDesc => 'إنشاء المنشورات الأولى';
+
+  @override
+  String get initialContentAction => 'جدولة';
+
+  @override
+  String get showcaseWebsite => 'موقع العرض';
+
+  @override
+  String get showcaseWebsiteDesc => 'تطوير ويب بسيط';
+
+  @override
+  String get showcaseWebsiteAction => 'تهيئة';
+
+  @override
+  String get design => 'التصميم';
+
+  @override
+  String get finalization => 'الإنهاء';
 }
