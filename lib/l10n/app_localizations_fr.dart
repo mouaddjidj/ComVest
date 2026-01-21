@@ -748,7 +748,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get noRecentActivity => 'Aucune activité récente';
 
   @override
-  String get quickActions => 'Actions Rapides';
+  String get quickActions => 'Actions rapides';
 
   @override
   String get report => 'Rapport';
@@ -1575,4 +1575,374 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get finalization => 'Finalisation';
+
+  @override
+  String get investorDashboard => 'Tableau de Bord Investisseur';
+
+  @override
+  String get followCompaniesAndDiscoverOpportunities =>
+      'Suivez vos entreprises préférées et découvrez de nouvelles opportunités';
+
+  @override
+  String get exploreCompanies => 'Explorer les entreprises';
+
+  @override
+  String get marketAnalysis => 'Analyses marché';
+
+  @override
+  String get followedCompanies => 'Entreprises suivies';
+
+  @override
+  String get news => 'Actualités';
+
+  @override
+  String get companies => 'Entreprises';
+
+  @override
+  String get marketCap => 'Capitalisation';
+
+  @override
+  String get sectors => 'Secteurs';
+
+  @override
+  String get growth => 'Croissance';
+
+  @override
+  String get topCompanies => 'Top entreprises';
+
+  @override
+  String get searchCompanyHint => 'Rechercher une entreprise...';
+
+  @override
+  String get all => 'Tous';
+
+  @override
+  String get filterCompanies => 'Filtrer les entreprises';
+
+  @override
+  String get size => 'Taille';
+
+  @override
+  String get filtersApplied => 'Filtres appliqués';
+
+  @override
+  String get apply => 'Appliquer';
+
+  @override
+  String get viewDetails => 'Voir les détails';
+
+  @override
+  String get removeFromFavorites => 'Retirer des favoris';
+
+  @override
+  String get addToFavorites => 'Ajouter aux favoris';
+
+  @override
+  String get financialAnalysis => 'Analyses financières';
+
+  @override
+  String get recentNews => 'Actualités récentes';
+
+  @override
+  String get youNowFollow => 'Vous suivez maintenant';
+
+  @override
+  String get youNoLongerFollow => 'Vous ne suivez plus';
+
+  @override
+  String get financialPerformance => 'Performance financière';
+
+  @override
+  String get annualGrowth => 'Croissance annuelle';
+
+  @override
+  String get profitMargin => 'Marge bénéficiaire';
+
+  @override
+  String get expectedROI => 'ROI attendu';
+
+  @override
+  String get recommendation => 'Recommandation';
+
+  @override
+  String get analystConsensus => 'Consensus des analystes';
+
+  @override
+  String get strongBuy => 'ACHETER FORTEMENT';
+
+  @override
+  String get buy => 'ACHETER';
+
+  @override
+  String get targetPrice => 'Prix cible';
+
+  @override
+  String get announcesNewFunding => 'annonce une nouvelle levée de fonds';
+
+  @override
+  String get algerianStartupConfirmsRegionalExpansion =>
+      'La startup algérienne confirme son expansion régionale';
+
+  @override
+  String get strategicPartnershipFor => 'Partnership stratégique pour';
+
+  @override
+  String get collaborationWithMajorSectorPlayers =>
+      'Collaboration avec des acteurs majeurs du secteur';
+
+  @override
+  String get launchesNewFeatures => 'lance de nouvelles fonctionnalités';
+
+  @override
+  String get technologicalInnovationToImproveUserExperience =>
+      'Innovation technologique pour améliorer l\'expérience utilisateur';
+
+  @override
+  String get shareLinkFor => 'Lien de partage pour';
+
+  @override
+  String get copied => 'copié';
+
+  @override
+  String get founded => 'Fondé';
+
+  @override
+  String get employees => 'Employés';
+
+  @override
+  String get website => 'Site web';
+
+  @override
+  String get applications => 'Applications';
+
+  @override
+  String get coverage => 'Couverture';
+
+  @override
+  String get businessModel => 'Modèle économique';
+
+  @override
+  String get productsServices => 'Produits & Services';
+
+  @override
+  String get valuation => 'Valuation';
+
+  @override
+  String get revenue => 'Revenus';
+
+  @override
+  String get sector => 'Secteur';
+
+  @override
+  String get details => 'Détails';
+
+  @override
+  String get followed => 'Suivie';
+
+  @override
+  String get follow => 'Suivre';
+
+  @override
+  String get noNewNotifications => 'Aucune nouvelle notification';
+
+  @override
+  String get hours => 'Horaires';
+
+  @override
+  String get basedOnYourInterests => 'Basé sur vos intérêts';
+
+  @override
+  String get recommendedForYou => 'Recommandé pour vous';
+
+  @override
+  String get android => 'Android';
+
+  @override
+  String get ios => 'iOS';
+
+  @override
+  String get notSpecified => 'Non spécifié';
+
+  @override
+  String get companyTalabaStoreName => 'TalabaStore';
+
+  @override
+  String get companyTalabaStoreDescription =>
+      'Plateforme e‑commerce destinée aux étudiants, offrant des réductions sur des produits variés (électronique, vêtements, accessoires, loisirs) et facilitant l\'accès aux services éducatifs.';
+
+  @override
+  String get companyTalabaStoreIndustry => 'E-commerce';
+
+  @override
+  String get companyTalabaStoreSector => 'Technologie';
+
+  @override
+  String get companyTalabaStoreType => 'SARL / Startup digitale';
+
+  @override
+  String get companyTalabaStoreLocation => 'Alger, Algérie';
+
+  @override
+  String get companyTalabaStoreFounded => 'Juin 2017';
+
+  @override
+  String get companyTalabaStoreCEO => 'Sami Aliouche';
+
+  @override
+  String get companyTalabaStoreProduct1 => 'Électronique';
+
+  @override
+  String get companyTalabaStoreProduct2 => 'Vêtements';
+
+  @override
+  String get companyTalabaStoreProduct3 => 'Accessoires';
+
+  @override
+  String get companyTalabaStoreProduct4 => 'Loisirs';
+
+  @override
+  String get companyTalabaStoreProduct5 => 'Services éducatifs';
+
+  @override
+  String get companyTalabaStoreUsers => 'Plus de 50 000 étudiants actifs';
+
+  @override
+  String get companyTalabaStoreCoverage =>
+      'Livraison dans 48 wilayas en Algérie';
+
+  @override
+  String get companyTalabaStoreBusinessModel =>
+      'Commission sur ventes + partenariats avec entreprises locales';
+
+  @override
+  String get companyTemTemName => 'TemTem';
+
+  @override
+  String get companyTemTemDescription =>
+      'Application de mobilité urbaine offrant des services de taxi/VTC, livraison de produits et services urbains digitaux (réservation et paiements).';
+
+  @override
+  String get companyTemTemIndustry => 'Mobilité';
+
+  @override
+  String get companyTemTemSector => 'Services';
+
+  @override
+  String get companyTemTemType => 'Startup mobilité';
+
+  @override
+  String get companyTemTemLocation => 'Alger, Algérie';
+
+  @override
+  String get companyTemTemFounded => '2018';
+
+  @override
+  String get companyTemTemCEO => 'Jeunes algériens';
+
+  @override
+  String get companyTemTemProduct1 => 'Taxi / VTC';
+
+  @override
+  String get companyTemTemProduct2 => 'Livraison de produits';
+
+  @override
+  String get companyTemTemProduct3 => 'Services urbains digitaux';
+
+  @override
+  String get companyTemTemUsers => 'Plusieurs milliers d\'utilisateurs actifs';
+
+  @override
+  String get companyTemTemCoverage => 'Alger, Oran, Constantine';
+
+  @override
+  String get companyTemTemBusinessModel =>
+      'Commissions sur trajets + partenariats avec commerces locaux';
+
+  @override
+  String get companyALPAYName => 'ALPAY';
+
+  @override
+  String get companyALPAYDescription =>
+      'Solution de paiement digital et e-wallet pour particuliers et commerçants, offrant des paiements sécurisés et une gestion de comptes digitaux.';
+
+  @override
+  String get companyALPAYIndustry => 'Fintech';
+
+  @override
+  String get companyALPAYSector => 'Finance';
+
+  @override
+  String get companyALPAYType => 'Fintech';
+
+  @override
+  String get companyALPAYLocation => 'Alger, Algérie';
+
+  @override
+  String get companyALPAYFounded => '2019';
+
+  @override
+  String get companyALPAYCEO => 'Jeunes algériens';
+
+  @override
+  String get companyALPAYProduct1 => 'Paiements sécurisés';
+
+  @override
+  String get companyALPAYProduct2 => 'Gestion de comptes digitaux';
+
+  @override
+  String get companyALPAYProduct3 => 'Paiement en ligne et mobile';
+
+  @override
+  String get companyALPAYUsers => 'Plusieurs milliers d\'utilisateurs';
+
+  @override
+  String get companyALPAYCoverage => 'Services en ligne à l\'échelle nationale';
+
+  @override
+  String get companyALPAYBusinessModel =>
+      'Commissions sur transactions + abonnements entreprises';
+
+  @override
+  String get companyOkadooName => 'Okadoo';
+
+  @override
+  String get companyOkadooDescription =>
+      'Marketplace numérique connectant entreprises, fournisseurs et acheteurs, permettant aux entreprises de vendre ou d\'acheter en ligne avec suivi digital des transactions.';
+
+  @override
+  String get companyOkadooIndustry => 'Marketplace B2B';
+
+  @override
+  String get companyOkadooSector => 'E-commerce';
+
+  @override
+  String get companyOkadooType => 'Marketplace B2B';
+
+  @override
+  String get companyOkadooLocation => 'Algérie';
+
+  @override
+  String get companyOkadooFounded => '2019';
+
+  @override
+  String get companyOkadooCEO => 'Jeunes';
+
+  @override
+  String get companyOkadooProduct1 => 'Marketplace B2B';
+
+  @override
+  String get companyOkadooProduct2 => 'Suivi digital des transactions';
+
+  @override
+  String get companyOkadooProduct3 => 'Connexion fournisseurs-acheteurs';
+
+  @override
+  String get companyOkadooUsers => 'Non spécifié';
+
+  @override
+  String get companyOkadooCoverage => 'Algérie';
+
+  @override
+  String get companyOkadooBusinessModel =>
+      'Commission sur transactions + abonnements entreprises';
 }

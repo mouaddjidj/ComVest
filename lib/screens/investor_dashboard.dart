@@ -6,7 +6,7 @@ import 'analyse_marcket.dart';
 import 'settings_page.dart';
 import 'followed_companies.dart';
 import 'actualites_page.dart';
-
+import '../l10n/app_localizations.dart';
 
 class InvestorDashboard extends StatefulWidget {
   final Investor investor;
@@ -19,124 +19,137 @@ class InvestorDashboard extends StatefulWidget {
 
 class _InvestorDashboardState extends State<InvestorDashboard> {
   int _selectedTab = 0;
-  final List<Company> _companies = [
-    Company(
-      name: 'TalabaStore',
-      description:
-          'Plateforme e‑commerce destinée aux étudiants, offrant des réductions sur des produits variés (électronique, vêtements, accessoires, loisirs) et facilitant l\'accès aux services éducatifs.',
-      industry: 'E-commerce',
-      sector: 'Technologie',
-       type: 'SARL / Startup digitale',
-      valuation: 12.5,
-      employees: 50,
-      location: 'Alger, Algérie',
-      founded: 'Juin 2017',
-      ceo: 'Sami Aliouche',
-      revenue: 3.2,
-      products: [
-        'Électronique',
-        'Vêtements',
-        'Accessoires',
-        'Loisirs',
-        'Services éducatifs'
-      ],
-      cardColor: const Color(0xFF2ECC71),
-      logo: '🎓',
-      imagePath: 'assets/images/talabastore.png',
-      website: 'https://www.talabastore.dz/',
-      mobileApps: ['Android', 'iOS'],
-      users: 'Plus de 50 000 étudiants actifs',
-      coverage: 'Livraison dans 48 wilayas en Algérie',
-      businessModel: 'Commission sur ventes + partenariats avec entreprises locales',
-    ),
-    Company(
-      name: 'TemTem',
-      description:
-          'Application de mobilité urbaine offrant des services de taxi/VTC, livraison de produits et services urbains digitaux (réservation et paiements).',
-      industry: 'Mobilité',
-      sector: 'Services',
-       type: ' Startup mobilité ',
-      valuation: 8.7,
-      employees: 120,
-      location: 'Alger, Algérie',
-      founded: '2018',
-      ceo: 'Jeunes  algériens',
-      revenue: 2.8,
-      products: [
-        'Taxi / VTC',
-        'Livraison de produits',
-        'Services urbains digitaux'
-      ],
-      cardColor: const Color(0xFFE67E22),
-      logo: '🚗',
-       imagePath: 'assets/images/temtem.png',
-      website: 'temtem.taxi',
-      mobileApps: ['Android', 'iOS'],
-      users: 'Plusieurs milliers d\'utilisateurs actifs',
-      coverage: 'Alger, Oran, Constantine',
-      businessModel: 'Commissions sur trajets + partenariats avec commerces locaux',
-    ),
-    Company(
-      name: 'ALPAY',
-      description:
-          'Solution de paiement digital et e-wallet pour particuliers et commerçants, offrant des paiements sécurisés et une gestion de comptes digitaux.',
-      industry: 'Fintech',
-      sector: 'Finance',
-       type: 'Fintech ',
-      valuation: 15.3,
-      employees: 85,
-      location: 'Alger, Algérie',
-      founded: '2019',
-      ceo: 'Jeunes algériens',
-      revenue: 4.1,
-      products: [
-        'Paiements sécurisés',
-        'Gestion de comptes digitaux',
-        'Paiement en ligne et mobile'
-      ],
-      cardColor: const Color.fromARGB(255, 114, 233, 18),
-      logo: '💳',
-      imagePath: 'assets/images/alpay.png',
-      website: 'https://alpay.dz/',
-      mobileApps: ['Android', 'iOS'],
-      users: 'Plusieurs milliers d\'utilisateurs',
-      coverage: 'Services en ligne à l\'échelle nationale',
-      businessModel: 'Commissions sur transactions + abonnements entreprises',
-    ),
-    Company(
-      name: 'Okadoo',
-      description:
-          'Marketplace numérique connectant entreprises, fournisseurs et acheteurs, permettant aux entreprises de vendre ou d\'acheter en ligne avec suivi digital des transactions.',
-      industry: 'Marketplace B2B',
-      sector: 'E-commerce',
-       type: 'Marketplace B2B ',
-      valuation: 10.2,
-      employees: 65,
-      location: 'Algérie',
-      founded: '2019',
-      ceo: 'Jeunes ',
-      revenue: 2.5,
-      products: [
-        'Marketplace B2B',
-        'Suivi digital des transactions',
-        'Connexion fournisseurs-acheteurs'
-      ],
-      cardColor: const Color(0xFF3498DB),
-      logo: '🛒',
-       imagePath: 'assets/images/okadoo.png',
-      website: 'https://okadoo.com/',
-      mobileApps: [],
-      users: 'Non spécifié',
-      coverage: 'Algérie',
-      businessModel: 'Commission sur transactions + abonnements entreprises', 
-    ),
-  ];
-
-  // Liste des entreprises suivies
+  List<Company> _companies = [];
   final List<Company> _followedCompanies = [];
 
   @override
+  void initState() {
+    super.initState();
+    _initializeCompanies();
+  }
+
+  void _initializeCompanies() {
+    // Companies will be initialized in build method based on localizations
+    // This is just a placeholder
+    _companies = [];
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!;
+
+    // Initialize companies only once with localizations
+    if (_companies.isEmpty) {
+      _companies = [
+        Company(
+          name: localizations.companyTalabaStoreName,
+          description: localizations.companyTalabaStoreDescription,
+          industry: localizations.companyTalabaStoreIndustry,
+          sector: localizations.companyTalabaStoreSector,
+          type: localizations.companyTalabaStoreType,
+          valuation: 12.5,
+          employees: 50,
+          location: localizations.companyTalabaStoreLocation,
+          founded: localizations.companyTalabaStoreFounded,
+          ceo: localizations.companyTalabaStoreCEO,
+          revenue: 3.2,
+          products: [
+            localizations.companyTalabaStoreProduct1,
+            localizations.companyTalabaStoreProduct2,
+            localizations.companyTalabaStoreProduct3,
+            localizations.companyTalabaStoreProduct4,
+            localizations.companyTalabaStoreProduct5,
+          ],
+          cardColor: const Color(0xFF2ECC71),
+          logo: '🎓',
+          imagePath: 'assets/images/talabastore.png',
+          website: 'https://www.talabastore.dz/',
+          mobileApps: [localizations.android, localizations.ios],
+          users: localizations.companyTalabaStoreUsers,
+          coverage: localizations.companyTalabaStoreCoverage,
+          businessModel: localizations.companyTalabaStoreBusinessModel,
+        ),
+        Company(
+          name: localizations.companyTemTemName,
+          description: localizations.companyTemTemDescription,
+          industry: localizations.companyTemTemIndustry,
+          sector: localizations.companyTemTemSector,
+          type: localizations.companyTemTemType,
+          valuation: 8.7,
+          employees: 120,
+          location: localizations.companyTemTemLocation,
+          founded: localizations.companyTemTemFounded,
+          ceo: localizations.companyTemTemCEO,
+          revenue: 2.8,
+          products: [
+            localizations.companyTemTemProduct1,
+            localizations.companyTemTemProduct2,
+            localizations.companyTemTemProduct3,
+          ],
+          cardColor: const Color(0xFFE67E22),
+          logo: '🚗',
+          imagePath: 'assets/images/temtem.png',
+          website: 'temtem.taxi',
+          mobileApps: [localizations.android, localizations.ios],
+          users: localizations.companyTemTemUsers,
+          coverage: localizations.companyTemTemCoverage,
+          businessModel: localizations.companyTemTemBusinessModel,
+        ),
+        Company(
+          name: localizations.companyALPAYName,
+          description: localizations.companyALPAYDescription,
+          industry: localizations.companyALPAYIndustry,
+          sector: localizations.companyALPAYSector,
+          type: localizations.companyALPAYType,
+          valuation: 15.3,
+          employees: 85,
+          location: localizations.companyALPAYLocation,
+          founded: localizations.companyALPAYFounded,
+          ceo: localizations.companyALPAYCEO,
+          revenue: 4.1,
+          products: [
+            localizations.companyALPAYProduct1,
+            localizations.companyALPAYProduct2,
+            localizations.companyALPAYProduct3,
+          ],
+          cardColor: const Color.fromARGB(255, 114, 233, 18),
+          logo: '💳',
+          imagePath: 'assets/images/alpay.png',
+          website: 'https://alpay.dz/',
+          mobileApps: [localizations.android, localizations.ios],
+          users: localizations.companyALPAYUsers,
+          coverage: localizations.companyALPAYCoverage,
+          businessModel: localizations.companyALPAYBusinessModel,
+        ),
+        Company(
+          name: localizations.companyOkadooName,
+          description: localizations.companyOkadooDescription,
+          industry: localizations.companyOkadooIndustry,
+          sector: localizations.companyOkadooSector,
+          type: localizations.companyOkadooType,
+          valuation: 10.2,
+          employees: 65,
+          location: localizations.companyOkadooLocation,
+          founded: localizations.companyOkadooFounded,
+          ceo: localizations.companyOkadooCEO,
+          revenue: 2.5,
+          products: [
+            localizations.companyOkadooProduct1,
+            localizations.companyOkadooProduct2,
+            localizations.companyOkadooProduct3,
+          ],
+          cardColor: const Color(0xFF3498DB),
+          logo: '🛒',
+          imagePath: 'assets/images/okadoo.png',
+          website: 'https://okadoo.com/',
+          mobileApps: [],
+          users: localizations.companyOkadooUsers,
+          coverage: localizations.companyOkadooCoverage,
+          businessModel: localizations.companyOkadooBusinessModel,
+        ),
+      ];
+    }
+
     return Scaffold(
       backgroundColor: const Color(0xFFF8FAFC),
       appBar: AppBar(
@@ -146,7 +159,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Bonjour, ${widget.investor.firstName} 👋',
+              '${localizations.welcome}, ${widget.investor.firstName} 👋',
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -167,7 +180,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
           IconButton(
             icon: const Icon(Icons.notifications, color: Colors.black),
             onPressed: () {
-              _showNotifications();
+              _showNotifications(localizations);
             },
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,
@@ -176,7 +189,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
           IconButton(
             icon: const Icon(Icons.search, color: Colors.black),
             onPressed: () {
-              _showSearch();
+              _showSearch(localizations);
             },
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,
@@ -184,8 +197,10 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
           ),
         ],
       ),
-      drawer: _buildDrawer(),
-      body: _selectedTab == 0 ? _buildDashboard() : _buildCompanies(),
+      drawer: _buildDrawer(localizations),
+      body: _selectedTab == 0
+          ? _buildDashboard(localizations)
+          : _buildCompanies(localizations),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedTab,
         onTap: (index) {
@@ -195,21 +210,21 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
         },
         selectedItemColor: const Color(0xFF7533E8),
         unselectedItemColor: Colors.grey[600],
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.dashboard),
-            label: 'Dashboard',
+            icon: const Icon(Icons.dashboard),
+            label: localizations.dashboard,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Entreprises',
+            icon: const Icon(Icons.business),
+            label: localizations.companyName,
           ),
         ],
       ),
     );
   }
 
-  Widget _buildDrawer() {
+  Widget _buildDrawer(AppLocalizations localizations) {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -242,8 +257,6 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
-                  strutStyle: const StrutStyle(
-    forceStrutHeight: true,)
                 ),
                 Text(
                   widget.investor.email,
@@ -274,7 +287,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
           ),
           ListTile(
             leading: const Icon(Icons.dashboard, color: Color(0xFF7533E8)),
-            title: const Text('Tableau de bord'),
+            title: Text(localizations.dashboard),
             onTap: () {
               setState(() {
                 _selectedTab = 0;
@@ -284,7 +297,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
           ),
           ListTile(
             leading: const Icon(Icons.business, color: Color(0xFF7533E8)),
-            title: const Text('Entreprises'),
+            title: Text(localizations.companyName),
             onTap: () {
               setState(() {
                 _selectedTab = 1;
@@ -294,7 +307,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
           ),
           ListTile(
             leading: const Icon(Icons.star, color: Color(0xFF7533E8)),
-            title: const Text('Entreprises suivies'),
+            title: Text(localizations.followedCompanies),
             trailing: _followedCompanies.isNotEmpty
                 ? Container(
                     padding: const EdgeInsets.all(4),
@@ -321,7 +334,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
                     investor: widget.investor,
                     followedCompanies: _followedCompanies,
                     onUnfollow: (company) {
-                      _unfollowCompany(company);
+                      _unfollowCompany(company, localizations);
                     },
                   ),
                 ),
@@ -330,7 +343,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
           ),
           ListTile(
             leading: const Icon(Icons.analytics, color: Color(0xFF7533E8)),
-            title: const Text('Analyses marché'),
+            title: Text(localizations.marketAnalysis),
             onTap: () {
               Navigator.pop(context);
               Navigator.push(
@@ -342,16 +355,16 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
               );
             },
           ),
-          // SECTION PORTEFEUILLE SUPPRIMÉE ICI
           ListTile(
             leading: const Icon(Icons.newspaper, color: Color(0xFF7533E8)),
-            title: const Text('Actualités'),
+            title: Text(localizations.news),
             onTap: () {
               Navigator.pop(context);
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ActualitesPage(investor: widget.investor),
+                  builder: (context) =>
+                      ActualitesPage(investor: widget.investor),
                 ),
               );
             },
@@ -359,7 +372,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
           const Divider(),
           ListTile(
             leading: const Icon(Icons.settings, color: Color(0xFF7533E8)),
-            title: const Text('Paramètres'),
+            title: Text(localizations.settings),
             onTap: () {
               Navigator.pop(context);
               Navigator.push(
@@ -372,18 +385,18 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
           ),
           ListTile(
             leading: const Icon(Icons.help, color: Color(0xFF7533E8)),
-            title: const Text('Aide & Support'),
+            title: Text(localizations.help),
             onTap: () {
               Navigator.pop(context);
-              _showHelpSupport();
+              _showHelpSupport(localizations);
             },
           ),
           ListTile(
             leading: const Icon(Icons.exit_to_app, color: Colors.red),
-            title: const Text('Déconnexion'),
+            title: Text(localizations.logout),
             onTap: () {
               Navigator.pop(context);
-              _showLogoutConfirmation();
+              _showLogoutConfirmation(localizations);
             },
           ),
         ],
@@ -391,7 +404,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
     );
   }
 
-  Widget _buildDashboard() {
+  Widget _buildDashboard(AppLocalizations localizations) {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -419,9 +432,9 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Dashboard Investisseur',
-                  style: TextStyle(
+                Text(
+                  localizations.investorDashboard,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -429,7 +442,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Suivez vos entreprises préférées et découvrez de nouvelles opportunités',
+                  localizations.followCompaniesAndDiscoverOpportunities,
                   style: TextStyle(
                     color: Colors.white.withOpacity(0.9),
                     fontSize: 14,
@@ -445,15 +458,15 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
                     foregroundColor: const Color(0xFF7533E8),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 30, vertical: 12),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25),
                     ),
                   ),
-                  child: const Text(
-                    'Explorer les entreprises',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                  child: Text(
+                    localizations.exploreCompanies,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
               ],
@@ -466,9 +479,9 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Recommandé pour vous',
-                  style: TextStyle(
+                Text(
+                  localizations.recommendedForYou,
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
@@ -476,7 +489,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  'Basé sur vos intérêts: ${widget.investor.selectedIndustries.join(", ")}',
+                  '${localizations.basedOnYourInterests}: ${widget.investor.selectedIndustries.join(", ")}',
                   style: const TextStyle(
                     color: Colors.grey,
                     fontSize: 14,
@@ -491,7 +504,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
             children: [
               Expanded(
                 child: _buildStatCard(
-                  title: 'Entreprises',
+                  title: localizations.companies,
                   value: '${_companies.length}',
                   icon: Icons.business,
                   color: const Color(0xFF4A90E2),
@@ -500,7 +513,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
               const SizedBox(width: 10),
               Expanded(
                 child: _buildStatCard(
-                  title: 'Capitalisation',
+                  title: localizations.marketCap,
                   value: '46.7B DA',
                   icon: Icons.trending_up,
                   color: const Color(0xFF2ECC71),
@@ -513,7 +526,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
             children: [
               Expanded(
                 child: _buildStatCard(
-                  title: 'Secteurs',
+                  title: localizations.sectors,
                   value: '4',
                   icon: Icons.category,
                   color: const Color(0xFF9B59B6),
@@ -522,7 +535,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
               const SizedBox(width: 10),
               Expanded(
                 child: _buildStatCard(
-                  title: 'Croissance',
+                  title: localizations.growth,
                   value: '+25.3%',
                   icon: Icons.attach_money,
                   color: const Color(0xFFE67E22),
@@ -530,7 +543,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
               ),
             ],
           ),
-          
+
           // Companies Followed Stats
           if (_followedCompanies.isNotEmpty) ...[
             const SizedBox(height: 20),
@@ -553,9 +566,9 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        'Entreprises suivies',
-                        style: TextStyle(
+                      Text(
+                        localizations.followedCompanies,
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
@@ -563,7 +576,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
                       ),
                       const SizedBox(height: 5),
                       Text(
-                        '${_followedCompanies.length} entreprises',
+                        '${_followedCompanies.length} ${localizations.companies.toLowerCase()}',
                         style: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
@@ -580,19 +593,19 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
                             investor: widget.investor,
                             followedCompanies: _followedCompanies,
                             onUnfollow: (company) {
-                              _unfollowCompany(company);
+                              _unfollowCompany(company, localizations);
                             },
                           ),
                         ),
                       );
                     },
                     icon: const Icon(Icons.star, size: 16),
-                    label: const Text('Voir'),
+                    label: Text(localizations.view),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF7533E8),
                       foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 10),
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -602,16 +615,16 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
               ),
             ),
           ],
-          
+
           const SizedBox(height: 30),
 
           // Top Companies
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                'Top entreprises',
-                style: TextStyle(
+              Text(
+                localizations.topCompanies,
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
@@ -623,9 +636,9 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
                     _selectedTab = 1;
                   });
                 },
-                child: const Text(
-                  'Voir tout',
-                  style: TextStyle(
+                child: Text(
+                  localizations.viewAll,
+                  style: const TextStyle(
                     color: Color(0xFF7533E8),
                     fontWeight: FontWeight.bold,
                   ),
@@ -634,13 +647,15 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
             ],
           ),
           const SizedBox(height: 15),
-          ..._companies.take(3).map((company) => _buildCompanyCard(company)),
+          ..._companies
+              .take(3)
+              .map((company) => _buildCompanyCard(company, localizations)),
 
           // Quick Actions
           const SizedBox(height: 30),
-          const Text(
-            'Actions rapides',
-            style: TextStyle(
+          Text(
+            localizations.quickActions,
+            style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               color: Colors.black,
@@ -651,7 +666,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
             children: [
               Expanded(
                 child: _buildQuickActionCard(
-                  title: 'Analyser marché',
+                  title: localizations.marketAnalysis,
                   icon: Icons.analytics,
                   color: const Color(0xFF7533E8),
                   onTap: () {
@@ -668,7 +683,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
               const SizedBox(width: 10),
               Expanded(
                 child: _buildQuickActionCard(
-                  title: 'Entreprises suivies',
+                  title: localizations.followedCompanies,
                   icon: Icons.star,
                   color: const Color(0xFFF1C40F),
                   onTap: () {
@@ -679,7 +694,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
                           investor: widget.investor,
                           followedCompanies: _followedCompanies,
                           onUnfollow: (company) {
-                            _unfollowCompany(company);
+                            _unfollowCompany(company, localizations);
                           },
                         ),
                       ),
@@ -694,7 +709,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
             children: [
               Expanded(
                 child: _buildQuickActionCard(
-                  title: 'Paramètres',
+                  title: localizations.settings,
                   icon: Icons.settings,
                   color: const Color(0xFF2ECC71),
                   onTap: () {
@@ -711,14 +726,15 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
               const SizedBox(width: 10),
               Expanded(
                 child: _buildQuickActionCard(
-                  title: 'Actualités',
+                  title: localizations.news,
                   icon: Icons.newspaper,
                   color: const Color(0xFF9B59B6),
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ActualitesPage(investor: widget.investor),
+                        builder: (context) =>
+                            ActualitesPage(investor: widget.investor),
                       ),
                     );
                   },
@@ -836,7 +852,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
     );
   }
 
-  Widget _buildCompanies() {
+  Widget _buildCompanies(AppLocalizations localizations) {
     return Column(
       children: [
         // Search and Filter Bar
@@ -852,14 +868,14 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
                     color: Colors.grey[100],
                     borderRadius: BorderRadius.circular(25),
                   ),
-                  child: const Row(
+                  child: Row(
                     children: [
-                      Icon(Icons.search, color: Colors.grey),
-                      SizedBox(width: 10),
+                      const Icon(Icons.search, color: Colors.grey),
+                      const SizedBox(width: 10),
                       Expanded(
                         child: TextField(
                           decoration: InputDecoration(
-                            hintText: 'Rechercher une entreprise...',
+                            hintText: localizations.searchCompanyHint,
                             border: InputBorder.none,
                           ),
                         ),
@@ -872,7 +888,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
               IconButton(
                 icon: const Icon(Icons.filter_list, color: Color(0xFF7533E8)),
                 onPressed: () {
-                  _showFilterDialog();
+                  _showFilterDialog(localizations);
                 },
                 splashColor: Colors.transparent,
                 highlightColor: Colors.transparent,
@@ -890,7 +906,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
           child: Row(
             children: [
               FilterChip(
-                label: const Text('Tous'),
+                label: Text(localizations.all),
                 selected: true,
                 onSelected: (_) {},
                 selectedColor: const Color(0xFF7533E8),
@@ -924,7 +940,7 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             itemCount: _companies.length,
             itemBuilder: (context, index) {
-              return _buildCompanyCard(_companies[index]);
+              return _buildCompanyCard(_companies[index], localizations);
             },
           ),
         ),
@@ -932,449 +948,452 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
     );
   }
 
-Widget _buildCompanyCard(Company company) {
-  final isFollowed = _followedCompanies.any((c) => c.name == company.name);
-  
-  // Map pour contrôler la taille de chaque image d'entreprise
-  final Map<String, Size> companyImageSizes = {
-    'TalabaStore': const Size(60, 60),    // Plus grande
-     'TemTem': const Size(55, 55),          // Légèrement plus grande
-    'ALPAY': const Size(50, 50),          // Taille standard
-    'Okadoo': const Size(45, 45),         // Plus petite
-  };
-  
-  // Récupérer la taille spécifique ou utiliser une taille par défaut
-  final Size imageSize = companyImageSizes[company.name] ?? const Size(50, 50);
-  
-  // Map pour contrôler le mode d'ajustement de chaque image
-  final Map<String, BoxFit> companyImageFit = {
-    'TalabaStore': BoxFit.contain,  // Garde les proportions
-    'TemTem': BoxFit.fitWidth,         // Remplit l'espace
-    'ALPAY': BoxFit.fitWidth,       // S'adapte à la largeur
-    'Okadoo': BoxFit.fitHeight,     // S'adapte à la hauteur
-  };
-  
-  final BoxFit imageFit = companyImageFit[company.name] ?? BoxFit.cover;
+  Widget _buildCompanyCard(Company company, AppLocalizations localizations) {
+    final isFollowed = _followedCompanies.any((c) => c.name == company.name);
 
-  return Container(
-    margin: const EdgeInsets.only(bottom: 15),
-    decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(15),
-      boxShadow: [
-        BoxShadow(
-          color: Colors.black.withOpacity(0.05),
-          blurRadius: 10,
-          offset: const Offset(0, 5),
-        ),
-      ],
-    ),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // Header - Make this part clickable
-        GestureDetector(
-          onTap: () {
-            _showCompanyDetails(company);
-          },
-          child: Container(
-            padding: const EdgeInsets.all(15),
-            decoration: BoxDecoration(
-              color: company.cardColor.withOpacity(0.1),
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(15),
-                topRight: Radius.circular(15),
+    // Map pour contrôler la taille de chaque image d'entreprise
+    final Map<String, Size> companyImageSizes = {
+      'TalabaStore': const Size(60, 60), // Plus grande
+      'TemTem': const Size(55, 55), // Légèrement plus grande
+      'ALPAY': const Size(50, 50), // Taille standard
+      'Okadoo': const Size(45, 45), // Plus petite
+    };
+
+    // Récupérer la taille spécifique ou utiliser une taille par défaut
+    final Size imageSize =
+        companyImageSizes[company.name] ?? const Size(50, 50);
+
+    // Map pour contrôler le mode d'ajustement de chaque image
+    final Map<String, BoxFit> companyImageFit = {
+      'TalabaStore': BoxFit.contain, // Garde les proportions
+      'TemTem': BoxFit.fitWidth, // Remplit l'espace
+      'ALPAY': BoxFit.fitWidth, // S'adapte à la largeur
+      'Okadoo': BoxFit.fitHeight, // S'adapte à la hauteur
+    };
+
+    final BoxFit imageFit = companyImageFit[company.name] ?? BoxFit.cover;
+
+    return Container(
+      margin: const EdgeInsets.only(bottom: 15),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 5),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Header - Make this part clickable
+          GestureDetector(
+            onTap: () {
+              _showCompanyDetails(company, localizations);
+            },
+            child: Container(
+              padding: const EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                color: company.cardColor.withOpacity(0.1),
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(15),
+                  topRight: Radius.circular(15),
+                ),
               ),
-            ),
-            child: Row(
-              children: [
-                // CONTAINER AVEC TAILLE DYNAMIQUE
-                Container(
-                  width: imageSize.width,
-                  height: imageSize.height,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
-                        blurRadius: 5,
-                        offset: const Offset(0, 3),
-                      ),
-                    ],
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: company.imagePath.isNotEmpty 
-                      ? Image.asset(
-                          company.imagePath,
-                          width: imageSize.width,
-                          height: imageSize.height,
-                          fit: imageFit,
-                          errorBuilder: (context, error, stackTrace) {
-                            // Fallback si l'image n'existe pas
-                            return Container(
+              child: Row(
+                children: [
+                  // CONTAINER AVEC TAILLE DYNAMIQUE
+                  Container(
+                    width: imageSize.width,
+                    height: imageSize.height,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          blurRadius: 5,
+                          offset: const Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: company.imagePath.isNotEmpty
+                          ? Image.asset(
+                              company.imagePath,
+                              width: imageSize.width,
+                              height: imageSize.height,
+                              fit: imageFit,
+                              errorBuilder: (context, error, stackTrace) {
+                                // Fallback si l'image n'existe pas
+                                return Container(
+                                  color: company.cardColor,
+                                  child: Center(
+                                    child: Text(
+                                      company.logo,
+                                      style: TextStyle(
+                                        fontSize: imageSize.width *
+                                            0.35, // Taille proportionnelle
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                            )
+                          : Container(
                               color: company.cardColor,
                               child: Center(
                                 child: Text(
                                   company.logo,
                                   style: TextStyle(
-                                    fontSize: imageSize.width * 0.35, // Taille proportionnelle
+                                    fontSize: imageSize.width * 0.35,
                                   ),
                                 ),
                               ),
-                            );
-                          },
-                        )
-                      : Container(
-                          color: company.cardColor,
-                          child: Center(
-                            child: Text(
-                              company.logo,
-                              style: TextStyle(
-                                fontSize: imageSize.width * 0.35,
-                              ),
                             ),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          company.name,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
                           ),
                         ),
+                        Text(
+                          '${company.industry} • ${company.location}',
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  IconButton(
+                    icon: const Icon(Icons.more_vert, color: Colors.grey),
+                    onPressed: () {
+                      _showCompanyOptions(company, localizations);
+                    },
+                    splashColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          // Content - Make this part clickable too
+          GestureDetector(
+            onTap: () {
+              _showCompanyDetails(company, localizations);
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(15),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    company.description,
+                    style: const TextStyle(
+                      color: Colors.black87,
+                      fontSize: 14,
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+
+                  // Key Info
+                  Row(
                     children: [
-                      Text(
-                        company.name,
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
+                      _buildInfoItem('CEO', company.ceo),
+                      const SizedBox(width: 20),
+                      _buildInfoItem(localizations.founded, company.founded),
+                      const SizedBox(width: 20),
+                      _buildInfoItem(
+                          localizations.employees, '${company.employees}'),
+                    ],
+                  ),
+                  const SizedBox(height: 15),
+
+                  // Additional Info
+                  if (company.website.isNotEmpty)
+                    _buildInfoRow(localizations.website, company.website),
+                  if (company.mobileApps.isNotEmpty)
+                    _buildInfoRow(localizations.applications,
+                        company.mobileApps.join(', ')),
+                  if (company.users.isNotEmpty)
+                    _buildInfoRow(localizations.users, company.users),
+                  if (company.coverage.isNotEmpty)
+                    _buildInfoRow(localizations.coverage, company.coverage),
+                  if (company.businessModel.isNotEmpty)
+                    _buildInfoRow(
+                        localizations.businessModel, company.businessModel),
+                  const SizedBox(height: 15),
+
+                  // Products/Services
+                  Text(
+                    localizations.productsServices,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black87,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Wrap(
+                    spacing: 8,
+                    runSpacing: 8,
+                    children: company.products.map((product) {
+                      return Chip(
+                        label: Text(product),
+                        backgroundColor: company.cardColor.withOpacity(0.1),
+                        labelStyle: TextStyle(color: company.cardColor),
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                      );
+                    }).toList(),
+                  ),
+                  const SizedBox(height: 15),
+
+                  // Financial Info
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            localizations.valuation,
+                            style: const TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          Text(
+                            '${company.valuation}B DA',
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
                       ),
-                      Text(
-                        '${company.industry} • ${company.location}',
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: Colors.grey,
-                        ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            localizations.revenue,
+                            style: const TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          Text(
+                            '${company.revenue}B DA',
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            localizations.sector,
+                            style: const TextStyle(
+                              fontSize: 12,
+                              color: Colors.grey,
+                            ),
+                          ),
+                          Text(
+                            company.sector,
+                            style: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ),
-                IconButton(
-                  icon: const Icon(Icons.more_vert, color: Colors.grey),
-                  onPressed: () {
-                    _showCompanyOptions(company);
-                  },
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  hoverColor: Colors.transparent,
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
 
-        // Content - Make this part clickable too
-        GestureDetector(
-          onTap: () {
-            _showCompanyDetails(company);
-          },
-          child: Padding(
+          // Action Buttons - KEEP BOTH BUTTONS
+          Padding(
             padding: const EdgeInsets.all(15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Row(
               children: [
-                Text(
-                  company.description,
-                  style: const TextStyle(
-                    color: Colors.black87,
-                    fontSize: 14,
+                Expanded(
+                  child: OutlinedButton.icon(
+                    onPressed: () {
+                      _showCompanyDetails(company, localizations);
+                    },
+                    icon: const Icon(Icons.info_outline),
+                    label: Text(localizations.details),
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(color: company.cardColor),
+                      foregroundColor: company.cardColor,
+                    ),
                   ),
                 ),
-                const SizedBox(height: 15),
-
-                // Key Info
-                Row(
-                  children: [
-                    _buildInfoItem('CEO', company.ceo),
-                    const SizedBox(width: 20),
-                    _buildInfoItem('Fondé', company.founded),
-                    const SizedBox(width: 20),
-                    _buildInfoItem('Employés', '${company.employees}'),
-                  ],
-                ),
-                const SizedBox(height: 15),
-
-                // Additional Info
-                if (company.website.isNotEmpty)
-                  _buildInfoRow('Site web', company.website),
-                if (company.mobileApps.isNotEmpty)
-                  _buildInfoRow('Applications', company.mobileApps.join(', ')),
-                if (company.users.isNotEmpty)
-                  _buildInfoRow('Utilisateurs', company.users),
-                if (company.coverage.isNotEmpty)
-                  _buildInfoRow('Couverture', company.coverage),
-                if (company.businessModel.isNotEmpty)
-                  _buildInfoRow('Modèle économique', company.businessModel),
-                const SizedBox(height: 15),
-
-                // Products/Services
-                const Text(
-                  'Produits & Services:',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black87,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
-                  children: company.products.map((product) {
-                    return Chip(
-                      label: Text(product),
-                      backgroundColor: company.cardColor.withOpacity(0.1),
-                      labelStyle: TextStyle(color: company.cardColor),
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                    );
-                  }).toList(),
-                ),
-                const SizedBox(height: 15),
-
-                // Financial Info
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Valuation',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey,
+                const SizedBox(width: 10),
+                Expanded(
+                  child: isFollowed
+                      ? OutlinedButton.icon(
+                          onPressed: () {
+                            _unfollowCompany(company, localizations);
+                          },
+                          icon: const Icon(Icons.star, size: 16),
+                          label: Text(localizations.followed),
+                          style: OutlinedButton.styleFrom(
+                            side: const BorderSide(color: Color(0xFFF1C40F)),
+                            foregroundColor: const Color(0xFFF1C40F),
+                          ),
+                        )
+                      : ElevatedButton.icon(
+                          onPressed: () {
+                            _followCompany(company, localizations);
+                          },
+                          icon: const Icon(Icons.star_border, size: 16),
+                          label: Text(localizations.follow),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: company.cardColor,
+                            foregroundColor: Colors.white,
                           ),
                         ),
-                        Text(
-                          '${company.valuation}B DA',
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Revenus',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey,
-                          ),
-                        ),
-                        Text(
-                          '${company.revenue}B DA',
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Secteur',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey,
-                          ),
-                        ),
-                        Text(
-                          company.sector,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
                 ),
               ],
             ),
           ),
-        ),
-
-        // Action Buttons - KEEP BOTH BUTTONS
-        const SizedBox(height: 20),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Row(
-            children: [
-              Expanded(
-                child: OutlinedButton.icon(
-                  onPressed: () {
-                    _showCompanyDetails(company);
-                  },
-                  icon: const Icon(Icons.info_outline),
-                  label: const Text('Détails'),
-                  style: OutlinedButton.styleFrom(
-                    side: BorderSide(color: company.cardColor),
-                    foregroundColor: company.cardColor,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 10),
-              Expanded(
-                child: isFollowed
-                    ? OutlinedButton.icon(
-                        onPressed: () {
-                          _unfollowCompany(company);
-                        },
-                        icon: const Icon(Icons.star, size: 16),
-                        label: const Text('Suivie'),
-                        style: OutlinedButton.styleFrom(
-                          side: const BorderSide(color: Color(0xFFF1C40F)),
-                          foregroundColor: const Color(0xFFF1C40F),
-                        ),
-                      )
-                    : ElevatedButton.icon(
-                        onPressed: () {
-                          _followCompany(company);
-                        },
-                        icon: const Icon(Icons.star_border, size: 16),
-                        label: const Text('Suivre'),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: company.cardColor,
-                          foregroundColor: Colors.white,
-                        ),
-                      ),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(height: 15),
-      ],
-    ),
-  );
-}
- Widget _buildInfoItem(String label, String value) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text(
-        label,
-        style: const TextStyle(
-          fontSize: 12,
-          color: Colors.grey,
-        ),
+        ],
       ),
-      ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 100), // Limits width
-        child: Text(
-          value,
-          style: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.bold,
-            color: Colors.black87,
-          ),
-          maxLines: 2, // Allows text to wrap to 2 lines
-          overflow: TextOverflow.ellipsis,
-        ),
-      ),
-    ],
-  );
-}
+    );
+  }
 
-  Widget _buildInfoRow(String label, String value) {
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 4),
-    child: Row(
+  Widget _buildInfoItem(String label, String value) {
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
-          width: 120,
-          child: Text(
-            '$label:',
-            style: const TextStyle(
-              fontSize: 12,
-              color: Colors.grey,
-              fontWeight: FontWeight.bold,
-            ),
+        Text(
+          label,
+          style: const TextStyle(
+            fontSize: 12,
+            color: Colors.grey,
           ),
         ),
-        Expanded(
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 100), // Limits width
           child: Text(
             value,
             style: const TextStyle(
-              fontSize: 12,
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
               color: Colors.black87,
             ),
+            maxLines: 2, // Allows text to wrap to 2 lines
+            overflow: TextOverflow.ellipsis,
           ),
         ),
       ],
-    ),
-  );
-}
+    );
+  }
 
-
-  // ==================== HELPER FUNCTIONS ====================
-
-  void _showNotifications() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Aucune nouvelle notification'),
-        backgroundColor: Color(0xFF7533E8),
+  Widget _buildInfoRow(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 120,
+            child: Text(
+              '$label:',
+              style: const TextStyle(
+                fontSize: 12,
+                color: Colors.grey,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Expanded(
+            child: Text(
+              value,
+              style: const TextStyle(
+                fontSize: 12,
+                color: Colors.black87,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
 
-  void _showSearch() {
-    showSearch(
-      context: context,
-      delegate: _CompanySearchDelegate(_companies),
+  // ==================== HELPER FUNCTIONS ====================
+
+  void _showNotifications(AppLocalizations localizations) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(localizations.noNewNotifications),
+        backgroundColor: const Color(0xFF7533E8),
+      ),
     );
   }
 
-  void _showHelpSupport() {
+  void _showSearch(AppLocalizations localizations) {
+    showSearch(
+      context: context,
+      delegate: _CompanySearchDelegate(_companies, localizations),
+    );
+  }
+
+  void _showHelpSupport(AppLocalizations localizations) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Aide & Support'),
-          content: const Column(
+          title: Text(localizations.help),
+          content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               ListTile(
-                leading: Icon(Icons.email, color: Color(0xFF7533E8)),
-                title: Text('Email'),
-                subtitle: Text('support@comvest.com'),
+                leading: const Icon(Icons.email, color: Color(0xFF7533E8)),
+                title: Text(localizations.email),
+                subtitle: const Text('support@comvest.com'),
               ),
               ListTile(
-                leading: Icon(Icons.phone, color: Color(0xFF7533E8)),
-                title: Text('Téléphone'),
-                subtitle: Text('+213 23 45 67 89'),
+                leading: const Icon(Icons.phone, color: Color(0xFF7533E8)),
+                title: Text(localizations.phone),
+                subtitle: const Text('+213 23 45 67 89'),
               ),
               ListTile(
-                leading: Icon(Icons.schedule, color: Color(0xFF7533E8)),
-                title: Text('Horaires'),
-                subtitle: Text('Lun-Ven: 9h-18h'),
+                leading: const Icon(Icons.schedule, color: Color(0xFF7533E8)),
+                title: Text(localizations.hours),
+                subtitle: const Text('Lun-Ven: 9h-18h'),
               ),
             ],
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('Fermer'),
+              child: Text(localizations.close),
             ),
           ],
         );
@@ -1382,58 +1401,58 @@ Widget _buildCompanyCard(Company company) {
     );
   }
 
-  void _showLogoutConfirmation() {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: const Text('Déconnexion'),
-        content: const Text('Êtes-vous sûr de vouloir vous déconnecter ?'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Annuler'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              // Close the dialog
-              Navigator.pop(context);
-              
-              // IMPORTANT: Add a small delay to ensure dialog is closed
-              Future.delayed(const Duration(milliseconds: 100), () {
-                // Navigate to login and clear everything
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const InvestorLoginScreen(),
-                  ),
-                  (route) => false,
-                );
-              });
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF7533E8),
-            ),
-            child: const Text('Déconnexion'),
-          ),
-        ],
-      );
-    },
-  );
-}
-
-  void _showFilterDialog() {
+  void _showLogoutConfirmation(AppLocalizations localizations) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Filtrer les entreprises'),
+          title: Text(localizations.logout),
+          content: Text(localizations.confirmLogout),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text(localizations.cancel),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Close the dialog
+                Navigator.pop(context);
+
+                // IMPORTANT: Add a small delay to ensure dialog is closed
+                Future.delayed(const Duration(milliseconds: 100), () {
+                  // Navigate to login and clear everything
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const InvestorLoginScreen(),
+                    ),
+                    (route) => false,
+                  );
+                });
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF7533E8),
+              ),
+              child: Text(localizations.logoutConfirm),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showFilterDialog(AppLocalizations localizations) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(localizations.filterCompanies),
           content: SizedBox(
             width: double.maxFinite,
             child: ListView(
               shrinkWrap: true,
               children: [
-                const Text('Secteur:'),
+                Text(localizations.sector),
                 ...[
                   'E-commerce',
                   'Fintech',
@@ -1448,7 +1467,7 @@ Widget _buildCompanyCard(Company company) {
                   );
                 }),
                 const SizedBox(height: 20),
-                const Text('Taille:'),
+                Text(localizations.size),
                 ...['Startup', 'PME', 'Grande entreprise'].map((size) {
                   return CheckboxListTile(
                     title: Text(size),
@@ -1462,22 +1481,22 @@ Widget _buildCompanyCard(Company company) {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('Annuler'),
+              child: Text(localizations.cancel),
             ),
             ElevatedButton(
               onPressed: () {
                 Navigator.pop(context);
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Filtres appliqués'),
-                    backgroundColor: Color(0xFF7533E8),
+                  SnackBar(
+                    content: Text(localizations.filtersApplied),
+                    backgroundColor: const Color(0xFF7533E8),
                   ),
                 );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF7533E8),
               ),
-              child: const Text('Appliquer'),
+              child: Text(localizations.apply),
             ),
           ],
         );
@@ -1485,9 +1504,9 @@ Widget _buildCompanyCard(Company company) {
     );
   }
 
-  void _showCompanyOptions(Company company) {
+  void _showCompanyOptions(Company company, AppLocalizations localizations) {
     final isFollowed = _followedCompanies.any((c) => c.name == company.name);
-    
+
     showModalBottomSheet(
       context: context,
       builder: (context) {
@@ -1498,10 +1517,10 @@ Widget _buildCompanyCard(Company company) {
             children: [
               ListTile(
                 leading: const Icon(Icons.info, color: Color(0xFF7533E8)),
-                title: const Text('Voir les détails'),
+                title: Text(localizations.viewDetails),
                 onTap: () {
                   Navigator.pop(context);
-                  _showCompanyDetails(company);
+                  _showCompanyDetails(company, localizations);
                 },
               ),
               ListTile(
@@ -1509,38 +1528,40 @@ Widget _buildCompanyCard(Company company) {
                   isFollowed ? Icons.star : Icons.star_border,
                   color: const Color(0xFF7533E8),
                 ),
-                title: Text(isFollowed ? 'Retirer des favoris' : 'Ajouter aux favoris'),
+                title: Text(isFollowed
+                    ? localizations.removeFromFavorites
+                    : localizations.addToFavorites),
                 onTap: () {
                   Navigator.pop(context);
                   if (isFollowed) {
-                    _unfollowCompany(company);
+                    _unfollowCompany(company, localizations);
                   } else {
-                    _followCompany(company);
+                    _followCompany(company, localizations);
                   }
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.bar_chart, color: Color(0xFF7533E8)),
-                title: const Text('Analyses financières'),
+                title: Text(localizations.financialAnalysis),
                 onTap: () {
                   Navigator.pop(context);
-                  _showFinancialAnalysis(company);
+                  _showFinancialAnalysis(company, localizations);
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.newspaper, color: Color(0xFF7533E8)),
-                title: const Text('Actualités récentes'),
+                title: Text(localizations.recentNews),
                 onTap: () {
                   Navigator.pop(context);
-                  _showCompanyNews(company);
+                  _showCompanyNews(company, localizations);
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.share, color: Color(0xFF7533E8)),
-                title: const Text('Partager'),
+                title: Text(localizations.share),
                 onTap: () {
                   Navigator.pop(context);
-                  _shareCompany(company);
+                  _shareCompany(company, localizations);
                 },
               ),
             ],
@@ -1550,92 +1571,96 @@ Widget _buildCompanyCard(Company company) {
     );
   }
 
-  void _showCompanyDetails(Company company) {
-  final isFollowed = _followedCompanies.any((c) => c.name == company.name);
-  
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => CompanyDetailPage(
-        company: company,
-        isFollowed: isFollowed,
-        onFollowToggle: () {
-          Navigator.pop(context); // Close detail page
-          if (isFollowed) {
-            _unfollowCompany(company);
-          } else {
-            _followCompany(company);
-          }
-        },
+  void _showCompanyDetails(Company company, AppLocalizations localizations) {
+    final isFollowed = _followedCompanies.any((c) => c.name == company.name);
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => CompanyDetailPage(
+          company: company,
+          isFollowed: isFollowed,
+          onFollowToggle: () {
+            Navigator.pop(context); // Close detail page
+            if (isFollowed) {
+              _unfollowCompany(company, localizations);
+            } else {
+              _followCompany(company, localizations);
+            }
+          },
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 
-
-  void _followCompany(Company company) {
+  void _followCompany(Company company, AppLocalizations localizations) {
     setState(() {
       if (!_followedCompanies.any((c) => c.name == company.name)) {
         _followedCompanies.add(company);
       }
     });
-    
+
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Vous suivez maintenant ${company.name}'),
+        content: Text('${localizations.youNowFollow} ${company.name}'),
         backgroundColor: const Color(0xFF2ECC71),
         duration: const Duration(seconds: 2),
       ),
     );
   }
 
-  void _unfollowCompany(Company company) {
+  void _unfollowCompany(Company company, AppLocalizations localizations) {
     setState(() {
       _followedCompanies.removeWhere((c) => c.name == company.name);
     });
-    
+
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Vous ne suivez plus ${company.name}'),
+        content: Text('${localizations.youNoLongerFollow} ${company.name}'),
         backgroundColor: Colors.red,
         duration: const Duration(seconds: 2),
       ),
     );
   }
 
-  void _showFinancialAnalysis(Company company) {
+  void _showFinancialAnalysis(Company company, AppLocalizations localizations) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Analyse financière - ${company.name}'),
+          title: Text('${localizations.financialAnalysis} - ${company.name}'),
           content: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Performance financière:',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                Text(
+                  localizations.financialPerformance,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),
-                Text('• Croissance annuelle: ${company.name == "ALPAY" ? "+35.2%" : company.name == "TalabaStore" ? "+28.7%" : company.name == "TemTem" ? "+22.4%" : "+18.9%"}'),
-                Text('• Marge bénéficiaire: ${company.name == "ALPAY" ? "18.3%" : company.name == "TalabaStore" ? "12.5%" : company.name == "TemTem" ? "15.7%" : "10.8%"}'),
-                Text('• ROI attendu: ${company.name == "ALPAY" ? "42%" : company.name == "TalabaStore" ? "38%" : company.name == "TemTem" ? "35%" : "32%"}'),
+                Text(
+                    '• ${localizations.annualGrowth}: ${company.name == "ALPAY" ? "+35.2%" : company.name == "TalabaStore" ? "+28.7%" : company.name == "TemTem" ? "+22.4%" : "+18.9%"}'),
+                Text(
+                    '• ${localizations.profitMargin}: ${company.name == "ALPAY" ? "18.3%" : company.name == "TalabaStore" ? "12.5%" : company.name == "TemTem" ? "15.7%" : "10.8%"}'),
+                Text(
+                    '• ${localizations.expectedROI}: ${company.name == "ALPAY" ? "42%" : company.name == "TalabaStore" ? "38%" : company.name == "TemTem" ? "35%" : "32%"}'),
                 const SizedBox(height: 20),
-                const Text(
-                  'Recommandation:',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                Text(
+                  localizations.recommendation,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),
-                Text('Analyst consensus: ${company.name == "ALPAY" || company.name == "TalabaStore" ? "ACHETER FORTEMENT" : "ACHETER"}'),
-                Text('Target price: ${company.name == "ALPAY" ? "+45%" : company.name == "TalabaStore" ? "+38%" : company.name == "TemTem" ? "+32%" : "+28%"}'),
+                Text(
+                    '${localizations.analystConsensus}: ${company.name == "ALPAY" || company.name == "TalabaStore" ? localizations.strongBuy : localizations.buy}'),
+                Text(
+                    '${localizations.targetPrice}: ${company.name == "ALPAY" ? "+45%" : company.name == "TalabaStore" ? "+38%" : company.name == "TemTem" ? "+32%" : "+28%"}'),
               ],
             ),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('Fermer'),
+              child: Text(localizations.close),
             ),
           ],
         );
@@ -1643,28 +1668,34 @@ Widget _buildCompanyCard(Company company) {
     );
   }
 
-  void _showCompanyNews(Company company) {
+  void _showCompanyNews(Company company, AppLocalizations localizations) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Actualités - ${company.name}'),
+          title: Text('${localizations.news} - ${company.name}'),
           content: SizedBox(
             width: double.maxFinite,
             child: SingleChildScrollView(
               child: Column(
                 children: [
                   ListTile(
-                    title: Text('${company.name} annonce une nouvelle levée de fonds'),
-                    subtitle: Text('La startup algérienne confirme son expansion régionale'),
+                    title: Text(
+                        '${company.name} ${localizations.announcesNewFunding}'),
+                    subtitle: Text(localizations
+                        .algerianStartupConfirmsRegionalExpansion),
                   ),
                   ListTile(
-                    title: Text('Partnership stratégique pour ${company.name}'),
-                    subtitle: Text('Collaboration avec des acteurs majeurs du secteur'),
+                    title: Text(
+                        '${localizations.strategicPartnershipFor} ${company.name}'),
+                    subtitle: Text(localizations
+                        .collaborationWithMajorSectorPlayers),
                   ),
                   ListTile(
-                    title: Text('${company.name} lance de nouvelles fonctionnalités'),
-                    subtitle: Text('Innovation technologique pour améliorer l\'expérience utilisateur'),
+                    title: Text(
+                        '${company.name} ${localizations.launchesNewFeatures}'),
+                    subtitle: Text(localizations
+                        .technologicalInnovationToImproveUserExperience),
                   ),
                 ],
               ),
@@ -1673,7 +1704,7 @@ Widget _buildCompanyCard(Company company) {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('Fermer'),
+              child: Text(localizations.close),
             ),
           ],
         );
@@ -1681,10 +1712,11 @@ Widget _buildCompanyCard(Company company) {
     );
   }
 
-  void _shareCompany(Company company) {
+  void _shareCompany(Company company, AppLocalizations localizations) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Lien de partage pour ${company.name} copié!'),
+        content: Text(
+            '${localizations.shareLinkFor} ${company.name} ${localizations.copied}'),
         backgroundColor: const Color(0xFF3498DB),
         duration: const Duration(seconds: 2),
       ),
@@ -1695,8 +1727,9 @@ Widget _buildCompanyCard(Company company) {
 // Search Delegate for Company Search
 class _CompanySearchDelegate extends SearchDelegate<String> {
   final List<Company> companies;
+  final AppLocalizations localizations;
 
-  _CompanySearchDelegate(this.companies);
+  _CompanySearchDelegate(this.companies, this.localizations);
 
   @override
   List<Widget> buildActions(BuildContext context) {

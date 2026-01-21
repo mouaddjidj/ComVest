@@ -3135,6 +3135,720 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Finalization'**
   String get finalization;
+
+  /// No description provided for @investorDashboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Investor Dashboard'**
+  String get investorDashboard;
+
+  /// No description provided for @followCompaniesAndDiscoverOpportunities.
+  ///
+  /// In en, this message translates to:
+  /// **'Follow your favorite companies and discover new opportunities'**
+  String get followCompaniesAndDiscoverOpportunities;
+
+  /// No description provided for @exploreCompanies.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore companies'**
+  String get exploreCompanies;
+
+  /// No description provided for @marketAnalysis.
+  ///
+  /// In en, this message translates to:
+  /// **'Market analysis'**
+  String get marketAnalysis;
+
+  /// No description provided for @followedCompanies.
+  ///
+  /// In en, this message translates to:
+  /// **'Followed companies'**
+  String get followedCompanies;
+
+  /// No description provided for @news.
+  ///
+  /// In en, this message translates to:
+  /// **'News'**
+  String get news;
+
+  /// No description provided for @companies.
+  ///
+  /// In en, this message translates to:
+  /// **'Companies'**
+  String get companies;
+
+  /// No description provided for @marketCap.
+  ///
+  /// In en, this message translates to:
+  /// **'Market Cap'**
+  String get marketCap;
+
+  /// No description provided for @sectors.
+  ///
+  /// In en, this message translates to:
+  /// **'Sectors'**
+  String get sectors;
+
+  /// No description provided for @growth.
+  ///
+  /// In en, this message translates to:
+  /// **'Growth'**
+  String get growth;
+
+  /// No description provided for @topCompanies.
+  ///
+  /// In en, this message translates to:
+  /// **'Top companies'**
+  String get topCompanies;
+
+  /// No description provided for @searchCompanyHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search for a company...'**
+  String get searchCompanyHint;
+
+  /// No description provided for @all.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get all;
+
+  /// No description provided for @filterCompanies.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter companies'**
+  String get filterCompanies;
+
+  /// No description provided for @size.
+  ///
+  /// In en, this message translates to:
+  /// **'Size'**
+  String get size;
+
+  /// No description provided for @filtersApplied.
+  ///
+  /// In en, this message translates to:
+  /// **'Filters applied'**
+  String get filtersApplied;
+
+  /// No description provided for @apply.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply'**
+  String get apply;
+
+  /// No description provided for @viewDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'View details'**
+  String get viewDetails;
+
+  /// No description provided for @removeFromFavorites.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove from favorites'**
+  String get removeFromFavorites;
+
+  /// No description provided for @addToFavorites.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to favorites'**
+  String get addToFavorites;
+
+  /// No description provided for @financialAnalysis.
+  ///
+  /// In en, this message translates to:
+  /// **'Financial analysis'**
+  String get financialAnalysis;
+
+  /// No description provided for @recentNews.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent news'**
+  String get recentNews;
+
+  /// No description provided for @youNowFollow.
+  ///
+  /// In en, this message translates to:
+  /// **'You now follow'**
+  String get youNowFollow;
+
+  /// No description provided for @youNoLongerFollow.
+  ///
+  /// In en, this message translates to:
+  /// **'You no longer follow'**
+  String get youNoLongerFollow;
+
+  /// No description provided for @financialPerformance.
+  ///
+  /// In en, this message translates to:
+  /// **'Financial performance'**
+  String get financialPerformance;
+
+  /// No description provided for @annualGrowth.
+  ///
+  /// In en, this message translates to:
+  /// **'Annual growth'**
+  String get annualGrowth;
+
+  /// No description provided for @profitMargin.
+  ///
+  /// In en, this message translates to:
+  /// **'Profit margin'**
+  String get profitMargin;
+
+  /// No description provided for @expectedROI.
+  ///
+  /// In en, this message translates to:
+  /// **'Expected ROI'**
+  String get expectedROI;
+
+  /// No description provided for @recommendation.
+  ///
+  /// In en, this message translates to:
+  /// **'Recommendation'**
+  String get recommendation;
+
+  /// No description provided for @analystConsensus.
+  ///
+  /// In en, this message translates to:
+  /// **'Analyst consensus'**
+  String get analystConsensus;
+
+  /// No description provided for @strongBuy.
+  ///
+  /// In en, this message translates to:
+  /// **'STRONG BUY'**
+  String get strongBuy;
+
+  /// No description provided for @buy.
+  ///
+  /// In en, this message translates to:
+  /// **'BUY'**
+  String get buy;
+
+  /// No description provided for @targetPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Target price'**
+  String get targetPrice;
+
+  /// No description provided for @announcesNewFunding.
+  ///
+  /// In en, this message translates to:
+  /// **'announces new funding'**
+  String get announcesNewFunding;
+
+  /// No description provided for @algerianStartupConfirmsRegionalExpansion.
+  ///
+  /// In en, this message translates to:
+  /// **'Algerian startup confirms regional expansion'**
+  String get algerianStartupConfirmsRegionalExpansion;
+
+  /// No description provided for @strategicPartnershipFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Strategic partnership for'**
+  String get strategicPartnershipFor;
+
+  /// No description provided for @collaborationWithMajorSectorPlayers.
+  ///
+  /// In en, this message translates to:
+  /// **'Collaboration with major sector players'**
+  String get collaborationWithMajorSectorPlayers;
+
+  /// No description provided for @launchesNewFeatures.
+  ///
+  /// In en, this message translates to:
+  /// **'launches new features'**
+  String get launchesNewFeatures;
+
+  /// No description provided for @technologicalInnovationToImproveUserExperience.
+  ///
+  /// In en, this message translates to:
+  /// **'Technological innovation to improve user experience'**
+  String get technologicalInnovationToImproveUserExperience;
+
+  /// No description provided for @shareLinkFor.
+  ///
+  /// In en, this message translates to:
+  /// **'Share link for'**
+  String get shareLinkFor;
+
+  /// No description provided for @copied.
+  ///
+  /// In en, this message translates to:
+  /// **'copied'**
+  String get copied;
+
+  /// No description provided for @founded.
+  ///
+  /// In en, this message translates to:
+  /// **'Founded'**
+  String get founded;
+
+  /// No description provided for @employees.
+  ///
+  /// In en, this message translates to:
+  /// **'Employees'**
+  String get employees;
+
+  /// No description provided for @website.
+  ///
+  /// In en, this message translates to:
+  /// **'Website'**
+  String get website;
+
+  /// No description provided for @applications.
+  ///
+  /// In en, this message translates to:
+  /// **'Applications'**
+  String get applications;
+
+  /// No description provided for @coverage.
+  ///
+  /// In en, this message translates to:
+  /// **'Coverage'**
+  String get coverage;
+
+  /// No description provided for @businessModel.
+  ///
+  /// In en, this message translates to:
+  /// **'Business model'**
+  String get businessModel;
+
+  /// No description provided for @productsServices.
+  ///
+  /// In en, this message translates to:
+  /// **'Products & Services'**
+  String get productsServices;
+
+  /// No description provided for @valuation.
+  ///
+  /// In en, this message translates to:
+  /// **'Valuation'**
+  String get valuation;
+
+  /// No description provided for @revenue.
+  ///
+  /// In en, this message translates to:
+  /// **'Revenue'**
+  String get revenue;
+
+  /// No description provided for @sector.
+  ///
+  /// In en, this message translates to:
+  /// **'Sector'**
+  String get sector;
+
+  /// No description provided for @details.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get details;
+
+  /// No description provided for @followed.
+  ///
+  /// In en, this message translates to:
+  /// **'Followed'**
+  String get followed;
+
+  /// No description provided for @follow.
+  ///
+  /// In en, this message translates to:
+  /// **'Follow'**
+  String get follow;
+
+  /// No description provided for @noNewNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'No new notifications'**
+  String get noNewNotifications;
+
+  /// No description provided for @hours.
+  ///
+  /// In en, this message translates to:
+  /// **'Hours'**
+  String get hours;
+
+  /// No description provided for @basedOnYourInterests.
+  ///
+  /// In en, this message translates to:
+  /// **'Based on your interests'**
+  String get basedOnYourInterests;
+
+  /// No description provided for @recommendedForYou.
+  ///
+  /// In en, this message translates to:
+  /// **'Recommended for you'**
+  String get recommendedForYou;
+
+  /// No description provided for @android.
+  ///
+  /// In en, this message translates to:
+  /// **'Android'**
+  String get android;
+
+  /// No description provided for @ios.
+  ///
+  /// In en, this message translates to:
+  /// **'iOS'**
+  String get ios;
+
+  /// No description provided for @notSpecified.
+  ///
+  /// In en, this message translates to:
+  /// **'Not specified'**
+  String get notSpecified;
+
+  /// No description provided for @companyTalabaStoreName.
+  ///
+  /// In en, this message translates to:
+  /// **'TalabaStore'**
+  String get companyTalabaStoreName;
+
+  /// No description provided for @companyTalabaStoreDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'E-commerce platform for students, offering discounts on various products (electronics, clothing, accessories, leisure) and facilitating access to educational services.'**
+  String get companyTalabaStoreDescription;
+
+  /// No description provided for @companyTalabaStoreIndustry.
+  ///
+  /// In en, this message translates to:
+  /// **'E-commerce'**
+  String get companyTalabaStoreIndustry;
+
+  /// No description provided for @companyTalabaStoreSector.
+  ///
+  /// In en, this message translates to:
+  /// **'Technology'**
+  String get companyTalabaStoreSector;
+
+  /// No description provided for @companyTalabaStoreType.
+  ///
+  /// In en, this message translates to:
+  /// **'LLC / Digital Startup'**
+  String get companyTalabaStoreType;
+
+  /// No description provided for @companyTalabaStoreLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Algiers, Algeria'**
+  String get companyTalabaStoreLocation;
+
+  /// No description provided for @companyTalabaStoreFounded.
+  ///
+  /// In en, this message translates to:
+  /// **'June 2017'**
+  String get companyTalabaStoreFounded;
+
+  /// No description provided for @companyTalabaStoreCEO.
+  ///
+  /// In en, this message translates to:
+  /// **'Sami Aliouche'**
+  String get companyTalabaStoreCEO;
+
+  /// No description provided for @companyTalabaStoreProduct1.
+  ///
+  /// In en, this message translates to:
+  /// **'Electronics'**
+  String get companyTalabaStoreProduct1;
+
+  /// No description provided for @companyTalabaStoreProduct2.
+  ///
+  /// In en, this message translates to:
+  /// **'Clothing'**
+  String get companyTalabaStoreProduct2;
+
+  /// No description provided for @companyTalabaStoreProduct3.
+  ///
+  /// In en, this message translates to:
+  /// **'Accessories'**
+  String get companyTalabaStoreProduct3;
+
+  /// No description provided for @companyTalabaStoreProduct4.
+  ///
+  /// In en, this message translates to:
+  /// **'Leisure'**
+  String get companyTalabaStoreProduct4;
+
+  /// No description provided for @companyTalabaStoreProduct5.
+  ///
+  /// In en, this message translates to:
+  /// **'Educational services'**
+  String get companyTalabaStoreProduct5;
+
+  /// No description provided for @companyTalabaStoreUsers.
+  ///
+  /// In en, this message translates to:
+  /// **'Over 50,000 active students'**
+  String get companyTalabaStoreUsers;
+
+  /// No description provided for @companyTalabaStoreCoverage.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery in 48 wilayas in Algeria'**
+  String get companyTalabaStoreCoverage;
+
+  /// No description provided for @companyTalabaStoreBusinessModel.
+  ///
+  /// In en, this message translates to:
+  /// **'Sales commission + partnerships with local companies'**
+  String get companyTalabaStoreBusinessModel;
+
+  /// No description provided for @companyTemTemName.
+  ///
+  /// In en, this message translates to:
+  /// **'TemTem'**
+  String get companyTemTemName;
+
+  /// No description provided for @companyTemTemDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Urban mobility application offering taxi/VTC services, product delivery and digital urban services (booking and payments).'**
+  String get companyTemTemDescription;
+
+  /// No description provided for @companyTemTemIndustry.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobility'**
+  String get companyTemTemIndustry;
+
+  /// No description provided for @companyTemTemSector.
+  ///
+  /// In en, this message translates to:
+  /// **'Services'**
+  String get companyTemTemSector;
+
+  /// No description provided for @companyTemTemType.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobility Startup'**
+  String get companyTemTemType;
+
+  /// No description provided for @companyTemTemLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Algiers, Algeria'**
+  String get companyTemTemLocation;
+
+  /// No description provided for @companyTemTemFounded.
+  ///
+  /// In en, this message translates to:
+  /// **'2018'**
+  String get companyTemTemFounded;
+
+  /// No description provided for @companyTemTemCEO.
+  ///
+  /// In en, this message translates to:
+  /// **'Young Algerians'**
+  String get companyTemTemCEO;
+
+  /// No description provided for @companyTemTemProduct1.
+  ///
+  /// In en, this message translates to:
+  /// **'Taxi / VTC'**
+  String get companyTemTemProduct1;
+
+  /// No description provided for @companyTemTemProduct2.
+  ///
+  /// In en, this message translates to:
+  /// **'Product delivery'**
+  String get companyTemTemProduct2;
+
+  /// No description provided for @companyTemTemProduct3.
+  ///
+  /// In en, this message translates to:
+  /// **'Digital urban services'**
+  String get companyTemTemProduct3;
+
+  /// No description provided for @companyTemTemUsers.
+  ///
+  /// In en, this message translates to:
+  /// **'Several thousand active users'**
+  String get companyTemTemUsers;
+
+  /// No description provided for @companyTemTemCoverage.
+  ///
+  /// In en, this message translates to:
+  /// **'Algiers, Oran, Constantine'**
+  String get companyTemTemCoverage;
+
+  /// No description provided for @companyTemTemBusinessModel.
+  ///
+  /// In en, this message translates to:
+  /// **'Trip commissions + partnerships with local businesses'**
+  String get companyTemTemBusinessModel;
+
+  /// No description provided for @companyALPAYName.
+  ///
+  /// In en, this message translates to:
+  /// **'ALPAY'**
+  String get companyALPAYName;
+
+  /// No description provided for @companyALPAYDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Digital payment solution and e-wallet for individuals and merchants, offering secure payments and digital account management.'**
+  String get companyALPAYDescription;
+
+  /// No description provided for @companyALPAYIndustry.
+  ///
+  /// In en, this message translates to:
+  /// **'Fintech'**
+  String get companyALPAYIndustry;
+
+  /// No description provided for @companyALPAYSector.
+  ///
+  /// In en, this message translates to:
+  /// **'Finance'**
+  String get companyALPAYSector;
+
+  /// No description provided for @companyALPAYType.
+  ///
+  /// In en, this message translates to:
+  /// **'Fintech'**
+  String get companyALPAYType;
+
+  /// No description provided for @companyALPAYLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Algiers, Algeria'**
+  String get companyALPAYLocation;
+
+  /// No description provided for @companyALPAYFounded.
+  ///
+  /// In en, this message translates to:
+  /// **'2019'**
+  String get companyALPAYFounded;
+
+  /// No description provided for @companyALPAYCEO.
+  ///
+  /// In en, this message translates to:
+  /// **'Young Algerians'**
+  String get companyALPAYCEO;
+
+  /// No description provided for @companyALPAYProduct1.
+  ///
+  /// In en, this message translates to:
+  /// **'Secure payments'**
+  String get companyALPAYProduct1;
+
+  /// No description provided for @companyALPAYProduct2.
+  ///
+  /// In en, this message translates to:
+  /// **'Digital account management'**
+  String get companyALPAYProduct2;
+
+  /// No description provided for @companyALPAYProduct3.
+  ///
+  /// In en, this message translates to:
+  /// **'Online and mobile payment'**
+  String get companyALPAYProduct3;
+
+  /// No description provided for @companyALPAYUsers.
+  ///
+  /// In en, this message translates to:
+  /// **'Several thousand users'**
+  String get companyALPAYUsers;
+
+  /// No description provided for @companyALPAYCoverage.
+  ///
+  /// In en, this message translates to:
+  /// **'Online services nationwide'**
+  String get companyALPAYCoverage;
+
+  /// No description provided for @companyALPAYBusinessModel.
+  ///
+  /// In en, this message translates to:
+  /// **'Transaction commissions + business subscriptions'**
+  String get companyALPAYBusinessModel;
+
+  /// No description provided for @companyOkadooName.
+  ///
+  /// In en, this message translates to:
+  /// **'Okadoo'**
+  String get companyOkadooName;
+
+  /// No description provided for @companyOkadooDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Digital marketplace connecting businesses, suppliers and buyers, allowing companies to buy or sell online with digital transaction tracking.'**
+  String get companyOkadooDescription;
+
+  /// No description provided for @companyOkadooIndustry.
+  ///
+  /// In en, this message translates to:
+  /// **'B2B Marketplace'**
+  String get companyOkadooIndustry;
+
+  /// No description provided for @companyOkadooSector.
+  ///
+  /// In en, this message translates to:
+  /// **'E-commerce'**
+  String get companyOkadooSector;
+
+  /// No description provided for @companyOkadooType.
+  ///
+  /// In en, this message translates to:
+  /// **'B2B Marketplace'**
+  String get companyOkadooType;
+
+  /// No description provided for @companyOkadooLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Algeria'**
+  String get companyOkadooLocation;
+
+  /// No description provided for @companyOkadooFounded.
+  ///
+  /// In en, this message translates to:
+  /// **'2019'**
+  String get companyOkadooFounded;
+
+  /// No description provided for @companyOkadooCEO.
+  ///
+  /// In en, this message translates to:
+  /// **'Young'**
+  String get companyOkadooCEO;
+
+  /// No description provided for @companyOkadooProduct1.
+  ///
+  /// In en, this message translates to:
+  /// **'B2B Marketplace'**
+  String get companyOkadooProduct1;
+
+  /// No description provided for @companyOkadooProduct2.
+  ///
+  /// In en, this message translates to:
+  /// **'Digital transaction tracking'**
+  String get companyOkadooProduct2;
+
+  /// No description provided for @companyOkadooProduct3.
+  ///
+  /// In en, this message translates to:
+  /// **'Supplier-buyer connection'**
+  String get companyOkadooProduct3;
+
+  /// No description provided for @companyOkadooUsers.
+  ///
+  /// In en, this message translates to:
+  /// **'Not specified'**
+  String get companyOkadooUsers;
+
+  /// No description provided for @companyOkadooCoverage.
+  ///
+  /// In en, this message translates to:
+  /// **'Algeria'**
+  String get companyOkadooCoverage;
+
+  /// No description provided for @companyOkadooBusinessModel.
+  ///
+  /// In en, this message translates to:
+  /// **'Transaction commission + business subscriptions'**
+  String get companyOkadooBusinessModel;
 }
 
 class _AppLocalizationsDelegate

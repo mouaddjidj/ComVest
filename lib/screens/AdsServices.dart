@@ -2761,242 +2761,241 @@ class _PricingScreenState extends State<PricingScreen> {
     final l10n = AppLocalizations.of(context)!;
     
     // Define packages inside build method to access l10n
-    // In your PricingScreen build method
-final packages = [
-  PricingPackage(
-    title: l10n.packStart,
-    description: l10n.packStartDesc,
-    monthlyPrice: l10n.packStartMonthlyPrice,
-    annualPrice: l10n.packStartAnnualPrice,
-    features: [
-     l10n.feature1,
-l10n.feature2,
-l10n.feature3,
-l10n.feature4,
-l10n.feature5,
-l10n.feature6,
-    ],
-    primaryColor: const Color(0xFF4A90E2),
-    secondaryColor: const Color(0xFF357ABD),
-    details: l10n.packStartDetails,
-    additionalInfo: [
-      l10n.info1,
-l10n.info2,
-l10n.info3,
-l10n.info4,
-l10n.info5,
-l10n.info6,
-    ],
-    serviceFeatures: [
-      ServiceFeature(
-        title: l10n.serviceFeature1Title,
-        description: l10n.serviceFeature1Desc,
-        icon: Icons.account_circle,
-        status: 'pending',
-        actionButtonText: l10n.start,
-        color: const Color(0xFF4A90E2),
-        progress: 0.0,
-        steps: [l10n.analysis, l10n.setup, l10n.validation],
+    final packages = [
+      PricingPackage(
+        title: l10n.packStart,
+        description: l10n.packStartDesc,
+        monthlyPrice: l10n.packStartMonthlyPrice,
+        annualPrice: l10n.packStartAnnualPrice,
+        features: [
+          l10n.feature1,
+          l10n.feature2,
+          l10n.feature3,
+          l10n.feature4,
+          l10n.feature5,
+          l10n.feature6,
+        ],
+        primaryColor: const Color(0xFF4A90E2),
+        secondaryColor: const Color(0xFF357ABD),
+        details: l10n.packStartDetails,
+        additionalInfo: [
+          l10n.info1,
+          l10n.info2,
+          l10n.info3,
+          l10n.info4,
+          l10n.info5,
+          l10n.info6,
+        ],
+        serviceFeatures: [
+          ServiceFeature(
+            title: l10n.serviceFeature1Title,
+            description: l10n.serviceFeature1Desc,
+            icon: Icons.account_circle,
+            status: 'pending',
+            actionButtonText: l10n.start,
+            color: const Color(0xFF4A90E2),
+            progress: 0.0,
+            steps: [l10n.analysis, l10n.setup, l10n.validation],
+          ),
+          ServiceFeature(
+            title: l10n.serviceFeature2Title,
+            description: l10n.serviceFeature2Desc,
+            icon: Icons.palette,
+            status: 'pending',
+            actionButtonText: l10n.start,
+            color: const Color(0xFF9B59B6),
+            progress: 0.0,
+            steps: [l10n.briefing, l10n.design, l10n.revision, l10n.finalization],
+          ),
+          ServiceFeature(
+            title: l10n.serviceFeature3Title,
+            description: l10n.serviceFeature3Desc,
+            icon: Icons.create,
+            status: 'pending',
+            actionButtonText: l10n.schedule,
+            color: const Color(0xFFE67E22),
+            progress: 0.0,
+            steps: [l10n.strategy, l10n.creation, l10n.approval, l10n.publication],
+          ),
+          ServiceFeature(
+            title: l10n.serviceFeature4Title,
+            description: l10n.serviceFeature4Desc,
+            icon: Icons.language,
+            status: 'pending',
+            actionButtonText: l10n.configure,
+            color: const Color(0xFF00A859),
+            progress: 0.0,
+            steps: [l10n.wireframe, l10n.development, l10n.test, l10n.launch],
+          ),
+        ],
+        metrics: {
+          'performance': 85,
+          'storage': 65,
+          'users': 3,
+          'uptime': 99.9,
+        },
       ),
-      ServiceFeature(
-        title: l10n.serviceFeature2Title,
-        description: l10n.serviceFeature2Desc,
-        icon: Icons.palette,
-        status: 'pending',
-        actionButtonText: l10n.start,
-        color: const Color(0xFF9B59B6),
-        progress: 0.0,
-        steps: [l10n.briefing, l10n.design, l10n.revision, l10n.finalization],
+      
+      PricingPackage(
+        title: l10n.packPremium,
+        description: l10n.packPremiumDesc,
+        monthlyPrice: l10n.packPremiumMonthlyPrice,
+        annualPrice: l10n.packPremiumAnnualPrice,
+        features: [
+          l10n.premiumFeature1,
+          l10n.premiumFeature2,
+          l10n.premiumFeature3,
+          l10n.premiumFeature4,
+          l10n.premiumFeature5,
+          l10n.premiumFeature6,
+        ],
+        primaryColor: const Color(0xFF9B59B6),
+        secondaryColor: const Color(0xFFE91E8C),
+        details: l10n.packPremiumDetails,
+        additionalInfo: [
+          l10n.premiumInfo1,
+          l10n.premiumInfo2,
+          l10n.premiumInfo3,
+          l10n.premiumInfo4,
+          l10n.premiumInfo5,
+          l10n.premiumInfo6,
+        ],
+        serviceFeatures: [
+          ServiceFeature(
+            title: l10n.premiumService1Title,
+            description: l10n.premiumService1Desc,
+            icon: Icons.thumb_up,
+            status: 'in_progress',
+            actionButtonText: l10n.continueText,
+            color: const Color(0xFF9B59B6),
+            progress: 0.6,
+            steps: [l10n.audit, l10n.strategy, l10n.execution, l10n.optimization],
+            startDate: DateTime.now().subtract(const Duration(days: 15)),
+            endDate: DateTime.now().add(const Duration(days: 15)),
+          ),
+          ServiceFeature(
+            title: l10n.premiumService2Title,
+            description: l10n.premiumService2Desc,
+            icon: Icons.calendar_today,
+            status: 'completed',
+            actionButtonText: l10n.view,
+            color: const Color(0xFF4A90E2),
+            progress: 1.0,
+            steps: [l10n.planning, l10n.creation, l10n.validation],
+            startDate: DateTime.now().subtract(const Duration(days: 30)),
+            endDate: DateTime.now().subtract(const Duration(days: 10)),
+          ),
+          ServiceFeature(
+            title: l10n.premiumService3Title,
+            description: l10n.premiumService3Desc,
+            icon: Icons.edit,
+            status: 'in_progress',
+            actionButtonText: l10n.edit,
+            color: const Color(0xFFE67E22),
+            progress: 0.4,
+            steps: [l10n.briefing, l10n.creation, l10n.revision, l10n.publication],
+            startDate: DateTime.now().subtract(const Duration(days: 10)),
+            endDate: DateTime.now().add(const Duration(days: 20)),
+          ),
+          ServiceFeature(
+            title: l10n.premiumService4Title,
+            description: l10n.premiumService4Desc,
+            icon: Icons.analytics,
+            status: 'pending',
+            actionButtonText: l10n.configure,
+            color: const Color(0xFF00A859),
+            progress: 0.0,
+            steps: [l10n.setup, l10n.collection, l10n.analysis, l10n.reporting],
+          ),
+        ],
+        metrics: {
+          'performance': 92,
+          'storage': 85,
+          'users': 5,
+          'uptime': 99.95,
+        },
       ),
-      ServiceFeature(
-        title: l10n.serviceFeature3Title,
-        description: l10n.serviceFeature3Desc,
-        icon: Icons.create,
-        status: 'pending',
-        actionButtonText: l10n.schedule,
-        color: const Color(0xFFE67E22),
-        progress: 0.0,
-        steps: [l10n.strategy, l10n.creation, l10n.approval, l10n.publication],
+      
+      PricingPackage(
+        title: l10n.customService,
+        description: l10n.customServiceDesc,
+        monthlyPrice: l10n.customServiceMonthlyPrice,
+        annualPrice: l10n.customServiceAnnualPrice,
+        features: [
+          l10n.customFeature1,
+          l10n.customFeature2,
+          l10n.customFeature3,
+          l10n.customFeature4,
+          l10n.customFeature5,
+          l10n.customFeature6,
+        ],
+        primaryColor: const Color(0xFFE67E22),
+        secondaryColor: const Color(0xFFF39C12),
+        details: l10n.customServiceDetails,
+        additionalInfo: [
+          l10n.customInfo1,
+          l10n.customInfo2,
+          l10n.customInfo3,
+          l10n.customInfo4,
+          l10n.customInfo5,
+          l10n.customInfo6,
+        ],
+        serviceFeatures: [
+          ServiceFeature(
+            title: l10n.customService1Title,
+            description: l10n.customService1Desc,
+            icon: Icons.search,
+            status: 'completed',
+            actionButtonText: l10n.viewReport,
+            color: const Color(0xFFE67E22),
+            progress: 1.0,
+            steps: [l10n.technicalAnalysis, l10n.contentAudit, l10n.competitiveAnalysis, l10n.report],
+            startDate: DateTime.now().subtract(const Duration(days: 45)),
+            endDate: DateTime.now().subtract(const Duration(days: 15)),
+          ),
+          ServiceFeature(
+            title: l10n.customService2Title,
+            description: l10n.customService2Desc,
+            icon: Icons.ads_click,
+            status: 'in_progress',
+            actionButtonText: l10n.optimize,
+            color: const Color(0xFF9B59B6),
+            progress: 0.75,
+            steps: [l10n.strategy, l10n.creation, l10n.launch, l10n.optimization],
+            startDate: DateTime.now().subtract(const Duration(days: 30)),
+            endDate: DateTime.now().add(const Duration(days: 30)),
+          ),
+          ServiceFeature(
+            title: l10n.customService3Title,
+            description: l10n.customService3Desc,
+            icon: Icons.videocam,
+            status: 'pending',
+            actionButtonText: l10n.schedule,
+            color: const Color(0xFF4A90E2),
+            progress: 0.0,
+            steps: [l10n.script, l10n.shooting, l10n.editing, l10n.publication],
+          ),
+          ServiceFeature(
+            title: l10n.customService4Title,
+            description: l10n.customService4Desc,
+            icon: Icons.business_center,
+            status: 'completed',
+            actionButtonText: l10n.viewAnalysis,
+            color: const Color(0xFF00A859),
+            progress: 1.0,
+            steps: [l10n.diagnosis, l10n.analysis, l10n.recommendations, l10n.actionPlan],
+            startDate: DateTime.now().subtract(const Duration(days: 60)),
+            endDate: DateTime.now().subtract(const Duration(days: 30)),
+          ),
+        ],
+        metrics: {
+          'performance': 97,
+          'storage': 95,
+          'users': 10,
+          'uptime': 99.99,
+        },
       ),
-      ServiceFeature(
-        title: l10n.serviceFeature4Title,
-        description: l10n.serviceFeature4Desc,
-        icon: Icons.language,
-        status: 'pending',
-        actionButtonText: l10n.configure,
-        color: const Color(0xFF00A859),
-        progress: 0.0,
-        steps: [l10n.wireframe, l10n.development, l10n.test, l10n.launch],
-      ),
-    ],
-    metrics: {
-      'performance': 85,
-      'storage': 65,
-      'users': 3,
-      'uptime': 99.9,
-    },
-  ),
-  
-  PricingPackage(
-    title: l10n.packPremium,
-    description: l10n.packPremiumDesc,
-    monthlyPrice: l10n.packPremiumMonthlyPrice,
-    annualPrice: l10n.packPremiumAnnualPrice,
-    features: [
-     l10n.premiumFeature1,
-l10n.premiumFeature2,
-l10n.premiumFeature3,
-l10n.premiumFeature4,
-l10n.premiumFeature5,
-l10n.premiumFeature6,
-    ],
-    primaryColor: const Color(0xFF9B59B6),
-    secondaryColor: const Color(0xFFE91E8C),
-    details: l10n.packPremiumDetails,
-    additionalInfo: [
-      l10n.premiumInfo1,
-l10n.premiumInfo2,
-l10n.premiumInfo3,
-l10n.premiumInfo4,
-l10n.premiumInfo5,
-l10n.premiumInfo6,
-    ],
-    serviceFeatures: [
-      ServiceFeature(
-        title: l10n.premiumService1Title,
-        description: l10n.premiumService1Desc,
-        icon: Icons.thumb_up,
-        status: 'in_progress',
-        actionButtonText: l10n.continueText,
-        color: const Color(0xFF9B59B6),
-        progress: 0.6,
-        steps: [l10n.audit, l10n.strategy, l10n.execution, l10n.optimization],
-        startDate: DateTime.now().subtract(const Duration(days: 15)),
-        endDate: DateTime.now().add(const Duration(days: 15)),
-      ),
-      ServiceFeature(
-        title: l10n.premiumService2Title,
-        description: l10n.premiumService2Desc,
-        icon: Icons.calendar_today,
-        status: 'completed',
-        actionButtonText: l10n.view,
-        color: const Color(0xFF4A90E2),
-        progress: 1.0,
-        steps: [l10n.planning, l10n.creation, l10n.validation],
-        startDate: DateTime.now().subtract(const Duration(days: 30)),
-        endDate: DateTime.now().subtract(const Duration(days: 10)),
-      ),
-      ServiceFeature(
-        title: l10n.premiumService3Title,
-        description: l10n.premiumService3Desc,
-        icon: Icons.edit,
-        status: 'in_progress',
-        actionButtonText: l10n.edit,
-        color: const Color(0xFFE67E22),
-        progress: 0.4,
-        steps: [l10n.briefing, l10n.creation, l10n.revision, l10n.publication],
-        startDate: DateTime.now().subtract(const Duration(days: 10)),
-        endDate: DateTime.now().add(const Duration(days: 20)),
-      ),
-      ServiceFeature(
-        title: l10n.premiumService4Title,
-        description: l10n.premiumService4Desc,
-        icon: Icons.analytics,
-        status: 'pending',
-        actionButtonText: l10n.configure,
-        color: const Color(0xFF00A859),
-        progress: 0.0,
-        steps: [l10n.setup, l10n.collection, l10n.analysis, l10n.reporting],
-      ),
-    ],
-    metrics: {
-      'performance': 92,
-      'storage': 85,
-      'users': 5,
-      'uptime': 99.95,
-    },
-  ),
-  
-  PricingPackage(
-    title: l10n.customService,
-    description: l10n.customServiceDesc,
-    monthlyPrice: l10n.customServiceMonthlyPrice,
-    annualPrice: l10n.customServiceAnnualPrice,
-    features: [
-      l10n.customFeature1,
-l10n.customFeature2,
-l10n.customFeature3,
-l10n.customFeature4,
-l10n.customFeature5,
-l10n.customFeature6,
-    ],
-    primaryColor: const Color(0xFFE67E22),
-    secondaryColor: const Color(0xFFF39C12),
-    details: l10n.customServiceDetails,
-    additionalInfo: [
-     l10n.customInfo1,
-l10n.customInfo2,
-l10n.customInfo3,
-l10n.customInfo4,
-l10n.customInfo5,
-l10n.customInfo6,
-    ],
-    serviceFeatures: [
-      ServiceFeature(
-        title: l10n.customService1Title,
-        description: l10n.customService1Desc,
-        icon: Icons.search,
-        status: 'completed',
-        actionButtonText: l10n.viewReport,
-        color: const Color(0xFFE67E22),
-        progress: 1.0,
-        steps: [l10n.technicalAnalysis, l10n.contentAudit, l10n.competitiveAnalysis, l10n.report],
-        startDate: DateTime.now().subtract(const Duration(days: 45)),
-        endDate: DateTime.now().subtract(const Duration(days: 15)),
-      ),
-      ServiceFeature(
-        title: l10n.customService2Title,
-        description: l10n.customService2Desc,
-        icon: Icons.ads_click,
-        status: 'in_progress',
-        actionButtonText: l10n.optimize,
-        color: const Color(0xFF9B59B6),
-        progress: 0.75,
-        steps: [l10n.strategy, l10n.creation, l10n.launch, l10n.optimization],
-        startDate: DateTime.now().subtract(const Duration(days: 30)),
-        endDate: DateTime.now().add(const Duration(days: 30)),
-      ),
-      ServiceFeature(
-        title: l10n.customService3Title,
-        description: l10n.customService3Desc,
-        icon: Icons.videocam,
-        status: 'pending',
-        actionButtonText: l10n.schedule,
-        color: const Color(0xFF4A90E2),
-        progress: 0.0,
-        steps: [l10n.script, l10n.shooting, l10n.editing, l10n.publication],
-      ),
-      ServiceFeature(
-        title: l10n.customService4Title,
-        description: l10n.customService4Desc,
-        icon: Icons.business_center,
-        status: 'completed',
-        actionButtonText: l10n.viewAnalysis,
-        color: const Color(0xFF00A859),
-        progress: 1.0,
-        steps: [l10n.diagnosis, l10n.analysis, l10n.recommendations, l10n.actionPlan],
-        startDate: DateTime.now().subtract(const Duration(days: 60)),
-        endDate: DateTime.now().subtract(const Duration(days: 30)),
-      ),
-    ],
-    metrics: {
-      'performance': 97,
-      'storage': 95,
-      'users': 10,
-      'uptime': 99.99,
-    },
-  ),
-];
+    ];
     
     return Scaffold(
       backgroundColor: const Color(0xFFF5F7FA),
@@ -3179,10 +3178,12 @@ class PricingCard extends StatelessWidget {
   final PricingPackage package;
   final VoidCallback onViewDetails;
   final AppLocalizations l10n;
-bool _isArabic(BuildContext context) {
-  final locale = Localizations.localeOf(context);
-  return locale.languageCode == 'ar';
-}
+  
+  bool _isArabic(BuildContext context) {
+    final locale = Localizations.localeOf(context);
+    return locale.languageCode == 'ar';
+  }
+  
   const PricingCard({
     super.key,
     required this.package,
@@ -3217,7 +3218,7 @@ bool _isArabic(BuildContext context) {
               ),
               const SizedBox(height: 20),
               
-              // Baridimob Option
+              // Baridimob Option with Image
               ListTile(
                 leading: Container(
                   width: 50,
@@ -3226,7 +3227,13 @@ bool _isArabic(BuildContext context) {
                     color: const Color(0xFF00A859).withOpacity(0.1),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: const Icon(Icons.phone_android, color: Color(0xFF00A859)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.asset(
+                      'assets/images/baridimob.png',
+                      fit: BoxFit.contain,
+                    ),
+                  ),
                 ),
                 title: Text(
                   'Baridimob',
@@ -3239,7 +3246,7 @@ bool _isArabic(BuildContext context) {
                 },
               ),
               
-              // Dahabiya Option
+              // Dahabiya Option with Image
               ListTile(
                 leading: Container(
                   width: 50,
@@ -3248,7 +3255,13 @@ bool _isArabic(BuildContext context) {
                     color: const Color(0xFF0056A3).withOpacity(0.1),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: const Icon(Icons.credit_card, color: Color(0xFF0056A3)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.asset(
+                      'assets/images/dahabiya.png',
+                      fit: BoxFit.contain,
+                    ),
+                  ),
                 ),
                 title: Text(
                   l10n.algerianCard,
@@ -3389,7 +3402,13 @@ bool _isArabic(BuildContext context) {
                   color: const Color(0xFF00A859).withOpacity(0.1),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Icon(Icons.phone_android, color: Color(0xFF00A859), size: 40),
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Image.asset(
+                    'assets/images/baridimob.png',
+                    fit: BoxFit.contain,
+                  ),
+                ),
               ),
               const SizedBox(height: 20),
               Text(
@@ -3477,7 +3496,13 @@ bool _isArabic(BuildContext context) {
                   color: const Color(0xFF0056A3).withOpacity(0.1),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Icon(Icons.credit_card, color: Color(0xFF0056A3), size: 40),
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Image.asset(
+                    'assets/images/dahabiya.png',
+                    fit: BoxFit.contain,
+                  ),
+                ),
               ),
               const SizedBox(height: 20),
               Text(
@@ -3801,55 +3826,55 @@ bool _isArabic(BuildContext context) {
         borderRadius: BorderRadius.circular(30),
         child: Column(
           children: [
-           Container(
-  width: double.infinity,
-  padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 10), // Added horizontal padding
-  decoration: BoxDecoration(
-    gradient: LinearGradient(
-      begin: Alignment.topLeft,
-      end: Alignment.bottomRight,
-      colors: [
-        package.primaryColor,
-        package.secondaryColor ??
-            package.primaryColor.withOpacity(0.8),
-      ],
-    ),
-  ),
-  child: Column(
-    children: [
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5),
-        child: Text(
-          package.title,
-          style: GoogleFonts.poppins(
-            color: Colors.white,
-            fontSize: _isArabic(context) ? 20 : 24, // Smaller for Arabic
-            fontWeight: FontWeight.w700,
-            letterSpacing: _isArabic(context) ? 0.0 : 2, // No spacing for Arabic
-          ),
-          textAlign: TextAlign.center,
-          overflow: TextOverflow.ellipsis,
-          maxLines: 1,
-        ),
-      ),
-      const SizedBox(height: 6), // Reduced from 8
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5),
-        child: Text(
-          package.description,
-          style: GoogleFonts.poppins(
-            color: Colors.white.withOpacity(0.9),
-            fontSize: _isArabic(context) ? 12 : 14, // Smaller for Arabic
-            fontWeight: FontWeight.w400,
-          ),
-          textAlign: TextAlign.center,
-          overflow: TextOverflow.ellipsis,
-          maxLines: 1,
-        ),
-      ),
-    ],
-  ),
-),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    package.primaryColor,
+                    package.secondaryColor ??
+                        package.primaryColor.withOpacity(0.8),
+                  ],
+                ),
+              ),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: Text(
+                      package.title,
+                      style: GoogleFonts.poppins(
+                        color: Colors.white,
+                        fontSize: _isArabic(context) ? 20 : 24,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: _isArabic(context) ? 0.0 : 2,
+                      ),
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    ),
+                  ),
+                  const SizedBox(height: 6),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: Text(
+                      package.description,
+                      style: GoogleFonts.poppins(
+                        color: Colors.white.withOpacity(0.9),
+                        fontSize: _isArabic(context) ? 12 : 14,
+                        fontWeight: FontWeight.w400,
+                      ),
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    ),
+                  ),
+                ],
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20),
               child: Column(

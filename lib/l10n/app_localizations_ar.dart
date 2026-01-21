@@ -878,7 +878,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get performance => 'الأداء';
 
   @override
-  String get users => 'المستخدمين';
+  String get users => 'المستخدمون';
 
   @override
   String get storage => 'التخزين';
@@ -1550,4 +1550,374 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get finalization => 'الإنهاء';
+
+  @override
+  String get investorDashboard => 'لوحة تحكم المستثمر';
+
+  @override
+  String get followCompaniesAndDiscoverOpportunities =>
+      'تابع شركاتك المفضلة واكتشف فرص جديدة';
+
+  @override
+  String get exploreCompanies => 'استكشاف الشركات';
+
+  @override
+  String get marketAnalysis => 'تحليل السوق';
+
+  @override
+  String get followedCompanies => 'الشركات المتابعة';
+
+  @override
+  String get news => 'الأخبار';
+
+  @override
+  String get companies => 'الشركات';
+
+  @override
+  String get marketCap => 'القيمة السوقية';
+
+  @override
+  String get sectors => 'القطاعات';
+
+  @override
+  String get growth => 'النمو';
+
+  @override
+  String get topCompanies => 'أفضل الشركات';
+
+  @override
+  String get searchCompanyHint => 'ابحث عن شركة...';
+
+  @override
+  String get all => 'الكل';
+
+  @override
+  String get filterCompanies => 'تصفية الشركات';
+
+  @override
+  String get size => 'الحجم';
+
+  @override
+  String get filtersApplied => 'تم تطبيق الفلاتر';
+
+  @override
+  String get apply => 'تطبيق';
+
+  @override
+  String get viewDetails => 'عرض التفاصيل';
+
+  @override
+  String get removeFromFavorites => 'إزالة من المفضلة';
+
+  @override
+  String get addToFavorites => 'إضافة إلى المفضلة';
+
+  @override
+  String get financialAnalysis => 'التحليل المالي';
+
+  @override
+  String get recentNews => 'الأخبار الحديثة';
+
+  @override
+  String get youNowFollow => 'أنت تتابع الآن';
+
+  @override
+  String get youNoLongerFollow => 'أنت لم تعد تتابع';
+
+  @override
+  String get financialPerformance => 'الأداء المالي';
+
+  @override
+  String get annualGrowth => 'النمو السنوي';
+
+  @override
+  String get profitMargin => 'هامش الربح';
+
+  @override
+  String get expectedROI => 'العائد على الاستثمار المتوقع';
+
+  @override
+  String get recommendation => 'التوصية';
+
+  @override
+  String get analystConsensus => 'إجماع المحللين';
+
+  @override
+  String get strongBuy => 'شراء بقوة';
+
+  @override
+  String get buy => 'شراء';
+
+  @override
+  String get targetPrice => 'السعر المستهدف';
+
+  @override
+  String get announcesNewFunding => 'يعلن عن تمويل جديد';
+
+  @override
+  String get algerianStartupConfirmsRegionalExpansion =>
+      'تؤكد الشركة الناشئة الجزائرية توسعها الإقليمي';
+
+  @override
+  String get strategicPartnershipFor => 'شراكة إستراتيجية لـ';
+
+  @override
+  String get collaborationWithMajorSectorPlayers =>
+      'تعاون مع لاعبين رئيسيين في القطاع';
+
+  @override
+  String get launchesNewFeatures => 'يطلق ميزات جديدة';
+
+  @override
+  String get technologicalInnovationToImproveUserExperience =>
+      'ابتكار تكنولوجي لتحسين تجربة المستخدم';
+
+  @override
+  String get shareLinkFor => 'رابط مشاركة لـ';
+
+  @override
+  String get copied => 'تم النسخ';
+
+  @override
+  String get founded => 'تأسست';
+
+  @override
+  String get employees => 'الموظفون';
+
+  @override
+  String get website => 'الموقع الإلكتروني';
+
+  @override
+  String get applications => 'التطبيقات';
+
+  @override
+  String get coverage => 'التغطية';
+
+  @override
+  String get businessModel => 'النموذج التجاري';
+
+  @override
+  String get productsServices => 'المنتجات والخدمات';
+
+  @override
+  String get valuation => 'التقييم';
+
+  @override
+  String get revenue => 'الإيرادات';
+
+  @override
+  String get sector => 'القطاع';
+
+  @override
+  String get details => 'التفاصيل';
+
+  @override
+  String get followed => 'متابعة';
+
+  @override
+  String get follow => 'متابعة';
+
+  @override
+  String get noNewNotifications => 'لا توجد إشعارات جديدة';
+
+  @override
+  String get hours => 'المواعيد';
+
+  @override
+  String get basedOnYourInterests => 'بناءً على اهتماماتك';
+
+  @override
+  String get recommendedForYou => 'موصى به لك';
+
+  @override
+  String get android => 'أندرويد';
+
+  @override
+  String get ios => 'آي أو إس';
+
+  @override
+  String get notSpecified => 'غير محدد';
+
+  @override
+  String get companyTalabaStoreName => 'طلبة ستور';
+
+  @override
+  String get companyTalabaStoreDescription =>
+      'منصة تجارة إلكترونية مخصصة للطلبة، تقدم خصومات على منتجات متنوعة (إلكترونيات، ملابس، إكسسوارات، ترفيه) وتسهل الوصول إلى الخدمات التعليمية.';
+
+  @override
+  String get companyTalabaStoreIndustry => 'التجارة الإلكترونية';
+
+  @override
+  String get companyTalabaStoreSector => 'التكنولوجيا';
+
+  @override
+  String get companyTalabaStoreType =>
+      'شركة ذات مسؤولية محدودة / شركة ناشئة رقمية';
+
+  @override
+  String get companyTalabaStoreLocation => 'الجزائر العاصمة، الجزائر';
+
+  @override
+  String get companyTalabaStoreFounded => 'يونيو 2017';
+
+  @override
+  String get companyTalabaStoreCEO => 'سامي عليوش';
+
+  @override
+  String get companyTalabaStoreProduct1 => 'إلكترونيات';
+
+  @override
+  String get companyTalabaStoreProduct2 => 'ملابس';
+
+  @override
+  String get companyTalabaStoreProduct3 => 'إكسسوارات';
+
+  @override
+  String get companyTalabaStoreProduct4 => 'ترفيه';
+
+  @override
+  String get companyTalabaStoreProduct5 => 'خدمات تعليمية';
+
+  @override
+  String get companyTalabaStoreUsers => 'أكثر من 50,000 طالب نشط';
+
+  @override
+  String get companyTalabaStoreCoverage => 'التوصيل في 48 ولاية في الجزائر';
+
+  @override
+  String get companyTalabaStoreBusinessModel =>
+      'عمولة على المبيعات + شراكات مع الشركات المحلية';
+
+  @override
+  String get companyTemTemName => 'تم تم';
+
+  @override
+  String get companyTemTemDescription =>
+      'تطبيق للتنقل الحضري يقدم خدمات تاكسي/سيارات أجرة، توصيل المنتجات والخدمات الحضرية الرقمية (الحجوزات والمدفوعات).';
+
+  @override
+  String get companyTemTemIndustry => 'التنقل';
+
+  @override
+  String get companyTemTemSector => 'الخدمات';
+
+  @override
+  String get companyTemTemType => 'شركة ناشئة للتنقل';
+
+  @override
+  String get companyTemTemLocation => 'الجزائر العاصمة، الجزائر';
+
+  @override
+  String get companyTemTemFounded => '2018';
+
+  @override
+  String get companyTemTemCEO => 'شباب جزائريون';
+
+  @override
+  String get companyTemTemProduct1 => 'تاكسي / سيارات أجرة';
+
+  @override
+  String get companyTemTemProduct2 => 'توصيل المنتجات';
+
+  @override
+  String get companyTemTemProduct3 => 'خدمات حضرية رقمية';
+
+  @override
+  String get companyTemTemUsers => 'عدة آلاف من المستخدمين النشطين';
+
+  @override
+  String get companyTemTemCoverage => 'الجزائر، وهران، قسنطينة';
+
+  @override
+  String get companyTemTemBusinessModel =>
+      'عمولات على الرحلات + شراكات مع المحلات التجارية المحلية';
+
+  @override
+  String get companyALPAYName => 'ال باي';
+
+  @override
+  String get companyALPAYDescription =>
+      'حل دفع رقمي ومحفظة إلكترونية للأفراد والتجار، تقدم مدفوعات آمنة وإدارة للحسابات الرقمية.';
+
+  @override
+  String get companyALPAYIndustry => 'التكنولوجيا المالية';
+
+  @override
+  String get companyALPAYSector => 'المال';
+
+  @override
+  String get companyALPAYType => 'تكنولوجيا مالية';
+
+  @override
+  String get companyALPAYLocation => 'الجزائر العاصمة، الجزائر';
+
+  @override
+  String get companyALPAYFounded => '2019';
+
+  @override
+  String get companyALPAYCEO => 'شباب جزائريون';
+
+  @override
+  String get companyALPAYProduct1 => 'مدفوعات آمنة';
+
+  @override
+  String get companyALPAYProduct2 => 'إدارة الحسابات الرقمية';
+
+  @override
+  String get companyALPAYProduct3 => 'الدفع عبر الإنترنت والجوال';
+
+  @override
+  String get companyALPAYUsers => 'عدة آلاف من المستخدمين';
+
+  @override
+  String get companyALPAYCoverage => 'خدمات عبر الإنترنت على المستوى الوطني';
+
+  @override
+  String get companyALPAYBusinessModel =>
+      'عمولات على المعاملات + اشتراكات الشركات';
+
+  @override
+  String get companyOkadooName => 'أوكادو';
+
+  @override
+  String get companyOkadooDescription =>
+      'سوق رقمي يربط الشركات والموردين والمشترين، مما يسمح للشركات بالبيع أو الشراء عبر الإنترنت مع متابعة رقمية للمعاملات.';
+
+  @override
+  String get companyOkadooIndustry => 'سوق بين الشركات';
+
+  @override
+  String get companyOkadooSector => 'التجارة الإلكترونية';
+
+  @override
+  String get companyOkadooType => 'سوق بين الشركات';
+
+  @override
+  String get companyOkadooLocation => 'الجزائر';
+
+  @override
+  String get companyOkadooFounded => '2019';
+
+  @override
+  String get companyOkadooCEO => 'شباب';
+
+  @override
+  String get companyOkadooProduct1 => 'سوق بين الشركات';
+
+  @override
+  String get companyOkadooProduct2 => 'متابعة رقمية للمعاملات';
+
+  @override
+  String get companyOkadooProduct3 => 'ربط الموردين بالمشترين';
+
+  @override
+  String get companyOkadooUsers => 'غير محدد';
+
+  @override
+  String get companyOkadooCoverage => 'الجزائر';
+
+  @override
+  String get companyOkadooBusinessModel =>
+      'عمولة على المعاملات + اشتراكات الشركات';
 }
