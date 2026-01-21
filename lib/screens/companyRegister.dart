@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import './AdsServices.dart';
-import '../l10n/app_localizations.dart'; // Add this import
+import '../l10n/app_localizations.dart';
 
 class CreateCompanySortlistStyle extends StatefulWidget {
   const CreateCompanySortlistStyle({super.key});
@@ -26,106 +26,21 @@ class _CreateCompanySortlistStyleState
 
   final List<String> _selectedLanguages = [];
   
-  // These lists should be localized too
-  final List<String> _availableLanguages = [
-    'Français',
-    'Anglais',
-    'Espagnol',
-    'Allemand',
-    'Italien'
-  ];
-
   String? _teamSize;
   String? _selectedVillage;
   String? _selectedSecteur;
   bool _obscurePassword = true;
   bool _obscureConfirmPassword = true;
 
-  // These lists should remain as they are data, not UI text
-  final List<String> _algerianLocations = [
-    'Aïn El Hammam',
-    'Tizi Ouzou',
-    'Béjaïa',
-    'Sétif',
-    'Constantine',
-    'Oran',
-    'Alger Centre',
-    'Tlemcen',
-    'Annaba',
-    'Batna',
-    'Blida',
-    'Djelfa',
-    'Sidi Bel Abbès',
-    'Biskra',
-    'Tébessa',
-    'El Oued',
-    'Skikda',
-    'Tiaret',
-    'Bechar',
-    'Mostaganem',
-    'M\'Sila',
-    'Ghardaïa',
-    'Saïda',
-    'Laghouat',
-    'Mascara',
-    'Ouargla',
-    'Relizane',
-    'Tissemsilt',
-    'Boumerdès',
-    'Chlef',
-    'Tamanrasset',
-    'Adrar',
-    'Aïn Defla',
-    'Aïn Témouchent',
-    'Bordj Bou Arreridj',
-    'Bouira',
-    'Djanet',
-    'El Bayadh',
-    'El Tarf',
-    'Guelma',
-    'Illizi',
-    'Khenchela',
-    'Mila',
-    'Naâma',
-    'Oum El Bouaghi',
-    'Souk Ahras',
-    'Tindouf',
-    'Tipaza',
-    'Tizi Rached',
-    'Azazga'
-  ];
-
-  final List<String> _secteurs = [
-    'Technologie',
-    'Santé',
-    'Construction',
-    'Éducation',
-    'Finance',
-    'Commerce',
-    'Transport',
-    'Tourisme',
-    'Agriculture',
-    'Industrie',
-    'Services',
-    'Communication',
-    'Immobilier',
-    'Énergie',
-    'Environnement',
-    'Logistique',
-    'Marketing',
-    'Consulting',
-    'Art et Culture',
-    'Restauration',
-    'Mode',
-    'Sport',
-    'Médias',
-    'Assurance',
-    'Juridique'
-  ];
-
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
+    final locale = Localizations.localeOf(context).languageCode;
+    
+    // Get localized lists based on current locale
+    final List<String> availableLanguages = _getAvailableLanguages(locale);
+    final List<String> algerianLocations = _getAlgerianLocations(locale);
+    final List<String> secteurs = _getSecteurs(locale);
     
     return Scaffold(
       backgroundColor: Colors.white,
@@ -166,7 +81,7 @@ class _CreateCompanySortlistStyleState
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.all(20.0),
-              child: _buildStepContent(),
+              child: _buildStepContent(localizations, availableLanguages, algerianLocations, secteurs),
             ),
           ),
         ],
@@ -279,22 +194,20 @@ class _CreateCompanySortlistStyleState
     );
   }
 
-  Widget _buildStepContent() {
-    final localizations = AppLocalizations.of(context)!;
-    
+  Widget _buildStepContent(AppLocalizations localizations, List<String> availableLanguages, List<String> algerianLocations, List<String> secteurs) {
     switch (_currentStep) {
       case 0:
-        return _buildStep1(localizations);
+        return _buildStep1(localizations, secteurs);
       case 1:
-        return _buildStep2(localizations);
+        return _buildStep2(localizations, algerianLocations);
       case 2:
-        return _buildStep3(localizations);
+        return _buildStep3(localizations, availableLanguages);
       default:
-        return _buildStep1(localizations);
+        return _buildStep1(localizations, secteurs);
     }
   }
 
-  Widget _buildStep1(AppLocalizations localizations) {
+  Widget _buildStep1(AppLocalizations localizations, List<String> secteurs) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -389,7 +302,7 @@ class _CreateCompanySortlistStyleState
                 child: Text(localizations.selectBusinessSectorHint ?? 'Select your business sector'),
               ),
               value: _selectedSecteur,
-              items: _secteurs.map((String secteur) {
+              items: secteurs.map((String secteur) {
                 return DropdownMenuItem<String>(
                   value: secteur,
                   child: Padding(
@@ -512,7 +425,7 @@ class _CreateCompanySortlistStyleState
     );
   }
 
-  Widget _buildStep2(AppLocalizations localizations) {
+  Widget _buildStep2(AppLocalizations localizations, List<String> algerianLocations) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -557,7 +470,7 @@ class _CreateCompanySortlistStyleState
                 child: Text(localizations.selectLocationHint ?? 'Select your location'),
               ),
               value: _selectedVillage,
-              items: _algerianLocations.map((String location) {
+              items: algerianLocations.map((String location) {
                 return DropdownMenuItem<String>(
                   value: location,
                   child: Padding(
@@ -715,7 +628,7 @@ class _CreateCompanySortlistStyleState
     );
   }
 
-  Widget _buildStep3(AppLocalizations localizations) {
+  Widget _buildStep3(AppLocalizations localizations, List<String> availableLanguages) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -835,7 +748,7 @@ class _CreateCompanySortlistStyleState
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Text(localizations.selectLanguagesHint ?? 'Select'),
               ),
-              items: _availableLanguages.map((String language) {
+              items: availableLanguages.map((String language) {
                 return DropdownMenuItem<String>(
                   value: language,
                   child: Padding(
@@ -1006,6 +919,78 @@ class _CreateCompanySortlistStyleState
       context,
       MaterialPageRoute(builder: (context) => const PricingScreen()),
     );
+  }
+
+  // Helper methods to get localized lists
+  List<String> _getAvailableLanguages(String locale) {
+    switch (locale) {
+      case 'ar':
+        return ['الفرنسية', 'الإنجليزية', 'الإسبانية', 'الألمانية', 'الإيطالية'];
+      case 'fr':
+        return ['Français', 'Anglais', 'Espagnol', 'Allemand', 'Italien'];
+      default:
+        return ['French', 'English', 'Spanish', 'German', 'Italian'];
+    }
+  }
+
+  List<String> _getAlgerianLocations(String locale) {
+    // Keep as is for English and French, use Arabic names for Arabic locale
+    if (locale == 'ar') {
+      return [
+        'عين الحمام', 'تيزي وزو', 'بجاية', 'سطيف', 'قسنطينة',
+        'وهران', 'الجزائر الوسطى', 'تلمسان', 'عنابة', 'باتنة',
+        'البليدة', 'الجلفة', 'سيدي بلعباس', 'بسكرة', 'تبسة',
+        'الوادي', 'سكيكدة', 'تيارت', 'بشار', 'مستغانم',
+        'المسيلة', 'غرداية', 'سعيدة', 'الأغواط', 'معسكر',
+        'ورقلة', 'غليزان', 'تسمسيلت', 'بومرداس', 'الشلف',
+        'تمنراست', 'أدرار', 'عين الدفلى', 'عين تموشنت',
+        'برج بوعريريج', 'البويرة', 'جانت', 'البيض', 'الطارف',
+        'قالمة', 'إليزي', 'خنشلة', 'ميلة', 'النعامة',
+        'أم البواقي', 'سوق أهراس', 'تندوف', 'تيبازة', 'تيزي راشد', 'أزازقة'
+      ];
+    } else {
+      return [
+        'Aïn El Hammam', 'Tizi Ouzou', 'Béjaïa', 'Sétif', 'Constantine',
+        'Oran', 'Alger Centre', 'Tlemcen', 'Annaba', 'Batna',
+        'Blida', 'Djelfa', 'Sidi Bel Abbès', 'Biskra', 'Tébessa',
+        'El Oued', 'Skikda', 'Tiaret', 'Bechar', 'Mostaganem',
+        'M\'Sila', 'Ghardaïa', 'Saïda', 'Laghouat', 'Mascara',
+        'Ouargla', 'Relizane', 'Tissemsilt', 'Boumerdès', 'Chlef',
+        'Tamanrasset', 'Adrar', 'Aïn Defla', 'Aïn Témouchent',
+        'Bordj Bou Arreridj', 'Bouira', 'Djanet', 'El Bayadh', 'El Tarf',
+        'Guelma', 'Illizi', 'Khenchela', 'Mila', 'Naâma',
+        'Oum El Bouaghi', 'Souk Ahras', 'Tindouf', 'Tipaza', 'Tizi Rached', 'Azazga'
+      ];
+    }
+  }
+
+  List<String> _getSecteurs(String locale) {
+    switch (locale) {
+      case 'ar':
+        return [
+          'التكنولوجيا', 'الصحة', 'البناء', 'التعليم', 'التمويل',
+          'التجارة', 'النقل', 'السياحة', 'الزراعة', 'الصناعة',
+          'الخدمات', 'الاتصالات', 'العقارات', 'الطاقة', 'البيئة',
+          'اللوجستيات', 'التسويق', 'الاستشارات', 'الفن والثقافة',
+          'المطاعم', 'الأزياء', 'الرياضة', 'الإعلام', 'التأمين', 'القانون'
+        ];
+      case 'fr':
+        return [
+          'Technologie', 'Santé', 'Construction', 'Éducation', 'Finance',
+          'Commerce', 'Transport', 'Tourisme', 'Agriculture', 'Industrie',
+          'Services', 'Communication', 'Immobilier', 'Énergie', 'Environnement',
+          'Logistique', 'Marketing', 'Consulting', 'Art et Culture',
+          'Restauration', 'Mode', 'Sport', 'Médias', 'Assurance', 'Juridique'
+        ];
+      default:
+        return [
+          'Technology', 'Health', 'Construction', 'Education', 'Finance',
+          'Commerce', 'Transport', 'Tourism', 'Agriculture', 'Industry',
+          'Services', 'Communication', 'Real Estate', 'Energy', 'Environment',
+          'Logistics', 'Marketing', 'Consulting', 'Art and Culture',
+          'Restaurant', 'Fashion', 'Sports', 'Media', 'Insurance', 'Legal'
+        ];
+    }
   }
 
   @override
