@@ -1977,4 +1977,35 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get technology => 'التكنولوجيا';
+
+  @override
+  String get totalValuation => 'التقييم الإجمالي';
+
+  @override
+  String get averageRevenue => 'متوسط الإيرادات';
+
+  @override
+  String get noFollowedCompanies => 'لا توجد شركات متابعة';
+
+  @override
+  String get startFollowingCompaniesMessage =>
+      'ابدأ بمتابعة الشركات لرؤيتها تظهر هنا';
+
+  @override
+  String get sortByGrowth => 'حسب النمو';
+
+  @override
+  String get sortByValuation => 'حسب التقييم';
+
+  @override
+  String get sortBySector => 'حسب القطاع';
+
+  @override
+  String get stopFollowing => 'إيقاف المتابعة';
+
+  @override
+  String get confirmStopFollowing => 'هل أنت متأكد أنك تريد إيقاف متابعة';
+
+  @override
+  String get stopFollowingConfirm => 'إيقاف المتابعة';
 }

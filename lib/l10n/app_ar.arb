@@ -684,6 +684,23 @@
   "fintech": "التكنولوجيا المالية",
   "mobility": "المواصلات",
   "technology": "التكنولوجيا",
-  "services": "الخدمات"
+  "services": "الخدمات",
+   "followedCompanies": "الشركات المتابعة",
+  "totalValuation": "التقييم الإجمالي",
+  "averageRevenue": "متوسط الإيرادات",
+  "noFollowedCompanies": "لا توجد شركات متابعة",
+  "startFollowingCompaniesMessage": "ابدأ بمتابعة الشركات لرؤيتها تظهر هنا",
+  "exploreCompanies": "استكشاف الشركات",
+  "performance": "الأداء",
+  "growth": "النمو",
+  "sortByGrowth": "حسب النمو",
+  "sortByValuation": "حسب التقييم",
+  "sortBySector": "حسب القطاع",
+  "viewDetails": "عرض التفاصيل",
+  "stopFollowing": "إيقاف المتابعة",
+  "confirmStopFollowing": "هل أنت متأكد أنك تريد إيقاف متابعة",
+  "stopFollowingConfirm": "إيقاف المتابعة",
+  "profitMargin": "هامش الربح",
+  "targetPrice": "السعر المستهدف"
 
 }

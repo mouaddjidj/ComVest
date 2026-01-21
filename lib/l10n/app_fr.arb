@@ -646,5 +646,22 @@
   "fintech": "Fintech",
   "mobility": "Mobilité",
   "technology": "Technologie",
-  "services": "Services"
+  "services": "Services",
+   "followedCompanies": "Entreprises suivies",
+  "totalValuation": "Valuation totale",
+  "averageRevenue": "Revenus moyens",
+  "noFollowedCompanies": "Aucune entreprise suivie",
+  "startFollowingCompaniesMessage": "Commencez à suivre des entreprises pour les voir apparaître ici",
+  "exploreCompanies": "Explorer les entreprises",
+  "performance": "Performance",
+  "growth": "Croissance",
+  "sortByGrowth": "Par croissance",
+  "sortByValuation": "Par capitalisation",
+  "sortBySector": "Par secteur",
+  "viewDetails": "Voir les détails",
+  "stopFollowing": "Arrêter de suivre",
+  "confirmStopFollowing": "Êtes-vous sûr de vouloir arrêter de suivre",
+  "stopFollowingConfirm": "Arrêter de suivre",
+  "profitMargin": "Marge bénéficiaire",
+  "targetPrice": "Prix cible"
 }

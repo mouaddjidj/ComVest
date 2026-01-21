@@ -1564,13 +1564,13 @@ class AppLocalizationsEn extends AppLocalizations {
       'Follow your favorite companies and discover new opportunities';
 
   @override
-  String get exploreCompanies => 'Explore companies';
+  String get exploreCompanies => 'Explore Companies';
 
   @override
   String get marketAnalysis => 'Market analysis';
 
   @override
-  String get followedCompanies => 'Followed companies';
+  String get followedCompanies => 'Followed Companies';
 
   @override
   String get news => 'News';
@@ -1981,4 +1981,35 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get technology => 'Technology';
+
+  @override
+  String get totalValuation => 'Total Valuation';
+
+  @override
+  String get averageRevenue => 'Average Revenue';
+
+  @override
+  String get noFollowedCompanies => 'No followed companies';
+
+  @override
+  String get startFollowingCompaniesMessage =>
+      'Start following companies to see them appear here';
+
+  @override
+  String get sortByGrowth => 'By growth';
+
+  @override
+  String get sortByValuation => 'By valuation';
+
+  @override
+  String get sortBySector => 'By sector';
+
+  @override
+  String get stopFollowing => 'Stop following';
+
+  @override
+  String get confirmStopFollowing => 'Are you sure you want to stop following';
+
+  @override
+  String get stopFollowingConfirm => 'Stop following';
 }

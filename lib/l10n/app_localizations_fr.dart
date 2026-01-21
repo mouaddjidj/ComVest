@@ -2003,4 +2003,36 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get technology => 'Technologie';
+
+  @override
+  String get totalValuation => 'Valuation totale';
+
+  @override
+  String get averageRevenue => 'Revenus moyens';
+
+  @override
+  String get noFollowedCompanies => 'Aucune entreprise suivie';
+
+  @override
+  String get startFollowingCompaniesMessage =>
+      'Commencez à suivre des entreprises pour les voir apparaître ici';
+
+  @override
+  String get sortByGrowth => 'Par croissance';
+
+  @override
+  String get sortByValuation => 'Par capitalisation';
+
+  @override
+  String get sortBySector => 'Par secteur';
+
+  @override
+  String get stopFollowing => 'Arrêter de suivre';
+
+  @override
+  String get confirmStopFollowing =>
+      'Êtes-vous sûr de vouloir arrêter de suivre';
+
+  @override
+  String get stopFollowingConfirm => 'Arrêter de suivre';
 }

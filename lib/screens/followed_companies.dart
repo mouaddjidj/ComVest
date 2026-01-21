@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:comvest/screens/company_detail_page.dart';
 import 'package:comvest/widgets/models.dart';
+import '../l10n/app_localizations.dart'; // IMPORT IMPORTANT !
 
 class FollowedCompaniesPage extends StatefulWidget {
   final Investor investor;
@@ -20,8 +21,8 @@ class FollowedCompaniesPage extends StatefulWidget {
 
 class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
   List<Company> _filteredCompanies = [];
-  String _selectedFilter = 'Tous';
-  final List<String> _filters = ['Tous', 'E-commerce', 'Fintech', 'Mobilité', 'Services'];
+  String _selectedFilter = '';
+  final List<String> _filters = [];
   final TextEditingController _searchController = TextEditingController();
 
   @override
@@ -32,14 +33,32 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!;
+    
+    // Initialiser les filtres avec les localisations
+    if (_filters.isEmpty) {
+      _filters.addAll([
+        localizations.all,
+        localizations.ecommerce,
+        localizations.fintech,
+        localizations.mobility,
+        localizations.services,
+      ]);
+    }
+    
+    // Initialiser le filtre sélectionné
+    if (_selectedFilter.isEmpty) {
+      _selectedFilter = localizations.all;
+    }
+
     return Scaffold(
       backgroundColor: const Color(0xFFF8FAFC),
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 1,
-        title: const Text(
-          'Entreprises suivies',
-          style: TextStyle(
+        title: Text(
+          localizations.followedCompanies,
+          style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
             color: Colors.black,
@@ -52,7 +71,7 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
         actions: [
           IconButton(
             icon: const Icon(Icons.sort, color: Color(0xFF7533E8)),
-            onPressed: _showSortOptions,
+            onPressed: () => _showSortOptions(localizations),
           ),
         ],
       ),
@@ -78,11 +97,11 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
                         Expanded(
                           child: TextField(
                             controller: _searchController,
-                            decoration: const InputDecoration(
-                              hintText: 'Rechercher une entreprise...',
+                            decoration: InputDecoration(
+                              hintText: localizations.searchCompanyHint,
                               border: InputBorder.none,
                             ),
-                            onChanged: _onSearchChanged,
+                            onChanged: (value) => _onSearchChanged(value, localizations),
                           ),
                         ),
                         if (_searchController.text.isNotEmpty)
@@ -90,7 +109,7 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
                             icon: const Icon(Icons.clear, size: 20),
                             onPressed: () {
                               _searchController.clear();
-                              _onSearchChanged('');
+                              _onSearchChanged('', localizations);
                             },
                           ),
                       ],
@@ -118,7 +137,7 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
                       onSelected: (_) {
                         setState(() {
                           _selectedFilter = filter;
-                          _applyFilters();
+                          _applyFilters(localizations);
                         });
                       },
                       selectedColor: const Color(0xFF7533E8),
@@ -137,14 +156,16 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _buildStatItem('${widget.followedCompanies.length}', 'Entreprises'),
+                _buildStatItem('${widget.followedCompanies.length}', localizations.companies, localizations),
                 _buildStatItem(
                   '${_calculateTotalValuation()}B DA',
-                  'Valuation totale',
+                  localizations.totalValuation,
+                  localizations,
                 ),
                 _buildStatItem(
                   '${_calculateAverageRevenue()}B DA',
-                  'Revenus moyens',
+                  localizations.averageRevenue,
+                  localizations,
                 ),
               ],
             ),
@@ -153,12 +174,12 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
           // Companies List
           Expanded(
             child: _filteredCompanies.isEmpty
-                ? _buildEmptyState()
+                ? _buildEmptyState(localizations)
                 : ListView.builder(
                     padding: const EdgeInsets.all(16),
                     itemCount: _filteredCompanies.length,
                     itemBuilder: (context, index) {
-                      return _buildFollowedCompanyCard(_filteredCompanies[index]);
+                      return _buildFollowedCompanyCard(_filteredCompanies[index], localizations);
                     },
                   ),
           ),
@@ -167,7 +188,7 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
     );
   }
 
-  Widget _buildStatItem(String value, String label) {
+  Widget _buildStatItem(String value, String label, AppLocalizations localizations) {
     return Column(
       children: [
         Text(
@@ -190,7 +211,7 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
     );
   }
 
-  Widget _buildFollowedCompanyCard(Company company) {
+  Widget _buildFollowedCompanyCard(Company company, AppLocalizations localizations) {
     // Map pour contrôler la taille de chaque image d'entreprise
     final Map<String, Size> companyImageSizes = {
       'TalabaStore': const Size(60, 60),
@@ -214,7 +235,7 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
 
     return GestureDetector(
       onTap: () {
-        _showCompanyDetails(company);
+        _showCompanyDetails(company, localizations);
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 15),
@@ -336,7 +357,7 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
                   IconButton(
                     icon: const Icon(Icons.more_vert, color: Colors.grey),
                     onPressed: () {
-                      _showCompanyOptions(company);
+                      _showCompanyOptions(company, localizations);
                     },
                   ),
                 ],
@@ -352,24 +373,24 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      _buildFinancialInfo('Valuation', '${company.valuation}B DA'),
-                      _buildFinancialInfo('Revenus', '${company.revenue}B DA'),
-                      _buildFinancialInfo('Employés', '${company.employees}'),
+                      _buildFinancialInfo(localizations.valuation, '${company.valuation}B DA', localizations),
+                      _buildFinancialInfo(localizations.revenue, '${company.revenue}B DA', localizations),
+                      _buildFinancialInfo(localizations.employees, '${company.employees}', localizations),
                     ],
                   ),
                   const SizedBox(height: 15),
                   
                   // Informations supplémentaires
-                  _buildInfoRow('CEO', company.ceo),
-                  _buildInfoRow('Fondé', company.founded),
-                  _buildInfoRow('Secteur', company.sector),
+                  _buildInfoRow('CEO', company.ceo, localizations),
+                  _buildInfoRow(localizations.founded, company.founded, localizations),
+                  _buildInfoRow(localizations.sector, company.sector, localizations),
                   
                   const SizedBox(height: 15),
                   
                   // Performance Indicator
-                  const Text(
-                    'Performance:',
-                    style: TextStyle(
+                  Text(
+                    '${localizations.performance}:',
+                    style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
                       color: Colors.black87,
@@ -388,7 +409,7 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Croissance: +${_calculateCompanyGrowth(company)}%',
+                        '${localizations.growth}: +${_calculateCompanyGrowth(company)}%',
                         style: TextStyle(
                           fontSize: 12,
                           color: company.cardColor,
@@ -396,7 +417,7 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
                         ),
                       ),
                       Text(
-                        'Recommandation: ACHETER',
+                        '${localizations.recommendation}: ${_getRecommendation(company, localizations)}',
                         style: TextStyle(
                           fontSize: 12,
                           color: company.cardColor,
@@ -414,7 +435,7 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
     );
   }
 
-  Widget _buildFinancialInfo(String label, String value) {
+  Widget _buildFinancialInfo(String label, String value, AppLocalizations localizations) {
     return Column(
       children: [
         Text(
@@ -437,7 +458,7 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
     );
   }
 
-  Widget _buildInfoRow(String label, String value) {
+  Widget _buildInfoRow(String label, String value, AppLocalizations localizations) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
@@ -468,7 +489,7 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
     );
   }
 
-  Widget _buildEmptyState() {
+  Widget _buildEmptyState(AppLocalizations localizations) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -487,21 +508,21 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
             ),
           ),
           const SizedBox(height: 20),
-          const Text(
-            'Aucune entreprise suivie',
-            style: TextStyle(
+          Text(
+            localizations.noFollowedCompanies,
+            style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               color: Colors.black,
             ),
           ),
           const SizedBox(height: 10),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 40),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Text(
-              'Commencez à suivre des entreprises pour les voir apparaître ici',
+              localizations.startFollowingCompaniesMessage,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 14,
                 color: Colors.grey,
               ),
@@ -517,9 +538,9 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
                 borderRadius: BorderRadius.circular(25),
               ),
             ),
-            child: const Text(
-              'Explorer les entreprises',
-              style: TextStyle(
+            child: Text(
+              localizations.exploreCompanies,
+              style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
@@ -532,7 +553,7 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
 
   // ==================== HELPER METHODS ====================
 
-  void _onSearchChanged(String query) {
+  void _onSearchChanged(String query, AppLocalizations localizations) {
     setState(() {
       if (query.isEmpty) {
         _filteredCompanies = List.from(widget.followedCompanies);
@@ -543,12 +564,12 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
               company.sector.toLowerCase().contains(query.toLowerCase());
         }).toList();
       }
-      _applyFilters();
+      _applyFilters(localizations);
     });
   }
 
-  void _applyFilters() {
-    if (_selectedFilter == 'Tous') {
+  void _applyFilters(AppLocalizations localizations) {
+    if (_selectedFilter == localizations.all) {
       return;
     }
     
@@ -581,7 +602,14 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
     return companyGrowth[company.name] ?? 15.0;
   }
 
-  void _showSortOptions() {
+  String _getRecommendation(Company company, AppLocalizations localizations) {
+    if (company.name == "ALPAY" || company.name == "TalabaStore") {
+      return localizations.strongBuy;
+    }
+    return localizations.buy;
+  }
+
+  void _showSortOptions(AppLocalizations localizations) {
     showModalBottomSheet(
       context: context,
       builder: (context) {
@@ -592,7 +620,7 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
             children: [
               ListTile(
                 leading: const Icon(Icons.trending_up, color: Color(0xFF7533E8)),
-                title: const Text('Par croissance'),
+                title: Text(localizations.sortByGrowth),
                 onTap: () {
                   Navigator.pop(context);
                   _sortByGrowth();
@@ -600,7 +628,7 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
               ),
               ListTile(
                 leading: const Icon(Icons.attach_money, color: Color(0xFF7533E8)),
-                title: const Text('Par capitalisation'),
+                title: Text(localizations.sortByValuation),
                 onTap: () {
                   Navigator.pop(context);
                   _sortByValuation();
@@ -608,7 +636,7 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
               ),
               ListTile(
                 leading: const Icon(Icons.business, color: Color(0xFF7533E8)),
-                title: const Text('Par secteur'),
+                title: Text(localizations.sortBySector),
                 onTap: () {
                   Navigator.pop(context);
                   _sortBySector();
@@ -639,7 +667,7 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
     });
   }
 
-  void _showCompanyDetails(Company company) {
+  void _showCompanyDetails(Company company, AppLocalizations localizations) {
     final isFollowed = widget.followedCompanies.any((c) => c.name == company.name);
     
     Navigator.push(
@@ -650,7 +678,7 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
           isFollowed: isFollowed,
           onFollowToggle: () {
             if (isFollowed) {
-              _unfollowCompany(company);
+              _unfollowCompany(company, localizations);
             }
           },
         ),
@@ -658,7 +686,7 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
     );
   }
 
-  void _showCompanyOptions(Company company) {
+  void _showCompanyOptions(Company company, AppLocalizations localizations) {
     final isFollowed = widget.followedCompanies.any((c) => c.name == company.name);
     
     showModalBottomSheet(
@@ -671,27 +699,27 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
             children: [
               ListTile(
                 leading: const Icon(Icons.info, color: Color(0xFF7533E8)),
-                title: const Text('Voir les détails'),
+                title: Text(localizations.viewDetails),
                 onTap: () {
                   Navigator.pop(context);
-                  _showCompanyDetails(company);
+                  _showCompanyDetails(company, localizations);
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.analytics, color: Color(0xFF7533E8)),
-                title: const Text('Analyses financières'),
+                title: Text(localizations.financialAnalysis),
                 onTap: () {
                   Navigator.pop(context);
-                  _showFinancialAnalysis(company);
+                  _showFinancialAnalysis(company, localizations);
                 },
               ),
               if (isFollowed)
                 ListTile(
                   leading: const Icon(Icons.star, color: Colors.red),
-                  title: const Text('Arrêter de suivre', style: TextStyle(color: Colors.red)),
+                  title: Text(localizations.stopFollowing, style: const TextStyle(color: Colors.red)),
                   onTap: () {
                     Navigator.pop(context);
-                    _unfollowCompany(company);
+                    _unfollowCompany(company, localizations);
                   },
                 ),
             ],
@@ -701,39 +729,39 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
     );
   }
 
-  void _showFinancialAnalysis(Company company) {
+  void _showFinancialAnalysis(Company company, AppLocalizations localizations) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Analyse financière - ${company.name}'),
+          title: Text('${localizations.financialAnalysis} - ${company.name}'),
           content: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Performance financière:',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                Text(
+                  '${localizations.financialPerformance}:',
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),
-                Text('• Croissance annuelle: +${_calculateCompanyGrowth(company)}%'),
-                Text('• Marge bénéficiaire: ${company.name == "ALPAY" ? "18.3%" : company.name == "TalabaStore" ? "12.5%" : company.name == "TemTem" ? "15.7%" : "10.8%"}'),
-                Text('• ROI attendu: ${company.name == "ALPAY" ? "42%" : company.name == "TalabaStore" ? "38%" : company.name == "TemTem" ? "35%" : "32%"}'),
+                Text('• ${localizations.annualGrowth}: +${_calculateCompanyGrowth(company)}%'),
+                Text('• ${localizations.profitMargin}: ${company.name == "ALPAY" ? "18.3%" : company.name == "TalabaStore" ? "12.5%" : company.name == "TemTem" ? "15.7%" : "10.8%"}'),
+                Text('• ${localizations.expectedROI}: ${company.name == "ALPAY" ? "42%" : company.name == "TalabaStore" ? "38%" : company.name == "TemTem" ? "35%" : "32%"}'),
                 const SizedBox(height: 20),
-                const Text(
-                  'Recommandation:',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                Text(
+                  '${localizations.recommendation}:',
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),
-                Text('Analyst consensus: ${company.name == "ALPAY" || company.name == "TalabaStore" ? "ACHETER FORTEMENT" : "ACHETER"}'),
-                Text('Target price: ${company.name == "ALPAY" ? "+45%" : company.name == "TalabaStore" ? "+38%" : company.name == "TemTem" ? "+32%" : "+28%"}'),
+                Text('${localizations.analystConsensus}: ${_getRecommendation(company, localizations)}'),
+                Text('${localizations.targetPrice}: ${company.name == "ALPAY" ? "+45%" : company.name == "TalabaStore" ? "+38%" : company.name == "TemTem" ? "+32%" : "+28%"}'),
               ],
             ),
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('Fermer'),
+              child: Text(localizations.close),
             ),
           ],
         );
@@ -741,27 +769,27 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
     );
   }
 
-  void _unfollowCompany(Company company) {
+  void _unfollowCompany(Company company, AppLocalizations localizations) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Arrêter de suivre'),
-          content: Text('Êtes-vous sûr de vouloir arrêter de suivre ${company.name} ?'),
+          title: Text(localizations.stopFollowing),
+          content: Text('${localizations.confirmStopFollowing} ${company.name} ?'),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('Annuler'),
+              child: Text(localizations.cancel),
             ),
             ElevatedButton(
               onPressed: () {
                 Navigator.pop(context);
-                _removeCompany(company);
+                _removeCompany(company, localizations);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.red,
               ),
-              child: const Text('Arrêter de suivre'),
+              child: Text(localizations.stopFollowingConfirm),
             ),
           ],
         );
@@ -769,7 +797,7 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
     );
   }
 
-  void _removeCompany(Company company) {
+  void _removeCompany(Company company, AppLocalizations localizations) {
     // Appeler le callback pour mettre à jour le dashboard principal
     widget.onUnfollow(company);
     
@@ -781,7 +809,7 @@ class _FollowedCompaniesPageState extends State<FollowedCompaniesPage> {
     
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Vous ne suivez plus ${company.name}'),
+        content: Text('${localizations.youNoLongerFollow} ${company.name}'),
         backgroundColor: Colors.red,
         duration: const Duration(seconds: 2),
       ),

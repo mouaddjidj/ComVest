@@ -3151,7 +3151,7 @@ abstract class AppLocalizations {
   /// No description provided for @exploreCompanies.
   ///
   /// In en, this message translates to:
-  /// **'Explore companies'**
+  /// **'Explore Companies'**
   String get exploreCompanies;
 
   /// No description provided for @marketAnalysis.
@@ -3163,7 +3163,7 @@ abstract class AppLocalizations {
   /// No description provided for @followedCompanies.
   ///
   /// In en, this message translates to:
-  /// **'Followed companies'**
+  /// **'Followed Companies'**
   String get followedCompanies;
 
   /// No description provided for @news.
@@ -3963,6 +3963,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Technology'**
   String get technology;
+
+  /// No description provided for @totalValuation.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Valuation'**
+  String get totalValuation;
+
+  /// No description provided for @averageRevenue.
+  ///
+  /// In en, this message translates to:
+  /// **'Average Revenue'**
+  String get averageRevenue;
+
+  /// No description provided for @noFollowedCompanies.
+  ///
+  /// In en, this message translates to:
+  /// **'No followed companies'**
+  String get noFollowedCompanies;
+
+  /// No description provided for @startFollowingCompaniesMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Start following companies to see them appear here'**
+  String get startFollowingCompaniesMessage;
+
+  /// No description provided for @sortByGrowth.
+  ///
+  /// In en, this message translates to:
+  /// **'By growth'**
+  String get sortByGrowth;
+
+  /// No description provided for @sortByValuation.
+  ///
+  /// In en, this message translates to:
+  /// **'By valuation'**
+  String get sortByValuation;
+
+  /// No description provided for @sortBySector.
+  ///
+  /// In en, this message translates to:
+  /// **'By sector'**
+  String get sortBySector;
+
+  /// No description provided for @stopFollowing.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop following'**
+  String get stopFollowing;
+
+  /// No description provided for @confirmStopFollowing.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to stop following'**
+  String get confirmStopFollowing;
+
+  /// No description provided for @stopFollowingConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop following'**
+  String get stopFollowingConfirm;
 }
 
 class _AppLocalizationsDelegate
