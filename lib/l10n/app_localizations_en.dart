@@ -119,13 +119,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get save => 'Save';
 
   @override
-  String get cancel => 'CANCEL';
+  String get cancel => 'Cancel';
 
   @override
   String get selectLanguage => 'Select Language';
 
   @override
-  String get language => 'Language';
+  String get language => 'English';
 
   @override
   String get english => 'English';

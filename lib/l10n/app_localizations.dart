@@ -319,7 +319,7 @@ abstract class AppLocalizations {
   /// No description provided for @cancel.
   ///
   /// In en, this message translates to:
-  /// **'CANCEL'**
+  /// **'Cancel'**
   String get cancel;
 
   /// No description provided for @selectLanguage.
@@ -331,7 +331,7 @@ abstract class AppLocalizations {
   /// No description provided for @language.
   ///
   /// In en, this message translates to:
-  /// **'Language'**
+  /// **'English'**
   String get language;
 
   /// No description provided for @english.

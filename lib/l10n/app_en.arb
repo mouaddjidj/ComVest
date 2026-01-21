@@ -205,12 +205,9 @@
   "choosePaymentMethod": "Choose your payment method",
   "mobilePayment": "Mobile payment",
   "algerianCard": "Algerian bank card",
-  "cancel": "CANCEL",
   "customServiceTitle": "Custom Service",
   "contactForCustomQuote": "Contact us for a personalized quote",
   "fullName": "Full name",
-  "email": "Email",
-  "phone": "Phone",
   "describeYourNeeds": "Describe your needs",
   "sendRequest": "SEND REQUEST",
   "paymentSuccessful": "Payment Successful!",
@@ -260,7 +257,6 @@
   "payments": "Payments",
   "privacy": "Privacy",
   "downloads": "Downloads",
-  "language": "Language",
   "helpCenter": "Help Center",
   "feedback": "Give feedback",
   "about": "About",
@@ -284,7 +280,6 @@
   "advice": "Advice: Start with the Start pack and upgrade as needed!",
   "gotIt": "GOT IT",
   "dashboardTitle": "Dashboard",
-  "welcome": "Welcome",
   "startDate": "Start date",
   "endDate": "End date",
   "performance": "Performance",
@@ -387,4 +382,4 @@
   "thisAppHelpsManageServices": "This app helps manage services",
   "otherServices": "other services",
   "payment": "payment"
-  }
+}

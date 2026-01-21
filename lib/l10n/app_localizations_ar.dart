@@ -126,7 +126,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get selectLanguage => 'اختر اللغة';
 
   @override
-  String get language => 'اللغة';
+  String get language => 'العربية';
 
   @override
   String get english => 'الإنجليزية';
@@ -408,7 +408,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get enterEmail => 'الرجاء إدخال عنوان بريدك الإلكتروني';
 
   @override
-  String get createInvestorAccountTitle => 'Create Investor Account';
+  String get createInvestorAccountTitle => 'إنشاء حساب مستثمر';
 
   @override
   String get profileStep => 'الملف الشخصي';

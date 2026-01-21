@@ -121,13 +121,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get save => 'Enregistrer';
 
   @override
-  String get cancel => 'ANNULER';
+  String get cancel => 'Annuler';
 
   @override
   String get selectLanguage => 'Sélectionner la langue';
 
   @override
-  String get language => 'Langue';
+  String get language => 'Français';
 
   @override
   String get english => 'Anglais';

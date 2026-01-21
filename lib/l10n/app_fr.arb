@@ -205,12 +205,9 @@
   "choosePaymentMethod": "Choisissez votre mode de paiement",
   "mobilePayment": "Paiement mobile sécurisé",
   "algerianCard": "Carte bancaire algérienne",
-  "cancel": "ANNULER",
   "customServiceTitle": "Service Sur Mesure",
   "contactForCustomQuote": "Contactez-nous pour un devis personnalisé",
   "fullName": "Nom complet",
-  "email": "Email",
-  "phone": "Téléphone",
   "describeYourNeeds": "Description de vos besoins",
   "sendRequest": "ENVOYER LA DEMANDE",
   "paymentSuccessful": "Paiement Réussi!",
@@ -260,7 +257,6 @@
   "payments": "Paiements",
   "privacy": "Confidentialité",
   "downloads": "Téléchargements",
-  "language": "Langue",
   "helpCenter": "Centre d'aide",
   "feedback": "Donner votre avis",
   "about": "À propos",
@@ -284,7 +280,6 @@
   "advice": "Conseil: Commencez par le pack Start et améliorez selon vos besoins!",
   "gotIt": "COMPRIS",
   "dashboardTitle": "Tableau de Bord",
-  "welcome": "Bienvenue",
   "startDate": "Date de début",
   "endDate": "Date de fin",
   "performance": "Performance",
@@ -386,5 +381,5 @@
   "allRightsReserved": "Tous droits réservés",
   "thisAppHelpsManageServices": "Cette application aide à gérer les services",
   "otherServices": "autres services",
-"payment": "paiement"
+  "payment": "paiement"
 }
