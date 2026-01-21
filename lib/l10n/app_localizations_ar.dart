@@ -216,7 +216,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get companyNameDescription =>
-      'حدد كيانًا، أو أنشئ كيانًا جديدًا، لتسجيله على Sortlist';
+      'حدد كيانًا، أو أنشئ كيانًا جديدًا، لتسجيله  ';
 
   @override
   String get usernameLabel => 'اسم المستخدم';
@@ -276,7 +276,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get profileSetupDescription =>
-      'حدد المعلومات التي ستظهر في ملفك الشخصي على Sortlist.';
+      'حدد المعلومات التي ستظهر في ملفك الشخصي  ';
 
   @override
   String get companyDescriptionLabel => 'وصف الشركة';

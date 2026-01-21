@@ -236,7 +236,7 @@ class _CreateCompanySortlistStyleState
           child: TextField(
             controller: _companyNameController,
             decoration: InputDecoration(
-              hintText: localizations.companyNameHint ?? 'Enter your company name...',
+              hintText: localizations.companyNameHint,
               border: InputBorder.none,
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -270,7 +270,7 @@ class _CreateCompanySortlistStyleState
           child: TextField(
             controller: _usernameController,
             decoration: InputDecoration(
-              hintText: localizations.usernameHint ?? 'Choose a username...',
+              hintText: localizations.usernameHint,
               border: InputBorder.none,
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -299,7 +299,7 @@ class _CreateCompanySortlistStyleState
               isExpanded: true,
               hint: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Text(localizations.selectBusinessSectorHint ?? 'Select your business sector'),
+                child: Text(localizations.selectBusinessSectorHint),
               ),
               value: _selectedSecteur,
               items: secteurs.map((String secteur) {
@@ -338,7 +338,7 @@ class _CreateCompanySortlistStyleState
           child: TextField(
             controller: _activiteController,
             decoration: InputDecoration(
-              hintText: localizations.selectActivityHint ?? 'Select your activity',
+              hintText: localizations.selectActivityHint,
               border: InputBorder.none,
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -365,7 +365,7 @@ class _CreateCompanySortlistStyleState
             controller: _passwordController,
             obscureText: _obscurePassword,
             decoration: InputDecoration(
-              hintText: localizations.passwordHint ?? 'Enter your password...',
+              hintText: localizations.passwordHint,
               border: InputBorder.none,
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -403,7 +403,7 @@ class _CreateCompanySortlistStyleState
             controller: _confirmPasswordController,
             obscureText: _obscureConfirmPassword,
             decoration: InputDecoration(
-              hintText: localizations.confirmPasswordHint ?? 'Confirm your password...',
+              hintText: localizations.confirmPasswordHint,
               border: InputBorder.none,
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -430,7 +430,7 @@ class _CreateCompanySortlistStyleState
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          localizations.contactInformation ?? 'Contact Information',
+          localizations.contactInformation,
           style: const TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
@@ -467,7 +467,7 @@ class _CreateCompanySortlistStyleState
               isExpanded: true,
               hint: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Text(localizations.selectLocationHint ?? 'Select your location'),
+                child: Text(localizations.selectLocationHint),
               ),
               value: _selectedVillage,
               items: algerianLocations.map((String location) {
@@ -514,7 +514,7 @@ class _CreateCompanySortlistStyleState
           child: TextField(
             controller: _addressController,
             decoration: InputDecoration(
-              hintText: localizations.addressHint ?? 'Enter your address...',
+              hintText: localizations.addressHint,
               border: InputBorder.none,
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -548,7 +548,7 @@ class _CreateCompanySortlistStyleState
           child: TextField(
             controller: _phoneController,
             decoration: InputDecoration(
-              hintText: localizations.phoneHint ?? 'eg (+213) Algeria | 7712 34 56 78',
+              hintText: localizations.phoneHint,
               border: InputBorder.none,
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -582,7 +582,7 @@ class _CreateCompanySortlistStyleState
           child: TextField(
             controller: _websiteController,
             decoration: InputDecoration(
-              hintText: localizations.websiteHint ?? 'Enter your website... (ex: https://your-company.com)',
+              hintText: localizations.websiteHint,
               border: InputBorder.none,
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -617,7 +617,7 @@ class _CreateCompanySortlistStyleState
             controller: _emailController,
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
-              hintText: localizations.emailHint ?? 'Enter company contact email...',
+              hintText: localizations.emailHint,
               border: InputBorder.none,
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -669,7 +669,7 @@ class _CreateCompanySortlistStyleState
             maxLines: 4,
             maxLength: 500,
             decoration: InputDecoration(
-              hintText: localizations.companyDescriptionHint ?? 'Describe your company (max 500 characters)...',
+              hintText: localizations.companyDescriptionHint,
               border: InputBorder.none,
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -678,7 +678,7 @@ class _CreateCompanySortlistStyleState
         ),
         const SizedBox(height: 8),
         Text(
-          '${_descriptionController.text.length}/500 ${localizations.characters ?? 'characters'}',
+          '${_descriptionController.text.length}/500 ${localizations.characters}',
           style: const TextStyle(
             fontSize: 12,
             color: Colors.grey,
@@ -706,7 +706,7 @@ class _CreateCompanySortlistStyleState
               isExpanded: true,
               hint: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Text(localizations.selectTeamSizeHint ?? 'Select'),
+                child: Text(localizations.selectTeamSizeHint),
               ),
               value: _teamSize,
               items: [
@@ -746,7 +746,7 @@ class _CreateCompanySortlistStyleState
               isExpanded: true,
               hint: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Text(localizations.selectLanguagesHint ?? 'Select'),
+                child: Text(localizations.selectLanguagesHint),
               ),
               items: availableLanguages.map((String language) {
                 return DropdownMenuItem<String>(
