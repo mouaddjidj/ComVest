@@ -405,4 +405,193 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get enterEmail => 'Please enter your email address';
+
+  @override
+  String get createInvestorAccountTitle => 'Create Investor Account';
+
+  @override
+  String get profileStep => 'Profile';
+
+  @override
+  String get investmentStep => 'Investment';
+
+  @override
+  String get securityStep => 'Security';
+
+  @override
+  String get backButton => 'Back';
+
+  @override
+  String get continueButton => 'Continue';
+
+  @override
+  String get createAccountButton => 'Create Account';
+
+  @override
+  String get personalInformation => 'Personal Information';
+
+  @override
+  String get createInvestorProfile => 'Create your investor profile';
+
+  @override
+  String get usernameHintInvestor => 'Choose a unique username';
+
+  @override
+  String get firstNameHint => 'Enter your first name';
+
+  @override
+  String get lastNameHint => 'Enter your last name';
+
+  @override
+  String get emailHintInvestor => 'Enter your email address';
+
+  @override
+  String get phoneHintInvestor => 'Enter your phone number';
+
+  @override
+  String get countryOfResidence => 'Country of Residence';
+
+  @override
+  String get selectCountryHint => 'Select your country';
+
+  @override
+  String get investmentProfile => 'Investment Profile';
+
+  @override
+  String get defineInvestmentPreferences =>
+      'Define your investment preferences';
+
+  @override
+  String get investorType => 'Investor Type';
+
+  @override
+  String get selectInvestorTypeHint => 'Select your investor type';
+
+  @override
+  String get investmentExperience => 'Investment Experience';
+
+  @override
+  String get selectExperienceHint => 'Select your experience level';
+
+  @override
+  String get investmentAmount => 'Investment Amount';
+
+  @override
+  String get investmentAmountHint => 'e.g., 10,000 - 50,000 USD';
+
+  @override
+  String get interestedSectors => 'Preferred Industries';
+
+  @override
+  String get selectSectorsHint => 'Select sectors you\'re interested in';
+
+  @override
+  String get accountSecurity => 'Account Security';
+
+  @override
+  String get createLoginCredentials => 'Create your login credentials';
+
+  @override
+  String get passwordHintInvestor => 'Create a strong password';
+
+  @override
+  String get confirmPassword => 'Confirm Password';
+
+  @override
+  String get confirmPasswordHintInvestor => 'Re-enter your password';
+
+  @override
+  String get professionalBackground => 'Professional Background';
+
+  @override
+  String get professionalBackgroundHint =>
+      'Briefly describe your professional experience...';
+
+  @override
+  String get acceptTerms => 'I accept the ';
+
+  @override
+  String get termsOfUse => 'Terms of Use';
+
+  @override
+  String get and => ' and ';
+
+  @override
+  String get privacyPolicy => 'Privacy Policy';
+
+  @override
+  String get fillRequiredFields => 'Please fill all required fields';
+
+  @override
+  String get passwordsDontMatch => 'Passwords do not match';
+
+  @override
+  String get usernameMinCharacters => 'Username must be at least 3 characters';
+
+  @override
+  String get usernameAllowedCharacters =>
+      'Username can only contain letters, numbers, and underscores';
+
+  @override
+  String get validationError => 'Validation Error';
+
+  @override
+  String get privateInvestor => 'Private Investor';
+
+  @override
+  String get businessAngel => 'Business Angel';
+
+  @override
+  String get investmentFund => 'Investment Fund';
+
+  @override
+  String get familyOffice => 'Family Office';
+
+  @override
+  String get institutionalInvestor => 'Institutional Investor';
+
+  @override
+  String get corporateVenture => 'Corporate Venture';
+
+  @override
+  String get beginnerExperience => 'Beginner (0-2 years)';
+
+  @override
+  String get intermediateExperience => 'Intermediate (2-5 years)';
+
+  @override
+  String get experiencedExperience => 'Experienced (5-10 years)';
+
+  @override
+  String get expertExperience => 'Expert (10+ years)';
+
+  @override
+  String get technologySector => 'Technology';
+
+  @override
+  String get healthBiotechSector => 'Health & Biotech';
+
+  @override
+  String get energyEnvironmentSector => 'Energy & Environment';
+
+  @override
+  String get financeFintechSector => 'Finance & Fintech';
+
+  @override
+  String get realEstateSector => 'Real Estate';
+
+  @override
+  String get retailSector => 'Retail & Consumer';
+
+  @override
+  String get industrySector => 'Industry & Manufacturing';
+
+  @override
+  String get professionalServicesSector => 'Professional Services';
+
+  @override
+  String get mediaCommunicationSector => 'Media & Communication';
+
+  @override
+  String get tourismSector => 'Tourism & Hospitality';
 }

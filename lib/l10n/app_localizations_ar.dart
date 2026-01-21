@@ -406,4 +406,192 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get enterEmail => 'الرجاء إدخال عنوان بريدك الإلكتروني';
+
+  @override
+  String get createInvestorAccountTitle => 'Create Investor Account';
+
+  @override
+  String get profileStep => 'الملف الشخصي';
+
+  @override
+  String get investmentStep => 'الاستثمار';
+
+  @override
+  String get securityStep => 'الأمان';
+
+  @override
+  String get backButton => 'رجوع';
+
+  @override
+  String get continueButton => 'متابعة';
+
+  @override
+  String get createAccountButton => 'إنشاء الحساب';
+
+  @override
+  String get personalInformation => 'المعلومات الشخصية';
+
+  @override
+  String get createInvestorProfile => 'أنشئ ملفك الشخصي كمستثمر';
+
+  @override
+  String get usernameHintInvestor => 'اختر اسم مستخدم فريد';
+
+  @override
+  String get firstNameHint => 'أدخل اسمك الأول';
+
+  @override
+  String get lastNameHint => 'أدخل اسم العائلة';
+
+  @override
+  String get emailHintInvestor => 'أدخل عنوان بريدك الإلكتروني';
+
+  @override
+  String get phoneHintInvestor => 'أدخل رقم هاتفك';
+
+  @override
+  String get countryOfResidence => 'بلد الإقامة';
+
+  @override
+  String get selectCountryHint => 'اختر بلدك';
+
+  @override
+  String get investmentProfile => 'ملف الاستثمار';
+
+  @override
+  String get defineInvestmentPreferences => 'حدد تفضيلاتك الاستثمارية';
+
+  @override
+  String get investorType => 'نوع المستثمر';
+
+  @override
+  String get selectInvestorTypeHint => 'اختر نوع المستثمر';
+
+  @override
+  String get investmentExperience => 'خبرة الاستثمار';
+
+  @override
+  String get selectExperienceHint => 'اختر مستوى خبرتك';
+
+  @override
+  String get investmentAmount => 'مبلغ الاستثمار';
+
+  @override
+  String get investmentAmountHint => 'مثال: 10,000 - 50,000 دولار';
+
+  @override
+  String get interestedSectors => 'القطاعات المفضلة';
+
+  @override
+  String get selectSectorsHint => 'اختر القطاعات التي تهمك';
+
+  @override
+  String get accountSecurity => 'أمان الحساب';
+
+  @override
+  String get createLoginCredentials => 'أنشئ بيانات تسجيل الدخول الخاصة بك';
+
+  @override
+  String get passwordHintInvestor => 'أنشئ كلمة مرور قوية';
+
+  @override
+  String get confirmPassword => 'تأكيد كلمة المرور';
+
+  @override
+  String get confirmPasswordHintInvestor => 'أعد إدخال كلمة المرور';
+
+  @override
+  String get professionalBackground => 'خلفية مهنية';
+
+  @override
+  String get professionalBackgroundHint => 'صف بإيجاز خبرتك المهنية...';
+
+  @override
+  String get acceptTerms => 'أوافق على ';
+
+  @override
+  String get termsOfUse => 'شروط الاستخدام';
+
+  @override
+  String get and => ' و ';
+
+  @override
+  String get privacyPolicy => 'سياسة الخصوصية';
+
+  @override
+  String get fillRequiredFields => 'يرجى ملء جميع الحقول المطلوبة';
+
+  @override
+  String get passwordsDontMatch => 'كلمات المرور غير متطابقة';
+
+  @override
+  String get usernameMinCharacters =>
+      'يجب أن يكون اسم المستخدم 3 أحرف على الأقل';
+
+  @override
+  String get usernameAllowedCharacters =>
+      'يمكن أن يحتوي اسم المستخدم على أحرف وأرقام وشرطات سفلية فقط';
+
+  @override
+  String get validationError => 'خطأ في التحقق';
+
+  @override
+  String get privateInvestor => 'مستثمر خاص';
+
+  @override
+  String get businessAngel => 'ملاك الأعمال';
+
+  @override
+  String get investmentFund => 'صندوق استثماري';
+
+  @override
+  String get familyOffice => 'مكتب عائلي';
+
+  @override
+  String get institutionalInvestor => 'مستثمر مؤسسي';
+
+  @override
+  String get corporateVenture => 'مشروع مؤسسي';
+
+  @override
+  String get beginnerExperience => 'مبتدئ (0-2 سنوات)';
+
+  @override
+  String get intermediateExperience => 'متوسط (2-5 سنوات)';
+
+  @override
+  String get experiencedExperience => 'ذو خبرة (5-10 سنوات)';
+
+  @override
+  String get expertExperience => 'خبير (10+ سنوات)';
+
+  @override
+  String get technologySector => 'التكنولوجيا';
+
+  @override
+  String get healthBiotechSector => 'الصحة والتكنولوجيا الحيوية';
+
+  @override
+  String get energyEnvironmentSector => 'الطاقة والبيئة';
+
+  @override
+  String get financeFintechSector => 'التمويل والتكنولوجيا المالية';
+
+  @override
+  String get realEstateSector => 'العقارات';
+
+  @override
+  String get retailSector => 'التجزئة والاستهلاك';
+
+  @override
+  String get industrySector => 'الصناعة والتصنيع';
+
+  @override
+  String get professionalServicesSector => 'الخدمات المهنية';
+
+  @override
+  String get mediaCommunicationSector => 'الإعلام والاتصالات';
+
+  @override
+  String get tourismSector => 'السياحة والضيافة';
 }

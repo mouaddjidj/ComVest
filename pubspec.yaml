@@ -21,6 +21,7 @@ dependencies:
   # ADD THESE TWO LINES:
   url_launcher: ^6.2.0  # For payment links (Baridimob/Dahabiya)
   intl: 0.20.2  # Required for localization
+  flutter_gen: ^5.12.0
 
 dev_dependencies:
   flutter_test:

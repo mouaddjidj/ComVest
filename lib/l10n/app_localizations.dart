@@ -861,6 +861,378 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please enter your email address'**
   String get enterEmail;
+
+  /// No description provided for @createInvestorAccountTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Investor Account'**
+  String get createInvestorAccountTitle;
+
+  /// No description provided for @profileStep.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profileStep;
+
+  /// No description provided for @investmentStep.
+  ///
+  /// In en, this message translates to:
+  /// **'Investment'**
+  String get investmentStep;
+
+  /// No description provided for @securityStep.
+  ///
+  /// In en, this message translates to:
+  /// **'Security'**
+  String get securityStep;
+
+  /// No description provided for @backButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get backButton;
+
+  /// No description provided for @continueButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueButton;
+
+  /// No description provided for @createAccountButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Account'**
+  String get createAccountButton;
+
+  /// No description provided for @personalInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal Information'**
+  String get personalInformation;
+
+  /// No description provided for @createInvestorProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Create your investor profile'**
+  String get createInvestorProfile;
+
+  /// No description provided for @usernameHintInvestor.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a unique username'**
+  String get usernameHintInvestor;
+
+  /// No description provided for @firstNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your first name'**
+  String get firstNameHint;
+
+  /// No description provided for @lastNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your last name'**
+  String get lastNameHint;
+
+  /// No description provided for @emailHintInvestor.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email address'**
+  String get emailHintInvestor;
+
+  /// No description provided for @phoneHintInvestor.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your phone number'**
+  String get phoneHintInvestor;
+
+  /// No description provided for @countryOfResidence.
+  ///
+  /// In en, this message translates to:
+  /// **'Country of Residence'**
+  String get countryOfResidence;
+
+  /// No description provided for @selectCountryHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Select your country'**
+  String get selectCountryHint;
+
+  /// No description provided for @investmentProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Investment Profile'**
+  String get investmentProfile;
+
+  /// No description provided for @defineInvestmentPreferences.
+  ///
+  /// In en, this message translates to:
+  /// **'Define your investment preferences'**
+  String get defineInvestmentPreferences;
+
+  /// No description provided for @investorType.
+  ///
+  /// In en, this message translates to:
+  /// **'Investor Type'**
+  String get investorType;
+
+  /// No description provided for @selectInvestorTypeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Select your investor type'**
+  String get selectInvestorTypeHint;
+
+  /// No description provided for @investmentExperience.
+  ///
+  /// In en, this message translates to:
+  /// **'Investment Experience'**
+  String get investmentExperience;
+
+  /// No description provided for @selectExperienceHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Select your experience level'**
+  String get selectExperienceHint;
+
+  /// No description provided for @investmentAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Investment Amount'**
+  String get investmentAmount;
+
+  /// No description provided for @investmentAmountHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g., 10,000 - 50,000 USD'**
+  String get investmentAmountHint;
+
+  /// No description provided for @interestedSectors.
+  ///
+  /// In en, this message translates to:
+  /// **'Preferred Industries'**
+  String get interestedSectors;
+
+  /// No description provided for @selectSectorsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Select sectors you\'re interested in'**
+  String get selectSectorsHint;
+
+  /// No description provided for @accountSecurity.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Security'**
+  String get accountSecurity;
+
+  /// No description provided for @createLoginCredentials.
+  ///
+  /// In en, this message translates to:
+  /// **'Create your login credentials'**
+  String get createLoginCredentials;
+
+  /// No description provided for @passwordHintInvestor.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a strong password'**
+  String get passwordHintInvestor;
+
+  /// No description provided for @confirmPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirmPassword;
+
+  /// No description provided for @confirmPasswordHintInvestor.
+  ///
+  /// In en, this message translates to:
+  /// **'Re-enter your password'**
+  String get confirmPasswordHintInvestor;
+
+  /// No description provided for @professionalBackground.
+  ///
+  /// In en, this message translates to:
+  /// **'Professional Background'**
+  String get professionalBackground;
+
+  /// No description provided for @professionalBackgroundHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Briefly describe your professional experience...'**
+  String get professionalBackgroundHint;
+
+  /// No description provided for @acceptTerms.
+  ///
+  /// In en, this message translates to:
+  /// **'I accept the '**
+  String get acceptTerms;
+
+  /// No description provided for @termsOfUse.
+  ///
+  /// In en, this message translates to:
+  /// **'Terms of Use'**
+  String get termsOfUse;
+
+  /// No description provided for @and.
+  ///
+  /// In en, this message translates to:
+  /// **' and '**
+  String get and;
+
+  /// No description provided for @privacyPolicy.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get privacyPolicy;
+
+  /// No description provided for @fillRequiredFields.
+  ///
+  /// In en, this message translates to:
+  /// **'Please fill all required fields'**
+  String get fillRequiredFields;
+
+  /// No description provided for @passwordsDontMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match'**
+  String get passwordsDontMatch;
+
+  /// No description provided for @usernameMinCharacters.
+  ///
+  /// In en, this message translates to:
+  /// **'Username must be at least 3 characters'**
+  String get usernameMinCharacters;
+
+  /// No description provided for @usernameAllowedCharacters.
+  ///
+  /// In en, this message translates to:
+  /// **'Username can only contain letters, numbers, and underscores'**
+  String get usernameAllowedCharacters;
+
+  /// No description provided for @validationError.
+  ///
+  /// In en, this message translates to:
+  /// **'Validation Error'**
+  String get validationError;
+
+  /// No description provided for @privateInvestor.
+  ///
+  /// In en, this message translates to:
+  /// **'Private Investor'**
+  String get privateInvestor;
+
+  /// No description provided for @businessAngel.
+  ///
+  /// In en, this message translates to:
+  /// **'Business Angel'**
+  String get businessAngel;
+
+  /// No description provided for @investmentFund.
+  ///
+  /// In en, this message translates to:
+  /// **'Investment Fund'**
+  String get investmentFund;
+
+  /// No description provided for @familyOffice.
+  ///
+  /// In en, this message translates to:
+  /// **'Family Office'**
+  String get familyOffice;
+
+  /// No description provided for @institutionalInvestor.
+  ///
+  /// In en, this message translates to:
+  /// **'Institutional Investor'**
+  String get institutionalInvestor;
+
+  /// No description provided for @corporateVenture.
+  ///
+  /// In en, this message translates to:
+  /// **'Corporate Venture'**
+  String get corporateVenture;
+
+  /// No description provided for @beginnerExperience.
+  ///
+  /// In en, this message translates to:
+  /// **'Beginner (0-2 years)'**
+  String get beginnerExperience;
+
+  /// No description provided for @intermediateExperience.
+  ///
+  /// In en, this message translates to:
+  /// **'Intermediate (2-5 years)'**
+  String get intermediateExperience;
+
+  /// No description provided for @experiencedExperience.
+  ///
+  /// In en, this message translates to:
+  /// **'Experienced (5-10 years)'**
+  String get experiencedExperience;
+
+  /// No description provided for @expertExperience.
+  ///
+  /// In en, this message translates to:
+  /// **'Expert (10+ years)'**
+  String get expertExperience;
+
+  /// No description provided for @technologySector.
+  ///
+  /// In en, this message translates to:
+  /// **'Technology'**
+  String get technologySector;
+
+  /// No description provided for @healthBiotechSector.
+  ///
+  /// In en, this message translates to:
+  /// **'Health & Biotech'**
+  String get healthBiotechSector;
+
+  /// No description provided for @energyEnvironmentSector.
+  ///
+  /// In en, this message translates to:
+  /// **'Energy & Environment'**
+  String get energyEnvironmentSector;
+
+  /// No description provided for @financeFintechSector.
+  ///
+  /// In en, this message translates to:
+  /// **'Finance & Fintech'**
+  String get financeFintechSector;
+
+  /// No description provided for @realEstateSector.
+  ///
+  /// In en, this message translates to:
+  /// **'Real Estate'**
+  String get realEstateSector;
+
+  /// No description provided for @retailSector.
+  ///
+  /// In en, this message translates to:
+  /// **'Retail & Consumer'**
+  String get retailSector;
+
+  /// No description provided for @industrySector.
+  ///
+  /// In en, this message translates to:
+  /// **'Industry & Manufacturing'**
+  String get industrySector;
+
+  /// No description provided for @professionalServicesSector.
+  ///
+  /// In en, this message translates to:
+  /// **'Professional Services'**
+  String get professionalServicesSector;
+
+  /// No description provided for @mediaCommunicationSector.
+  ///
+  /// In en, this message translates to:
+  /// **'Media & Communication'**
+  String get mediaCommunicationSector;
+
+  /// No description provided for @tourismSector.
+  ///
+  /// In en, this message translates to:
+  /// **'Tourism & Hospitality'**
+  String get tourismSector;
 }
 
 class _AppLocalizationsDelegate
