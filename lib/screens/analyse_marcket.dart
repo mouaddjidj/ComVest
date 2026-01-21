@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:comvest/widgets/models.dart';
+import '../l10n/app_localizations.dart'; // IMPORT IMPORTANT !
 
 class MarketAnalysisPage extends StatefulWidget {
   final Investor investor;
@@ -12,56 +13,76 @@ class MarketAnalysisPage extends StatefulWidget {
 
 class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
   int _selectedFilter = 0;
-  
-  final List<String> _filters = ['Tous', 'Croissance', 'Rendement', 'Risque'];
-  final List<MarketTrend> _marketTrends = [
-    MarketTrend(
-      sector: 'E-commerce',
-      trend: '+15.2%',
-      description: 'Fort développement du commerce en ligne en Algérie',
-      companies: ['TalabaStore', 'Okadoo'],
-      color: Color(0xFF2ECC71),
-    ),
-    MarketTrend(
-      sector: 'Fintech',
-      trend: '+18.7%',
-      description: 'Adoption rapide des solutions de paiement digital',
-      companies: ['ALPAY'],
-      color: Color(0xFF3498DB),
-    ),
-    MarketTrend(
-      sector: 'Mobilité',
-      trend: '+12.4%',
-      description: 'Services de transport digital en pleine expansion',
-      companies: ['TemTem'],
-      color: Color(0xFFE67E22),
-    ),
-    MarketTrend(
-      sector: 'Technologie',
-      trend: '+22.3%',
-      description: 'Startups technologiques algériennes en forte croissance',
-      companies: ['TalabaStore', 'ALPAY'],
-      color: Color(0xFF9B59B6),
-    ),
-    MarketTrend(
-      sector: 'Services',
-      trend: '+8.9%',
-      description: 'Services digitaux B2B en développement constant',
-      companies: ['Okadoo', 'TemTem'],
-      color: Color(0xFF7533E8),
-    ),
-  ];
+  List<String> _filters = [];
+  List<MarketTrend> _marketTrends = [];
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!;
+    
+    // Initialiser les filtres et tendances avec les localisations
+    if (_filters.isEmpty) {
+      _filters = [
+        localizations.all,
+        localizations.growth,
+        localizations.yield,
+        localizations.risk,
+      ];
+    }
+    
+    if (_marketTrends.isEmpty) {
+      _marketTrends = [
+        MarketTrend(
+          sector: localizations.ecommerce,
+          trend: '+15.2%',
+          description: localizations.ecommerceGrowthDescription,
+          companies: ['TalabaStore', 'Okadoo'],
+          color: const Color(0xFF2ECC71),
+        ),
+        MarketTrend(
+          sector: localizations.fintech,
+          trend: '+18.7%',
+          description: localizations.fintechGrowthDescription,
+          companies: ['ALPAY'],
+          color: const Color(0xFF3498DB),
+        ),
+        MarketTrend(
+          sector: localizations.mobility,
+          trend: '+12.4%',
+          description: localizations.mobilityGrowthDescription,
+          companies: ['TemTem'],
+          color: const Color(0xFFE67E22),
+        ),
+        MarketTrend(
+          sector: localizations.technology,
+          trend: '+22.3%',
+          description: localizations.techGrowthDescription,
+          companies: ['TalabaStore', 'ALPAY'],
+          color: const Color(0xFF9B59B6),
+        ),
+        MarketTrend(
+          sector: localizations.services,
+          trend: '+8.9%',
+          description: localizations.servicesGrowthDescription,
+          companies: ['Okadoo', 'TemTem'],
+          color: const Color(0xFF7533E8),
+        ),
+      ];
+    }
+
     return Scaffold(
       backgroundColor: const Color(0xFFF8FAFC),
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 1,
-        title: const Text(
-          'Analyses marché',
-          style: TextStyle(
+        title: Text(
+          localizations.marketAnalysis,
+          style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
             color: Colors.black,
@@ -100,7 +121,7 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Analyses marché',
+                    localizations.marketAnalysis,
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 22,
@@ -109,16 +130,16 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Bonjour, ${widget.investor.firstName}!',
+                    '${localizations.hello}, ${widget.investor.firstName}!',
                     style: TextStyle(
                       color: Colors.white.withOpacity(0.9),
                       fontSize: 16,
                     ),
                   ),
                   const SizedBox(height: 8),
-                  const Text(
-                    'Suivez les tendances et identifiez les opportunités en Algérie',
-                    style: TextStyle(
+                  Text(
+                    localizations.marketAnalysisDescription,
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 14,
                     ),
@@ -129,9 +150,9 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
             const SizedBox(height: 20),
 
             // Market Overview - Adapter pour le marché algérien
-            const Text(
-              'Vue d\'ensemble du marché algérien',
-              style: TextStyle(
+            Text(
+              localizations.marketOverviewAlgeria,
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
@@ -141,19 +162,19 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
             
             Row(
               children: [
-                _buildMarketOverviewCard('Startups', '+25.3%', '46.7B DA', Color(0xFF2ECC71)),
+                _buildMarketOverviewCard(localizations.startups, '+25.3%', '46.7B DA', const Color(0xFF2ECC71), localizations),
                 const SizedBox(width: 10),
-                _buildMarketOverviewCard('Investissements', '+18.7%', '12.4B DA', Color(0xFF3498DB)),
+                _buildMarketOverviewCard(localizations.investments, '+18.7%', '12.4B DA', const Color(0xFF3498DB), localizations),
                 const SizedBox(width: 10),
-                _buildMarketOverviewCard('PME Tech', '+22.1%', '8.9B DA', Color(0xFF9B59B6)),
+                _buildMarketOverviewCard(localizations.techSMEs, '+22.1%', '8.9B DA', const Color(0xFF9B59B6), localizations),
               ],
             ),
             const SizedBox(height: 20),
 
             // Filters - Garder le même style
-            const Text(
-              'Filtrer par tendance',
-              style: TextStyle(
+            Text(
+              localizations.filterByTrend,
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
@@ -189,9 +210,9 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
             const SizedBox(height: 20),
 
             // Market Trends - Adapter aux entreprises algériennes
-            const Text(
-              'Tendances par secteur en Algérie',
-              style: TextStyle(
+            Text(
+              localizations.sectorTrendsAlgeria,
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
@@ -199,7 +220,7 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
             ),
             const SizedBox(height: 15),
             
-            ..._marketTrends.map((trend) => _buildTrendCard(trend)),
+            ..._marketTrends.map((trend) => _buildTrendCard(trend, localizations)),
             const SizedBox(height: 20),
 
             // Investment Recommendations - Basé sur les entreprises du dashboard
@@ -220,18 +241,18 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    '💡 Recommandations d\'investissement',
-                    style: TextStyle(
+                  Text(
+                    '💡 ${localizations.investmentRecommendations}',
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
                   ),
                   const SizedBox(height: 10),
-                  const Text(
-                    'Basé sur les entreprises disponibles et votre profil',
-                    style: TextStyle(
+                  Text(
+                    localizations.basedOnCompaniesAndProfile,
+                    style: const TextStyle(
                       color: Colors.grey,
                       fontSize: 14,
                     ),
@@ -243,8 +264,8 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
                       children: widget.investor.selectedIndustries.map((industry) {
                         return ListTile(
                           leading: const Icon(Icons.star, color: Color(0xFF7533E8)),
-                          title: Text('Opportunités en $industry'),
-                          subtitle: Text('Croissance attendue: +15-20%'),
+                          title: Text('${localizations.opportunitiesIn} $industry'),
+                          subtitle: Text('${localizations.expectedGrowth}: +15-20%'),
                           trailing: IconButton(
                             icon: const Icon(Icons.arrow_forward_ios, size: 16),
                             onPressed: () {
@@ -263,26 +284,26 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
                   // Recommandations spécifiques pour les entreprises du dashboard
                   ListTile(
                     leading: const Icon(Icons.trending_up, color: Colors.green),
-                    title: const Text('Fintech: Fort potentiel de croissance'),
-                    subtitle: const Text('ALPAY: +35% de croissance prévue'),
+                    title: Text('${localizations.fintech}: ${localizations.highGrowthPotential}'),
+                    subtitle: Text('ALPAY: ${localizations.expectedGrowth} +35%'),
                     trailing: const Icon(Icons.business, color: Color(0xFF7533E8)),
                   ),
                   ListTile(
                     leading: const Icon(Icons.shopping_cart, color: Colors.orange),
-                    title: const Text('E-commerce: Marché en expansion'),
-                    subtitle: const Text('TalabaStore: +28% de croissance'),
+                    title: Text('${localizations.ecommerce}: ${localizations.expandingMarket}'),
+                    subtitle: Text('TalabaStore: ${localizations.expectedGrowth} +28%'),
                     trailing: const Icon(Icons.business, color: Color(0xFF7533E8)),
                   ),
                   ListTile(
                     leading: const Icon(Icons.directions_car, color: Colors.blue),
-                    title: const Text('Mobilité: Services en demande'),
-                    subtitle: const Text('TemTem: +22% de croissance'),
+                    title: Text('${localizations.mobility}: ${localizations.highDemandServices}'),
+                    subtitle: Text('TemTem: ${localizations.expectedGrowth} +22%'),
                     trailing: const Icon(Icons.business, color: Color(0xFF7533E8)),
                   ),
                   ListTile(
                     leading: const Icon(Icons.business, color: Colors.purple),
-                    title: const Text('Marketplace B2B: Opportunité stable'),
-                    subtitle: const Text('Okadoo: +18% de croissance'),
+                    title: Text('${localizations.marketplaceB2B}: ${localizations.stableOpportunity}'),
+                    subtitle: Text('Okadoo: ${localizations.expectedGrowth} +18%'),
                     trailing: const Icon(Icons.business, color: Color(0xFF7533E8)),
                   ),
                 ],
@@ -291,9 +312,9 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
             const SizedBox(height: 20),
 
             // Market News - Actualités algériennes
-            const Text(
-              '📰 Actualités marché algérien',
-              style: TextStyle(
+            Text(
+              '📰 ${localizations.algerianMarketNews}',
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
@@ -302,24 +323,28 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
             const SizedBox(height: 15),
             
             _buildNewsCard(
-              'Levée de fonds record pour une startup algérienne',
-              'Une startup de fintech algérienne lève 5M Dollar pour son expansion régionale',
-              'Il y a 2 jours',
+              localizations.newsTitle1,
+              localizations.newsContent1,
+              localizations.twoDaysAgo,
+              localizations,
             ),
             _buildNewsCard(
-              'Croissance du e-commerce en Algérie',
-              'Le marché du e-commerce enregistre une croissance de 40% cette année',
-              'Il y a 3 jours',
+              localizations.newsTitle2,
+              localizations.newsContent2,
+              localizations.threeDaysAgo,
+              localizations,
             ),
             _buildNewsCard(
-              'Nouvelle régulation pour les fintech',
-              'La banque centrale algérienne simplifie les régulations pour les startups fintech',
-              'Il y a 1 semaine',
+              localizations.newsTitle3,
+              localizations.newsContent3,
+              localizations.oneWeekAgo,
+              localizations,
             ),
             _buildNewsCard(
-              'Investissement dans la mobilité urbaine',
-              'Plusieurs investisseurs s\'intéressent aux solutions de mobilité en Algérie',
-              'Il y a 1 semaine',
+              localizations.newsTitle4,
+              localizations.newsContent4,
+              localizations.oneWeekAgo,
+              localizations,
             ),
           ],
         ),
@@ -327,7 +352,7 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
     );
   }
 
-  Widget _buildMarketOverviewCard(String index, String change, String value, Color color) {
+  Widget _buildMarketOverviewCard(String index, String change, String value, Color color, AppLocalizations localizations) {
     return Expanded(
       child: Container(
         padding: const EdgeInsets.all(15),
@@ -375,7 +400,7 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
     );
   }
 
-  Widget _buildTrendCard(MarketTrend trend) {
+  Widget _buildTrendCard(MarketTrend trend, AppLocalizations localizations) {
     return Container(
       margin: const EdgeInsets.only(bottom: 15),
       padding: const EdgeInsets.all(16),
@@ -442,7 +467,7 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Entreprises: ${trend.companies.join(", ")}',
+                  '${localizations.companies}: ${trend.companies.join(", ")}',
                   style: const TextStyle(
                     fontSize: 12,
                     fontStyle: FontStyle.italic,
@@ -457,7 +482,7 @@ class _MarketAnalysisPageState extends State<MarketAnalysisPage> {
     );
   }
 
-  Widget _buildNewsCard(String title, String content, String time) {
+  Widget _buildNewsCard(String title, String content, String time, AppLocalizations localizations) {
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
       padding: const EdgeInsets.all(15),

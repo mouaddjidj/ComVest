@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/models.dart';
+import '../l10n/app_localizations.dart';
 
 class ActualitesPage extends StatefulWidget {
   final Investor investor;
@@ -12,131 +13,120 @@ class ActualitesPage extends StatefulWidget {
 
 class _ActualitesPageState extends State<ActualitesPage> {
   List<Actualite> _actualites = [];
-  String _selectedCategory = 'Tous';
+  String _selectedCategory = '';
   bool _isLoading = true;
-
-  final List<String> _categories = [
-    'Tous',
-    'Finance',
-    'Technologie',
-    'Startups',
-    'Marché',
-    'Économie',
-    'Investissement'
-  ];
+  List<String> _categories = [];
 
   @override
   void initState() {
     super.initState();
-    _loadActualites();
   }
 
-  Future<void> _loadActualites() async {
-    // Simuler un chargement
+  Future<void> _loadActualites(AppLocalizations localizations) async {
     await Future.delayed(const Duration(milliseconds: 500));
 
     setState(() {
       _actualites = [
         Actualite(
-          titre: 'ALPAY annonce une levée de fonds record de 5 millions d\'euros',
-          contenu: 'La fintech algérienne ALPAY a annoncé aujourd\'hui avoir levé 5 millions d\'euros auprès d\'investisseurs internationaux. Ces fonds seront utilisés pour accélérer son expansion régionale et développer de nouvelles fonctionnalités de paiement.',
+          titre: localizations.news1Title,
+          contenu: localizations.news1Content,
           date: DateTime.now().subtract(const Duration(hours: 2)),
-          categorie: 'Finance',
-          source: 'Tech Algeria',
+          categorie: localizations.finance,
+          source: localizations.newsSource1,
           imageUrl: 'https://via.placeholder.com/400x200?text=ALPAY+Funding',
           estImportante: true,
-          tags: ['Fintech', 'Levée de fonds', 'Algérie'],
+          tags: [localizations.fintech, localizations.fundraising, localizations.algeria],
           likes: 245,
           commentaires: 42,
           partages: 89,
         ),
         Actualite(
-          titre: 'TalabaStore dépasse les 100 000 utilisateurs actifs',
-          contenu: 'La plateforme e-commerce TalabaStore a franchi le cap des 100 000 utilisateurs actifs. Cette croissance rapide démontre l\'adoption massive de la plateforme par la communauté étudiante algérienne.',
+          titre: localizations.news2Title,
+          contenu: localizations.news2Content,
           date: DateTime.now().subtract(const Duration(days: 1)),
-          categorie: 'Startups',
-          source: 'Startup Mag',
+          categorie: localizations.startups,
+          source: localizations.newsSource2,
           imageUrl: 'https://via.placeholder.com/400x200?text=TalabaStore+Growth',
           estImportante: true,
-          tags: ['E-commerce', 'Étudiants', 'Croissance'],
+          tags: [localizations.ecommerce, localizations.students, localizations.growth],
           likes: 189,
           commentaires: 31,
           partages: 67,
         ),
         Actualite(
-          titre: 'Le marché des startups algériennes en forte croissance en 2024',
-          contenu: 'Selon un récent rapport, le secteur des startups en Algérie a connu une croissance de 35% en 2024. Les fintechs et les plateformes e-commerce représentent 60% des investissements totaux.',
+          titre: localizations.news3Title,
+          contenu: localizations.news3Content,
           date: DateTime.now().subtract(const Duration(days: 2)),
-          categorie: 'Marché',
-          source: 'Algerian Business Review',
+          categorie: localizations.market,
+          source: localizations.newsSource3,
           imageUrl: 'https://via.placeholder.com/400x200?text=Startup+Market',
           estImportante: false,
-          tags: ['Économie', 'Startups', 'Investissement'],
+          tags: [localizations.economy, localizations.startups, 'Investment'], // CORRIGÉ
           likes: 156,
           commentaires: 28,
           partages: 45,
         ),
         Actualite(
-          titre: 'TemTem lance son service de livraison express dans 3 nouvelles villes',
-          contenu: 'L\'application de mobilité TemTem a étendu son service de livraison express aux villes d\'Oran, Constantine et Annaba. Le service promet une livraison en moins de 60 minutes.',
+          titre: localizations.news4Title,
+          contenu: localizations.news4Content,
           date: DateTime.now().subtract(const Duration(days: 3)),
-          categorie: 'Technologie',
-          source: 'Digital News',
+          categorie: localizations.technology,
+          source: localizations.newsSource4,
           imageUrl: 'https://via.placeholder.com/400x200?text=TemTem+Expansion',
           estImportante: false,
-          tags: ['Mobilité', 'Livraison', 'Expansion'],
+          tags: [localizations.mobility, localizations.delivery, localizations.expansion],
           likes: 132,
           commentaires: 24,
           partages: 38,
         ),
         Actualite(
-          titre: 'Nouvelle réglementation pour les fintechs en Algérie',
-          contenu: 'La Banque d\'Algérie a annoncé de nouvelles réglementations pour encadrer le développement des fintechs. Ces mesures visent à protéger les consommateurs tout en favorisant l\'innovation.',
+          titre: localizations.news5Title,
+          contenu: localizations.news5Content,
           date: DateTime.now().subtract(const Duration(days: 4)),
-          categorie: 'Finance',
-          source: 'Financial Times Algeria',
+          categorie: localizations.finance,
+          source: localizations.newsSource5,
           imageUrl: 'https://via.placeholder.com/400x200?text=Fintech+Regulation',
           estImportante: true,
-          tags: ['Régulation', 'Fintech', 'Banque'],
+          tags: [localizations.regulation, localizations.fintech, localizations.bank],
           likes: 178,
           commentaires: 35,
           partages: 52,
         ),
         Actualite(
-          titre: 'Okadoo signe un partenariat stratégique avec 50 fournisseurs',
-          contenu: 'La marketplace B2B Okadoo a annoncé un partenariat avec 50 nouveaux fournisseurs industriels, élargissant ainsi son catalogue de produits pour les entreprises algériennes.',
+          titre: localizations.news6Title,
+          contenu: localizations.news6Content,
           date: DateTime.now().subtract(const Duration(days: 5)),
-          categorie: 'Startups',
-          source: 'Business Partners',
+          categorie: localizations.startups,
+          source: localizations.newsSource6,
           imageUrl: 'https://via.placeholder.com/400x200?text=Okadoo+Partnership',
           estImportante: false,
-          tags: ['B2B', 'Partnership', 'Fournisseurs'],
+          tags: [localizations.b2b, localizations.partnership, localizations.suppliers],
           likes: 98,
           commentaires: 19,
           partages: 31,
         ),
         Actualite(
-          titre: 'Investissement record dans le secteur tech algérien',
-          contenu: 'Les investissements dans le secteur technologique algérien ont atteint 25 millions d\'euros au premier semestre 2024, soit une augmentation de 45% par rapport à l\'année dernière.',
+          titre: localizations.news7Title,
+          contenu: localizations.news7Content,
           date: DateTime.now().subtract(const Duration(days: 6)),
-          categorie: 'Investissement',
-          source: 'Venture Capital Mag',
+          categorie: 'Investment', // CORRIGÉ
+          source: localizations.newsSource7,
           imageUrl: 'https://via.placeholder.com/400x200?text=Tech+Investment',
           estImportante: true,
-          tags: ['Investissement', 'Tech', 'Croissance'],
+          tags: ['Investment', localizations.tech, localizations.growth], // CORRIGÉ
           likes: 210,
           commentaires: 47,
           partages: 73,
         ),
         Actualite(
-          titre: 'Les paiements mobiles explosent en Algérie',
-          contenu: 'Le volume des transactions par mobile payment a augmenté de 120% en 2024, avec des acteurs comme ALPAY en tête de ce mouvement.',
+          titre: localizations.news8Title,
+          contenu: localizations.news8Content,
           date: DateTime.now().subtract(const Duration(days: 7)),
-          categorie: 'Technologie',
-          source: 'Mobile Trends',
+          categorie: localizations.technology,
+          source: localizations.newsSource8,
           imageUrl: 'https://via.placeholder.com/400x200?text=Mobile+Payments',
           estImportante: false,
-          tags: ['Mobile', 'Paiements', 'Digital'],
+          tags: [localizations.mobile, localizations.payments, localizations.digital],
           likes: 145,
           commentaires: 26,
           partages: 42,
@@ -147,7 +137,7 @@ class _ActualitesPageState extends State<ActualitesPage> {
   }
 
   List<Actualite> get _filteredActualites {
-    if (_selectedCategory == 'Tous') {
+    if (_selectedCategory == '' || _selectedCategory == AppLocalizations.of(context)!.all) {
       return _actualites;
     }
     return _actualites.where((actu) => actu.categorie == _selectedCategory).toList();
@@ -155,6 +145,28 @@ class _ActualitesPageState extends State<ActualitesPage> {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!;
+    
+    if (_categories.isEmpty) {
+      _categories = [
+        localizations.all,
+        localizations.finance,
+        localizations.technology,
+        localizations.startups,
+        localizations.market,
+        localizations.economy,
+        'Investment' // CORRIGÉ
+      ];
+    }
+    
+    if (_selectedCategory.isEmpty) {
+      _selectedCategory = localizations.all;
+    }
+    
+    if (_isLoading && _actualites.isEmpty) {
+      _loadActualites(localizations);
+    }
+
     return Scaffold(
       backgroundColor: const Color(0xFFF8FAFC),
       appBar: AppBar(
@@ -163,16 +175,16 @@ class _ActualitesPageState extends State<ActualitesPage> {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Actualités',
-              style: TextStyle(
+            Text(
+              localizations.news,
+              style: const TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
             ),
             Text(
-              'Restez informé sur l\'écosystème startup',
+              localizations.stayInformed,
               style: TextStyle(
                 fontSize: 12,
                 color: Colors.grey[600],
@@ -183,7 +195,7 @@ class _ActualitesPageState extends State<ActualitesPage> {
         actions: [
           IconButton(
             icon: const Icon(Icons.filter_list, color: Colors.black),
-            onPressed: _showFilterOptions,
+            onPressed: () => _showFilterOptions(localizations),
           ),
           IconButton(
             icon: const Icon(Icons.refresh, color: Colors.black),
@@ -191,7 +203,7 @@ class _ActualitesPageState extends State<ActualitesPage> {
               setState(() {
                 _isLoading = true;
               });
-              _loadActualites();
+              _loadActualites(localizations);
             },
           ),
         ],
@@ -204,7 +216,6 @@ class _ActualitesPageState extends State<ActualitesPage> {
             )
           : Column(
               children: [
-                // Catégories
                 SizedBox(
                   height: 50,
                   child: ListView.builder(
@@ -237,26 +248,24 @@ class _ActualitesPageState extends State<ActualitesPage> {
                 ),
                 const SizedBox(height: 16),
 
-                // Statistiques rapides
-                _buildStatsBar(),
+                _buildStatsBar(localizations),
                 const SizedBox(height: 16),
 
-                // Liste des actualités
                 Expanded(
                   child: _filteredActualites.isEmpty
-                      ? const Center(
+                      ? Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.newspaper,
                                 size: 64,
                                 color: Colors.grey,
                               ),
-                              SizedBox(height: 16),
+                              const SizedBox(height: 16),
                               Text(
-                                'Aucune actualité disponible',
-                                style: TextStyle(
+                                localizations.noNewsAvailable,
+                                style: const TextStyle(
                                   fontSize: 16,
                                   color: Colors.grey,
                                 ),
@@ -268,7 +277,7 @@ class _ActualitesPageState extends State<ActualitesPage> {
                           padding: const EdgeInsets.symmetric(horizontal: 16),
                           itemCount: _filteredActualites.length,
                           itemBuilder: (context, index) {
-                            return _buildActualiteCard(_filteredActualites[index]);
+                            return _buildActualiteCard(_filteredActualites[index], localizations);
                           },
                         ),
                 ),
@@ -277,7 +286,7 @@ class _ActualitesPageState extends State<ActualitesPage> {
     );
   }
 
-  Widget _buildStatsBar() {
+  Widget _buildStatsBar(AppLocalizations localizations) {
     final importantes = _actualites.where((a) => a.estImportante).length;
     final aujourdhui = _actualites
         .where((a) => a.date.isAfter(DateTime.now().subtract(const Duration(days: 1))))
@@ -288,10 +297,10 @@ class _ActualitesPageState extends State<ActualitesPage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _buildStatItem('Total', '${_actualites.length}'),
-          _buildStatItem('Aujourd\'hui', '$aujourdhui'),
-          _buildStatItem('Importantes', '$importantes'),
-          _buildStatItem('Catégories', '${_categories.length - 1}'),
+          _buildStatItem(localizations.total, '${_actualites.length}'),
+          _buildStatItem(localizations.today, '$aujourdhui'),
+          _buildStatItem(localizations.important, '$importantes'),
+          _buildStatItem(localizations.categories, '${_categories.length - 1}'),
         ],
       ),
     );
@@ -319,7 +328,7 @@ class _ActualitesPageState extends State<ActualitesPage> {
     );
   }
 
-  Widget _buildActualiteCard(Actualite actualite) {
+  Widget _buildActualiteCard(Actualite actualite, AppLocalizations localizations) {
     return Card(
       margin: const EdgeInsets.only(bottom: 16),
       elevation: 2,
@@ -329,7 +338,6 @@ class _ActualitesPageState extends State<ActualitesPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Image et badge important
           Stack(
             children: [
               ClipRRect(
@@ -358,9 +366,9 @@ class _ActualitesPageState extends State<ActualitesPage> {
                       color: Colors.red,
                       borderRadius: BorderRadius.circular(6),
                     ),
-                    child: const Text(
-                      'IMPORTANT',
-                      style: TextStyle(
+                    child: Text(
+                      localizations.important.toUpperCase(),
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
@@ -371,13 +379,11 @@ class _ActualitesPageState extends State<ActualitesPage> {
             ],
           ),
 
-          // Contenu
           Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Catégorie et date
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -397,7 +403,7 @@ class _ActualitesPageState extends State<ActualitesPage> {
                       ),
                     ),
                     Text(
-                      _formatDate(actualite.date),
+                      _formatDate(actualite.date, localizations),
                       style: const TextStyle(
                         fontSize: 12,
                         color: Colors.grey,
@@ -407,7 +413,6 @@ class _ActualitesPageState extends State<ActualitesPage> {
                 ),
                 const SizedBox(height: 12),
 
-                // Titre
                 Text(
                   actualite.titre,
                   style: const TextStyle(
@@ -420,7 +425,6 @@ class _ActualitesPageState extends State<ActualitesPage> {
                 ),
                 const SizedBox(height: 8),
 
-                // Contenu
                 Text(
                   actualite.contenu,
                   style: const TextStyle(
@@ -433,7 +437,6 @@ class _ActualitesPageState extends State<ActualitesPage> {
                 ),
                 const SizedBox(height: 12),
 
-                // Source
                 Row(
                   children: [
                     const Icon(
@@ -443,7 +446,7 @@ class _ActualitesPageState extends State<ActualitesPage> {
                     ),
                     const SizedBox(width: 4),
                     Text(
-                      'Source: ${actualite.source}',
+                      '${localizations.source}: ${actualite.source}',
                       style: const TextStyle(
                         fontSize: 12,
                         color: Colors.grey,
@@ -453,7 +456,6 @@ class _ActualitesPageState extends State<ActualitesPage> {
                 ),
                 const SizedBox(height: 12),
 
-                // Tags
                 Wrap(
                   spacing: 8,
                   runSpacing: 8,
@@ -470,35 +472,33 @@ class _ActualitesPageState extends State<ActualitesPage> {
                 ),
                 const SizedBox(height: 16),
 
-                // Interactions
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // Likes
                     _buildInteractionButton(
                       icon: Icons.thumb_up_outlined,
                       count: actualite.likes,
-                      onPressed: () => _likeActualite(actualite),
+                      onPressed: () => _likeActualite(actualite, localizations),
+                      label: localizations.likes,
                     ),
 
-                    // Commentaires
                     _buildInteractionButton(
                       icon: Icons.comment_outlined,
                       count: actualite.commentaires,
-                      onPressed: () => _showComments(actualite),
+                      onPressed: () => _showComments(actualite, localizations),
+                      label: localizations.comments,
                     ),
 
-                    // Partages
                     _buildInteractionButton(
                       icon: Icons.share_outlined,
                       count: actualite.partages,
-                      onPressed: () => _shareActualite(actualite),
+                      onPressed: () => _shareActualite(actualite, localizations),
+                      label: localizations.shares,
                     ),
 
-                    // Sauvegarder
                     IconButton(
                       icon: const Icon(Icons.bookmark_border),
-                      onPressed: () => _saveActualite(actualite),
+                      onPressed: () => _saveActualite(actualite, localizations),
                       color: Colors.grey[600],
                     ),
                   ],
@@ -515,6 +515,7 @@ class _ActualitesPageState extends State<ActualitesPage> {
     required IconData icon,
     required int count,
     required VoidCallback onPressed,
+    required String label,
   }) {
     return TextButton.icon(
       onPressed: onPressed,
@@ -530,19 +531,19 @@ class _ActualitesPageState extends State<ActualitesPage> {
     );
   }
 
-  String _formatDate(DateTime date) {
+  String _formatDate(DateTime date, AppLocalizations localizations) {
     final now = DateTime.now();
     final difference = now.difference(date);
 
     if (difference.inDays == 0) {
       if (difference.inHours == 0) {
-        return 'Il y a ${difference.inMinutes} min';
+        return '${localizations.ago} ${difference.inMinutes} ${difference.inMinutes == 1 ? localizations.minute : localizations.minutes}';
       }
-      return 'Il y a ${difference.inHours} h';
+      return '${localizations.ago} ${difference.inHours} ${difference.inHours == 1 ? localizations.hour : localizations.hours}';
     } else if (difference.inDays == 1) {
-      return 'Hier';
+      return localizations.yesterday;
     } else if (difference.inDays < 7) {
-      return 'Il y a ${difference.inDays} jours';
+      return '${localizations.ago} ${difference.inDays} ${difference.inDays == 1 ? localizations.day : localizations.days}';
     } else {
       return '${date.day}/${date.month}/${date.year}';
     }
@@ -554,7 +555,7 @@ class _ActualitesPageState extends State<ActualitesPage> {
     return '${(count / 1000000).toStringAsFixed(1)}M';
   }
 
-  void _showFilterOptions() {
+  void _showFilterOptions(AppLocalizations localizations) {
     showModalBottomSheet(
       context: context,
       builder: (context) {
@@ -563,31 +564,31 @@ class _ActualitesPageState extends State<ActualitesPage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const Text(
-                'Filtrer les actualités',
-                style: TextStyle(
+              Text(
+                localizations.filterNews,
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               const SizedBox(height: 20),
               CheckboxListTile(
-                title: const Text('Actualités importantes'),
+                title: Text(localizations.importantNews),
                 value: true,
                 onChanged: (value) {},
               ),
               CheckboxListTile(
-                title: const Text('Dernières 24h'),
+                title: Text(localizations.last24Hours),
                 value: false,
                 onChanged: (value) {},
               ),
               CheckboxListTile(
-                title: const Text('Catégories suivies'),
+                title: Text(localizations.followedCategories),
                 value: true,
                 onChanged: (value) {},
               ),
               CheckboxListTile(
-                title: const Text('Avec images'),
+                title: Text(localizations.withImages),
                 value: false,
                 onChanged: (value) {},
               ),
@@ -597,22 +598,22 @@ class _ActualitesPageState extends State<ActualitesPage> {
                 children: [
                   TextButton(
                     onPressed: () => Navigator.pop(context),
-                    child: const Text('Annuler'),
+                    child: Text(localizations.cancel),
                   ),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.pop(context);
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Filtres appliqués'),
-                          backgroundColor: Color(0xFF7533E8),
+                        SnackBar(
+                          content: Text(localizations.filtersApplied),
+                          backgroundColor: const Color(0xFF7533E8),
                         ),
                       );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF7533E8),
                     ),
-                    child: const Text('Appliquer'),
+                    child: Text(localizations.apply),
                   ),
                 ],
               ),
@@ -623,46 +624,46 @@ class _ActualitesPageState extends State<ActualitesPage> {
     );
   }
 
-  void _likeActualite(Actualite actualite) {
+  void _likeActualite(Actualite actualite, AppLocalizations localizations) {
     setState(() {
       actualite.likes++;
     });
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Actualité likée!'),
-        backgroundColor: Color(0xFF7533E8),
-        duration: Duration(seconds: 1),
+      SnackBar(
+        content: Text(localizations.newsLiked),
+        backgroundColor: const Color(0xFF7533E8),
+        duration: const Duration(seconds: 1),
       ),
     );
   }
 
-  void _showComments(Actualite actualite) {
+  void _showComments(Actualite actualite, AppLocalizations localizations) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Commentaires - ${actualite.titre}'),
+          title: Text('${localizations.comments} - ${actualite.titre}'),
           content: SizedBox(
             width: double.maxFinite,
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const TextField(
+                  TextField(
                     decoration: InputDecoration(
-                      hintText: 'Ajouter un commentaire...',
-                      border: OutlineInputBorder(),
+                      hintText: localizations.addComment,
+                      border: const OutlineInputBorder(),
                     ),
                     maxLines: 3,
                   ),
                   const SizedBox(height: 20),
                   ...List.generate(3, (index) {
-                    return const ListTile(
-                      leading: CircleAvatar(
+                    return ListTile(
+                      leading: const CircleAvatar(
                         child: Icon(Icons.person),
                       ),
-                      title: Text('Utilisateur Investisseur'),
-                      subtitle: Text('Excellent article! Merci pour ces informations précieuses.'),
+                      title: Text(localizations.investorUser),
+                      subtitle: Text(localizations.commentExample),
                     );
                   }),
                 ],
@@ -672,7 +673,7 @@ class _ActualitesPageState extends State<ActualitesPage> {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('Fermer'),
+              child: Text(localizations.close),
             ),
           ],
         );
@@ -680,25 +681,23 @@ class _ActualitesPageState extends State<ActualitesPage> {
     );
   }
 
-  void _shareActualite(Actualite actualite) {
+  void _shareActualite(Actualite actualite, AppLocalizations localizations) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Partager "${actualite.titre}"'),
+        content: Text('${localizations.share} "${actualite.titre}"'),
         backgroundColor: const Color(0xFF3498DB),
         action: SnackBarAction(
-          label: 'Copier',
-          onPressed: () {
-            // Copier le lien
-          },
+          label: localizations.copy,
+          onPressed: () {},
         ),
       ),
     );
   }
 
-  void _saveActualite(Actualite actualite) {
+  void _saveActualite(Actualite actualite, AppLocalizations localizations) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('"${actualite.titre}" sauvegardé'),
+        content: Text('"${actualite.titre}" ${localizations.saved.toLowerCase()}'),
         backgroundColor: const Color(0xFF2ECC71),
         duration: const Duration(seconds: 2),
       ),
@@ -706,7 +705,6 @@ class _ActualitesPageState extends State<ActualitesPage> {
   }
 }
 
-// Modèle Actualite
 class Actualite {
   final String titre;
   final String contenu;

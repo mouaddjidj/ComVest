@@ -1721,7 +1721,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get noNewNotifications => 'لا توجد إشعارات جديدة';
 
   @override
-  String get hours => 'المواعيد';
+  String get hours => 'ساعات';
 
   @override
   String get basedOnYourInterests => 'بناءً على اهتماماتك';
@@ -1970,10 +1970,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get ecommerce => 'التجارة الإلكترونية';
 
   @override
-  String get fintech => 'التكنولوجيا المالية';
+  String get fintech => 'التقنية المالية';
 
   @override
-  String get mobility => 'المواصلات';
+  String get mobility => 'التنقل';
 
   @override
   String get technology => 'التكنولوجيا';
@@ -2008,4 +2008,328 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get stopFollowingConfirm => 'إيقاف المتابعة';
+
+  @override
+  String get marketAnalysisDescription =>
+      'تابع الاتجاهات وحدد الفرص في الجزائر';
+
+  @override
+  String get marketOverviewAlgeria => 'نظرة عامة على السوق الجزائري';
+
+  @override
+  String get startups => 'الشركات الناشئة';
+
+  @override
+  String get investments => 'الاستثمارات';
+
+  @override
+  String get techSMEs => 'المؤسسات الصغيرة والمتوسطة التقنية';
+
+  @override
+  String get filterByTrend => 'تصفية حسب الاتجاه';
+
+  @override
+  String get sectorTrendsAlgeria => 'اتجاهات القطاعات في الجزائر';
+
+  @override
+  String get investmentRecommendations => 'توصيات الاستثمار';
+
+  @override
+  String get basedOnCompaniesAndProfile =>
+      'بناءً على الشركات المتاحة وملفك الشخصي';
+
+  @override
+  String get opportunitiesIn => 'الفرص في';
+
+  @override
+  String get algerianMarketNews => 'أخبار السوق الجزائري';
+
+  @override
+  String get yield => 'العائد';
+
+  @override
+  String get risk => 'المخاطرة';
+
+  @override
+  String get ecommerceGrowthDescription =>
+      'تطور قوي للتجارة الإلكترونية في الجزائر';
+
+  @override
+  String get fintechGrowthDescription => 'اعتماد سريع لحلول الدفع الرقمي';
+
+  @override
+  String get mobilityGrowthDescription => 'خدمات النقل الرقمي في توسع كامل';
+
+  @override
+  String get techGrowthDescription => 'شركات التقنية الجزائرية في نمو قوي';
+
+  @override
+  String get servicesGrowthDescription => 'الخدمات الرقمية B2B في تطور مستمر';
+
+  @override
+  String get highGrowthPotential => 'إمكانية نمو عالية';
+
+  @override
+  String get expandingMarket => 'سوق متوسع';
+
+  @override
+  String get highDemandServices => 'خدمات عالية الطلب';
+
+  @override
+  String get stableOpportunity => 'فرصة مستقرة';
+
+  @override
+  String get marketplaceB2B => 'سوق B2B';
+
+  @override
+  String get expectedGrowth => 'النمو المتوقع';
+
+  @override
+  String get newsTitle1 => 'جمع تمويل قياسي لشركة ناشئة جزائرية';
+
+  @override
+  String get newsContent1 =>
+      'شركة تقنية مالية جزائرية تجمع 5 مليون دولار لتوسعها الإقليمي';
+
+  @override
+  String get newsTitle2 => 'نمو التجارة الإلكترونية في الجزائر';
+
+  @override
+  String get newsContent2 =>
+      'سوق التجارة الإلكترونية يسجل نمواً بنسبة 40٪ هذا العام';
+
+  @override
+  String get newsTitle3 => 'تنظيم جديد للتقنية المالية';
+
+  @override
+  String get newsContent3 =>
+      'البنك المركزي الجزائري يبسط التنظيمات لشركات التقنية المالية الناشئة';
+
+  @override
+  String get newsTitle4 => 'استثمار في التنقل الحضري';
+
+  @override
+  String get newsContent4 => 'عدة مستثمرين مهتمين بحلول التنقل في الجزائر';
+
+  @override
+  String get twoDaysAgo => 'قبل يومين';
+
+  @override
+  String get threeDaysAgo => 'قبل 3 أيام';
+
+  @override
+  String get oneWeekAgo => 'قبل أسبوع';
+
+  @override
+  String get hello => 'مرحباً';
+
+  @override
+  String get stayInformed => 'ابق على اطلاع ببيئة الشركات الناشئة';
+
+  @override
+  String get noNewsAvailable => 'لا توجد أخبار متاحة';
+
+  @override
+  String get total => 'الإجمالي';
+
+  @override
+  String get today => 'اليوم';
+
+  @override
+  String get important => 'مهم';
+
+  @override
+  String get categories => 'الفئات';
+
+  @override
+  String get finance => 'المالية';
+
+  @override
+  String get market => 'السوق';
+
+  @override
+  String get economy => 'الاقتصاد';
+
+  @override
+  String get fundraising => 'جمع التمويل';
+
+  @override
+  String get algeria => 'الجزائر';
+
+  @override
+  String get students => 'الطلاب';
+
+  @override
+  String get delivery => 'التوصيل';
+
+  @override
+  String get expansion => 'التوسع';
+
+  @override
+  String get regulation => 'التنظيم';
+
+  @override
+  String get bank => 'البنك';
+
+  @override
+  String get b2b => 'B2B';
+
+  @override
+  String get partnership => 'شراكة';
+
+  @override
+  String get suppliers => 'الموردين';
+
+  @override
+  String get tech => 'التقنية';
+
+  @override
+  String get mobile => 'المحمول';
+
+  @override
+  String get digital => 'الرقمي';
+
+  @override
+  String get newsSource1 => 'Tech Algeria';
+
+  @override
+  String get newsSource2 => 'Startup Mag';
+
+  @override
+  String get newsSource3 => 'Algerian Business Review';
+
+  @override
+  String get newsSource4 => 'Digital News';
+
+  @override
+  String get newsSource5 => 'Financial Times Algeria';
+
+  @override
+  String get newsSource6 => 'Business Partners';
+
+  @override
+  String get newsSource7 => 'Venture Capital Mag';
+
+  @override
+  String get newsSource8 => 'Mobile Trends';
+
+  @override
+  String get news1Title => 'ALPAY تعلن عن جمع تمويل قياسي بقيمة 5 ملايين يورو';
+
+  @override
+  String get news1Content =>
+      'أعلنت شركة التقنية المالية الجزائرية ALPAY اليوم أنها جمعت 5 ملايين يورو من مستثمرين دوليين. سيتم استخدام هذه الأموال لتسريع توسعها الإقليمي وتطوير ميزات دفع جديدة.';
+
+  @override
+  String get news2Title => 'TalabaStore تتجاوز 100،000 مستخدم نشط';
+
+  @override
+  String get news2Content =>
+      'تجاوزت منصة التجارة الإلكترونية TalabaStore حاجز 100،000 مستخدم نشط. يوضح هذا النمو السريع اعتماداً واسعاً للمنصة من قبل مجتمع الطلاب الجزائري.';
+
+  @override
+  String get news3Title =>
+      'سوق الشركات الناشئة الجزائرية يشهد نمواً قوياً في 2024';
+
+  @override
+  String get news3Content =>
+      'وفقاً لتقرير حديث، نما قطاع الشركات الناشئة في الجزائر بنسبة 35٪ في 2024. تمثل شركات التقنية المالية ومنصات التجارة الإلكترونية 60٪ من إجمالي الاستثمارات.';
+
+  @override
+  String get news4Title => 'TemTem تطلق خدمة التوصيل السريع في 3 مدن جديدة';
+
+  @override
+  String get news4Content =>
+      'وسعت تطبيق التنقل TemTem خدمة التوصيل السريع إلى مدن وهران وقسنطينة وعنابة. تقدم الخدمة توصيلاً في أقل من 60 دقيقة.';
+
+  @override
+  String get news5Title => 'تنظيم جديد لشركات التقنية المالية في الجزائر';
+
+  @override
+  String get news5Content =>
+      'أعلن بنك الجزائر لوائح جديدة لتنظيم تطوير شركات التقنية المالية. تهدف هذه الإجراءات إلى حماية المستهلكين مع تعزيز الابتكار.';
+
+  @override
+  String get news6Title => 'Okadoo توقع شراكة استراتيجية مع 50 مورداً';
+
+  @override
+  String get news6Content =>
+      'أعلنت سوق B2B Okadoo شراكة مع 50 مورداً صناعياً جديداً، مما يوسع كتالوج منتجاتها للشركات الجزائرية.';
+
+  @override
+  String get news7Title => 'استثمار قياسي في قطاع التقنية الجزائري';
+
+  @override
+  String get news7Content =>
+      'بلغت الاستثمارات في القطاع التقني الجزائري 25 مليون يورو في النصف الأول من عام 2024، بزيادة 45٪ مقارنة بالعام الماضي.';
+
+  @override
+  String get news8Title => 'المدفوعات عبر الهاتف تنفجر في الجزائر';
+
+  @override
+  String get news8Content =>
+      'زاد حجم معاملات الدفع عبر الهاتف بنسبة 120٪ في عام 2024، مع لاعبين مثل ALPAY في طليعة هذا الاتجاه.';
+
+  @override
+  String get likes => 'الإعجابات';
+
+  @override
+  String get comments => 'التعليقات';
+
+  @override
+  String get shares => 'المشاركات';
+
+  @override
+  String get source => 'المصدر';
+
+  @override
+  String get filterNews => 'تصفية الأخبار';
+
+  @override
+  String get importantNews => 'أخبار مهمة';
+
+  @override
+  String get last24Hours => 'آخر 24 ساعة';
+
+  @override
+  String get followedCategories => 'الفئات المتابعة';
+
+  @override
+  String get withImages => 'بالصور';
+
+  @override
+  String get newsLiked => 'تم الإعجاب بالخبر!';
+
+  @override
+  String get addComment => 'إضافة تعليق...';
+
+  @override
+  String get investorUser => 'مستثمر';
+
+  @override
+  String get commentExample => 'مقال رائع! شكراً على هذه المعلومات القيمة.';
+
+  @override
+  String get copy => 'نسخ';
+
+  @override
+  String get saved => 'تم الحفظ';
+
+  @override
+  String get ago => 'منذ';
+
+  @override
+  String get minute => 'دقيقة';
+
+  @override
+  String get minutes => 'دقائق';
+
+  @override
+  String get hour => 'ساعة';
+
+  @override
+  String get yesterday => 'أمس';
+
+  @override
+  String get day => 'يوم';
 }

@@ -1957,7 +1957,7 @@ abstract class AppLocalizations {
   /// No description provided for @days.
   ///
   /// In en, this message translates to:
-  /// **'Days'**
+  /// **'days'**
   String get days;
 
   /// No description provided for @na.
@@ -3157,7 +3157,7 @@ abstract class AppLocalizations {
   /// No description provided for @marketAnalysis.
   ///
   /// In en, this message translates to:
-  /// **'Market analysis'**
+  /// **'Market Analysis'**
   String get marketAnalysis;
 
   /// No description provided for @followedCompanies.
@@ -3469,7 +3469,7 @@ abstract class AppLocalizations {
   /// No description provided for @hours.
   ///
   /// In en, this message translates to:
-  /// **'Hours'**
+  /// **'h'**
   String get hours;
 
   /// No description provided for @basedOnYourInterests.
@@ -4023,6 +4023,624 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Stop following'**
   String get stopFollowingConfirm;
+
+  /// No description provided for @marketAnalysisDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Follow trends and identify opportunities in Algeria'**
+  String get marketAnalysisDescription;
+
+  /// No description provided for @marketOverviewAlgeria.
+  ///
+  /// In en, this message translates to:
+  /// **'Overview of the Algerian market'**
+  String get marketOverviewAlgeria;
+
+  /// No description provided for @startups.
+  ///
+  /// In en, this message translates to:
+  /// **'Startups'**
+  String get startups;
+
+  /// No description provided for @investments.
+  ///
+  /// In en, this message translates to:
+  /// **'Investments'**
+  String get investments;
+
+  /// No description provided for @techSMEs.
+  ///
+  /// In en, this message translates to:
+  /// **'Tech SMEs'**
+  String get techSMEs;
+
+  /// No description provided for @filterByTrend.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter by trend'**
+  String get filterByTrend;
+
+  /// No description provided for @sectorTrendsAlgeria.
+  ///
+  /// In en, this message translates to:
+  /// **'Sector trends in Algeria'**
+  String get sectorTrendsAlgeria;
+
+  /// No description provided for @investmentRecommendations.
+  ///
+  /// In en, this message translates to:
+  /// **'Investment recommendations'**
+  String get investmentRecommendations;
+
+  /// No description provided for @basedOnCompaniesAndProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Based on available companies and your profile'**
+  String get basedOnCompaniesAndProfile;
+
+  /// No description provided for @opportunitiesIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Opportunities in'**
+  String get opportunitiesIn;
+
+  /// No description provided for @algerianMarketNews.
+  ///
+  /// In en, this message translates to:
+  /// **'Algerian market news'**
+  String get algerianMarketNews;
+
+  /// No description provided for @yield.
+  ///
+  /// In en, this message translates to:
+  /// **'Yield'**
+  String get yield;
+
+  /// No description provided for @risk.
+  ///
+  /// In en, this message translates to:
+  /// **'Risk'**
+  String get risk;
+
+  /// No description provided for @ecommerceGrowthDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Strong development of online commerce in Algeria'**
+  String get ecommerceGrowthDescription;
+
+  /// No description provided for @fintechGrowthDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Rapid adoption of digital payment solutions'**
+  String get fintechGrowthDescription;
+
+  /// No description provided for @mobilityGrowthDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Digital transport services in full expansion'**
+  String get mobilityGrowthDescription;
+
+  /// No description provided for @techGrowthDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Algerian technology startups in strong growth'**
+  String get techGrowthDescription;
+
+  /// No description provided for @servicesGrowthDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'B2B digital services in constant development'**
+  String get servicesGrowthDescription;
+
+  /// No description provided for @highGrowthPotential.
+  ///
+  /// In en, this message translates to:
+  /// **'High growth potential'**
+  String get highGrowthPotential;
+
+  /// No description provided for @expandingMarket.
+  ///
+  /// In en, this message translates to:
+  /// **'Expanding market'**
+  String get expandingMarket;
+
+  /// No description provided for @highDemandServices.
+  ///
+  /// In en, this message translates to:
+  /// **'High demand services'**
+  String get highDemandServices;
+
+  /// No description provided for @stableOpportunity.
+  ///
+  /// In en, this message translates to:
+  /// **'Stable opportunity'**
+  String get stableOpportunity;
+
+  /// No description provided for @marketplaceB2B.
+  ///
+  /// In en, this message translates to:
+  /// **'B2B Marketplace'**
+  String get marketplaceB2B;
+
+  /// No description provided for @expectedGrowth.
+  ///
+  /// In en, this message translates to:
+  /// **'Expected growth'**
+  String get expectedGrowth;
+
+  /// No description provided for @newsTitle1.
+  ///
+  /// In en, this message translates to:
+  /// **'Record fundraising for an Algerian startup'**
+  String get newsTitle1;
+
+  /// No description provided for @newsContent1.
+  ///
+  /// In en, this message translates to:
+  /// **'An Algerian fintech startup raises \$5M for its regional expansion'**
+  String get newsContent1;
+
+  /// No description provided for @newsTitle2.
+  ///
+  /// In en, this message translates to:
+  /// **'E-commerce growth in Algeria'**
+  String get newsTitle2;
+
+  /// No description provided for @newsContent2.
+  ///
+  /// In en, this message translates to:
+  /// **'E-commerce market records 40% growth this year'**
+  String get newsContent2;
+
+  /// No description provided for @newsTitle3.
+  ///
+  /// In en, this message translates to:
+  /// **'New regulation for fintech'**
+  String get newsTitle3;
+
+  /// No description provided for @newsContent3.
+  ///
+  /// In en, this message translates to:
+  /// **'Algerian central bank simplifies regulations for fintech startups'**
+  String get newsContent3;
+
+  /// No description provided for @newsTitle4.
+  ///
+  /// In en, this message translates to:
+  /// **'Investment in urban mobility'**
+  String get newsTitle4;
+
+  /// No description provided for @newsContent4.
+  ///
+  /// In en, this message translates to:
+  /// **'Several investors interested in mobility solutions in Algeria'**
+  String get newsContent4;
+
+  /// No description provided for @twoDaysAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'2 days ago'**
+  String get twoDaysAgo;
+
+  /// No description provided for @threeDaysAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'3 days ago'**
+  String get threeDaysAgo;
+
+  /// No description provided for @oneWeekAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'1 week ago'**
+  String get oneWeekAgo;
+
+  /// No description provided for @hello.
+  ///
+  /// In en, this message translates to:
+  /// **'Hello'**
+  String get hello;
+
+  /// No description provided for @stayInformed.
+  ///
+  /// In en, this message translates to:
+  /// **'Stay informed about the startup ecosystem'**
+  String get stayInformed;
+
+  /// No description provided for @noNewsAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No news available'**
+  String get noNewsAvailable;
+
+  /// No description provided for @total.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get total;
+
+  /// No description provided for @today.
+  ///
+  /// In en, this message translates to:
+  /// **'Today'**
+  String get today;
+
+  /// No description provided for @important.
+  ///
+  /// In en, this message translates to:
+  /// **'Important'**
+  String get important;
+
+  /// No description provided for @categories.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get categories;
+
+  /// No description provided for @finance.
+  ///
+  /// In en, this message translates to:
+  /// **'Finance'**
+  String get finance;
+
+  /// No description provided for @market.
+  ///
+  /// In en, this message translates to:
+  /// **'Market'**
+  String get market;
+
+  /// No description provided for @economy.
+  ///
+  /// In en, this message translates to:
+  /// **'Economy'**
+  String get economy;
+
+  /// No description provided for @fundraising.
+  ///
+  /// In en, this message translates to:
+  /// **'Fundraising'**
+  String get fundraising;
+
+  /// No description provided for @algeria.
+  ///
+  /// In en, this message translates to:
+  /// **'Algeria'**
+  String get algeria;
+
+  /// No description provided for @students.
+  ///
+  /// In en, this message translates to:
+  /// **'Students'**
+  String get students;
+
+  /// No description provided for @delivery.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery'**
+  String get delivery;
+
+  /// No description provided for @expansion.
+  ///
+  /// In en, this message translates to:
+  /// **'Expansion'**
+  String get expansion;
+
+  /// No description provided for @regulation.
+  ///
+  /// In en, this message translates to:
+  /// **'Regulation'**
+  String get regulation;
+
+  /// No description provided for @bank.
+  ///
+  /// In en, this message translates to:
+  /// **'Bank'**
+  String get bank;
+
+  /// No description provided for @b2b.
+  ///
+  /// In en, this message translates to:
+  /// **'B2B'**
+  String get b2b;
+
+  /// No description provided for @partnership.
+  ///
+  /// In en, this message translates to:
+  /// **'Partnership'**
+  String get partnership;
+
+  /// No description provided for @suppliers.
+  ///
+  /// In en, this message translates to:
+  /// **'Suppliers'**
+  String get suppliers;
+
+  /// No description provided for @tech.
+  ///
+  /// In en, this message translates to:
+  /// **'Tech'**
+  String get tech;
+
+  /// No description provided for @mobile.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile'**
+  String get mobile;
+
+  /// No description provided for @digital.
+  ///
+  /// In en, this message translates to:
+  /// **'Digital'**
+  String get digital;
+
+  /// No description provided for @newsSource1.
+  ///
+  /// In en, this message translates to:
+  /// **'Tech Algeria'**
+  String get newsSource1;
+
+  /// No description provided for @newsSource2.
+  ///
+  /// In en, this message translates to:
+  /// **'Startup Mag'**
+  String get newsSource2;
+
+  /// No description provided for @newsSource3.
+  ///
+  /// In en, this message translates to:
+  /// **'Algerian Business Review'**
+  String get newsSource3;
+
+  /// No description provided for @newsSource4.
+  ///
+  /// In en, this message translates to:
+  /// **'Digital News'**
+  String get newsSource4;
+
+  /// No description provided for @newsSource5.
+  ///
+  /// In en, this message translates to:
+  /// **'Financial Times Algeria'**
+  String get newsSource5;
+
+  /// No description provided for @newsSource6.
+  ///
+  /// In en, this message translates to:
+  /// **'Business Partners'**
+  String get newsSource6;
+
+  /// No description provided for @newsSource7.
+  ///
+  /// In en, this message translates to:
+  /// **'Venture Capital Mag'**
+  String get newsSource7;
+
+  /// No description provided for @newsSource8.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile Trends'**
+  String get newsSource8;
+
+  /// No description provided for @news1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'ALPAY announces record €5 million fundraising'**
+  String get news1Title;
+
+  /// No description provided for @news1Content.
+  ///
+  /// In en, this message translates to:
+  /// **'Algerian fintech ALPAY announced today that it has raised €5 million from international investors. These funds will be used to accelerate its regional expansion and develop new payment features.'**
+  String get news1Content;
+
+  /// No description provided for @news2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'TalabaStore surpasses 100,000 active users'**
+  String get news2Title;
+
+  /// No description provided for @news2Content.
+  ///
+  /// In en, this message translates to:
+  /// **'The TalabaStore e-commerce platform has reached over 100,000 active users. This rapid growth demonstrates massive adoption by the Algerian student community.'**
+  String get news2Content;
+
+  /// No description provided for @news3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Algerian startup market sees strong growth in 2024'**
+  String get news3Title;
+
+  /// No description provided for @news3Content.
+  ///
+  /// In en, this message translates to:
+  /// **'According to a recent report, Algeria\'s startup sector grew by 35% in 2024. Fintechs and e-commerce platforms represent 60% of total investments.'**
+  String get news3Content;
+
+  /// No description provided for @news4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'TemTem launches express delivery service in 3 new cities'**
+  String get news4Title;
+
+  /// No description provided for @news4Content.
+  ///
+  /// In en, this message translates to:
+  /// **'The TemTem mobility app has expanded its express delivery service to the cities of Oran, Constantine and Annaba. The service promises delivery in under 60 minutes.'**
+  String get news4Content;
+
+  /// No description provided for @news5Title.
+  ///
+  /// In en, this message translates to:
+  /// **'New regulations for fintechs in Algeria'**
+  String get news5Title;
+
+  /// No description provided for @news5Content.
+  ///
+  /// In en, this message translates to:
+  /// **'The Bank of Algeria announced new regulations to frame fintech development. These measures aim to protect consumers while promoting innovation.'**
+  String get news5Content;
+
+  /// No description provided for @news6Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Okadoo signs strategic partnership with 50 suppliers'**
+  String get news6Title;
+
+  /// No description provided for @news6Content.
+  ///
+  /// In en, this message translates to:
+  /// **'The B2B marketplace Okadoo announced a partnership with 50 new industrial suppliers, expanding its product catalog for Algerian businesses.'**
+  String get news6Content;
+
+  /// No description provided for @news7Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Record investment in Algeria\'s tech sector'**
+  String get news7Title;
+
+  /// No description provided for @news7Content.
+  ///
+  /// In en, this message translates to:
+  /// **'Investments in Algeria\'s technology sector reached €25 million in the first half of 2024, a 45% increase compared to last year.'**
+  String get news7Content;
+
+  /// No description provided for @news8Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile payments explode in Algeria'**
+  String get news8Title;
+
+  /// No description provided for @news8Content.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobile payment transaction volume increased by 120% in 2024, with players like ALPAY leading this trend.'**
+  String get news8Content;
+
+  /// No description provided for @likes.
+  ///
+  /// In en, this message translates to:
+  /// **'Likes'**
+  String get likes;
+
+  /// No description provided for @comments.
+  ///
+  /// In en, this message translates to:
+  /// **'Comments'**
+  String get comments;
+
+  /// No description provided for @shares.
+  ///
+  /// In en, this message translates to:
+  /// **'Shares'**
+  String get shares;
+
+  /// No description provided for @source.
+  ///
+  /// In en, this message translates to:
+  /// **'Source'**
+  String get source;
+
+  /// No description provided for @filterNews.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter news'**
+  String get filterNews;
+
+  /// No description provided for @importantNews.
+  ///
+  /// In en, this message translates to:
+  /// **'Important news'**
+  String get importantNews;
+
+  /// No description provided for @last24Hours.
+  ///
+  /// In en, this message translates to:
+  /// **'Last 24 hours'**
+  String get last24Hours;
+
+  /// No description provided for @followedCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'Followed categories'**
+  String get followedCategories;
+
+  /// No description provided for @withImages.
+  ///
+  /// In en, this message translates to:
+  /// **'With images'**
+  String get withImages;
+
+  /// No description provided for @newsLiked.
+  ///
+  /// In en, this message translates to:
+  /// **'News liked!'**
+  String get newsLiked;
+
+  /// No description provided for @addComment.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a comment...'**
+  String get addComment;
+
+  /// No description provided for @investorUser.
+  ///
+  /// In en, this message translates to:
+  /// **'Investor User'**
+  String get investorUser;
+
+  /// No description provided for @commentExample.
+  ///
+  /// In en, this message translates to:
+  /// **'Excellent article! Thanks for this valuable information.'**
+  String get commentExample;
+
+  /// No description provided for @copy.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy'**
+  String get copy;
+
+  /// No description provided for @saved.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get saved;
+
+  /// No description provided for @ago.
+  ///
+  /// In en, this message translates to:
+  /// **'Ago'**
+  String get ago;
+
+  /// No description provided for @minute.
+  ///
+  /// In en, this message translates to:
+  /// **'min'**
+  String get minute;
+
+  /// No description provided for @minutes.
+  ///
+  /// In en, this message translates to:
+  /// **'min'**
+  String get minutes;
+
+  /// No description provided for @hour.
+  ///
+  /// In en, this message translates to:
+  /// **'h'**
+  String get hour;
+
+  /// No description provided for @yesterday.
+  ///
+  /// In en, this message translates to:
+  /// **'Yesterday'**
+  String get yesterday;
+
+  /// No description provided for @day.
+  ///
+  /// In en, this message translates to:
+  /// **'day'**
+  String get day;
 }
 
 class _AppLocalizationsDelegate

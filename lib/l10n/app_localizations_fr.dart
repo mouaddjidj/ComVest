@@ -754,7 +754,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get report => 'Rapport';
 
   @override
-  String get share => 'Partager';
+  String get share => 'Share';
 
   @override
   String get print => 'Imprimer';
@@ -808,7 +808,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get security => 'Sécurité';
 
   @override
-  String get payments => 'Paiements';
+  String get payments => 'Payments';
 
   @override
   String get privacy => 'Confidentialité';
@@ -976,7 +976,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get profile => 'Profil';
 
   @override
-  String get days => 'jours';
+  String get days => 'days';
 
   @override
   String get na => 'N/D';
@@ -1593,7 +1593,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get followedCompanies => 'Entreprises suivies';
 
   @override
-  String get news => 'Actualités';
+  String get news => 'News';
 
   @override
   String get companies => 'Entreprises';
@@ -1605,7 +1605,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get sectors => 'Secteurs';
 
   @override
-  String get growth => 'Croissance';
+  String get growth => 'Growth';
 
   @override
   String get topCompanies => 'Top entreprises';
@@ -1614,7 +1614,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get searchCompanyHint => 'Rechercher une entreprise...';
 
   @override
-  String get all => 'Tous';
+  String get all => 'All';
 
   @override
   String get filterCompanies => 'Filtrer les entreprises';
@@ -1746,7 +1746,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get noNewNotifications => 'Aucune nouvelle notification';
 
   @override
-  String get hours => 'Horaires';
+  String get hours => 'h';
 
   @override
   String get basedOnYourInterests => 'Basé sur vos intérêts';
@@ -1999,10 +1999,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get fintech => 'Fintech';
 
   @override
-  String get mobility => 'Mobilité';
+  String get mobility => 'Mobility';
 
   @override
-  String get technology => 'Technologie';
+  String get technology => 'Technology';
 
   @override
   String get totalValuation => 'Valuation totale';
@@ -2035,4 +2035,335 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get stopFollowingConfirm => 'Arrêter de suivre';
+
+  @override
+  String get marketAnalysisDescription =>
+      'Suivez les tendances et identifiez les opportunités en Algérie';
+
+  @override
+  String get marketOverviewAlgeria => 'Vue d\'ensemble du marché algérien';
+
+  @override
+  String get startups => 'Startups';
+
+  @override
+  String get investments => 'Investissements';
+
+  @override
+  String get techSMEs => 'PME Tech';
+
+  @override
+  String get filterByTrend => 'Filtrer par tendance';
+
+  @override
+  String get sectorTrendsAlgeria => 'Tendances par secteur en Algérie';
+
+  @override
+  String get investmentRecommendations => 'Recommandations d\'investissement';
+
+  @override
+  String get basedOnCompaniesAndProfile =>
+      'Basé sur les entreprises disponibles et votre profil';
+
+  @override
+  String get opportunitiesIn => 'Opportunités en';
+
+  @override
+  String get algerianMarketNews => 'Actualités marché algérien';
+
+  @override
+  String get yield => 'Rendement';
+
+  @override
+  String get risk => 'Risque';
+
+  @override
+  String get ecommerceGrowthDescription =>
+      'Fort développement du commerce en ligne en Algérie';
+
+  @override
+  String get fintechGrowthDescription =>
+      'Adoption rapide des solutions de paiement digital';
+
+  @override
+  String get mobilityGrowthDescription =>
+      'Services de transport digital en pleine expansion';
+
+  @override
+  String get techGrowthDescription =>
+      'Startups technologiques algériennes en forte croissance';
+
+  @override
+  String get servicesGrowthDescription =>
+      'Services digitaux B2B en développement constant';
+
+  @override
+  String get highGrowthPotential => 'Fort potentiel de croissance';
+
+  @override
+  String get expandingMarket => 'Marché en expansion';
+
+  @override
+  String get highDemandServices => 'Services en demande';
+
+  @override
+  String get stableOpportunity => 'Opportunité stable';
+
+  @override
+  String get marketplaceB2B => 'Marketplace B2B';
+
+  @override
+  String get expectedGrowth => 'Croissance prévue';
+
+  @override
+  String get newsTitle1 => 'Levée de fonds record pour une startup algérienne';
+
+  @override
+  String get newsContent1 =>
+      'Une startup de fintech algérienne lève 5M Dollar pour son expansion régionale';
+
+  @override
+  String get newsTitle2 => 'Croissance du e-commerce en Algérie';
+
+  @override
+  String get newsContent2 =>
+      'Le marché du e-commerce enregistre une croissance de 40% cette année';
+
+  @override
+  String get newsTitle3 => 'Nouvelle régulation pour les fintech';
+
+  @override
+  String get newsContent3 =>
+      'La banque centrale algérienne simplifie les régulations pour les startups fintech';
+
+  @override
+  String get newsTitle4 => 'Investissement dans la mobilité urbaine';
+
+  @override
+  String get newsContent4 =>
+      'Plusieurs investisseurs s\'intéressent aux solutions de mobilité en Algérie';
+
+  @override
+  String get twoDaysAgo => 'Il y a 2 jours';
+
+  @override
+  String get threeDaysAgo => 'Il y a 3 jours';
+
+  @override
+  String get oneWeekAgo => 'Il y a 1 semaine';
+
+  @override
+  String get hello => 'Bonjour';
+
+  @override
+  String get stayInformed => 'Stay informed about the startup ecosystem';
+
+  @override
+  String get noNewsAvailable => 'No news available';
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String get today => 'Today';
+
+  @override
+  String get important => 'Important';
+
+  @override
+  String get categories => 'Categories';
+
+  @override
+  String get finance => 'Finance';
+
+  @override
+  String get market => 'Market';
+
+  @override
+  String get economy => 'Economy';
+
+  @override
+  String get fundraising => 'Fundraising';
+
+  @override
+  String get algeria => 'Algeria';
+
+  @override
+  String get students => 'Students';
+
+  @override
+  String get delivery => 'Delivery';
+
+  @override
+  String get expansion => 'Expansion';
+
+  @override
+  String get regulation => 'Regulation';
+
+  @override
+  String get bank => 'Bank';
+
+  @override
+  String get b2b => 'B2B';
+
+  @override
+  String get partnership => 'Partnership';
+
+  @override
+  String get suppliers => 'Suppliers';
+
+  @override
+  String get tech => 'Tech';
+
+  @override
+  String get mobile => 'Mobile';
+
+  @override
+  String get digital => 'Digital';
+
+  @override
+  String get newsSource1 => 'Tech Algeria';
+
+  @override
+  String get newsSource2 => 'Startup Mag';
+
+  @override
+  String get newsSource3 => 'Algerian Business Review';
+
+  @override
+  String get newsSource4 => 'Digital News';
+
+  @override
+  String get newsSource5 => 'Financial Times Algeria';
+
+  @override
+  String get newsSource6 => 'Business Partners';
+
+  @override
+  String get newsSource7 => 'Venture Capital Mag';
+
+  @override
+  String get newsSource8 => 'Mobile Trends';
+
+  @override
+  String get news1Title => 'ALPAY announces record €5 million fundraising';
+
+  @override
+  String get news1Content =>
+      'Algerian fintech ALPAY announced today that it has raised €5 million from international investors. These funds will be used to accelerate its regional expansion and develop new payment features.';
+
+  @override
+  String get news2Title => 'TalabaStore surpasses 100,000 active users';
+
+  @override
+  String get news2Content =>
+      'The TalabaStore e-commerce platform has reached over 100,000 active users. This rapid growth demonstrates massive adoption by the Algerian student community.';
+
+  @override
+  String get news3Title => 'Algerian startup market sees strong growth in 2024';
+
+  @override
+  String get news3Content =>
+      'According to a recent report, Algeria\'s startup sector grew by 35% in 2024. Fintechs and e-commerce platforms represent 60% of total investments.';
+
+  @override
+  String get news4Title =>
+      'TemTem launches express delivery service in 3 new cities';
+
+  @override
+  String get news4Content =>
+      'The TemTem mobility app has expanded its express delivery service to the cities of Oran, Constantine and Annaba. The service promises delivery in under 60 minutes.';
+
+  @override
+  String get news5Title => 'New regulations for fintechs in Algeria';
+
+  @override
+  String get news5Content =>
+      'The Bank of Algeria announced new regulations to frame fintech development. These measures aim to protect consumers while promoting innovation.';
+
+  @override
+  String get news6Title =>
+      'Okadoo signs strategic partnership with 50 suppliers';
+
+  @override
+  String get news6Content =>
+      'The B2B marketplace Okadoo announced a partnership with 50 new industrial suppliers, expanding its product catalog for Algerian businesses.';
+
+  @override
+  String get news7Title => 'Record investment in Algeria\'s tech sector';
+
+  @override
+  String get news7Content =>
+      'Investments in Algeria\'s technology sector reached €25 million in the first half of 2024, a 45% increase compared to last year.';
+
+  @override
+  String get news8Title => 'Mobile payments explode in Algeria';
+
+  @override
+  String get news8Content =>
+      'Mobile payment transaction volume increased by 120% in 2024, with players like ALPAY leading this trend.';
+
+  @override
+  String get likes => 'Likes';
+
+  @override
+  String get comments => 'Comments';
+
+  @override
+  String get shares => 'Shares';
+
+  @override
+  String get source => 'Source';
+
+  @override
+  String get filterNews => 'Filter news';
+
+  @override
+  String get importantNews => 'Important news';
+
+  @override
+  String get last24Hours => 'Last 24 hours';
+
+  @override
+  String get followedCategories => 'Followed categories';
+
+  @override
+  String get withImages => 'With images';
+
+  @override
+  String get newsLiked => 'News liked!';
+
+  @override
+  String get addComment => 'Add a comment...';
+
+  @override
+  String get investorUser => 'Investor User';
+
+  @override
+  String get commentExample =>
+      'Excellent article! Thanks for this valuable information.';
+
+  @override
+  String get copy => 'Copy';
+
+  @override
+  String get saved => 'Saved';
+
+  @override
+  String get ago => 'Ago';
+
+  @override
+  String get minute => 'min';
+
+  @override
+  String get minutes => 'min';
+
+  @override
+  String get hour => 'h';
+
+  @override
+  String get yesterday => 'Yesterday';
+
+  @override
+  String get day => 'day';
 }
