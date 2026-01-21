@@ -121,13 +121,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get save => 'Enregistrer';
 
   @override
-  String get cancel => 'Annuler';
+  String get cancel => 'ANNULER';
 
   @override
   String get selectLanguage => 'Sélectionner la langue';
 
   @override
-  String get language => 'Français';
+  String get language => 'Langue';
 
   @override
   String get english => 'Anglais';
@@ -609,4 +609,593 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get tourismSector => 'Tourisme & Hôtellerie';
+
+  @override
+  String get pricingTitle => 'Choisissez votre Plan';
+
+  @override
+  String get pricingSubtitle => 'Sélectionnez le plan parfait pour vos besoins';
+
+  @override
+  String get packStart => 'PACK START';
+
+  @override
+  String get packStartDesc => 'Idéal pour débuter';
+
+  @override
+  String get packPremium => 'PACK PREMIUM';
+
+  @override
+  String get packPremiumDesc => 'Solution complète';
+
+  @override
+  String get customService => 'SERVICE SUR MESURE';
+
+  @override
+  String get customServiceDesc => 'Solution personnalisée';
+
+  @override
+  String get monthly => 'Mensuel';
+
+  @override
+  String get annually => 'Annuel';
+
+  @override
+  String get viewFullDetails => 'VOIR LES DÉTAILS COMPLETS';
+
+  @override
+  String get buyNow => 'ACHETER MAINTENANT';
+
+  @override
+  String get contactForQuote => 'CONTACTER POUR DEVIS';
+
+  @override
+  String get choosePaymentMethod => 'Choisissez votre mode de paiement';
+
+  @override
+  String get mobilePayment => 'Paiement mobile sécurisé';
+
+  @override
+  String get algerianCard => 'Carte bancaire algérienne';
+
+  @override
+  String get customServiceTitle => 'Service Sur Mesure';
+
+  @override
+  String get contactForCustomQuote =>
+      'Contactez-nous pour un devis personnalisé';
+
+  @override
+  String get fullName => 'Nom complet';
+
+  @override
+  String get describeYourNeeds => 'Description de vos besoins';
+
+  @override
+  String get sendRequest => 'ENVOYER LA DEMANDE';
+
+  @override
+  String get paymentSuccessful => 'Paiement Réussi!';
+
+  @override
+  String get subscriptionActivated =>
+      'Votre abonnement a été activé avec succès';
+
+  @override
+  String get plan => 'Forfait';
+
+  @override
+  String get paymentMethod => 'Mode de paiement';
+
+  @override
+  String get period => 'Période';
+
+  @override
+  String get amount => 'Montant';
+
+  @override
+  String get invoiceNumber => 'Facture N°';
+
+  @override
+  String get transactionId => 'Transaction ID';
+
+  @override
+  String get date => 'Date';
+
+  @override
+  String get returnHome => 'RETOUR À L\'ACCUEIL';
+
+  @override
+  String get accessDashboard => 'ACCÉDER À MON TABLEAU DE BORD';
+
+  @override
+  String get dashboard => 'Tableau de Bord';
+
+  @override
+  String get services => 'Services';
+
+  @override
+  String get resources => 'Ressources';
+
+  @override
+  String get overview => 'Vue d\'ensemble';
+
+  @override
+  String get activeService => 'Service Actif';
+
+  @override
+  String get daysRemaining => 'jours restants';
+
+  @override
+  String get globalProgress => 'Progression Globale';
+
+  @override
+  String get servicesCompleted => 'Services terminés';
+
+  @override
+  String get inProgress => 'En cours';
+
+  @override
+  String get pending => 'En attente';
+
+  @override
+  String get recentActivities => 'Activités Récentes';
+
+  @override
+  String get viewAll => 'Voir tout';
+
+  @override
+  String get noRecentActivity => 'Aucune activité récente';
+
+  @override
+  String get quickActions => 'Actions Rapides';
+
+  @override
+  String get report => 'Rapport';
+
+  @override
+  String get share => 'Partager';
+
+  @override
+  String get print => 'Imprimer';
+
+  @override
+  String get renew => 'Renouveler';
+
+  @override
+  String get upgrade => 'Améliorer';
+
+  @override
+  String get support => 'Support';
+
+  @override
+  String get serviceDetails => 'Détails du Service';
+
+  @override
+  String get nextBilling => 'Prochaine facturation';
+
+  @override
+  String get billingCycle => 'Cycle de facturation';
+
+  @override
+  String get serviceHistory => 'Historique des Services';
+
+  @override
+  String get noHistory => 'Aucun historique';
+
+  @override
+  String get communityLearning => 'Communauté et Apprentissage';
+
+  @override
+  String get communityForum => 'Forum Communautaire';
+
+  @override
+  String get technicalBlog => 'Blog Technique';
+
+  @override
+  String get webinars => 'Webinaires';
+
+  @override
+  String get learningCenter => 'Centre d\'apprentissage';
+
+  @override
+  String get quickSettings => 'Paramètres Rapides';
+
+  @override
+  String get notifications => 'Notifications';
+
+  @override
+  String get security => 'Sécurité';
+
+  @override
+  String get payments => 'Paiements';
+
+  @override
+  String get privacy => 'Confidentialité';
+
+  @override
+  String get downloads => 'Téléchargements';
+
+  @override
+  String get helpCenter => 'Centre d\'aide';
+
+  @override
+  String get feedback => 'Donner votre avis';
+
+  @override
+  String get about => 'À propos';
+
+  @override
+  String get logout => 'Déconnexion';
+
+  @override
+  String get confirmLogout => 'Êtes-vous sûr de vouloir vous déconnecter?';
+
+  @override
+  String get logoutConfirm => 'Déconnexion';
+
+  @override
+  String get downloadReport => 'Téléchargement du rapport en cours...';
+
+  @override
+  String get renewService => 'Renouveler le service';
+
+  @override
+  String get renewConfirmation =>
+      'Voulez-vous renouveler votre abonnement pour un mois supplémentaire?';
+
+  @override
+  String get later => 'Plus tard';
+
+  @override
+  String get renewedSuccess => 'Service renouvelé avec succès!';
+
+  @override
+  String get upgradePlan => 'Améliorer votre forfait';
+
+  @override
+  String get premiumPlan => 'Forfait Premium';
+
+  @override
+  String get upgradeOptions => 'VOIR LES OPTIONS';
+
+  @override
+  String get contactSupport => 'Contactez le support';
+
+  @override
+  String get howToContact =>
+      'Comment souhaitez-vous contacter notre équipe de support?';
+
+  @override
+  String get chat => 'Chat';
+
+  @override
+  String get call => 'Téléphone';
+
+  @override
+  String get serviceHistoryFull => 'Historique complet';
+
+  @override
+  String get howToChoose => 'Comment choisir?';
+
+  @override
+  String get advice =>
+      'Conseil: Commencez par le pack Start et améliorez selon vos besoins!';
+
+  @override
+  String get gotIt => 'COMPRIS';
+
+  @override
+  String get dashboardTitle => 'Tableau de Bord';
+
+  @override
+  String get startDate => 'Date de début';
+
+  @override
+  String get endDate => 'Date de fin';
+
+  @override
+  String get performance => 'Performance';
+
+  @override
+  String get users => 'Utilisateurs';
+
+  @override
+  String get storage => 'Stockage';
+
+  @override
+  String get includedServices => 'services inclus';
+
+  @override
+  String get keyFeatures => 'Fonctionnalités Clés:';
+
+  @override
+  String get additionalInfo => 'Informations additionnelles:';
+
+  @override
+  String get paymentInstructions => 'Instructions de paiement:';
+
+  @override
+  String get securePayment => 'Paiement sécurisé';
+
+  @override
+  String get cardNumber => 'Numéro de carte';
+
+  @override
+  String get expirationDate => 'Date d\'expiration';
+
+  @override
+  String get cvv => 'CVV';
+
+  @override
+  String get payMonthly => 'PAYER MENSUEL';
+
+  @override
+  String get payAnnually => 'PAYER ANNUEL';
+
+  @override
+  String get userGuide => 'Guide utilisateur';
+
+  @override
+  String get completeDocumentation => 'Documentation complète';
+
+  @override
+  String get videoTutorials => 'Tutoriels vidéo';
+
+  @override
+  String get videoTraining => 'Formation vidéo';
+
+  @override
+  String get faq => 'FAQ';
+
+  @override
+  String get frequentQuestions => 'Questions fréquentes';
+
+  @override
+  String get templates => 'Modèles';
+
+  @override
+  String get readyToUseTemplates => 'Modèles prêts à l\'emploi';
+
+  @override
+  String get community => 'Communauté';
+
+  @override
+  String get forumAndDiscussions => 'Forum et discussions';
+
+  @override
+  String get home => 'Accueil';
+
+  @override
+  String get settings => 'Paramètres';
+
+  @override
+  String get help => 'Aide';
+
+  @override
+  String get profile => 'Profil';
+
+  @override
+  String get days => 'jours';
+
+  @override
+  String get na => 'N/D';
+
+  @override
+  String get discussWithOtherUsers => 'Discutez avec d\'autres utilisateurs';
+
+  @override
+  String get advancedArticlesAndTutorials => 'Articles et tutoriels avancés';
+
+  @override
+  String get onlineTrainingSessions => 'Sessions de formation en ligne';
+
+  @override
+  String get coursesAndCertifications => 'Cours et certifications';
+
+  @override
+  String get access => 'Accès';
+
+  @override
+  String get creditCard => 'Carte de crédit';
+
+  @override
+  String get other => 'Autre';
+
+  @override
+  String get newMessage => 'Nouveau message';
+
+  @override
+  String get receivedNewMessageFromSupport => 'Nouveau message reçu du support';
+
+  @override
+  String get invoiceAvailable => 'Facture disponible';
+
+  @override
+  String get yourJuneInvoiceIsAvailable =>
+      'Votre facture de juin est disponible';
+
+  @override
+  String get systemUpdate => 'Mise à jour système';
+
+  @override
+  String get newUpdateAvailable => 'Nouvelle mise à jour disponible';
+
+  @override
+  String get paymentReminder => 'Rappel de paiement';
+
+  @override
+  String get yourPaymentIsDueIn3Days => 'Votre paiement est dû dans 3 jours';
+
+  @override
+  String get serviceCompleted => 'Service terminé';
+
+  @override
+  String get yourSeoAuditIsCompleted => 'Votre audit SEO est terminé';
+
+  @override
+  String get markAllAsRead => 'Marquer tout comme lu';
+
+  @override
+  String get close => 'Fermer';
+
+  @override
+  String get myProfile => 'Mon profil';
+
+  @override
+  String get newReport => 'Nouveau rapport';
+
+  @override
+  String get schedule => 'Programmer';
+
+  @override
+  String get export => 'Exporter';
+
+  @override
+  String get backup => 'Sauvegarde';
+
+  @override
+  String get allActivities => 'Toutes les activités';
+
+  @override
+  String get downloadingReport => 'Téléchargement du rapport en cours...';
+
+  @override
+  String get shareService => 'Partager le service';
+
+  @override
+  String get choosePlatformToShare => 'Choisissez la plateforme pour partager';
+
+  @override
+  String get printInvoice => 'Imprimer la facture';
+
+  @override
+  String get completed => 'terminé';
+
+  @override
+  String get notificationManagement => 'Gestion des notifications';
+
+  @override
+  String get notificationManagementPage => 'Page de gestion des notifications';
+
+  @override
+  String get securitySettings => 'Paramètres de sécurité';
+
+  @override
+  String get securitySettingsPage => 'Page des paramètres de sécurité';
+
+  @override
+  String get paymentSettings => 'Paramètres de paiement';
+
+  @override
+  String get paymentSettingsPage => 'Page des paramètres de paiement';
+
+  @override
+  String get privacySettingsPage => 'Page des paramètres de confidentialité';
+
+  @override
+  String get downloadSettingsPage => 'Page des paramètres de téléchargement';
+
+  @override
+  String get changeLanguage => 'Changer la langue';
+
+  @override
+  String get userProfilePage => 'Page du profil utilisateur';
+
+  @override
+  String get generalSettingsPage => 'Page des paramètres généraux';
+
+  @override
+  String get helpCenterPage => 'Page du centre d\'aide';
+
+  @override
+  String get giveFeedback => 'Donner votre avis';
+
+  @override
+  String get writeYourFeedbackHere => 'Écrivez votre avis ici';
+
+  @override
+  String get thanksForYourFeedback => 'Merci pour votre retour';
+
+  @override
+  String get serviceDashboard => 'Tableau de bord des services';
+
+  @override
+  String get secureMobilePayment => 'Paiement mobile sécurisé';
+
+  @override
+  String get dialCodeOnYourMobile => 'Composez le code sur votre mobile';
+
+  @override
+  String get selectBillPayment => 'Sélectionnez Paiement de facture';
+
+  @override
+  String get enterCodeBARIDI12345 => 'Entrez le code BARIDI12345';
+
+  @override
+  String get monthlyPrice => 'Prix mensuel';
+
+  @override
+  String get annualPrice => 'Prix annuel';
+
+  @override
+  String get secureCardPayment => 'Paiement par carte sécurisé';
+
+  @override
+  String get idealForNewBusinesses => 'Idéal pour les nouvelles entreprises';
+
+  @override
+  String get perfectForGrowingBusinesses =>
+      'Parfait pour les entreprises en croissance';
+
+  @override
+  String get forEstablishedBusinesses => 'Pour les entreprises établies';
+
+  @override
+  String get serviceActivated => 'Service activé';
+
+  @override
+  String get yourPlan => 'Votre forfait';
+
+  @override
+  String get hasBeenActivated => 'a été activé';
+
+  @override
+  String get paymentConfirmed => 'Paiement confirmé';
+
+  @override
+  String get paymentConfirmedDesc => 'paiement confirmé avec succès';
+
+  @override
+  String get initialSetup => 'Configuration initiale';
+
+  @override
+  String get settingUpYourDashboard => 'Configuration de votre tableau de bord';
+
+  @override
+  String get welcomeAboard => 'Bienvenue à bord';
+
+  @override
+  String get yourAccountCreatedSuccessfully =>
+      'Votre compte a été créé avec succès';
+
+  @override
+  String get requestSentWeWillContactYou =>
+      'Demande envoyée, nous vous contacterons';
+
+  @override
+  String get yourCompany => 'Votre Entreprise';
+
+  @override
+  String get allRightsReserved => 'Tous droits réservés';
+
+  @override
+  String get thisAppHelpsManageServices =>
+      'Cette application aide à gérer les services';
+
+  @override
+  String get otherServices => 'autres services';
+
+  @override
+  String get payment => 'paiement';
 }

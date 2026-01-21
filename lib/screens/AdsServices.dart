@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:intl/intl.dart';
@@ -13,12 +14,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Forfaits tarifaires',
+      title: 'Pricing Plans',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         textTheme: GoogleFonts.poppinsTextTheme(),
         primarySwatch: Colors.blue,
       ),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       home: const PricingScreen(),
     );
   }
@@ -69,8 +72,8 @@ class ServiceFeature {
     required this.title,
     required this.description,
     required this.icon,
-    this.status = 'En attente',
-    this.actionButtonText = 'Démarrer',
+    this.status = 'pending',
+    this.actionButtonText = 'start',
     required this.color,
     this.progress = 0.0,
     this.steps = const [],
@@ -135,7 +138,7 @@ class ActiveService {
     required this.startDate,
     required this.endDate,
     required this.features,
-    this.status = 'Active',
+    this.status = 'active',
     this.overallProgress = 0.0,
     this.updates = const [],
     this.usageStats = const {},
@@ -172,8 +175,8 @@ class SupportTicket {
     required this.title,
     required this.description,
     required this.date,
-    this.status = 'Ouvert',
-    this.priority = 'Normal',
+    this.status = 'open',
+    this.priority = 'normal',
   });
 }
 
@@ -206,50 +209,51 @@ class ServiceDashboard extends StatefulWidget {
 class _ServiceDashboardState extends State<ServiceDashboard> {
   int _selectedTab = 0;
   final PageController _pageController = PageController();
-  final List<ResourceItem> _resources = [
-    ResourceItem(
-      title: 'Guide d\'utilisation',
-      description: 'Documentation complète',
-      icon: Icons.book,
-      url: 'https://docs.example.com',
-      color: const Color(0xFF4A90E2),
-    ),
-    ResourceItem(
-      title: 'Tutoriels Vidéo',
-      description: 'Formation en vidéo',
-      icon: Icons.video_library,
-      url: 'https://videos.example.com',
-      color: const Color(0xFFE91E63),
-    ),
-    ResourceItem(
-      title: 'FAQ',
-      description: 'Questions fréquentes',
-      icon: Icons.help,
-      url: 'https://faq.example.com',
-      color: const Color(0xFF00C853),
-    ),
-    ResourceItem(
-      title: 'Modèles',
-      description: 'Templates prêts à utiliser',
-      icon: Icons.dashboard,
-      url: 'https://templates.example.com',
-      color: const Color(0xFF9C27B0),
-    ),
-    // Removed API Documentation
-    ResourceItem(
-      title: 'Communauté',
-      description: 'Forum et discussions',
-      icon: Icons.group,
-      url: 'https://community.example.com',
-      color: const Color(0xFF2196F3),
-    ),
-  ];
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final package = widget.activeService.paymentInfo.package;
     final dateFormat = DateFormat('dd/MM/yyyy');
     final currencyFormat = NumberFormat.currency(symbol: 'DA ', decimalDigits: 0);
+    
+    final _resources = [
+      ResourceItem(
+        title: l10n.userGuide,
+        description: l10n.completeDocumentation,
+        icon: Icons.book,
+        url: 'https://docs.example.com',
+        color: const Color(0xFF4A90E2),
+      ),
+      ResourceItem(
+        title: l10n.videoTutorials,
+        description: l10n.videoTraining,
+        icon: Icons.video_library,
+        url: 'https://videos.example.com',
+        color: const Color(0xFFE91E63),
+      ),
+      ResourceItem(
+        title: l10n.faq,
+        description: l10n.frequentQuestions,
+        icon: Icons.help,
+        url: 'https://faq.example.com',
+        color: const Color(0xFF00C853),
+      ),
+      ResourceItem(
+        title: l10n.templates,
+        description: l10n.readyToUseTemplates,
+        icon: Icons.dashboard,
+        url: 'https://templates.example.com',
+        color: const Color(0xFF9C27B0),
+      ),
+      ResourceItem(
+        title: l10n.community,
+        description: l10n.forumAndDiscussions,
+        icon: Icons.group,
+        url: 'https://community.example.com',
+        color: const Color(0xFF2196F3),
+      ),
+    ];
     
     return Scaffold(
       backgroundColor: const Color(0xFFF8FAFC),
@@ -261,7 +265,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Tableau de Bord',
+              l10n.dashboardTitle,
               style: GoogleFonts.poppins(
                 color: const Color(0xFF2D3748),
                 fontWeight: FontWeight.w700,
@@ -284,11 +288,11 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications, color: Color(0xFF4A5568)),
-            onPressed: () => _showNotifications(context),
+            onPressed: () => _showNotifications(context, l10n),
           ),
           IconButton(
             icon: const Icon(Icons.more_vert, color: Color(0xFF4A5568)),
-            onPressed: () => _showMoreOptions(context),
+            onPressed: () => _showMoreOptions(context, l10n),
           ),
         ],
       ),
@@ -308,9 +312,9 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
             ),
             child: Row(
               children: [
-                _buildTabButton('Vue d\'ensemble', 0),
-                _buildTabButton('Services', 1),
-                _buildTabButton('Ressources', 2),
+                _buildTabButton(l10n.overview, 0, package, l10n),
+                _buildTabButton(l10n.services, 1, package, l10n),
+                _buildTabButton(l10n.resources, 2, package, l10n),
               ],
             ),
           ),
@@ -324,9 +328,9 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                 });
               },
               children: [
-                _buildOverviewTab(context, package, dateFormat, currencyFormat),
-                _buildServicesTab(context, package),
-                _buildResourcesTab(context),
+                _buildOverviewTab(context, package, dateFormat, currencyFormat, l10n),
+                _buildServicesTab(context, package, l10n),
+                _buildResourcesTab(context, _resources, l10n),
               ],
             ),
           ),
@@ -353,7 +357,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                   Icon(Icons.home, color: package.primaryColor, size: 24),
                   const SizedBox(height: 4),
                   Text(
-                    'Accueil',
+                    l10n.home,
                     style: GoogleFonts.poppins(
                       color: package.primaryColor,
                       fontSize: 10,
@@ -369,7 +373,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                   Icon(Icons.settings, color: const Color(0xFF718096), size: 24),
                   const SizedBox(height: 4),
                   Text(
-                    'Paramètres',
+                    l10n.settings,
                     style: GoogleFonts.poppins(
                       color: const Color(0xFF718096),
                       fontSize: 10,
@@ -380,7 +384,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
             ),
             Expanded(
               child: GestureDetector(
-                onTap: () => _showQuickActions(context),
+                onTap: () => _showQuickActions(context, package, l10n),
                 child: Container(
                   width: 56,
                   height: 56,
@@ -410,7 +414,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                   Icon(Icons.help, color: const Color(0xFF718096), size: 24),
                   const SizedBox(height: 4),
                   Text(
-                    'Aide',
+                    l10n.help,
                     style: GoogleFonts.poppins(
                       color: const Color(0xFF718096),
                       fontSize: 10,
@@ -425,7 +429,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                   Icon(Icons.person, color: const Color(0xFF718096), size: 24),
                   const SizedBox(height: 4),
                   Text(
-                    'Profil',
+                    l10n.profile,
                     style: GoogleFonts.poppins(
                       color: const Color(0xFF718096),
                       fontSize: 10,
@@ -440,9 +444,8 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
     );
   }
 
-  Widget _buildTabButton(String title, int index) {
+  Widget _buildTabButton(String title, int index, PricingPackage package, AppLocalizations l10n) {
     final isSelected = _selectedTab == index;
-    final package = widget.activeService.paymentInfo.package;
     
     return Expanded(
       child: Material(
@@ -485,7 +488,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
     );
   }
 
-  Widget _buildOverviewTab(BuildContext context, PricingPackage package, DateFormat dateFormat, NumberFormat currencyFormat) {
+  Widget _buildOverviewTab(BuildContext context, PricingPackage package, DateFormat dateFormat, NumberFormat currencyFormat, AppLocalizations l10n) {
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -530,7 +533,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Service Actif',
+                              l10n.activeService,
                               style: GoogleFonts.poppins(
                                 color: Colors.white,
                                 fontSize: 14,
@@ -570,21 +573,24 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                     children: [
                       _buildStatCard(
                         Icons.calendar_today,
-                        'Date de début',
+                        l10n.startDate,
                         dateFormat.format(widget.activeService.startDate),
                         Colors.white,
+                        l10n,
                       ),
                       _buildStatCard(
                         Icons.date_range,
-                        'Date de fin',
+                        l10n.endDate,
                         dateFormat.format(widget.activeService.endDate),
                         Colors.white,
+                        l10n,
                       ),
                       _buildStatCard(
                         Icons.access_time,
-                        'Jours restants',
-                        '${_daysRemaining(widget.activeService.endDate)} jours',
+                        l10n.daysRemaining,
+                        '${_daysRemaining(widget.activeService.endDate)} ${l10n.days}',
                         Colors.white,
+                        l10n,
                       ),
                     ],
                   ),
@@ -615,7 +621,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Progression Globale',
+                        l10n.globalProgress,
                         style: GoogleFonts.poppins(
                           color: const Color(0xFF2D3748),
                           fontSize: 18,
@@ -645,22 +651,25 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       _buildMiniStat(
-                        'Services terminés',
-                        '${widget.activeService.features.where((f) => f.status == 'Terminé').length}',
+                        l10n.servicesCompleted,
+                        '${widget.activeService.features.where((f) => f.status == 'completed').length}',
                         const Color(0xFF00A859),
                         Icons.check_circle,
+                        l10n,
                       ),
                       _buildMiniStat(
-                        'En cours',
-                        '${widget.activeService.features.where((f) => f.status == 'En cours').length}',
+                        l10n.inProgress,
+                        '${widget.activeService.features.where((f) => f.status == 'in_progress').length}',
                         const Color(0xFF4A90E2),
                         Icons.autorenew,
+                        l10n,
                       ),
                       _buildMiniStat(
-                        'En attente',
-                        '${widget.activeService.features.where((f) => f.status == 'En attente').length}',
+                        l10n.pending,
+                        '${widget.activeService.features.where((f) => f.status == 'pending').length}',
                         const Color(0xFFE67E22),
                         Icons.hourglass_empty,
+                        l10n,
                       ),
                     ],
                   ),
@@ -691,7 +700,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Activités Récentes',
+                        l10n.recentActivities,
                         style: GoogleFonts.poppins(
                           color: const Color(0xFF2D3748),
                           fontSize: 18,
@@ -699,9 +708,9 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                         ),
                       ),
                       TextButton(
-                        onPressed: () => _showAllActivities(context),
+                        onPressed: () => _showAllActivities(context, l10n),
                         child: Text(
-                          'Voir tout',
+                          l10n.viewAll,
                           style: GoogleFonts.poppins(
                             color: package.primaryColor,
                             fontWeight: FontWeight.w500,
@@ -711,7 +720,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                     ],
                   ),
                   const SizedBox(height: 15),
-                  ...widget.activeService.updates.take(3).map((update) => _buildActivityItem(update)),
+                  ...widget.activeService.updates.take(3).map((update) => _buildActivityItem(update, l10n)),
                   if (widget.activeService.updates.isEmpty) ...[
                     const SizedBox(height: 20),
                     Center(
@@ -720,7 +729,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                           Icon(Icons.history, color: const Color(0xFFCBD5E0), size: 48),
                           const SizedBox(height: 10),
                           Text(
-                            'Aucune activité récente',
+                            l10n.noRecentActivity,
                             style: GoogleFonts.poppins(
                               color: const Color(0xFF718096),
                             ),
@@ -753,7 +762,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Actions Rapides',
+                    l10n.quickActions,
                     style: GoogleFonts.poppins(
                       color: const Color(0xFF2D3748),
                       fontSize: 18,
@@ -766,27 +775,27 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                       Expanded(
                         child: _buildQuickActionButton(
                           Icons.download,
-                          'Rapport',
+                          l10n.report,
                           package.primaryColor,
-                          () => _downloadReport(context),
+                          () => _downloadReport(context, l10n),
                         ),
                       ),
                       const SizedBox(width: 10),
                       Expanded(
                         child: _buildQuickActionButton(
                           Icons.share,
-                          'Partager',
+                          l10n.share,
                           const Color(0xFF9B59B6),
-                          () => _shareService(context),
+                          () => _shareService(context, l10n),
                         ),
                       ),
                       const SizedBox(width: 10),
                       Expanded(
                         child: _buildQuickActionButton(
                           Icons.print,
-                          'Imprimer',
+                          l10n.print,
                           const Color(0xFFE67E22),
-                          () => _printInvoice(context),
+                          () => _printInvoice(context, l10n),
                         ),
                       ),
                     ],
@@ -797,27 +806,27 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                       Expanded(
                         child: _buildQuickActionButton(
                           Icons.settings_backup_restore,
-                          'Renouveler',
+                          l10n.renew,
                           const Color(0xFF00A859),
-                          () => _renewService(context),
+                          () => _renewService(context, l10n),
                         ),
                       ),
                       const SizedBox(width: 10),
                       Expanded(
                         child: _buildQuickActionButton(
                           Icons.upgrade,
-                          'Améliorer',
+                          l10n.upgrade,
                           const Color(0xFF3498DB),
-                          () => _showUpgradeOptions(context, package),
+                          () => _showUpgradeOptions(context, package, l10n),
                         ),
                       ),
                       const SizedBox(width: 10),
                       Expanded(
                         child: _buildQuickActionButton(
                           Icons.support_agent,
-                          'Support',
+                          l10n.support,
                           const Color(0xFFE74C3C),
-                          () => _contactSupport(context),
+                          () => _contactSupport(context, l10n),
                         ),
                       ),
                     ],
@@ -831,7 +840,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
     );
   }
 
-  Widget _buildServicesTab(BuildContext context, PricingPackage package) {
+  Widget _buildServicesTab(BuildContext context, PricingPackage package, AppLocalizations l10n) {
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -849,7 +858,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
               itemCount: widget.activeService.features.length,
               itemBuilder: (context, index) {
                 final feature = widget.activeService.features[index];
-                return _buildServiceCard(feature);
+                return _buildServiceCard(feature, l10n);
               },
             ),
           ),
@@ -873,7 +882,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Détails du Service',
+                    l10n.serviceDetails,
                     style: GoogleFonts.poppins(
                       color: const Color(0xFF2D3748),
                       fontSize: 18,
@@ -881,12 +890,12 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                     ),
                   ),
                   const SizedBox(height: 15),
-                  _buildDetailItem('Facture N°', widget.activeService.paymentInfo.invoiceNumber),
-                  _buildDetailItem('Transaction ID', widget.activeService.paymentInfo.transactionId ?? 'N/A'),
-                  _buildDetailItem('Mode de paiement', _getPaymentMethodText(widget.activeService.paymentInfo.method)),
-                  _buildDetailItem('Montant payé', 'DA ${widget.activeService.paymentInfo.amount.toStringAsFixed(0)}'),
-                  _buildDetailItem('Prochaine facturation', DateFormat('dd/MM/yyyy').format(widget.activeService.endDate)),
-                  _buildDetailItem('Cycle de facturation', widget.activeService.paymentInfo.period),
+                  _buildDetailItem(l10n.invoiceNumber, widget.activeService.paymentInfo.invoiceNumber, l10n),
+                  _buildDetailItem(l10n.transactionId, widget.activeService.paymentInfo.transactionId ?? l10n.na, l10n),
+                  _buildDetailItem(l10n.paymentMethod, _getPaymentMethodText(widget.activeService.paymentInfo.method, l10n), l10n),
+                  _buildDetailItem(l10n.amount, 'DA ${widget.activeService.paymentInfo.amount.toStringAsFixed(0)}', l10n),
+                  _buildDetailItem(l10n.nextBilling, DateFormat('dd/MM/yyyy').format(widget.activeService.endDate), l10n),
+                  _buildDetailItem(l10n.billingCycle, widget.activeService.paymentInfo.period, l10n),
                 ],
               ),
             ),
@@ -914,7 +923,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Historique des Services',
+                        l10n.serviceHistory,
                         style: GoogleFonts.poppins(
                           color: const Color(0xFF2D3748),
                           fontSize: 18,
@@ -923,12 +932,12 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                       ),
                       IconButton(
                         icon: Icon(Icons.history, color: package.primaryColor),
-                        onPressed: () => _showServiceHistory(context),
+                        onPressed: () => _showServiceHistory(context, l10n),
                       ),
                     ],
                   ),
                   const SizedBox(height: 15),
-                  ...widget.activeService.supportTickets.take(2).map((ticket) => _buildHistoryItem(ticket)),
+                  ...widget.activeService.supportTickets.take(2).map((ticket) => _buildHistoryItem(ticket, l10n)),
                   if (widget.activeService.supportTickets.isEmpty) ...[
                     Center(
                       child: Column(
@@ -936,7 +945,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                           Icon(Icons.history_toggle_off, color: const Color(0xFFCBD5E0), size: 48),
                           const SizedBox(height: 10),
                           Text(
-                            'Aucun historique',
+                            l10n.noHistory,
                             style: GoogleFonts.poppins(
                               color: const Color(0xFF718096),
                             ),
@@ -954,7 +963,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
     );
   }
 
-  Widget _buildResourcesTab(BuildContext context) {
+  Widget _buildResourcesTab(BuildContext context, List<ResourceItem> resources, AppLocalizations l10n) {
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -969,10 +978,10 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                 mainAxisSpacing: 16,
                 childAspectRatio: 0.9,
               ),
-              itemCount: _resources.length,
+              itemCount: resources.length,
               itemBuilder: (context, index) {
-                final resource = _resources[index];
-                return _buildResourceCard(resource);
+                final resource = resources[index];
+                return _buildResourceCard(resource, l10n);
               },
             ),
           ),
@@ -996,7 +1005,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Communauté et Apprentissage',
+                    l10n.communityLearning,
                     style: GoogleFonts.poppins(
                       color: const Color(0xFF2D3748),
                       fontSize: 18,
@@ -1005,28 +1014,32 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                   ),
                   const SizedBox(height: 15),
                   _buildCommunityItem(
-                    'Forum Communautaire',
-                    'Discutez avec d\'autres utilisateurs',
+                    l10n.communityForum,
+                    l10n.discussWithOtherUsers,
                     Icons.forum,
                     const Color(0xFF9B59B6),
+                    l10n,
                   ),
                   _buildCommunityItem(
-                    'Blog Technique',
-                    'Articles et tutoriels avancés',
+                    l10n.technicalBlog,
+                    l10n.advancedArticlesAndTutorials,
                     Icons.article,
                     const Color(0xFF3498DB),
+                    l10n,
                   ),
                   _buildCommunityItem(
-                    'Webinaires',
-                    'Sessions de formation en ligne',
+                    l10n.webinars,
+                    l10n.onlineTrainingSessions,
                     Icons.live_tv,
                     const Color(0xFFE74C3C),
+                    l10n,
                   ),
                   _buildCommunityItem(
-                    'Centre d\'apprentissage',
-                    'Cours et certifications',
+                    l10n.learningCenter,
+                    l10n.coursesAndCertifications,
                     Icons.school,
                     const Color(0xFF2ECC71),
+                    l10n,
                   ),
                 ],
               ),
@@ -1052,7 +1065,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Paramètres Rapides',
+                    l10n.quickSettings,
                     style: GoogleFonts.poppins(
                       color: const Color(0xFF2D3748),
                       fontSize: 18,
@@ -1065,24 +1078,24 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                       Expanded(
                         child: _buildSettingButton(
                           Icons.notifications,
-                          'Notifications',
-                          () => _manageNotifications(context),
+                          l10n.notifications,
+                          () => _manageNotifications(context, l10n),
                         ),
                       ),
                       const SizedBox(width: 10),
                       Expanded(
                         child: _buildSettingButton(
                           Icons.security,
-                          'Sécurité',
-                          () => _securitySettings(context),
+                          l10n.security,
+                          () => _securitySettings(context, l10n),
                         ),
                       ),
                       const SizedBox(width: 10),
                       Expanded(
                         child: _buildSettingButton(
                           Icons.payment,
-                          'Paiements',
-                          () => _paymentSettings(context),
+                          l10n.payments,
+                          () => _paymentSettings(context, l10n),
                         ),
                       ),
                     ],
@@ -1093,24 +1106,24 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                       Expanded(
                         child: _buildSettingButton(
                           Icons.privacy_tip,
-                          'Confidentialité',
-                          () => _privacySettings(context),
+                          l10n.privacy,
+                          () => _privacySettings(context, l10n),
                         ),
                       ),
                       const SizedBox(width: 10),
                       Expanded(
                         child: _buildSettingButton(
                           Icons.download,
-                          'Téléchargements',
-                          () => _downloadSettings(context),
+                          l10n.downloads,
+                          () => _downloadSettings(context, l10n),
                         ),
                       ),
                       const SizedBox(width: 10),
                       Expanded(
                         child: _buildSettingButton(
                           Icons.language,
-                          'Langue',
-                          () => _languageSettings(context),
+                          l10n.language,
+                          () => _languageSettings(context, l10n),
                         ),
                       ),
                     ],
@@ -1124,7 +1137,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
     );
   }
 
-  Widget _buildStatCard(IconData icon, String title, String value, Color color) {
+  Widget _buildStatCard(IconData icon, String title, String value, Color color, AppLocalizations l10n) {
     return Column(
       children: [
         Icon(icon, color: color, size: 20),
@@ -1149,7 +1162,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
     );
   }
 
-  Widget _buildMiniStat(String title, String value, Color color, IconData icon) {
+  Widget _buildMiniStat(String title, String value, Color color, IconData icon, AppLocalizations l10n) {
     return Column(
       children: [
         Container(
@@ -1181,7 +1194,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
     );
   }
 
-  Widget _buildActivityItem(ServiceUpdate update) {
+  Widget _buildActivityItem(ServiceUpdate update, AppLocalizations l10n) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(12),
@@ -1269,7 +1282,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
     );
   }
 
-  Widget _buildServiceCard(ServiceFeature feature) {
+  Widget _buildServiceCard(ServiceFeature feature, AppLocalizations l10n) {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -1286,7 +1299,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
         color: Colors.transparent,
         child: InkWell(
           borderRadius: BorderRadius.circular(15),
-          onTap: () => _showServiceDetails(context, feature),
+          onTap: () => _showServiceDetails(context, feature, l10n),
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
@@ -1377,7 +1390,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
     );
   }
 
-  Widget _buildDetailItem(String label, String value) {
+  Widget _buildDetailItem(String label, String value, AppLocalizations l10n) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
       child: Row(
@@ -1403,7 +1416,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
     );
   }
 
-  Widget _buildHistoryItem(SupportTicket ticket) {
+  Widget _buildHistoryItem(SupportTicket ticket, AppLocalizations l10n) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(12),
@@ -1485,7 +1498,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
     );
   }
 
-  Widget _buildResourceCard(ResourceItem resource) {
+  Widget _buildResourceCard(ResourceItem resource, AppLocalizations l10n) {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -1540,7 +1553,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                 Row(
                   children: [
                     Text(
-                      'Accéder',
+                      l10n.access,
                       style: GoogleFonts.poppins(
                         color: resource.color,
                         fontSize: 12,
@@ -1559,7 +1572,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
     );
   }
 
-  Widget _buildCommunityItem(String title, String description, IconData icon, Color color) {
+  Widget _buildCommunityItem(String title, String description, IconData icon, Color color, AppLocalizations l10n) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(12),
@@ -1648,14 +1661,22 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
   }
 
   Color _getStatusColor(String status) {
-    switch (status) {
-      case 'Terminé':
+    switch (status.toLowerCase()) {
+      case 'completed':
+      case 'termine':
+      case 'مكتمل':
         return const Color(0xFF00A859);
-      case 'En cours':
+      case 'in_progress':
+      case 'en cours':
+      case 'قيد التنفيذ':
         return const Color(0xFF4A90E2);
-      case 'Ouvert':
+      case 'open':
+      case 'ouvert':
+      case 'مفتوح':
         return const Color(0xFF3498DB);
-      case 'Fermé':
+      case 'closed':
+      case 'ferme':
+      case 'مغلق':
         return const Color(0xFF95A5A6);
       default:
         return const Color(0xFFE67E22);
@@ -1663,56 +1684,60 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
   }
 
   Color _getPriorityColor(String priority) {
-    switch (priority) {
-      case 'Haute':
+    switch (priority.toLowerCase()) {
+      case 'high':
+      case 'haute':
+      case 'عالية':
         return const Color(0xFFE74C3C);
-      case 'Moyenne':
+      case 'medium':
+      case 'moyenne':
+      case 'متوسطة':
         return const Color(0xFFF39C12);
       default:
         return const Color(0xFF3498DB);
     }
   }
 
-  String _getPaymentMethodText(PaymentMethod method) {
+  String _getPaymentMethodText(PaymentMethod method, AppLocalizations l10n) {
     switch (method) {
       case PaymentMethod.baridimob:
         return 'Baridimob';
       case PaymentMethod.dahabiya:
-        return 'Carte Dahabiya';
+        return l10n.algerianCard;
       case PaymentMethod.creditCard:
-        return 'Carte de crédit';
+        return l10n.creditCard;
       case PaymentMethod.paypal:
         return 'PayPal';
       default:
-        return 'Autre';
+        return l10n.other;
     }
   }
 
-  void _showNotifications(BuildContext context) {
+  void _showNotifications(BuildContext context, AppLocalizations l10n) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Notifications'),
+        title: Text(l10n.notifications),
         content: SizedBox(
           height: 300,
           child: ListView(
             children: [
-              _buildNotificationItem('Nouveau message', 'Vous avez reçu un nouveau message du support', Icons.message, Colors.blue),
-              _buildNotificationItem('Facture disponible', 'Votre facture de juin est disponible', Icons.receipt, Colors.green),
-              _buildNotificationItem('Mise à jour système', 'Nouvelle mise à jour disponible', Icons.system_update, Colors.orange),
-              _buildNotificationItem('Rappel de paiement', 'Votre paiement est dû dans 3 jours', Icons.payment, Colors.red),
-              _buildNotificationItem('Service terminé', 'Votre audit SEO est terminé', Icons.check_circle, Colors.purple),
+              _buildNotificationItem(l10n.newMessage, l10n.receivedNewMessageFromSupport, Icons.message, Colors.blue),
+              _buildNotificationItem(l10n.invoiceAvailable, l10n.yourJuneInvoiceIsAvailable, Icons.receipt, Colors.green),
+              _buildNotificationItem(l10n.systemUpdate, l10n.newUpdateAvailable, Icons.system_update, Colors.orange),
+              _buildNotificationItem(l10n.paymentReminder, l10n.yourPaymentIsDueIn3Days, Icons.payment, Colors.red),
+              _buildNotificationItem(l10n.serviceCompleted, l10n.yourSeoAuditIsCompleted, Icons.check_circle, Colors.purple),
             ],
           ),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Tout marquer comme lu'),
+            child: Text(l10n.markAllAsRead),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Fermer'),
+            child: Text(l10n.close),
           ),
         ],
       ),
@@ -1728,7 +1753,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
     );
   }
 
-  void _showMoreOptions(BuildContext context) {
+  void _showMoreOptions(BuildContext context, AppLocalizations l10n) {
     showModalBottomSheet(
       context: context,
       shape: const RoundedRectangleBorder(
@@ -1742,50 +1767,50 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
             children: [
               ListTile(
                 leading: const Icon(Icons.account_circle),
-                title: const Text('Mon profil'),
+                title: Text(l10n.myProfile),
                 onTap: () {
                   Navigator.pop(context);
-                  _showProfile(context);
+                  _showProfile(context, l10n);
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.settings),
-                title: const Text('Paramètres'),
+                title: Text(l10n.settings),
                 onTap: () {
                   Navigator.pop(context);
-                  _showSettings(context);
+                  _showSettings(context, l10n);
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.help_center),
-                title: const Text('Centre d\'aide'),
+                title: Text(l10n.helpCenter),
                 onTap: () {
                   Navigator.pop(context);
-                  _showHelpCenter(context);
+                  _showHelpCenter(context, l10n);
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.feedback),
-                title: const Text('Donner votre avis'),
+                title: Text(l10n.feedback),
                 onTap: () {
                   Navigator.pop(context);
-                  _showFeedback(context);
+                  _showFeedback(context, l10n);
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.info),
-                title: const Text('À propos'),
+                title: Text(l10n.about),
                 onTap: () {
                   Navigator.pop(context);
-                  _showAbout(context);
+                  _showAbout(context, l10n);
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.logout, color: Colors.red),
-                title: const Text('Déconnexion', style: TextStyle(color: Colors.red)),
+                title: Text(l10n.logout, style: const TextStyle(color: Colors.red)),
                 onTap: () {
                   Navigator.pop(context);
-                  _logout(context);
+                  _logout(context, l10n);
                 },
               ),
             ],
@@ -1795,21 +1820,20 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
     );
   }
 
-  void _showQuickActions(BuildContext context) {
+  void _showQuickActions(BuildContext context, PricingPackage package, AppLocalizations l10n) {
     showModalBottomSheet(
       context: context,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (context) {
-        final package = widget.activeService.paymentInfo.package;
         return Container(
           padding: const EdgeInsets.all(20),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'Actions Rapides',
+                l10n.quickActions,
                 style: GoogleFonts.poppins(
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
@@ -1820,12 +1844,12 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                 spacing: 12,
                 runSpacing: 12,
                 children: [
-                  _buildQuickActionChip(Icons.add_chart, 'Nouveau rapport', package.primaryColor),
-                  _buildQuickActionChip(Icons.calendar_today, 'Planifier', const Color(0xFF00A859)),
-                  _buildQuickActionChip(Icons.share, 'Partager', const Color(0xFF9B59B6)),
-                  _buildQuickActionChip(Icons.download, 'Exporter', const Color(0xFFE67E22)),
-                  _buildQuickActionChip(Icons.print, 'Imprimer', const Color(0xFF3498DB)),
-                  _buildQuickActionChip(Icons.backup, 'Sauvegarder', const Color(0xFFE91E63)),
+                  _buildQuickActionChip(Icons.add_chart, l10n.newReport, package.primaryColor),
+                  _buildQuickActionChip(Icons.calendar_today, l10n.schedule, const Color(0xFF00A859)),
+                  _buildQuickActionChip(Icons.share, l10n.share, const Color(0xFF9B59B6)),
+                  _buildQuickActionChip(Icons.download, l10n.export, const Color(0xFFE67E22)),
+                  _buildQuickActionChip(Icons.print, l10n.print, const Color(0xFF3498DB)),
+                  _buildQuickActionChip(Icons.backup, l10n.backup, const Color(0xFFE91E63)),
                 ],
               ),
               const SizedBox(height: 20),
@@ -1833,7 +1857,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () => Navigator.pop(context),
-                  child: const Text('Fermer'),
+                  child: Text(l10n.close),
                 ),
               ),
             ],
@@ -1853,11 +1877,11 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
     );
   }
 
-  void _showAllActivities(BuildContext context) {
+  void _showAllActivities(BuildContext context, AppLocalizations l10n) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Toutes les activités'),
+        title: Text(l10n.allActivities),
         content: SizedBox(
           width: double.maxFinite,
           child: ListView.builder(
@@ -1877,105 +1901,105 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Fermer'),
+            child: Text(l10n.close),
           ),
         ],
       ),
     );
   }
 
-  void _downloadReport(BuildContext context) {
+  void _downloadReport(BuildContext context, AppLocalizations l10n) {
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Téléchargement du rapport en cours...'),
-        duration: Duration(seconds: 2),
+      SnackBar(
+        content: Text(l10n.downloadingReport),
+        duration: const Duration(seconds: 2),
       ),
     );
   }
 
-  void _shareService(BuildContext context) {
+  void _shareService(BuildContext context, AppLocalizations l10n) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Partager le service'),
-        content: const Text('Choisissez une plateforme pour partager votre service:'),
+        title: Text(l10n.shareService),
+        content: Text(l10n.choosePlatformToShare),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Annuler'),
+            child: Text(l10n.cancel),
           ),
           ElevatedButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Partager'),
+            child: Text(l10n.share),
           ),
         ],
       ),
     );
   }
 
-  void _printInvoice(BuildContext context) {
+  void _printInvoice(BuildContext context, AppLocalizations l10n) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Imprimer la facture'),
+        title: Text(l10n.printInvoice),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             const Icon(Icons.print, size: 60, color: Colors.blue),
             const SizedBox(height: 20),
             Text(
-              'Facture N°: ${widget.activeService.paymentInfo.invoiceNumber}',
+              '${l10n.invoiceNumber}: ${widget.activeService.paymentInfo.invoiceNumber}',
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
-            Text('Montant: DA ${widget.activeService.paymentInfo.amount}'),
+            Text('${l10n.amount}: DA ${widget.activeService.paymentInfo.amount}'),
             const SizedBox(height: 10),
-            Text('Date: ${DateFormat('dd/MM/yyyy').format(widget.activeService.paymentInfo.date)}'),
+            Text('${l10n.date}: ${DateFormat('dd/MM/yyyy').format(widget.activeService.paymentInfo.date)}'),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Annuler'),
+            child: Text(l10n.cancel),
           ),
           ElevatedButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Imprimer'),
+            child: Text(l10n.print),
           ),
         ],
       ),
     );
   }
 
-  void _renewService(BuildContext context) {
+  void _renewService(BuildContext context, AppLocalizations l10n) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Renouveler le service'),
-        content: const Text('Voulez-vous renouveler votre abonnement pour un mois supplémentaire?'),
+        title: Text(l10n.renewService),
+        content: Text(l10n.renewConfirmation),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Plus tard'),
+            child: Text(l10n.later),
           ),
           ElevatedButton(
             onPressed: () {
               Navigator.pop(context);
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Service renouvelé avec succès!'),
+                SnackBar(
+                  content: Text(l10n.renewedSuccess),
                   backgroundColor: Colors.green,
                 ),
               );
             },
-            child: const Text('Renouveler'),
+            child: Text(l10n.renew),
           ),
         ],
       ),
     );
   }
 
-  void _showUpgradeOptions(BuildContext context, PricingPackage package) {
+  void _showUpgradeOptions(BuildContext context, PricingPackage package, AppLocalizations l10n) {
     showModalBottomSheet(
       context: context,
       shape: const RoundedRectangleBorder(
@@ -1988,7 +2012,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'Améliorer votre forfait',
+                l10n.upgradePlan,
                 style: GoogleFonts.poppins(
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
@@ -2005,7 +2029,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                 child: Column(
                   children: [
                     Text(
-                      'Forfait Premium',
+                      l10n.premiumPlan,
                       style: GoogleFonts.poppins(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
@@ -2023,13 +2047,13 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () => Navigator.pop(context),
-                  child: const Text('VOIR LES OPTIONS'),
+                  child: Text(l10n.upgradeOptions),
                 ),
               ),
               const SizedBox(height: 10),
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text('PLUS TARD'),
+                child: Text(l10n.later),
               ),
             ],
           ),
@@ -2038,31 +2062,31 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
     );
   }
 
-  void _contactSupport(BuildContext context) {
+  void _contactSupport(BuildContext context, AppLocalizations l10n) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Contactez le support'),
-        content: const Text('Comment souhaitez-vous contacter notre équipe de support?'),
+        title: Text(l10n.contactSupport),
+        content: Text(l10n.howToContact),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Chat'),
+            child: Text(l10n.chat),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Email'),
+            child: Text(l10n.email),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Téléphone'),
+            child: Text(l10n.call),
           ),
         ],
       ),
     );
   }
 
-  void _showServiceDetails(BuildContext context, ServiceFeature feature) {
+  void _showServiceDetails(BuildContext context, ServiceFeature feature, AppLocalizations l10n) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -2080,24 +2104,24 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
               valueColor: AlwaysStoppedAnimation<Color>(feature.color),
             ),
             const SizedBox(height: 10),
-            Text('${(feature.progress * 100).toStringAsFixed(0)}% complété'),
+            Text('${(feature.progress * 100).toStringAsFixed(0)}% ${l10n.completed}'),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Fermer'),
+            child: Text(l10n.close),
           ),
         ],
       ),
     );
   }
 
-  void _showServiceHistory(BuildContext context) {
+  void _showServiceHistory(BuildContext context, AppLocalizations l10n) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Historique complet'),
+        title: Text(l10n.serviceHistoryFull),
         content: SizedBox(
           height: 400,
           width: 400,
@@ -2122,7 +2146,7 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Fermer'),
+            child: Text(l10n.close),
           ),
         ],
       ),
@@ -2136,86 +2160,86 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
     }
   }
 
-  void _manageNotifications(BuildContext context) {
+  void _manageNotifications(BuildContext context, AppLocalizations l10n) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => Scaffold(
-          appBar: AppBar(title: const Text('Gestion des notifications')),
-          body: const Center(child: Text('Page de gestion des notifications')),
+          appBar: AppBar(title: Text(l10n.notificationManagement)),
+          body: Center(child: Text(l10n.notificationManagementPage)),
         ),
       ),
     );
   }
 
-  void _securitySettings(BuildContext context) {
+  void _securitySettings(BuildContext context, AppLocalizations l10n) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => Scaffold(
-          appBar: AppBar(title: const Text('Paramètres de sécurité')),
-          body: const Center(child: Text('Page des paramètres de sécurité')),
+          appBar: AppBar(title: Text(l10n.securitySettings)),
+          body: Center(child: Text(l10n.securitySettingsPage)),
         ),
       ),
     );
   }
 
-  void _paymentSettings(BuildContext context) {
+  void _paymentSettings(BuildContext context, AppLocalizations l10n) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => Scaffold(
-          appBar: AppBar(title: const Text('Paramètres de paiement')),
-          body: const Center(child: Text('Page des paramètres de paiement')),
+          appBar: AppBar(title: Text(l10n.paymentSettings)),
+          body: Center(child: Text(l10n.paymentSettingsPage)),
         ),
       ),
     );
   }
 
-  void _privacySettings(BuildContext context) {
+  void _privacySettings(BuildContext context, AppLocalizations l10n) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => Scaffold(
-          appBar: AppBar(title: const Text('Confidentialité')),
-          body: const Center(child: Text('Page des paramètres de confidentialité')),
+          appBar: AppBar(title: Text(l10n.privacy)),
+          body: Center(child: Text(l10n.privacySettingsPage)),
         ),
       ),
     );
   }
 
-  void _downloadSettings(BuildContext context) {
+  void _downloadSettings(BuildContext context, AppLocalizations l10n) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => Scaffold(
-          appBar: AppBar(title: const Text('Téléchargements')),
-          body: const Center(child: Text('Page des paramètres de téléchargement')),
+          appBar: AppBar(title: Text(l10n.downloads)),
+          body: Center(child: Text(l10n.downloadSettingsPage)),
         ),
       ),
     );
   }
 
-  void _languageSettings(BuildContext context) {
+  void _languageSettings(BuildContext context, AppLocalizations l10n) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Changer la langue'),
+        title: Text(l10n.changeLanguage),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             ListTile(
-              title: const Text('Français'),
+              title: Text(l10n.french),
               leading: const Icon(Icons.language),
               onTap: () => Navigator.pop(context),
             ),
             ListTile(
-              title: const Text('Anglais'),
+              title: Text(l10n.english),
               leading: const Icon(Icons.language),
               onTap: () => Navigator.pop(context),
             ),
             ListTile(
-              title: const Text('Arabe'),
+              title: Text(l10n.arabic),
               leading: const Icon(Icons.language),
               onTap: () => Navigator.pop(context),
             ),
@@ -2225,102 +2249,102 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
     );
   }
 
-  void _showProfile(BuildContext context) {
+  void _showProfile(BuildContext context, AppLocalizations l10n) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => Scaffold(
-          appBar: AppBar(title: const Text('Mon profil')),
-          body: const Center(child: Text('Page de profil utilisateur')),
+          appBar: AppBar(title: Text(l10n.myProfile)),
+          body: Center(child: Text(l10n.userProfilePage)),
         ),
       ),
     );
   }
 
-  void _showSettings(BuildContext context) {
+  void _showSettings(BuildContext context, AppLocalizations l10n) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => Scaffold(
-          appBar: AppBar(title: const Text('Paramètres')),
-          body: const Center(child: Text('Page des paramètres généraux')),
+          appBar: AppBar(title: Text(l10n.settings)),
+          body: Center(child: Text(l10n.generalSettingsPage)),
         ),
       ),
     );
   }
 
-  void _showHelpCenter(BuildContext context) {
+  void _showHelpCenter(BuildContext context, AppLocalizations l10n) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => Scaffold(
-          appBar: AppBar(title: const Text('Centre d\'aide')),
-          body: const Center(child: Text('Page du centre d\'aide')),
+          appBar: AppBar(title: Text(l10n.helpCenter)),
+          body: Center(child: Text(l10n.helpCenterPage)),
         ),
       ),
     );
   }
 
-  void _showFeedback(BuildContext context) {
+  void _showFeedback(BuildContext context, AppLocalizations l10n) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Donner votre avis'),
-        content: const TextField(
+        title: Text(l10n.giveFeedback),
+        content: TextField(
           decoration: InputDecoration(
-            hintText: 'Écrivez votre avis ici...',
-            border: OutlineInputBorder(),
+            hintText: l10n.writeYourFeedbackHere,
+            border: const OutlineInputBorder(),
           ),
           maxLines: 5,
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Annuler'),
+            child: Text(l10n.cancel),
           ),
           ElevatedButton(
             onPressed: () {
               Navigator.pop(context);
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Merci pour votre avis!')),
+                SnackBar(content: Text(l10n.thanksForYourFeedback)),
               );
             },
-            child: const Text('Envoyer'),
+            child: Text(l10n.send),
           ),
         ],
       ),
     );
   }
 
-  void _showAbout(BuildContext context) {
+  void _showAbout(BuildContext context, AppLocalizations l10n) {
     showAboutDialog(
       context: context,
-      applicationName: 'Service Dashboard',
+      applicationName: l10n.serviceDashboard,
       applicationVersion: '1.0.0',
-      applicationLegalese: '© 2024 Votre Entreprise. Tous droits réservés.',
-      children: const [
-        Text('Cette application permet de gérer vos services et forfaits.'),
+      applicationLegalese: '© 2024 ${l10n.yourCompany}. ${l10n.allRightsReserved}.',
+      children: [
+        Text(l10n.thisAppHelpsManageServices),
       ],
     );
   }
 
-  void _logout(BuildContext context) {
+  void _logout(BuildContext context, AppLocalizations l10n) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Déconnexion'),
-        content: const Text('Êtes-vous sûr de vouloir vous déconnecter?'),
+        title: Text(l10n.logout),
+        content: Text(l10n.confirmLogout),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Annuler'),
+            child: Text(l10n.cancel),
           ),
           ElevatedButton(
             onPressed: () {
               Navigator.popUntil(context, (route) => route.isFirst);
             },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-            child: const Text('Déconnexion', style: TextStyle(color: Colors.white)),
+            child: Text(l10n.logoutConfirm, style: const TextStyle(color: Colors.white)),
           ),
         ],
       ),
@@ -2331,8 +2355,9 @@ class _ServiceDashboardState extends State<ServiceDashboard> {
 // Detail Dialog Widget
 class PackageDetailDialog extends StatelessWidget {
   final PricingPackage package;
+  final AppLocalizations l10n;
 
-  const PackageDetailDialog({super.key, required this.package});
+  const PackageDetailDialog({super.key, required this.package, required this.l10n});
 
   @override
   Widget build(BuildContext context) {
@@ -2416,7 +2441,7 @@ class PackageDetailDialog extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(bottom: 8),
                           child: Text(
-                            '/mois',
+                            '/${l10n.monthly.toLowerCase()}',
                             style: GoogleFonts.poppins(
                               color: const Color(0xFF718096),
                               fontSize: 16,
@@ -2438,7 +2463,7 @@ class PackageDetailDialog extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 8),
                       child: Text(
-                        '/an',
+                        '/${l10n.annually.toLowerCase()}',
                         style: GoogleFonts.poppins(
                           color: const Color(0xFF4A90E2),
                           fontSize: 16,
@@ -2472,7 +2497,7 @@ class PackageDetailDialog extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Fonctionnalités Clés:',
+                      l10n.keyFeatures,
                       style: GoogleFonts.poppins(
                         color: const Color(0xFF2D3748),
                         fontSize: 18,
@@ -2524,7 +2549,7 @@ class PackageDetailDialog extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Services Inclus:',
+                      l10n.includedServices,
                       style: GoogleFonts.poppins(
                         color: const Color(0xFF2D3748),
                         fontSize: 18,
@@ -2578,7 +2603,7 @@ class PackageDetailDialog extends StatelessWidget {
                     if (package.serviceFeatures.length > 3) ...[
                       const SizedBox(height: 10),
                       Text(
-                        '+ ${package.serviceFeatures.length - 3} autres services...',
+                        '+ ${package.serviceFeatures.length - 3} ${l10n.services}', 
                         style: GoogleFonts.poppins(
                           color: package.primaryColor,
                           fontSize: 14,
@@ -2608,7 +2633,7 @@ class PackageDetailDialog extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Informations additionnelles :',
+                        l10n.additionalInfo,
                         style: GoogleFonts.poppins(
                           color: const Color(0xFF2D3748),
                           fontSize: 16,
@@ -2674,7 +2699,7 @@ class PackageDetailDialog extends StatelessWidget {
                             onTap: () => Navigator.pop(context),
                             child: Center(
                               child: Text(
-                                'FERMER',
+                                l10n.close.toUpperCase(),
                                 style: GoogleFonts.poppins(
                                   color: const Color(0xFF4A5568),
                                   fontSize: 15,
@@ -2718,68 +2743,68 @@ class _PricingScreenState extends State<PricingScreen> {
     packages = [
       PricingPackage(
         title: 'PACK START',
-        description: 'Idéal pour débuter',
+        description: 'Ideal for starting',
         monthlyPrice: 'DA 4,500',
         annualPrice: 'DA 48,000',
         features: [
-          'Création de 3 comptes sociaux',
-          'Branding personnalisé',
-          '5 posts initiaux',
-          'Site vitrine simple',
-          'Accès au tableau de bord',
-          'Support email 24/7',
+          'Creation of 3 social accounts',
+          'Custom branding',
+          '5 initial posts',
+          'Simple showcase website',
+          'Dashboard access',
+          '24/7 email support',
         ],
         primaryColor: const Color(0xFF4A90E2),
         secondaryColor: const Color(0xFF357ABD),
-        details: 'Idéal pour les jeunes entreprises souhaitant développer leur présence en ligne. Ce pack comprend tout le nécessaire pour débuter en marketing digital.',
+        details: 'Ideal for young companies wanting to develop their online presence. This pack includes everything needed to start in digital marketing.',
         additionalInfo: [
-          'Garantie de remboursement de 30 jours',
-          'Assistance par e-mail sous 24 heures',
-          'Assistance à la configuration gratuite',
-          'Annuler à tout moment',
-          'Mises à jour régulières incluses',
-          'Accès à la communauté',
+          '30-day money-back guarantee',
+          'Email assistance within 24 hours',
+          'Free setup assistance',
+          'Cancel anytime',
+          'Regular updates included',
+          'Community access',
         ],
         serviceFeatures: [
           ServiceFeature(
-            title: 'Création Comptes',
-            description: 'Configuration des réseaux sociaux',
+            title: 'Account Creation',
+            description: 'Social media setup',
             icon: Icons.account_circle,
-            status: 'En attente',
-            actionButtonText: 'Commencer',
+            status: 'pending',
+            actionButtonText: 'Start',
             color: const Color(0xFF4A90E2),
             progress: 0.0,
-            steps: ['Analyse', 'Configuration', 'Validation'],
+            steps: ['Analysis', 'Setup', 'Validation'],
           ),
           ServiceFeature(
             title: 'Branding',
-            description: 'Design de logo et identité visuelle',
+            description: 'Logo and visual identity design',
             icon: Icons.palette,
-            status: 'En attente',
-            actionButtonText: 'Démarrer',
+            status: 'pending',
+            actionButtonText: 'Start',
             color: const Color(0xFF9B59B6),
             progress: 0.0,
-            steps: ['Briefing', 'Conception', 'Révision', 'Finalisation'],
+            steps: ['Briefing', 'Design', 'Revision', 'Finalization'],
           ),
           ServiceFeature(
-            title: 'Contenu Initial',
-            description: 'Création des premiers posts',
+            title: 'Initial Content',
+            description: 'Creation of first posts',
             icon: Icons.create,
-            status: 'En attente',
-            actionButtonText: 'Planifier',
+            status: 'pending',
+            actionButtonText: 'Schedule',
             color: const Color(0xFFE67E22),
             progress: 0.0,
-            steps: ['Stratégie', 'Création', 'Approbation', 'Publication'],
+            steps: ['Strategy', 'Creation', 'Approval', 'Publication'],
           ),
           ServiceFeature(
-            title: 'Site Vitrine',
-            description: 'Développement site web simple',
+            title: 'Showcase Website',
+            description: 'Simple web development',
             icon: Icons.language,
-            status: 'En attente',
-            actionButtonText: 'Configurer',
+            status: 'pending',
+            actionButtonText: 'Configure',
             color: const Color(0xFF00A859),
             progress: 0.0,
-            steps: ['Wireframe', 'Développement', 'Test', 'Lancement'],
+            steps: ['Wireframe', 'Development', 'Test', 'Launch'],
           ),
         ],
         metrics: {
@@ -2791,74 +2816,74 @@ class _PricingScreenState extends State<PricingScreen> {
       ),
       PricingPackage(
         title: 'PACK PREMIUM',
-        description: 'Solution complète',
+        description: 'Complete solution',
         monthlyPrice: 'DA 8,500',
         annualPrice: 'DA 91,800',
         features: [
-          'Gestion de 2 réseaux sociaux',
-          'Calendrier éditorial',
-          '12 posts/mois',
-          'Reporting léger',
-          'Analytics avancés',
-          'Support prioritaire',
+          'Management of 2 social networks',
+          'Editorial calendar',
+          '12 posts/month',
+          'Light reporting',
+          'Advanced analytics',
+          'Priority support',
         ],
         primaryColor: const Color(0xFF9B59B6),
         secondaryColor: const Color(0xFFE91E8C),
-        details: 'Idéal pour les jeunes entreprises et les micro-entreprises en pleine croissance. Cet abonnement mensuel comprend la gestion continue des médias sociaux et la planification du contenu.',
+        details: 'Ideal for young companies and micro-enterprises in full growth. This monthly subscription includes continuous social media management and content planning.',
         additionalInfo: [
-          'Assistance prioritaire sous 12 heures',
-          'Review stratégique mensuel',
-          'Planification du calendrier éditorial',
-          'Tableau de bord d\'analyse de performance',
-          'Accès aux webinaires exclusifs',
-          'Mentorat mensuel',
+          'Priority assistance within 12 hours',
+          'Monthly strategic review',
+          'Editorial calendar planning',
+          'Performance analysis dashboard',
+          'Access to exclusive webinars',
+          'Monthly mentoring',
         ],
         serviceFeatures: [
           ServiceFeature(
-            title: 'Gestion Social Media',
-            description: 'Gestion quotidienne des comptes',
+            title: 'Social Media Management',
+            description: 'Daily account management',
             icon: Icons.thumb_up,
-            status: 'En cours',
-            actionButtonText: 'Continuer',
+            status: 'in_progress',
+            actionButtonText: 'Continue',
             color: const Color(0xFF9B59B6),
             progress: 0.6,
-            steps: ['Audit', 'Stratégie', 'Exécution', 'Optimisation'],
+            steps: ['Audit', 'Strategy', 'Execution', 'Optimization'],
             startDate: DateTime.now().subtract(const Duration(days: 15)),
             endDate: DateTime.now().add(const Duration(days: 15)),
           ),
           ServiceFeature(
-            title: 'Calendrier Éditorial',
-            description: 'Planification du contenu mensuel',
+            title: 'Editorial Calendar',
+            description: 'Monthly content planning',
             icon: Icons.calendar_today,
-            status: 'Terminé',
-            actionButtonText: 'Voir',
+            status: 'completed',
+            actionButtonText: 'View',
             color: const Color(0xFF4A90E2),
             progress: 1.0,
-            steps: ['Planification', 'Création', 'Validation'],
+            steps: ['Planning', 'Creation', 'Validation'],
             startDate: DateTime.now().subtract(const Duration(days: 30)),
             endDate: DateTime.now().subtract(const Duration(days: 10)),
           ),
           ServiceFeature(
-            title: 'Création Contenu',
-            description: '12 posts par mois',
+            title: 'Content Creation',
+            description: '12 posts per month',
             icon: Icons.edit,
-            status: 'En cours',
-            actionButtonText: 'Éditer',
+            status: 'in_progress',
+            actionButtonText: 'Edit',
             color: const Color(0xFFE67E22),
             progress: 0.4,
-            steps: ['Briefing', 'Création', 'Révision', 'Publication'],
+            steps: ['Briefing', 'Creation', 'Revision', 'Publication'],
             startDate: DateTime.now().subtract(const Duration(days: 10)),
             endDate: DateTime.now().add(const Duration(days: 20)),
           ),
           ServiceFeature(
             title: 'Analytics',
-            description: 'Rapports de performance',
+            description: 'Performance reports',
             icon: Icons.analytics,
-            status: 'En attente',
-            actionButtonText: 'Configurer',
+            status: 'pending',
+            actionButtonText: 'Configure',
             color: const Color(0xFF00A859),
             progress: 0.0,
-            steps: ['Configuration', 'Collecte', 'Analyse', 'Reporting'],
+            steps: ['Setup', 'Collection', 'Analysis', 'Reporting'],
           ),
         ],
         metrics: {
@@ -2869,73 +2894,73 @@ class _PricingScreenState extends State<PricingScreen> {
         },
       ),
       PricingPackage(
-         title: 'SERVICE SUR MESURE',
-        description: 'Solution personnalisée',
-        monthlyPrice: 'Sur Devis',
-        annualPrice: 'Sur Devis',
+        title: 'CUSTOM SERVICE',
+        description: 'Personalized solution',
+        monthlyPrice: 'On Quote',
+        annualPrice: 'On Quote',
         features: [
-          'Audit SEO complet',
-          'Campagnes de publicité (Ads)',
-          'Création de contenu vidéo avancé',
-          'Analyse d\'entreprise',
-          'Consultation stratégique',
-          'Support VIP 24/7',
+          'Complete SEO audit',
+          'Advertising campaigns (Ads)',
+          'Advanced video content creation',
+          'Business analysis',
+          'Strategic consultation',
+          'VIP 24/7 support',
         ],
         primaryColor: const Color(0xFFE67E22),
         secondaryColor: const Color(0xFFF39C12),
-        details: 'Services à la carte haut de gamme pour les entreprises établies. Choisissez parmi des services marketing avancés adaptés à vos besoins spécifiques. Contactez-nous pour un devis personnalisé.',
+        details: 'Premium à la carte services for established businesses. Choose from advanced marketing services tailored to your specific needs. Contact us for a personalized quote.',
         additionalInfo: [
-          'Gestionnaire de compte dédié',
-          'Assistance téléphonique 24/7',
-          'Rapports personnalisés',
-          'Séances de consultation stratégique',
-          'Accès illimité aux ressources',
-          'Formations personnalisées',
+          'Dedicated account manager',
+          '24/7 phone support',
+          'Customized reports',
+          'Strategic consultation sessions',
+          'Unlimited resource access',
+          'Personalized trainings',
         ],
         serviceFeatures: [
           ServiceFeature(
-            title: 'Audit SEO',
-            description: 'Analyse complète SEO',
+            title: 'SEO Audit',
+            description: 'Complete SEO analysis',
             icon: Icons.search,
-            status: 'Terminé',
-            actionButtonText: 'Voir rapport',
+            status: 'completed',
+            actionButtonText: 'View report',
             color: const Color(0xFFE67E22),
             progress: 1.0,
-            steps: ['Analyse technique', 'Audit contenu', 'Analyse concurrentielle', 'Rapport'],
+            steps: ['Technical analysis', 'Content audit', 'Competitive analysis', 'Report'],
             startDate: DateTime.now().subtract(const Duration(days: 45)),
             endDate: DateTime.now().subtract(const Duration(days: 15)),
           ),
           ServiceFeature(
-            title: 'Campagnes Ads',
-            description: 'Gestion publicités digitales',
+            title: 'Ads Campaigns',
+            description: 'Digital ad management',
             icon: Icons.ads_click,
-            status: 'En cours',
-            actionButtonText: 'Optimiser',
+            status: 'in_progress',
+            actionButtonText: 'Optimize',
             color: const Color(0xFF9B59B6),
             progress: 0.75,
-            steps: ['Stratégie', 'Création', 'Lancement', 'Optimisation'],
+            steps: ['Strategy', 'Creation', 'Launch', 'Optimization'],
             startDate: DateTime.now().subtract(const Duration(days: 30)),
             endDate: DateTime.now().add(const Duration(days: 30)),
           ),
           ServiceFeature(
-            title: 'Vidéo Marketing',
-            description: 'Création contenu vidéo',
+            title: 'Video Marketing',
+            description: 'Video content creation',
             icon: Icons.videocam,
-            status: 'En attente',
-            actionButtonText: 'Planifier',
+            status: 'pending',
+            actionButtonText: 'Schedule',
             color: const Color(0xFF4A90E2),
             progress: 0.0,
-            steps: ['Script', 'Tournage', 'Montage', 'Publication'],
+            steps: ['Script', 'Shooting', 'Editing', 'Publication'],
           ),
           ServiceFeature(
-            title: 'Analyse Stratégique',
-            description: 'Consultation business',
+            title: 'Strategic Analysis',
+            description: 'Business consultation',
             icon: Icons.business_center,
-            status: 'Terminé',
-            actionButtonText: 'Voir analyse',
+            status: 'completed',
+            actionButtonText: 'View analysis',
             color: const Color(0xFF00A859),
             progress: 1.0,
-            steps: ['Diagnostic', 'Analyse', 'Recommandations', 'Plan d\'action'],
+            steps: ['Diagnosis', 'Analysis', 'Recommendations', 'Action plan'],
             startDate: DateTime.now().subtract(const Duration(days: 60)),
             endDate: DateTime.now().subtract(const Duration(days: 30)),
           ),
@@ -2961,15 +2986,17 @@ class _PricingScreenState extends State<PricingScreen> {
     super.dispose();
   }
 
-  void _showPackageDetails(BuildContext context, PricingPackage package) {
+  void _showPackageDetails(BuildContext context, PricingPackage package, AppLocalizations l10n) {
     showDialog(
       context: context,
-      builder: (context) => PackageDetailDialog(package: package),
+      builder: (context) => PackageDetailDialog(package: package, l10n: l10n),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    
     return Scaffold(
       backgroundColor: const Color(0xFFF5F7FA),
       appBar: AppBar(
@@ -2977,7 +3004,7 @@ class _PricingScreenState extends State<PricingScreen> {
         elevation: 0,
         centerTitle: true,
         title: Text(
-          'Choisissez votre Plan',
+          l10n.pricingTitle,
           style: GoogleFonts.poppins(
             color: const Color(0xFF2D3748),
             fontWeight: FontWeight.w600,
@@ -2987,7 +3014,7 @@ class _PricingScreenState extends State<PricingScreen> {
         actions: [
           IconButton(
             icon: const Icon(Icons.help_outline, color: Color(0xFF4A5568)),
-            onPressed: () => _showHelpDialog(context),
+            onPressed: () => _showHelpDialog(context, l10n),
           ),
         ],
       ),
@@ -2995,7 +3022,7 @@ class _PricingScreenState extends State<PricingScreen> {
         children: [
           const SizedBox(height: 20),
           Text(
-            'Sélectionnez le plan parfait pour vos besoins',
+            l10n.pricingSubtitle,
             style: GoogleFonts.poppins(
               color: const Color(0xFF718096),
               fontSize: 14,
@@ -3026,7 +3053,8 @@ class _PricingScreenState extends State<PricingScreen> {
                         child: PricingCard(
                           package: packages[index],
                           onViewDetails: () =>
-                              _showPackageDetails(context, packages[index]),
+                              _showPackageDetails(context, packages[index], l10n),
+                          l10n: l10n,
                         ),
                       ),
                     );
@@ -3061,11 +3089,11 @@ class _PricingScreenState extends State<PricingScreen> {
     );
   }
 
-  void _showHelpDialog(BuildContext context) {
+  void _showHelpDialog(BuildContext context, AppLocalizations l10n) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Comment choisir?'),
+        title: Text(l10n.howToChoose),
         content: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -3073,22 +3101,25 @@ class _PricingScreenState extends State<PricingScreen> {
             children: [
               _buildHelpItem(
                 Icons.business,
-                'Pack Start',
-                'Idéal pour les nouvelles entreprises qui débutent en ligne',
+                l10n.packStart,
+                l10n.idealForNewBusinesses,
+                l10n,
               ),
               _buildHelpItem(
                 Icons.trending_up,
-                'Pack Premium',
-                'Parfait pour les entreprises en croissance avec des besoins réguliers',
+                l10n.packPremium,
+                l10n.perfectForGrowingBusinesses,
+                l10n,
               ),
               _buildHelpItem(
                 Icons.star,
-                'Service A LA CARTE',
-                'Pour les entreprises établies ayant besoin de services avancés',
+                l10n.customService,
+                l10n.forEstablishedBusinesses,
+                l10n,
               ),
               const SizedBox(height: 20),
               Text(
-                'Conseil: Commencez par le pack Start et améliorez selon vos besoins!',
+                l10n.advice,
                 style: GoogleFonts.poppins(
                   color: const Color(0xFF4A5568),
                   fontStyle: FontStyle.italic,
@@ -3100,14 +3131,14 @@ class _PricingScreenState extends State<PricingScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('COMPRIS'),
+            child: Text(l10n.gotIt.toUpperCase()),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildHelpItem(IconData icon, String title, String description) {
+  Widget _buildHelpItem(IconData icon, String title, String description, AppLocalizations l10n) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 15),
       child: Row(
@@ -3146,16 +3177,18 @@ class _PricingScreenState extends State<PricingScreen> {
 class PricingCard extends StatelessWidget {
   final PricingPackage package;
   final VoidCallback onViewDetails;
+  final AppLocalizations l10n;
 
   const PricingCard({
     super.key,
     required this.package,
     required this.onViewDetails,
+    required this.l10n,
   });
 
-  void _showPaymentOptions(BuildContext context, PricingPackage package) {
-    if (package.title == 'SERVICE SUR MESURE') {
-      _showContactForm(context, package);
+  void _showPaymentOptions(BuildContext context, PricingPackage package, AppLocalizations l10n) {
+    if (package.title == 'CUSTOM SERVICE') {
+      _showContactForm(context, package, l10n);
       return;
     }
 
@@ -3171,7 +3204,7 @@ class PricingCard extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'Choisissez votre mode de paiement',
+                l10n.choosePaymentMethod,
                 style: GoogleFonts.poppins(
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
@@ -3180,7 +3213,7 @@ class PricingCard extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               
-              // Baridimob Option with Image
+              // Baridimob Option
               ListTile(
                 leading: Container(
                   width: 50,
@@ -3189,26 +3222,20 @@ class PricingCard extends StatelessWidget {
                     color: const Color(0xFF00A859).withOpacity(0.1),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image.asset(
-                      'assets/images/baridimob.png',
-                      fit: BoxFit.contain,
-                    ),
-                  ),
+                  child: const Icon(Icons.phone_android, color: Color(0xFF00A859)),
                 ),
                 title: Text(
                   'Baridimob',
                   style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
                 ),
-                subtitle: const Text('Paiement mobile sécurisé'),
+                subtitle: Text(l10n.mobilePayment),
                 onTap: () {
                   Navigator.pop(context);
-                  _payWithBaridimob(context, package);
+                  _payWithBaridimob(context, package, l10n);
                 },
               ),
               
-              // Dahabiya Option with Image
+              // Dahabiya Option
               ListTile(
                 leading: Container(
                   width: 50,
@@ -3217,22 +3244,16 @@ class PricingCard extends StatelessWidget {
                     color: const Color(0xFF0056A3).withOpacity(0.1),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image.asset(
-                      'assets/images/dahabiya.png',
-                      fit: BoxFit.contain,
-                    ),
-                  ),
+                  child: const Icon(Icons.credit_card, color: Color(0xFF0056A3)),
                 ),
                 title: Text(
-                  'Carte Dahabiya',
+                  l10n.algerianCard,
                   style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
                 ),
-                subtitle: const Text('Carte bancaire algérienne'),
+                subtitle: const Text('Dahabiya bank card'),
                 onTap: () {
                   Navigator.pop(context);
-                  _payWithDahabiya(context, package);
+                  _payWithDahabiya(context, package, l10n);
                 },
               ),
               
@@ -3249,7 +3270,7 @@ class PricingCard extends StatelessWidget {
                     side: const BorderSide(color: Color(0xFFE2E8F0)),
                   ),
                   child: Text(
-                    'ANNULER',
+                    l10n.cancel.toUpperCase(),
                     style: GoogleFonts.poppins(
                       color: const Color(0xFF718096),
                       fontWeight: FontWeight.w600,
@@ -3264,26 +3285,26 @@ class PricingCard extends StatelessWidget {
     );
   }
 
-  void _showContactForm(BuildContext context, PricingPackage package) {
+  void _showContactForm(BuildContext context, PricingPackage package, AppLocalizations l10n) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Service Sur Mesure'),
+        title: Text(l10n.customServiceTitle),
         content: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               const Icon(Icons.contact_mail, size: 60, color: Color(0xFFE67E22)),
               const SizedBox(height: 20),
-              const Text(
-                'Contactez-nous pour un devis personnalisé',
+              Text(
+                l10n.contactForCustomQuote,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.w500),
+                style: const TextStyle(fontWeight: FontWeight.w500),
               ),
               const SizedBox(height: 20),
               TextField(
                 decoration: InputDecoration(
-                  labelText: 'Nom complet',
+                  labelText: l10n.fullName,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -3292,7 +3313,7 @@ class PricingCard extends StatelessWidget {
               const SizedBox(height: 10),
               TextField(
                 decoration: InputDecoration(
-                  labelText: 'Email',
+                  labelText: l10n.email,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -3301,7 +3322,7 @@ class PricingCard extends StatelessWidget {
               const SizedBox(height: 10),
               TextField(
                 decoration: InputDecoration(
-                  labelText: 'Téléphone',
+                  labelText: l10n.phone,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -3310,7 +3331,7 @@ class PricingCard extends StatelessWidget {
               const SizedBox(height: 10),
               TextField(
                 decoration: InputDecoration(
-                  labelText: 'Description de vos besoins',
+                  labelText: l10n.describeYourNeeds,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -3323,7 +3344,7 @@ class PricingCard extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('ANNULER'),
+            child: Text(l10n.cancel),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -3332,51 +3353,48 @@ class PricingCard extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Demande envoyée! Nous vous contacterons sous 24h.'),
+                SnackBar(
+                  content: Text(l10n.requestSentWeWillContactYou),
                   backgroundColor: Colors.green,
                 ),
               );
             },
-            child: const Text('ENVOYER LA DEMANDE', style: TextStyle(color: Colors.white)),
+            child: Text(l10n.sendRequest.toUpperCase(), style: const TextStyle(color: Colors.white)),
           ),
         ],
       ),
     );
   }
 
-  void _payWithBaridimob(BuildContext context, PricingPackage package) {
+  void _payWithBaridimob(BuildContext context, PricingPackage package, AppLocalizations l10n) {
     final monthlyAmount = package.title == 'PACK START' ? 4500 : 8500;
     final annualAmount = package.title == 'PACK START' ? 48000 : 91800;
     
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Paiement Baridimob'),
+        title: Text('Baridimob ${l10n.payment}'),
         content: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // Baridimob Image
               Container(
                 width: 80,
                 height: 80,
                 decoration: BoxDecoration(
+                  color: const Color(0xFF00A859).withOpacity(0.1),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Image.asset(
-                  'assets/images/baridimob.png',
-                  fit: BoxFit.contain,
-                ),
+                child: const Icon(Icons.phone_android, color: Color(0xFF00A859), size: 40),
               ),
               const SizedBox(height: 20),
               Text(
-                'Paiement mobile sécurisé',
+                l10n.secureMobilePayment,
                 style: GoogleFonts.poppins(),
               ),
               const SizedBox(height: 10),
               Text(
-                'Forfait: ${package.title}',
+                '${l10n.plan}: ${package.title}',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
               ),
@@ -3388,18 +3406,18 @@ class PricingCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Column(
-                  children: const [
+                  children: [
                     Text(
-                      'Instructions de paiement:',
-                      style: TextStyle(fontWeight: FontWeight.w600),
+                      l10n.paymentInstructions,
+                      style: const TextStyle(fontWeight: FontWeight.w600),
                     ),
-                    SizedBox(height: 10),
-                    Text('1. Composez *111# sur votre mobile'),
-                    Text('2. Sélectionnez "Paiement de facture"'),
-                    Text('3. Entrez le code: BARIDI12345'),
-                    SizedBox(height: 10),
-                    Text('Prix Mensuel: DA 4,500'),
-                    Text('Prix Annuel: DA 48,000'),
+                    const SizedBox(height: 10),
+                    Text('1. ${l10n.dialCodeOnYourMobile}'),
+                    Text('2. ${l10n.selectBillPayment}'),
+                    Text('3. ${l10n.enterCodeBARIDI12345}'),
+                    const SizedBox(height: 10),
+                    Text('${l10n.monthlyPrice}: DA $monthlyAmount'),
+                    Text('${l10n.annualPrice}: DA $annualAmount'),
                   ],
                 ),
               ),
@@ -3409,7 +3427,7 @@ class PricingCard extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('ANNULER'),
+            child: Text(l10n.cancel),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -3417,9 +3435,9 @@ class PricingCard extends StatelessWidget {
             ),
             onPressed: () {
               Navigator.pop(context);
-              _showPaymentSuccess(context, package, 'Baridimob', monthlyAmount.toDouble(), 'Mensuel');
+              _showPaymentSuccess(context, package, 'Baridimob', monthlyAmount.toDouble(), l10n.monthly, l10n);
             },
-            child: const Text('PAYER MENSUEL', style: TextStyle(color: Colors.white)),
+            child: Text(l10n.payMonthly.toUpperCase(), style: const TextStyle(color: Colors.white)),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -3427,63 +3445,54 @@ class PricingCard extends StatelessWidget {
             ),
             onPressed: () {
               Navigator.pop(context);
-              _showPaymentSuccess(context, package, 'Baridimob', annualAmount.toDouble(), 'Annuel');
+              _showPaymentSuccess(context, package, 'Baridimob', annualAmount.toDouble(), l10n.annually, l10n);
             },
-            child: const Text('PAYER ANNUEL', style: TextStyle(color: Colors.white)),
+            child: Text(l10n.payAnnually.toUpperCase(), style: const TextStyle(color: Colors.white)),
           ),
         ],
       ),
     );
   }
 
-  void _payWithDahabiya(BuildContext context, PricingPackage package) {
+  void _payWithDahabiya(BuildContext context, PricingPackage package, AppLocalizations l10n) {
     final monthlyAmount = package.title == 'PACK START' ? 4500 : 8500;
     final annualAmount = package.title == 'PACK START' ? 48000 : 91800;
     
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Paiement Carte Dahabiya'),
+        title: Text('${l10n.algerianCard} ${l10n.payment}'),
         content: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // Dahabiya Image
               Container(
                 width: 80,
                 height: 80,
                 decoration: BoxDecoration(
+                  color: const Color(0xFF0056A3).withOpacity(0.1),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Image.asset(
-                  'assets/images/dahabiya.png',
-                  fit: BoxFit.contain,
-                ),
+                child: const Icon(Icons.credit_card, color: Color(0xFF0056A3), size: 40),
               ),
               const SizedBox(height: 20),
               Text(
-                'Paiement sécurisé par carte bancaire',
+                l10n.secureCardPayment,
                 style: GoogleFonts.poppins(),
               ),
               const SizedBox(height: 10),
               Text(
-                'Forfait: ${package.title}',
+                '${l10n.plan}: ${package.title}',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
               ),
               const SizedBox(height: 10),
               Text(
-                'Prix Mensuel: DA ${monthlyAmount.toStringAsFixed(0).replaceAllMapped(
-                  RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
-                  (Match m) => '${m[1]},'
-                )}',
+                '${l10n.monthlyPrice}: DA $monthlyAmount',
                 style: const TextStyle(fontWeight: FontWeight.w600),
               ),
               Text(
-                'Prix Annuel: DA ${annualAmount.toStringAsFixed(0).replaceAllMapped(
-                  RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
-                  (Match m) => '${m[1]},'
-                )}',
+                '${l10n.annualPrice}: DA $annualAmount',
                 style: const TextStyle(fontWeight: FontWeight.w600, color: Color(0xFF00A859)),
               ),
               const SizedBox(height: 20),
@@ -3497,7 +3506,7 @@ class PricingCard extends StatelessWidget {
                   children: [
                     TextField(
                       decoration: InputDecoration(
-                        labelText: 'Numéro de carte',
+                        labelText: l10n.cardNumber,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
@@ -3510,7 +3519,7 @@ class PricingCard extends StatelessWidget {
                         Expanded(
                           child: TextField(
                             decoration: InputDecoration(
-                              labelText: 'Date d\'expiration',
+                              labelText: l10n.expirationDate,
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8),
                               ),
@@ -3522,7 +3531,7 @@ class PricingCard extends StatelessWidget {
                         Expanded(
                           child: TextField(
                             decoration: InputDecoration(
-                              labelText: 'CVV',
+                              labelText: l10n.cvv,
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8),
                               ),
@@ -3542,7 +3551,7 @@ class PricingCard extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('ANNULER'),
+            child: Text(l10n.cancel),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -3550,9 +3559,9 @@ class PricingCard extends StatelessWidget {
             ),
             onPressed: () {
               Navigator.pop(context);
-              _showPaymentSuccess(context, package, 'Carte Dahabiya', monthlyAmount.toDouble(), 'Mensuel');
+              _showPaymentSuccess(context, package, l10n.algerianCard, monthlyAmount.toDouble(), l10n.monthly, l10n);
             },
-            child: const Text('PAYER MENSUEL', style: TextStyle(color: Colors.white)),
+            child: Text(l10n.payMonthly.toUpperCase(), style: const TextStyle(color: Colors.white)),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -3560,16 +3569,16 @@ class PricingCard extends StatelessWidget {
             ),
             onPressed: () {
               Navigator.pop(context);
-              _showPaymentSuccess(context, package, 'Carte Dahabiya', annualAmount.toDouble(), 'Annuel');
+              _showPaymentSuccess(context, package, l10n.algerianCard, annualAmount.toDouble(), l10n.annually, l10n);
             },
-            child: const Text('PAYER ANNUEL', style: TextStyle(color: Colors.white)),
+            child: Text(l10n.payAnnually.toUpperCase(), style: const TextStyle(color: Colors.white)),
           ),
         ],
       ),
     );
   }
 
-  void _showPaymentSuccess(BuildContext context, PricingPackage package, String method, double amount, String period) {
+  void _showPaymentSuccess(BuildContext context, PricingPackage package, String method, double amount, String period, AppLocalizations l10n) {
     final invoiceNumber = 'INV-${DateTime.now().millisecondsSinceEpoch}';
     final transactionId = 'TXN-${DateTime.now().millisecondsSinceEpoch}';
     
@@ -3587,7 +3596,7 @@ class PricingCard extends StatelessWidget {
               const Icon(Icons.check_circle, color: Colors.green, size: 80),
               const SizedBox(height: 20),
               Text(
-                'Paiement Réussi!',
+                l10n.paymentSuccessful,
                 style: GoogleFonts.poppins(
                   fontWeight: FontWeight.w700,
                   fontSize: 22,
@@ -3595,7 +3604,7 @@ class PricingCard extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Text(
-                'Votre abonnement a été activé avec succès',
+                l10n.subscriptionActivated,
                 textAlign: TextAlign.center,
                 style: GoogleFonts.poppins(
                   color: const Color(0xFF4A5568),
@@ -3611,19 +3620,19 @@ class PricingCard extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    _buildSuccessDetail('Forfait', package.title),
+                    _buildSuccessDetail(l10n.plan, package.title, l10n),
                     const SizedBox(height: 8),
-                    _buildSuccessDetail('Mode de paiement', method),
+                    _buildSuccessDetail(l10n.paymentMethod, method, l10n),
                     const SizedBox(height: 8),
-                    _buildSuccessDetail('Période', period),
+                    _buildSuccessDetail(l10n.period, period, l10n),
                     const SizedBox(height: 8),
-                    _buildSuccessDetail('Montant', 'DA ${amount.toStringAsFixed(0)}'),
+                    _buildSuccessDetail(l10n.amount, 'DA ${amount.toStringAsFixed(0)}', l10n),
                     const SizedBox(height: 8),
-                    _buildSuccessDetail('Facture N°', invoiceNumber),
+                    _buildSuccessDetail(l10n.invoiceNumber, invoiceNumber, l10n),
                     const SizedBox(height: 8),
-                    _buildSuccessDetail('Transaction ID', transactionId),
+                    _buildSuccessDetail(l10n.transactionId, transactionId, l10n),
                     const SizedBox(height: 8),
-                    _buildSuccessDetail('Date', DateFormat('dd/MM/yyyy HH:mm').format(DateTime.now())),
+                    _buildSuccessDetail(l10n.date, DateFormat('dd/MM/yyyy HH:mm').format(DateTime.now()), l10n),
                   ],
                 ),
               ),
@@ -3635,7 +3644,7 @@ class PricingCard extends StatelessWidget {
             onPressed: () {
               Navigator.popUntil(context, (route) => route.isFirst);
             },
-            child: const Text('RETOUR À L\'ACCUEIL'),
+            child: Text(l10n.returnHome.toUpperCase()),
           ),
           ElevatedButton(
             onPressed: () {
@@ -3653,22 +3662,22 @@ class PricingCard extends StatelessWidget {
               
               final updates = [
                 ServiceUpdate(
-                  title: 'Service activé',
-                  description: 'Votre forfait ${package.title} a été activé',
+                  title: l10n.serviceActivated,
+                  description: '${l10n.yourPlan} ${package.title} ${l10n.hasBeenActivated}',
                   date: DateTime.now(),
                   icon: Icons.check_circle,
                   color: const Color(0xFF00A859),
                 ),
                 ServiceUpdate(
-                  title: 'Paiement confirmé',
-                  description: 'Paiement ${method} confirmé',
+                  title: l10n.paymentConfirmed,
+                  description: '${method} ${l10n.paymentConfirmedDesc}',
                   date: DateTime.now(),
                   icon: Icons.payment,
                   color: const Color(0xFF4A90E2),
                 ),
                 ServiceUpdate(
-                  title: 'Configuration initiale',
-                  description: 'Configuration de votre tableau de bord',
+                  title: l10n.initialSetup,
+                  description: l10n.settingUpYourDashboard,
                   date: DateTime.now(),
                   icon: Icons.settings,
                   color: const Color(0xFFE67E22),
@@ -3678,22 +3687,22 @@ class PricingCard extends StatelessWidget {
               final supportTickets = [
                 SupportTicket(
                   id: 'TICKET-001',
-                  title: 'Bienvenue à bord!',
-                  description: 'Votre compte a été créé avec succès',
+                  title: l10n.welcomeAboard,
+                  description: l10n.yourAccountCreatedSuccessfully,
                   date: DateTime.now(),
-                  status: 'Fermé',
-                  priority: 'Normal',
+                  status: 'closed',
+                  priority: 'normal',
                 ),
               ];
               
               final activeService = ActiveService(
                 paymentInfo: paymentInfo,
                 startDate: DateTime.now(),
-                endDate: period == 'Annuel' 
+                endDate: period == l10n.annually 
                   ? DateTime.now().add(const Duration(days: 365))
                   : DateTime.now().add(const Duration(days: 30)),
                 features: package.serviceFeatures,
-                status: 'Active',
+                status: 'active',
                 overallProgress: 0.25,
                 updates: updates,
                 usageStats: {
@@ -3716,7 +3725,7 @@ class PricingCard extends StatelessWidget {
             style: ElevatedButton.styleFrom(
               backgroundColor: package.primaryColor,
             ),
-            child: const Text('ACCÉDER À MON TABLEAU DE BORD', style: TextStyle(color: Colors.white)),
+            child: Text(l10n.accessDashboard.toUpperCase(), style: const TextStyle(color: Colors.white)),
           ),
         ],
       ),
@@ -3724,17 +3733,16 @@ class PricingCard extends StatelessWidget {
   }
 
   PaymentMethod _getPaymentMethod(String method) {
-    switch (method) {
-      case 'Baridimob':
-        return PaymentMethod.baridimob;
-      case 'Carte Dahabiya':
-        return PaymentMethod.dahabiya;
-      default:
-        return PaymentMethod.none;
+    if (method.contains('Baridimob')) {
+      return PaymentMethod.baridimob;
+    } else if (method.contains('Dahabiya') || method.contains('algerian') || method.contains('algérienne')) {
+      return PaymentMethod.dahabiya;
+    } else {
+      return PaymentMethod.none;
     }
   }
 
-  Widget _buildSuccessDetail(String label, String value) {
+  Widget _buildSuccessDetail(String label, String value, AppLocalizations l10n) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -3846,7 +3854,7 @@ class PricingCard extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 10),
                         child: Text(
-                          '/mois',
+                          '/${l10n.monthly.toLowerCase()}',
                           style: GoogleFonts.poppins(
                             color: const Color(0xFF718096),
                             fontSize: 18,
@@ -3868,7 +3876,7 @@ class PricingCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 10),
                     child: Text(
-                      '/an',
+                      '/${l10n.annually.toLowerCase()}',
                       style: GoogleFonts.poppins(
                         color: const Color(0xFF4A90E2),
                         fontSize: 18,
@@ -3885,9 +3893,9 @@ class PricingCard extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  _buildStatPreview(Icons.speed, '${package.metrics['performance']}%', 'Performance'),
-                  _buildStatPreview(Icons.people, '${package.metrics['users']}', 'Utilisateurs'),
-                  _buildStatPreview(Icons.storage, '${package.metrics['storage']}%', 'Stockage'),
+                  _buildStatPreview(Icons.speed, '${package.metrics['performance']}%', l10n.performance, l10n),
+                  _buildStatPreview(Icons.people, '${package.metrics['users']}', l10n.users, l10n),
+                  _buildStatPreview(Icons.storage, '${package.metrics['storage']}%', l10n.storage, l10n),
                 ],
               ),
             ),
@@ -3919,7 +3927,7 @@ class PricingCard extends StatelessWidget {
                         ),
                         const SizedBox(width: 8),
                         Text(
-                          'VOIR LES DÉTAILS COMPLETS',
+                          l10n.viewFullDetails.toUpperCase(),
                           style: GoogleFonts.poppins(
                             color: package.primaryColor,
                             fontSize: 14,
@@ -3989,7 +3997,7 @@ class PricingCard extends StatelessWidget {
                   Icon(Icons.widgets, color: package.primaryColor, size: 18),
                   const SizedBox(width: 8),
                   Text(
-                    '${package.serviceFeatures.length} services inclus',
+                    '${package.serviceFeatures.length} ${l10n.includedServices}',
                     style: GoogleFonts.poppins(
                       color: package.primaryColor,
                       fontSize: 14,
@@ -4026,13 +4034,13 @@ class PricingCard extends StatelessWidget {
                   child: InkWell(
                     borderRadius: BorderRadius.circular(30),
                     onTap: () {
-                      _showPaymentOptions(context, package);
+                      _showPaymentOptions(context, package, l10n);
                     },
                     child: Center(
                       child: Text(
-                        package.title == 'SERVICE SUR MESURE' 
-                          ? 'CONTACTER POUR DEVIS'
-                          : 'ACHETER MAINTENANT',
+                        package.title == 'CUSTOM SERVICE' 
+                          ? l10n.contactForQuote.toUpperCase()
+                          : l10n.buyNow.toUpperCase(),
                         style: GoogleFonts.poppins(
                           color: Colors.white,
                           fontSize: 16,
@@ -4051,7 +4059,7 @@ class PricingCard extends StatelessWidget {
     );
   }
 
-  Widget _buildStatPreview(IconData icon, String value, String label) {
+  Widget _buildStatPreview(IconData icon, String value, String label, AppLocalizations l10n) {
     return Column(
       children: [
         Container(
