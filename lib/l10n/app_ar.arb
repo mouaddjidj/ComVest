@@ -679,6 +679,11 @@
   "addressCopied": "تم نسخ العنوان",
   "noContactInfoAvailable": "لا توجد معلومات اتصال متاحة",
   "close": "إغلاق",
-  "description": "الوصف"
+  "description": "الوصف",
+   "ecommerce": "التجارة الإلكترونية",
+  "fintech": "التكنولوجيا المالية",
+  "mobility": "المواصلات",
+  "technology": "التكنولوجيا",
+  "services": "الخدمات"
 
 }

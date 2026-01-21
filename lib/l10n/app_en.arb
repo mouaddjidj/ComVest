@@ -718,5 +718,11 @@
   "addressCopied": "Address copied",
   "noContactInfoAvailable": "No contact information available",
   "close": "Close",
-  "description": "Description"
+  "description": "Description",
+   "ecommerce": "E-commerce",
+  "fintech": "Fintech",
+  "mobility": "Mobility",
+  "technology": "Technology",
+  "services": "Services"
+
 }

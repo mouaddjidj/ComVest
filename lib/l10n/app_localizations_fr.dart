@@ -1991,4 +1991,16 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get description => 'Description';
+
+  @override
+  String get ecommerce => 'E-commerce';
+
+  @override
+  String get fintech => 'Fintech';
+
+  @override
+  String get mobility => 'Mobilité';
+
+  @override
+  String get technology => 'Technologie';
 }

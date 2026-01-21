@@ -3939,6 +3939,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Description'**
   String get description;
+
+  /// No description provided for @ecommerce.
+  ///
+  /// In en, this message translates to:
+  /// **'E-commerce'**
+  String get ecommerce;
+
+  /// No description provided for @fintech.
+  ///
+  /// In en, this message translates to:
+  /// **'Fintech'**
+  String get fintech;
+
+  /// No description provided for @mobility.
+  ///
+  /// In en, this message translates to:
+  /// **'Mobility'**
+  String get mobility;
+
+  /// No description provided for @technology.
+  ///
+  /// In en, this message translates to:
+  /// **'Technology'**
+  String get technology;
 }
 
 class _AppLocalizationsDelegate

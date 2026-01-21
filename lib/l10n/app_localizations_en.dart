@@ -1969,4 +1969,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get description => 'Description';
+
+  @override
+  String get ecommerce => 'E-commerce';
+
+  @override
+  String get fintech => 'Fintech';
+
+  @override
+  String get mobility => 'Mobility';
+
+  @override
+  String get technology => 'Technology';
 }

@@ -922,11 +922,11 @@ class _InvestorDashboardState extends State<InvestorDashboard> {
               ),
               const SizedBox(width: 8),
               ...[
-                'E-commerce',
-                'Fintech',
-                'Mobilité',
-                'Technologie',
-                'Services'
+                 localizations.ecommerce,
+        localizations.fintech,
+        localizations.mobility,
+        localizations.technology,
+        localizations.services,
               ].map((industry) {
                 return Padding(
                   padding: const EdgeInsets.only(right: 8),

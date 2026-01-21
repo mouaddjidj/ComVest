@@ -1965,4 +1965,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get description => 'الوصف';
+
+  @override
+  String get ecommerce => 'التجارة الإلكترونية';
+
+  @override
+  String get fintech => 'التكنولوجيا المالية';
+
+  @override
+  String get mobility => 'المواصلات';
+
+  @override
+  String get technology => 'التكنولوجيا';
 }

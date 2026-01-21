@@ -641,5 +641,10 @@
   "addressCopied": "Adresse copiée",
   "noContactInfoAvailable": "Aucune information de contact disponible",
   "close": "Fermer",
-  "description": "Description"
+  "description": "Description",
+  "ecommerce": "E-commerce",
+  "fintech": "Fintech",
+  "mobility": "Mobilité",
+  "technology": "Technologie",
+  "services": "Services"
 }
