@@ -196,4 +196,224 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get continueAsGuest => 'Continuer en tant qu\'invité';
+
+  @override
+  String get createAccountTitle => 'Créer un compte';
+
+  @override
+  String get stepInfo => 'Information';
+
+  @override
+  String get stepContact => 'Contact';
+
+  @override
+  String get stepProfile => 'Profil';
+
+  @override
+  String get continueText => 'Continuer';
+
+  @override
+  String get createProfile => 'Créer le profil';
+
+  @override
+  String get companyNameQuestion => 'Quel est le nom de votre entreprise ?';
+
+  @override
+  String get companyNameDescription =>
+      'Sélectionnez une entité, ou créez-en une nouvelle, pour l\'inscrire sur Sortlist';
+
+  @override
+  String get usernameLabel => 'Nom d\'utilisateur';
+
+  @override
+  String get usernameDescription =>
+      'Ce nom d\'utilisateur sera utilisé pour vous connecter à votre compte';
+
+  @override
+  String get businessSector => 'Secteur d\'activité';
+
+  @override
+  String get activityLabel => 'Activité';
+
+  @override
+  String get passwordLabel => 'Mot de passe';
+
+  @override
+  String get confirmPasswordLabel => 'Confirmer le mot de passe';
+
+  @override
+  String get locationLabel => 'Localisation';
+
+  @override
+  String get locationDescription =>
+      'Sélectionnez la localisation où votre entreprise est basée';
+
+  @override
+  String get addressLabel => 'Adresse de l\'entreprise';
+
+  @override
+  String get addressDescription =>
+      'Cette adresse sera utilisée pour vous offrir une visibilité en ligne dans votre région et vous suggérer des opportunités à proximité. Vous pourrez l\'éditer et en ajouter d\'autres par la suite.';
+
+  @override
+  String get phoneLabel => 'Numéro de téléphone de l\'entreprise';
+
+  @override
+  String get phoneDescription =>
+      'Ce numéro de téléphone ne sera pas visible publiquement sur votre profil. Nous ne le communiquerons qu\'aux personnes qui recherchent un prestataire comme le vôtre.';
+
+  @override
+  String get websiteLabel => 'Site web de l\'entreprise (optionnel)';
+
+  @override
+  String get websiteDescription =>
+      'Ajoutez le lien vers votre site web si vous en avez un';
+
+  @override
+  String get emailLabel => 'Adresse électronique de l\'entreprise';
+
+  @override
+  String get emailDescription =>
+      'Cette adresse sera utilisée pour les communications liées aux projets entrants. Vous pourrez vous connecter avec votre email ou votre nom d\'utilisateur.';
+
+  @override
+  String get welcomeProfileSetup => 'Bienvenue ! Configurons votre profil';
+
+  @override
+  String get profileSetupDescription =>
+      'Définissez les informations qui apparaîtront sur votre profil Sortlist.';
+
+  @override
+  String get companyDescriptionLabel => 'Description de l\'entreprise';
+
+  @override
+  String get teamSizeLabel => 'Taille de votre équipe';
+
+  @override
+  String get languagesLabel => 'Langues parlées (facultatif)';
+
+  @override
+  String get enterCompanyName => 'Veuillez entrer le nom de votre entreprise';
+
+  @override
+  String get chooseUsername => 'Veuillez choisir un nom d\'utilisateur';
+
+  @override
+  String get usernameMinLength =>
+      'Le nom d\'utilisateur doit contenir au moins 3 caractères';
+
+  @override
+  String get selectBusinessSector =>
+      'Veuillez sélectionner un secteur d\'activité';
+
+  @override
+  String get enterActivity => 'Veuillez entrer votre activité';
+
+  @override
+  String get enterPassword => 'Veuillez entrer un mot de passe';
+
+  @override
+  String get passwordMinLength =>
+      'Le mot de passe doit contenir au moins 6 caractères';
+
+  @override
+  String get passwordsNotMatch => 'Les mots de passe ne correspondent pas';
+
+  @override
+  String get selectLocation => 'Veuillez sélectionner une localisation';
+
+  @override
+  String get enterAddress => 'Veuillez entrer votre adresse';
+
+  @override
+  String get enterPhone => 'Veuillez entrer votre numéro de téléphone';
+
+  @override
+  String get enterValidEmail => 'Veuillez entrer une adresse email valide';
+
+  @override
+  String get enterCompanyDescription =>
+      'Veuillez entrer une description de votre entreprise';
+
+  @override
+  String get selectTeamSize =>
+      'Veuillez sélectionner la taille de votre équipe';
+
+  @override
+  String get checkPassword => 'Veuillez vérifier votre mot de passe';
+
+  @override
+  String get teamSize1_10 => '1-10 employés';
+
+  @override
+  String get teamSize11_50 => '11-50 employés';
+
+  @override
+  String get teamSize51_200 => '51-200 employés';
+
+  @override
+  String get teamSize201_500 => '201-500 employés';
+
+  @override
+  String get teamSize500plus => 'Plus de 500 employés';
+
+  @override
+  String get spanish => 'Espagnol';
+
+  @override
+  String get german => 'Allemand';
+
+  @override
+  String get italian => 'Italien';
+
+  @override
+  String get companyNameHint => 'Entrez le nom de votre entreprise...';
+
+  @override
+  String get usernameHint => 'Choisissez un nom d\'utilisateur...';
+
+  @override
+  String get selectBusinessSectorHint =>
+      'Sélectionnez votre secteur d\'activité';
+
+  @override
+  String get selectActivityHint => 'Sélectionnez votre activité';
+
+  @override
+  String get confirmPasswordHint => 'Confirmez votre mot de passe...';
+
+  @override
+  String get contactInformation => 'Informations de contact';
+
+  @override
+  String get selectLocationHint => 'Sélectionnez votre localisation';
+
+  @override
+  String get addressHint => 'Entrez votre adresse...';
+
+  @override
+  String get phoneHint => 'es (+213) Algérie | 7712 34 56 78';
+
+  @override
+  String get websiteHint =>
+      'Entrez votre site web... (ex: https://votre-entreprise.com)';
+
+  @override
+  String get emailHint2 => 'Entrez l\'email de contact de l\'entreprise...';
+
+  @override
+  String get companyDescriptionHint =>
+      'Décrivez votre entreprise (max 500 caractères)...';
+
+  @override
+  String get selectTeamSizeHint => 'Sélectionner';
+
+  @override
+  String get selectLanguagesHint => 'Sélectionner';
+
+  @override
+  String get characters => 'caractères';
+
+  @override
+  String get enterEmail => 'Veuillez entrer votre adresse email';
 }

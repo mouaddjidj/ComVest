@@ -69,7 +69,7 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                     children: [
                       const SizedBox(height: 30),
                       Text(
-                        'Connexion Entreprise', // Simple title
+                        localizations.companyLogin, // Using localization
                         style: const TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
@@ -78,10 +78,9 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                       ),
                       const SizedBox(height: 10),
                       
-
                       // Email OR Username Field
                       Text(
-                        'Email or Username',
+                        localizations.emailOrUsername, // Using localization
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
@@ -98,7 +97,7 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                         child: TextField(
                           controller: _emailOrUsernameController,
                           decoration: InputDecoration(
-                            hintText: 'Enter your email or username',
+                            hintText: localizations.emailOrUsernameHint, // Using localization
                             border: InputBorder.none,
                             contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                             prefixIcon: Icon(
@@ -200,19 +199,26 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                         ),
                       ),
 
-                      const SizedBox(height: 40),
+                      const SizedBox(height: 20),
 
-                      // BIG VISIBLE "CRÉER UN COMPTE" BUTTON - PURPLE TEXT VERSION
-                      Container(
-                        width: double.infinity,
-                        height: 65,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: const Color.fromARGB(255, 117, 51, 232),
-                            width: 2,
+                      // Don't have account question
+                      Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          localizations.noAccountQuestion,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            color: Colors.black87,
                           ),
-                          borderRadius: BorderRadius.circular(12),
                         ),
+                      ),
+
+                      const SizedBox(height: 20),
+
+                      // Create Account Button
+                      SizedBox(
+                        width: double.infinity,
+                        height: 60,
                         child: ElevatedButton(
                           onPressed: () {
                             Navigator.push(
@@ -223,17 +229,21 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
                             );
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.white, // White background
-                            foregroundColor: const Color.fromARGB(255, 117, 51, 232), // Purple text
+                            backgroundColor: Colors.white,
+                            foregroundColor: const Color.fromARGB(255, 117, 51, 232),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10), // Slightly smaller radius for inner button
+                              borderRadius: BorderRadius.circular(12),
+                              side: const BorderSide(
+                                color: Color.fromARGB(255, 117, 51, 232),
+                                width: 2,
+                              ),
                             ),
                             elevation: 0,
                           ),
-                          child: const Text(
-                            'Créer un nouveau compte',
-                            style: TextStyle(
-                              fontSize: 20,
+                          child: Text(
+                            localizations.createAccount,
+                            style: const TextStyle(
+                              fontSize: 18,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -251,28 +261,31 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
   }
 
   void _login() {
-    final emailOrUsername = _emailOrUsernameController.text.trim();
-    final password = _passwordController.text.trim();
+  final emailOrUsername = _emailOrUsernameController.text.trim();
+  final password = _passwordController.text.trim();
+  
+  // Get localizations from the current context
+  final localizations = AppLocalizations.of(context)!;
 
-    if (emailOrUsername.isEmpty || password.isEmpty) {
-      _showErrorDialog('Please fill in all fields');
-      return;
-    }
-
-    // Check for specific credentials: user1234 and 1234
-    if (emailOrUsername == 'user1234' && password == '1234') {
-      // Navigate to your PricingScreen from adsServices.dart
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (_) => const PricingScreen(), // This is the class name in your adsServices.dart file
-        ),
-      );
-    } else {
-      // Show error for invalid credentials
-      _showErrorDialog('Invalid username or password');
-    }
+  if (emailOrUsername.isEmpty || password.isEmpty) {
+    _showErrorDialog(localizations.fillAllFields);
+    return;
   }
+
+  // Check for specific credentials: user1234 and 1234
+  if (emailOrUsername == 'user1234' && password == '1234') {
+    // Navigate to your PricingScreen from adsServices.dart
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const PricingScreen(), // This is the class name in your adsServices.dart file
+      ),
+    );
+  } else {
+    // Show error for invalid credentials
+    _showErrorDialog(localizations.invalidEmailOrUsername);
+  }
+}
 
   void _showForgotPasswordDialog(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
@@ -287,12 +300,12 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Enter your email or username to reset password'),
+              Text(localizations.enterEmailResetPassword),
               const SizedBox(height: 15),
               TextField(
                 onChanged: (value) => emailOrUsername = value,
                 decoration: InputDecoration(
-                  hintText: 'Email or Username',
+                  hintText: localizations.emailOrUsername,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -311,9 +324,9 @@ class _TypeSelectionLoginScreenState extends State<TypeSelectionLoginScreen> {
               onPressed: () {
                 if (emailOrUsername.isNotEmpty) {
                   Navigator.of(context).pop();
-                  _showSuccessDialog('Reset instructions sent');
+                  _showSuccessDialog(localizations.instructionsSent);
                 } else {
-                  _showErrorDialog('Please enter your email or username');
+                  _showErrorDialog(localizations.enterValidEmailForReset);
                 }
               },
               child: Text(localizations.send),

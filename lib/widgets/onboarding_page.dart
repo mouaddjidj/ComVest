@@ -70,7 +70,7 @@ class OnboardingPage extends StatelessWidget {
             padding: const EdgeInsets.only(left: 4), // Minimal space
             child: Image.asset(
               'assets/images/logo1.png',
-              height: 28, // Match text height
+              height: 50, // Match text height
             ),
           ),
         ],

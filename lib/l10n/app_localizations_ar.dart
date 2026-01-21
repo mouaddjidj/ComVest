@@ -138,7 +138,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get arabic => 'العربية';
 
   @override
-  String get discoverComvest => 'اكتشف ';
+  String get discoverComvest => 'اكتشف';
 
   @override
   String get discoverDescription =>
@@ -192,4 +192,218 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get continueAsGuest => 'المتابعة كضيف';
+
+  @override
+  String get createAccountTitle => 'إنشاء حساب';
+
+  @override
+  String get stepInfo => 'المعلومات';
+
+  @override
+  String get stepContact => 'الاتصال';
+
+  @override
+  String get stepProfile => 'الملف الشخصي';
+
+  @override
+  String get continueText => 'متابعة';
+
+  @override
+  String get createProfile => 'إنشاء الملف الشخصي';
+
+  @override
+  String get companyNameQuestion => 'ما هو اسم شركتك؟';
+
+  @override
+  String get companyNameDescription =>
+      'حدد كيانًا، أو أنشئ كيانًا جديدًا، لتسجيله على Sortlist';
+
+  @override
+  String get usernameLabel => 'اسم المستخدم';
+
+  @override
+  String get usernameDescription =>
+      'سيتم استخدام اسم المستخدم هذا لتسجيل الدخول إلى حسابك';
+
+  @override
+  String get businessSector => 'قطاع الأعمال';
+
+  @override
+  String get activityLabel => 'النشاط';
+
+  @override
+  String get passwordLabel => 'كلمة المرور';
+
+  @override
+  String get confirmPasswordLabel => 'تأكيد كلمة المرور';
+
+  @override
+  String get locationLabel => 'الموقع';
+
+  @override
+  String get locationDescription => 'حدد الموقع الذي توجد فيه شركتك';
+
+  @override
+  String get addressLabel => 'عنوان الشركة';
+
+  @override
+  String get addressDescription =>
+      'سيتم استخدام هذا العنوان لمنحك ظهورًا عبر الإنترنت في منطقتك واقتراح الفرص القريبة. يمكنك تعديله وإضافة عناوين أخرى لاحقًا.';
+
+  @override
+  String get phoneLabel => 'رقم هاتف الشركة';
+
+  @override
+  String get phoneDescription =>
+      'لن يكون رقم الهاتف هذا مرئيًا للعموم في ملفك الشخصي. سنشاركه فقط مع الأشخاص الذين يبحثون عن مزود مثل شركتك.';
+
+  @override
+  String get websiteLabel => 'موقع الويب للشركة (اختياري)';
+
+  @override
+  String get websiteDescription =>
+      'أضف رابطًا لموقع الويب الخاص بك إذا كان لديك واحد';
+
+  @override
+  String get emailLabel => 'عنوان البريد الإلكتروني للشركة';
+
+  @override
+  String get emailDescription =>
+      'سيتم استخدام هذا البريد الإلكتروني للاتصالات المتعلقة بالمشاريع الواردة. يمكنك تسجيل الدخول باستخدام بريدك الإلكتروني أو اسم المستخدم الخاص بك.';
+
+  @override
+  String get welcomeProfileSetup => 'مرحبًا! دعنا ننشئ ملفك الشخصي';
+
+  @override
+  String get profileSetupDescription =>
+      'حدد المعلومات التي ستظهر في ملفك الشخصي على Sortlist.';
+
+  @override
+  String get companyDescriptionLabel => 'وصف الشركة';
+
+  @override
+  String get teamSizeLabel => 'حجم الفريق';
+
+  @override
+  String get languagesLabel => 'اللغات المحكية (اختياري)';
+
+  @override
+  String get enterCompanyName => 'الرجاء إدخال اسم شركتك';
+
+  @override
+  String get chooseUsername => 'الرجاء اختيار اسم مستخدم';
+
+  @override
+  String get usernameMinLength =>
+      'يجب أن يحتوي اسم المستخدم على 3 أحرف على الأقل';
+
+  @override
+  String get selectBusinessSector => 'الرجاء تحديد قطاع الأعمال';
+
+  @override
+  String get enterActivity => 'الرجاء إدخال نشاطك';
+
+  @override
+  String get enterPassword => 'الرجاء إدخال كلمة مرور';
+
+  @override
+  String get passwordMinLength =>
+      'يجب أن تحتوي كلمة المرور على 6 أحرف على الأقل';
+
+  @override
+  String get passwordsNotMatch => 'كلمات المرور لا تتطابق';
+
+  @override
+  String get selectLocation => 'الرجاء تحديد موقع';
+
+  @override
+  String get enterAddress => 'الرجاء إدخال عنوانك';
+
+  @override
+  String get enterPhone => 'الرجاء إدخال رقم هاتفك';
+
+  @override
+  String get enterValidEmail => 'الرجاء إدخال عنوان بريد إلكتروني صالح';
+
+  @override
+  String get enterCompanyDescription => 'الرجاء إدخال وصف الشركة';
+
+  @override
+  String get selectTeamSize => 'الرجاء تحديد حجم فريقك';
+
+  @override
+  String get checkPassword => 'الرجاء التحقق من كلمة المرور الخاصة بك';
+
+  @override
+  String get teamSize1_10 => '1-10 موظفين';
+
+  @override
+  String get teamSize11_50 => '11-50 موظفًا';
+
+  @override
+  String get teamSize51_200 => '51-200 موظفًا';
+
+  @override
+  String get teamSize201_500 => '201-500 موظفًا';
+
+  @override
+  String get teamSize500plus => 'أكثر من 500 موظف';
+
+  @override
+  String get spanish => 'الإسبانية';
+
+  @override
+  String get german => 'الألمانية';
+
+  @override
+  String get italian => 'الإيطالية';
+
+  @override
+  String get companyNameHint => 'أدخل اسم شركتك...';
+
+  @override
+  String get usernameHint => 'اختر اسم مستخدم...';
+
+  @override
+  String get selectBusinessSectorHint => 'حدد قطاع أعمالك';
+
+  @override
+  String get selectActivityHint => 'حدد نشاطك';
+
+  @override
+  String get confirmPasswordHint => 'تأكيد كلمة المرور الخاصة بك...';
+
+  @override
+  String get contactInformation => 'معلومات الاتصال';
+
+  @override
+  String get selectLocationHint => 'حدد موقعك';
+
+  @override
+  String get addressHint => 'أدخل عنوانك...';
+
+  @override
+  String get phoneHint => 'مثال (+213) الجزائر | 7712 34 56 78';
+
+  @override
+  String get websiteHint =>
+      'أدخل موقع الويب الخاص بك... (مثال: https://شركتك.com)';
+
+  @override
+  String get emailHint2 => 'أدخل البريد الإلكتروني للشركة...';
+
+  @override
+  String get companyDescriptionHint => 'صف شركتك (بحد أقصى 500 حرف)...';
+
+  @override
+  String get selectTeamSizeHint => 'اختر';
+
+  @override
+  String get selectLanguagesHint => 'اختر';
+
+  @override
+  String get characters => 'حروف';
+
+  @override
+  String get enterEmail => 'الرجاء إدخال عنوان بريدك الإلكتروني';
 }

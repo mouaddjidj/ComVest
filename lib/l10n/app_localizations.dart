@@ -142,13 +142,13 @@ abstract class AppLocalizations {
   /// **'Enter your professional email'**
   String get emailHint;
 
-  /// Label for email or username input field
+  /// No description provided for @emailOrUsername.
   ///
   /// In en, this message translates to:
   /// **'Email or Username'**
   String get emailOrUsername;
 
-  /// Hint text for email or username input field
+  /// No description provided for @emailOrUsernameHint.
   ///
   /// In en, this message translates to:
   /// **'Enter email or username'**
@@ -184,67 +184,67 @@ abstract class AppLocalizations {
   /// **'Investor Login'**
   String get investorLogin;
 
-  /// Subtitle shown on the investor login screen
+  /// No description provided for @connectInvestorAccount.
   ///
   /// In en, this message translates to:
   /// **'Connect to your investor account'**
   String get connectInvestorAccount;
 
-  /// Subtitle shown on the company login screen
+  /// No description provided for @connectCompanyAccount.
   ///
   /// In en, this message translates to:
   /// **'Connect to your company account'**
   String get connectCompanyAccount;
 
-  /// Question shown before the create account link
+  /// No description provided for @noAccountQuestion.
   ///
   /// In en, this message translates to:
   /// **'Don\'t have an account?'**
   String get noAccountQuestion;
 
-  /// Submit/login button text
+  /// No description provided for @submit.
   ///
   /// In en, this message translates to:
   /// **'Login'**
   String get submit;
 
-  /// Instruction text in forgot password dialog
+  /// No description provided for @enterEmailResetPassword.
   ///
   /// In en, this message translates to:
   /// **'Enter your email to reset your password.'**
   String get enterEmailResetPassword;
 
-  /// Instruction text for valid email in forgot password
+  /// No description provided for @enterValidEmailForReset.
   ///
   /// In en, this message translates to:
   /// **'Please enter a valid email address for password reset'**
   String get enterValidEmailForReset;
 
-  /// Send button text
+  /// No description provided for @send.
   ///
   /// In en, this message translates to:
   /// **'Send'**
   String get send;
 
-  /// Success message after sending password reset instructions
+  /// No description provided for @instructionsSent.
   ///
   /// In en, this message translates to:
   /// **'Instructions have been sent to your email'**
   String get instructionsSent;
 
-  /// Success dialog title
+  /// No description provided for @success.
   ///
   /// In en, this message translates to:
   /// **'Success'**
   String get success;
 
-  /// Error dialog title
+  /// No description provided for @error.
   ///
   /// In en, this message translates to:
   /// **'Error'**
   String get error;
 
-  /// OK button text in dialogs
+  /// No description provided for @ok.
   ///
   /// In en, this message translates to:
   /// **'OK'**
@@ -415,7 +415,7 @@ abstract class AppLocalizations {
   /// No description provided for @companyCardSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Si vous cherchez une Startup ou PME, inscrivez-vous ici'**
+  /// **'If you are looking for a Startup or SME, register here'**
   String get companyCardSubtitle;
 
   /// No description provided for @investorCardTitle.
@@ -430,29 +430,437 @@ abstract class AppLocalizations {
   /// **'If you want to invest in a project, click here'**
   String get investorCardSubtitle;
 
-  /// Error message when form fields are empty
+  /// No description provided for @fillAllFields.
   ///
   /// In en, this message translates to:
   /// **'Please fill in all fields'**
   String get fillAllFields;
 
-  /// Error message for invalid email or username
+  /// No description provided for @invalidEmailOrUsername.
   ///
   /// In en, this message translates to:
   /// **'Please enter a valid email or username'**
   String get invalidEmailOrUsername;
 
-  /// Title for invite/guest access card
+  /// No description provided for @invite.
   ///
   /// In en, this message translates to:
   /// **'Invite'**
   String get invite;
 
-  /// Subtitle for invite/guest access card
+  /// No description provided for @continueAsGuest.
   ///
   /// In en, this message translates to:
   /// **'Continue as guest'**
   String get continueAsGuest;
+
+  /// No description provided for @createAccountTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Account'**
+  String get createAccountTitle;
+
+  /// No description provided for @stepInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Information'**
+  String get stepInfo;
+
+  /// No description provided for @stepContact.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact'**
+  String get stepContact;
+
+  /// No description provided for @stepProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get stepProfile;
+
+  /// No description provided for @continueText.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueText;
+
+  /// No description provided for @createProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Profile'**
+  String get createProfile;
+
+  /// No description provided for @companyNameQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'What is your company name?'**
+  String get companyNameQuestion;
+
+  /// No description provided for @companyNameDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Select an entity, or create a new one, to register it on Sortlist'**
+  String get companyNameDescription;
+
+  /// No description provided for @usernameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Username'**
+  String get usernameLabel;
+
+  /// No description provided for @usernameDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'This username will be used to log in to your account'**
+  String get usernameDescription;
+
+  /// No description provided for @businessSector.
+  ///
+  /// In en, this message translates to:
+  /// **'Business Sector'**
+  String get businessSector;
+
+  /// No description provided for @activityLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Activity'**
+  String get activityLabel;
+
+  /// No description provided for @passwordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get passwordLabel;
+
+  /// No description provided for @confirmPasswordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirmPasswordLabel;
+
+  /// No description provided for @locationLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Location'**
+  String get locationLabel;
+
+  /// No description provided for @locationDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Select the location where your company is based'**
+  String get locationDescription;
+
+  /// No description provided for @addressLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Company Address'**
+  String get addressLabel;
+
+  /// No description provided for @addressDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'This address will be used to give you online visibility in your area and suggest nearby opportunities. You can edit it and add others later.'**
+  String get addressDescription;
+
+  /// No description provided for @phoneLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Company Phone Number'**
+  String get phoneLabel;
+
+  /// No description provided for @phoneDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'This phone number will not be publicly visible on your profile. We will only share it with people looking for a provider like yours.'**
+  String get phoneDescription;
+
+  /// No description provided for @websiteLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Company Website (optional)'**
+  String get websiteLabel;
+
+  /// No description provided for @websiteDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Add a link to your website if you have one'**
+  String get websiteDescription;
+
+  /// No description provided for @emailLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Company Email Address'**
+  String get emailLabel;
+
+  /// No description provided for @emailDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'This email will be used for incoming project communications. You can log in with your email or username.'**
+  String get emailDescription;
+
+  /// No description provided for @welcomeProfileSetup.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome! Let\'s set up your profile'**
+  String get welcomeProfileSetup;
+
+  /// No description provided for @profileSetupDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Define the information that will appear on your Sortlist profile.'**
+  String get profileSetupDescription;
+
+  /// No description provided for @companyDescriptionLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Company Description'**
+  String get companyDescriptionLabel;
+
+  /// No description provided for @teamSizeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Team Size'**
+  String get teamSizeLabel;
+
+  /// No description provided for @languagesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Spoken Languages (optional)'**
+  String get languagesLabel;
+
+  /// No description provided for @enterCompanyName.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your company name'**
+  String get enterCompanyName;
+
+  /// No description provided for @chooseUsername.
+  ///
+  /// In en, this message translates to:
+  /// **'Please choose a username'**
+  String get chooseUsername;
+
+  /// No description provided for @usernameMinLength.
+  ///
+  /// In en, this message translates to:
+  /// **'Username must be at least 3 characters'**
+  String get usernameMinLength;
+
+  /// No description provided for @selectBusinessSector.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a business sector'**
+  String get selectBusinessSector;
+
+  /// No description provided for @enterActivity.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your activity'**
+  String get enterActivity;
+
+  /// No description provided for @enterPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a password'**
+  String get enterPassword;
+
+  /// No description provided for @passwordMinLength.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 6 characters'**
+  String get passwordMinLength;
+
+  /// No description provided for @passwordsNotMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match'**
+  String get passwordsNotMatch;
+
+  /// No description provided for @selectLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a location'**
+  String get selectLocation;
+
+  /// No description provided for @enterAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your address'**
+  String get enterAddress;
+
+  /// No description provided for @enterPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your phone number'**
+  String get enterPhone;
+
+  /// No description provided for @enterValidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid email address'**
+  String get enterValidEmail;
+
+  /// No description provided for @enterCompanyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a company description'**
+  String get enterCompanyDescription;
+
+  /// No description provided for @selectTeamSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select your team size'**
+  String get selectTeamSize;
+
+  /// No description provided for @checkPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Please check your password'**
+  String get checkPassword;
+
+  /// No description provided for @teamSize1_10.
+  ///
+  /// In en, this message translates to:
+  /// **'1-10 employees'**
+  String get teamSize1_10;
+
+  /// No description provided for @teamSize11_50.
+  ///
+  /// In en, this message translates to:
+  /// **'11-50 employees'**
+  String get teamSize11_50;
+
+  /// No description provided for @teamSize51_200.
+  ///
+  /// In en, this message translates to:
+  /// **'51-200 employees'**
+  String get teamSize51_200;
+
+  /// No description provided for @teamSize201_500.
+  ///
+  /// In en, this message translates to:
+  /// **'201-500 employees'**
+  String get teamSize201_500;
+
+  /// No description provided for @teamSize500plus.
+  ///
+  /// In en, this message translates to:
+  /// **'More than 500 employees'**
+  String get teamSize500plus;
+
+  /// No description provided for @spanish.
+  ///
+  /// In en, this message translates to:
+  /// **'Spanish'**
+  String get spanish;
+
+  /// No description provided for @german.
+  ///
+  /// In en, this message translates to:
+  /// **'German'**
+  String get german;
+
+  /// No description provided for @italian.
+  ///
+  /// In en, this message translates to:
+  /// **'Italian'**
+  String get italian;
+
+  /// No description provided for @companyNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your company name...'**
+  String get companyNameHint;
+
+  /// No description provided for @usernameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a username...'**
+  String get usernameHint;
+
+  /// No description provided for @selectBusinessSectorHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Select your business sector'**
+  String get selectBusinessSectorHint;
+
+  /// No description provided for @selectActivityHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Select your activity'**
+  String get selectActivityHint;
+
+  /// No description provided for @confirmPasswordHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm your password...'**
+  String get confirmPasswordHint;
+
+  /// No description provided for @contactInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Information'**
+  String get contactInformation;
+
+  /// No description provided for @selectLocationHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Select your location'**
+  String get selectLocationHint;
+
+  /// No description provided for @addressHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your address...'**
+  String get addressHint;
+
+  /// No description provided for @phoneHint.
+  ///
+  /// In en, this message translates to:
+  /// **'eg (+213) Algeria | 7712 34 56 78'**
+  String get phoneHint;
+
+  /// No description provided for @websiteHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your website... (ex: https://your-company.com)'**
+  String get websiteHint;
+
+  /// No description provided for @emailHint2.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter company contact email...'**
+  String get emailHint2;
+
+  /// No description provided for @companyDescriptionHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Describe your company (max 500 characters)...'**
+  String get companyDescriptionHint;
+
+  /// No description provided for @selectTeamSizeHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Select'**
+  String get selectTeamSizeHint;
+
+  /// No description provided for @selectLanguagesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Select'**
+  String get selectLanguagesHint;
+
+  /// No description provided for @characters.
+  ///
+  /// In en, this message translates to:
+  /// **'characters'**
+  String get characters;
+
+  /// No description provided for @enterEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your email address'**
+  String get enterEmail;
 }
 
 class _AppLocalizationsDelegate

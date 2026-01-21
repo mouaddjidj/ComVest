@@ -8,62 +8,23 @@
   "email": "Email",
   "emailHint": "Enter your professional email",
   "emailOrUsername": "Email or Username",
-  "@emailOrUsername": {
-    "description": "Label for email or username input field"
-  },
   "emailOrUsernameHint": "Enter email or username",
-  "@emailOrUsernameHint": {
-    "description": "Hint text for email or username input field"
-  },
   "password": "Password",
   "passwordHint": "Enter your password",
   "forgotPassword": "Forgot Password?",
   "companyLogin": "Company Login",
   "investorLogin": "Investor Login",
   "connectInvestorAccount": "Connect to your investor account",
-  "@connectInvestorAccount": {
-    "description": "Subtitle shown on the investor login screen"
-  },
   "connectCompanyAccount": "Connect to your company account",
-  "@connectCompanyAccount": {
-    "description": "Subtitle shown on the company login screen"
-  },
   "noAccountQuestion": "Don't have an account?",
-  "@noAccountQuestion": {
-    "description": "Question shown before the create account link"
-  },
   "submit": "Login",
-  "@submit": {
-    "description": "Submit/login button text"
-  },
   "enterEmailResetPassword": "Enter your email to reset your password.",
-  "@enterEmailResetPassword": {
-    "description": "Instruction text in forgot password dialog"
-  },
   "enterValidEmailForReset": "Please enter a valid email address for password reset",
-  "@enterValidEmailForReset": {
-    "description": "Instruction text for valid email in forgot password"
-  },
   "send": "Send",
-  "@send": {
-    "description": "Send button text"
-  },
   "instructionsSent": "Instructions have been sent to your email",
-  "@instructionsSent": {
-    "description": "Success message after sending password reset instructions"
-  },
   "success": "Success",
-  "@success": {
-    "description": "Success dialog title"
-  },
   "error": "Error",
-  "@error": {
-    "description": "Error dialog title"
-  },
   "ok": "OK",
-  "@ok": {
-    "description": "OK button text in dialogs"
-  },
   "createAccount": "Create Account",
   "companyName": "Company Name",
   "firstName": "First Name",
@@ -91,23 +52,79 @@
   "welcomeToApp": "Welcome to the ComVest App",
   "allServicesHere": "All your service needs are here",
   "companyCardTitle": "Startup/SME",
-  "companyCardSubtitle": "Si vous cherchez une Startup ou PME, inscrivez-vous ici",
+  "companyCardSubtitle": "If you are looking for a Startup or SME, register here",
   "investorCardTitle": "Investor",
   "investorCardSubtitle": "If you want to invest in a project, click here",
   "fillAllFields": "Please fill in all fields",
-  "@fillAllFields": {
-    "description": "Error message when form fields are empty"
-  },
   "invalidEmailOrUsername": "Please enter a valid email or username",
-  "@invalidEmailOrUsername": {
-    "description": "Error message for invalid email or username"
-  },
   "invite": "Invite",
-  "@invite": {
-    "description": "Title for invite/guest access card"
-  },
   "continueAsGuest": "Continue as guest",
-  "@continueAsGuest": {
-    "description": "Subtitle for invite/guest access card"
-  }
+  "createAccountTitle": "Create Account",
+  "stepInfo": "Information",
+  "stepContact": "Contact",
+  "stepProfile": "Profile",
+  "continueText": "Continue",
+  "createProfile": "Create Profile",
+  "companyNameQuestion": "What is your company name?",
+  "companyNameDescription": "Select an entity, or create a new one, to register it on Sortlist",
+  "usernameLabel": "Username",
+  "usernameDescription": "This username will be used to log in to your account",
+  "businessSector": "Business Sector",
+  "activityLabel": "Activity",
+  "passwordLabel": "Password",
+  "confirmPasswordLabel": "Confirm Password",
+  "locationLabel": "Location",
+  "locationDescription": "Select the location where your company is based",
+  "addressLabel": "Company Address",
+  "addressDescription": "This address will be used to give you online visibility in your area and suggest nearby opportunities. You can edit it and add others later.",
+  "phoneLabel": "Company Phone Number",
+  "phoneDescription": "This phone number will not be publicly visible on your profile. We will only share it with people looking for a provider like yours.",
+  "websiteLabel": "Company Website (optional)",
+  "websiteDescription": "Add a link to your website if you have one",
+  "emailLabel": "Company Email Address",
+  "emailDescription": "This email will be used for incoming project communications. You can log in with your email or username.",
+  "welcomeProfileSetup": "Welcome! Let's set up your profile",
+  "profileSetupDescription": "Define the information that will appear on your Sortlist profile.",
+  "companyDescriptionLabel": "Company Description",
+  "teamSizeLabel": "Team Size",
+  "languagesLabel": "Spoken Languages (optional)",
+  "enterCompanyName": "Please enter your company name",
+  "chooseUsername": "Please choose a username",
+  "usernameMinLength": "Username must be at least 3 characters",
+  "selectBusinessSector": "Please select a business sector",
+  "enterActivity": "Please enter your activity",
+  "enterPassword": "Please enter a password",
+  "passwordMinLength": "Password must be at least 6 characters",
+  "passwordsNotMatch": "Passwords do not match",
+  "selectLocation": "Please select a location",
+  "enterAddress": "Please enter your address",
+  "enterPhone": "Please enter your phone number",
+  "enterValidEmail": "Please enter a valid email address",
+  "enterCompanyDescription": "Please enter a company description",
+  "selectTeamSize": "Please select your team size",
+  "checkPassword": "Please check your password",
+  "teamSize1_10": "1-10 employees",
+  "teamSize11_50": "11-50 employees",
+  "teamSize51_200": "51-200 employees",
+  "teamSize201_500": "201-500 employees",
+  "teamSize500plus": "More than 500 employees",
+  "spanish": "Spanish",
+  "german": "German",
+  "italian": "Italian",
+  "companyNameHint": "Enter your company name...",
+  "usernameHint": "Choose a username...",
+  "selectBusinessSectorHint": "Select your business sector",
+  "selectActivityHint": "Select your activity",
+  "confirmPasswordHint": "Confirm your password...",
+  "contactInformation": "Contact Information",
+  "selectLocationHint": "Select your location",
+  "addressHint": "Enter your address...",
+  "phoneHint": "eg (+213) Algeria | 7712 34 56 78",
+  "websiteHint": "Enter your website... (ex: https://your-company.com)",
+  "emailHint2": "Enter company contact email...",
+  "companyDescriptionHint": "Describe your company (max 500 characters)...",
+  "selectTeamSizeHint": "Select",
+  "selectLanguagesHint": "Select",
+  "characters": "characters",
+  "enterEmail": "Please enter your email address"
 }
