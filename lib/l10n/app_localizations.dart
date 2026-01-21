@@ -1459,7 +1459,7 @@ abstract class AppLocalizations {
   /// No description provided for @daysRemaining.
   ///
   /// In en, this message translates to:
-  /// **'days remaining'**
+  /// **'Days Remaining'**
   String get daysRemaining;
 
   /// No description provided for @globalProgress.
@@ -1471,13 +1471,13 @@ abstract class AppLocalizations {
   /// No description provided for @servicesCompleted.
   ///
   /// In en, this message translates to:
-  /// **'Services completed'**
+  /// **'Services Completed'**
   String get servicesCompleted;
 
   /// No description provided for @inProgress.
   ///
   /// In en, this message translates to:
-  /// **'In progress'**
+  /// **'In Progress'**
   String get inProgress;
 
   /// No description provided for @pending.
@@ -1777,19 +1777,19 @@ abstract class AppLocalizations {
   /// No description provided for @dashboardTitle.
   ///
   /// In en, this message translates to:
-  /// **'Dashboard'**
+  /// **'Service Dashboard'**
   String get dashboardTitle;
 
   /// No description provided for @startDate.
   ///
   /// In en, this message translates to:
-  /// **'Start date'**
+  /// **'Start Date'**
   String get startDate;
 
   /// No description provided for @endDate.
   ///
   /// In en, this message translates to:
-  /// **'End date'**
+  /// **'End Date'**
   String get endDate;
 
   /// No description provided for @performance.
@@ -1915,7 +1915,7 @@ abstract class AppLocalizations {
   /// No description provided for @readyToUseTemplates.
   ///
   /// In en, this message translates to:
-  /// **'Ready to Use Templates'**
+  /// **'Ready-to-use Templates'**
   String get readyToUseTemplates;
 
   /// No description provided for @community.
@@ -1957,7 +1957,7 @@ abstract class AppLocalizations {
   /// No description provided for @days.
   ///
   /// In en, this message translates to:
-  /// **'days'**
+  /// **'Days'**
   String get days;
 
   /// No description provided for @na.
@@ -2391,6 +2391,750 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'payment'**
   String get payment;
+
+  /// No description provided for @packStartMonthlyPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'4,500 DA'**
+  String get packStartMonthlyPrice;
+
+  /// No description provided for @packStartAnnualPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'48,000 DA'**
+  String get packStartAnnualPrice;
+
+  /// No description provided for @packPremiumMonthlyPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'8,500 DA'**
+  String get packPremiumMonthlyPrice;
+
+  /// No description provided for @packPremiumAnnualPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'91,800 DA'**
+  String get packPremiumAnnualPrice;
+
+  /// No description provided for @customServiceMonthlyPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'On Quote'**
+  String get customServiceMonthlyPrice;
+
+  /// No description provided for @customServiceAnnualPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'On Quote'**
+  String get customServiceAnnualPrice;
+
+  /// No description provided for @feature1.
+  ///
+  /// In en, this message translates to:
+  /// **'Creation of 3 social accounts'**
+  String get feature1;
+
+  /// No description provided for @feature2.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom visual identity'**
+  String get feature2;
+
+  /// No description provided for @feature3.
+  ///
+  /// In en, this message translates to:
+  /// **'5 initial publications'**
+  String get feature3;
+
+  /// No description provided for @feature4.
+  ///
+  /// In en, this message translates to:
+  /// **'Simple showcase website'**
+  String get feature4;
+
+  /// No description provided for @feature5.
+  ///
+  /// In en, this message translates to:
+  /// **'Dashboard access'**
+  String get feature5;
+
+  /// No description provided for @feature6.
+  ///
+  /// In en, this message translates to:
+  /// **'24/7 email support'**
+  String get feature6;
+
+  /// No description provided for @info1.
+  ///
+  /// In en, this message translates to:
+  /// **'30-day money back guarantee'**
+  String get info1;
+
+  /// No description provided for @info2.
+  ///
+  /// In en, this message translates to:
+  /// **'Email assistance within 24 hours'**
+  String get info2;
+
+  /// No description provided for @info3.
+  ///
+  /// In en, this message translates to:
+  /// **'Free installation assistance'**
+  String get info3;
+
+  /// No description provided for @info4.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel anytime'**
+  String get info4;
+
+  /// No description provided for @info5.
+  ///
+  /// In en, this message translates to:
+  /// **'Regular updates included'**
+  String get info5;
+
+  /// No description provided for @info6.
+  ///
+  /// In en, this message translates to:
+  /// **'Community access'**
+  String get info6;
+
+  /// No description provided for @packStartDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Ideal for young companies wanting to develop their online presence. This pack includes everything needed to start in digital marketing.'**
+  String get packStartDetails;
+
+  /// No description provided for @serviceFeature1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Creation'**
+  String get serviceFeature1Title;
+
+  /// No description provided for @serviceFeature1Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Social media setup'**
+  String get serviceFeature1Desc;
+
+  /// No description provided for @serviceFeature2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Visual Identity'**
+  String get serviceFeature2Title;
+
+  /// No description provided for @serviceFeature2Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Logo and visual identity design'**
+  String get serviceFeature2Desc;
+
+  /// No description provided for @serviceFeature3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Initial Content'**
+  String get serviceFeature3Title;
+
+  /// No description provided for @serviceFeature3Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Creation of first publications'**
+  String get serviceFeature3Desc;
+
+  /// No description provided for @serviceFeature4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Showcase Website'**
+  String get serviceFeature4Title;
+
+  /// No description provided for @serviceFeature4Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Simple web development'**
+  String get serviceFeature4Desc;
+
+  /// No description provided for @start.
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get start;
+
+  /// No description provided for @configure.
+  ///
+  /// In en, this message translates to:
+  /// **'Configure'**
+  String get configure;
+
+  /// No description provided for @view.
+  ///
+  /// In en, this message translates to:
+  /// **'View'**
+  String get view;
+
+  /// No description provided for @edit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get edit;
+
+  /// No description provided for @optimize.
+  ///
+  /// In en, this message translates to:
+  /// **'Optimize'**
+  String get optimize;
+
+  /// No description provided for @viewReport.
+  ///
+  /// In en, this message translates to:
+  /// **'View Report'**
+  String get viewReport;
+
+  /// No description provided for @viewAnalysis.
+  ///
+  /// In en, this message translates to:
+  /// **'View Analysis'**
+  String get viewAnalysis;
+
+  /// No description provided for @step1.
+  ///
+  /// In en, this message translates to:
+  /// **'Analysis'**
+  String get step1;
+
+  /// No description provided for @step2.
+  ///
+  /// In en, this message translates to:
+  /// **'Configuration'**
+  String get step2;
+
+  /// No description provided for @step3.
+  ///
+  /// In en, this message translates to:
+  /// **'Validation'**
+  String get step3;
+
+  /// No description provided for @step4.
+  ///
+  /// In en, this message translates to:
+  /// **'Finalization'**
+  String get step4;
+
+  /// No description provided for @wireframe.
+  ///
+  /// In en, this message translates to:
+  /// **'Wireframe'**
+  String get wireframe;
+
+  /// No description provided for @development.
+  ///
+  /// In en, this message translates to:
+  /// **'Development'**
+  String get development;
+
+  /// No description provided for @test.
+  ///
+  /// In en, this message translates to:
+  /// **'Test'**
+  String get test;
+
+  /// No description provided for @launch.
+  ///
+  /// In en, this message translates to:
+  /// **'Launch'**
+  String get launch;
+
+  /// No description provided for @strategy.
+  ///
+  /// In en, this message translates to:
+  /// **'Strategy'**
+  String get strategy;
+
+  /// No description provided for @creation.
+  ///
+  /// In en, this message translates to:
+  /// **'Creation'**
+  String get creation;
+
+  /// No description provided for @approval.
+  ///
+  /// In en, this message translates to:
+  /// **'Approval'**
+  String get approval;
+
+  /// No description provided for @publication.
+  ///
+  /// In en, this message translates to:
+  /// **'Publication'**
+  String get publication;
+
+  /// No description provided for @audit.
+  ///
+  /// In en, this message translates to:
+  /// **'Audit'**
+  String get audit;
+
+  /// No description provided for @execution.
+  ///
+  /// In en, this message translates to:
+  /// **'Execution'**
+  String get execution;
+
+  /// No description provided for @optimization.
+  ///
+  /// In en, this message translates to:
+  /// **'Optimization'**
+  String get optimization;
+
+  /// No description provided for @planning.
+  ///
+  /// In en, this message translates to:
+  /// **'Planning'**
+  String get planning;
+
+  /// No description provided for @validation.
+  ///
+  /// In en, this message translates to:
+  /// **'Validation'**
+  String get validation;
+
+  /// No description provided for @briefing.
+  ///
+  /// In en, this message translates to:
+  /// **'Briefing'**
+  String get briefing;
+
+  /// No description provided for @revision.
+  ///
+  /// In en, this message translates to:
+  /// **'Revision'**
+  String get revision;
+
+  /// No description provided for @setup.
+  ///
+  /// In en, this message translates to:
+  /// **'Setup'**
+  String get setup;
+
+  /// No description provided for @collection.
+  ///
+  /// In en, this message translates to:
+  /// **'Collection'**
+  String get collection;
+
+  /// No description provided for @analysis.
+  ///
+  /// In en, this message translates to:
+  /// **'Analysis'**
+  String get analysis;
+
+  /// No description provided for @reporting.
+  ///
+  /// In en, this message translates to:
+  /// **'Reporting'**
+  String get reporting;
+
+  /// No description provided for @script.
+  ///
+  /// In en, this message translates to:
+  /// **'Script'**
+  String get script;
+
+  /// No description provided for @shooting.
+  ///
+  /// In en, this message translates to:
+  /// **'Shooting'**
+  String get shooting;
+
+  /// No description provided for @editing.
+  ///
+  /// In en, this message translates to:
+  /// **'Editing'**
+  String get editing;
+
+  /// No description provided for @diagnosis.
+  ///
+  /// In en, this message translates to:
+  /// **'Diagnosis'**
+  String get diagnosis;
+
+  /// No description provided for @recommendations.
+  ///
+  /// In en, this message translates to:
+  /// **'Recommendations'**
+  String get recommendations;
+
+  /// No description provided for @actionPlan.
+  ///
+  /// In en, this message translates to:
+  /// **'Action plan'**
+  String get actionPlan;
+
+  /// No description provided for @technicalAnalysis.
+  ///
+  /// In en, this message translates to:
+  /// **'Technical analysis'**
+  String get technicalAnalysis;
+
+  /// No description provided for @contentAudit.
+  ///
+  /// In en, this message translates to:
+  /// **'Content audit'**
+  String get contentAudit;
+
+  /// No description provided for @competitiveAnalysis.
+  ///
+  /// In en, this message translates to:
+  /// **'Competitive analysis'**
+  String get competitiveAnalysis;
+
+  /// No description provided for @premiumFeature1.
+  ///
+  /// In en, this message translates to:
+  /// **'Management of 2 social networks'**
+  String get premiumFeature1;
+
+  /// No description provided for @premiumFeature2.
+  ///
+  /// In en, this message translates to:
+  /// **'Editorial calendar'**
+  String get premiumFeature2;
+
+  /// No description provided for @premiumFeature3.
+  ///
+  /// In en, this message translates to:
+  /// **'12 publications/month'**
+  String get premiumFeature3;
+
+  /// No description provided for @premiumFeature4.
+  ///
+  /// In en, this message translates to:
+  /// **'Light reporting'**
+  String get premiumFeature4;
+
+  /// No description provided for @premiumFeature5.
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced analytics'**
+  String get premiumFeature5;
+
+  /// No description provided for @premiumFeature6.
+  ///
+  /// In en, this message translates to:
+  /// **'Priority support'**
+  String get premiumFeature6;
+
+  /// No description provided for @premiumInfo1.
+  ///
+  /// In en, this message translates to:
+  /// **'Priority assistance within 12 hours'**
+  String get premiumInfo1;
+
+  /// No description provided for @premiumInfo2.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly strategic review'**
+  String get premiumInfo2;
+
+  /// No description provided for @premiumInfo3.
+  ///
+  /// In en, this message translates to:
+  /// **'Editorial calendar planning'**
+  String get premiumInfo3;
+
+  /// No description provided for @premiumInfo4.
+  ///
+  /// In en, this message translates to:
+  /// **'Performance analytics dashboard'**
+  String get premiumInfo4;
+
+  /// No description provided for @premiumInfo5.
+  ///
+  /// In en, this message translates to:
+  /// **'Access to exclusive webinars'**
+  String get premiumInfo5;
+
+  /// No description provided for @premiumInfo6.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly mentoring'**
+  String get premiumInfo6;
+
+  /// No description provided for @packPremiumDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Ideal for young businesses and micro-enterprises in full growth. This monthly subscription includes ongoing social media management and content planning.'**
+  String get packPremiumDetails;
+
+  /// No description provided for @premiumService1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Social Media Management'**
+  String get premiumService1Title;
+
+  /// No description provided for @premiumService1Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily account management'**
+  String get premiumService1Desc;
+
+  /// No description provided for @premiumService2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Editorial Calendar'**
+  String get premiumService2Title;
+
+  /// No description provided for @premiumService2Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly content planning'**
+  String get premiumService2Desc;
+
+  /// No description provided for @premiumService3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Content Creation'**
+  String get premiumService3Title;
+
+  /// No description provided for @premiumService3Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'12 publications per month'**
+  String get premiumService3Desc;
+
+  /// No description provided for @premiumService4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Analytics'**
+  String get premiumService4Title;
+
+  /// No description provided for @premiumService4Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Performance reports'**
+  String get premiumService4Desc;
+
+  /// No description provided for @customFeature1.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete SEO audit'**
+  String get customFeature1;
+
+  /// No description provided for @customFeature2.
+  ///
+  /// In en, this message translates to:
+  /// **'Advertising campaigns (Ads)'**
+  String get customFeature2;
+
+  /// No description provided for @customFeature3.
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced video content creation'**
+  String get customFeature3;
+
+  /// No description provided for @customFeature4.
+  ///
+  /// In en, this message translates to:
+  /// **'Business analysis'**
+  String get customFeature4;
+
+  /// No description provided for @customFeature5.
+  ///
+  /// In en, this message translates to:
+  /// **'Strategic consultation'**
+  String get customFeature5;
+
+  /// No description provided for @customFeature6.
+  ///
+  /// In en, this message translates to:
+  /// **'24/7 VIP support'**
+  String get customFeature6;
+
+  /// No description provided for @customInfo1.
+  ///
+  /// In en, this message translates to:
+  /// **'Dedicated account manager'**
+  String get customInfo1;
+
+  /// No description provided for @customInfo2.
+  ///
+  /// In en, this message translates to:
+  /// **'24/7 phone support'**
+  String get customInfo2;
+
+  /// No description provided for @customInfo3.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom reports'**
+  String get customInfo3;
+
+  /// No description provided for @customInfo4.
+  ///
+  /// In en, this message translates to:
+  /// **'Strategic consultation sessions'**
+  String get customInfo4;
+
+  /// No description provided for @customInfo5.
+  ///
+  /// In en, this message translates to:
+  /// **'Unlimited resource access'**
+  String get customInfo5;
+
+  /// No description provided for @customInfo6.
+  ///
+  /// In en, this message translates to:
+  /// **'Personalized training'**
+  String get customInfo6;
+
+  /// No description provided for @customServiceDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium à la carte services for established businesses. Choose from advanced marketing services tailored to your specific needs. Contact us for a personalized quote.'**
+  String get customServiceDetails;
+
+  /// No description provided for @customService1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'SEO Audit'**
+  String get customService1Title;
+
+  /// No description provided for @customService1Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete SEO analysis'**
+  String get customService1Desc;
+
+  /// No description provided for @customService2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Advertising Campaigns'**
+  String get customService2Title;
+
+  /// No description provided for @customService2Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Digital ad management'**
+  String get customService2Desc;
+
+  /// No description provided for @customService3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Video Marketing'**
+  String get customService3Title;
+
+  /// No description provided for @customService3Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Video content creation'**
+  String get customService3Desc;
+
+  /// No description provided for @customService4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Strategic Analysis'**
+  String get customService4Title;
+
+  /// No description provided for @customService4Desc.
+  ///
+  /// In en, this message translates to:
+  /// **'Business consultation'**
+  String get customService4Desc;
+
+  /// No description provided for @packStartFeatures.
+  ///
+  /// In en, this message translates to:
+  /// **'Creation of 3 social accounts, Custom visual identity, 5 initial publications, Simple showcase website, Dashboard access, 24/7 email support'**
+  String get packStartFeatures;
+
+  /// No description provided for @packStartAdditionalInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'30-day money back guarantee • Email assistance within 24 hours • Free installation assistance • Cancel anytime • Regular updates included • Community access'**
+  String get packStartAdditionalInfo;
+
+  /// No description provided for @accountCreation.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Creation'**
+  String get accountCreation;
+
+  /// No description provided for @accountCreationDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Social media setup'**
+  String get accountCreationDesc;
+
+  /// No description provided for @accountCreationAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get accountCreationAction;
+
+  /// No description provided for @branding.
+  ///
+  /// In en, this message translates to:
+  /// **'Branding'**
+  String get branding;
+
+  /// No description provided for @brandingDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Logo and visual identity design'**
+  String get brandingDesc;
+
+  /// No description provided for @brandingAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Start'**
+  String get brandingAction;
+
+  /// No description provided for @initialContent.
+  ///
+  /// In en, this message translates to:
+  /// **'Initial Content'**
+  String get initialContent;
+
+  /// No description provided for @initialContentDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Creation of first publications'**
+  String get initialContentDesc;
+
+  /// No description provided for @initialContentAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Schedule'**
+  String get initialContentAction;
+
+  /// No description provided for @showcaseWebsite.
+  ///
+  /// In en, this message translates to:
+  /// **'Showcase Website'**
+  String get showcaseWebsite;
+
+  /// No description provided for @showcaseWebsiteDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Simple web development'**
+  String get showcaseWebsiteDesc;
+
+  /// No description provided for @showcaseWebsiteAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Configure'**
+  String get showcaseWebsiteAction;
+
+  /// No description provided for @design.
+  ///
+  /// In en, this message translates to:
+  /// **'Design'**
+  String get design;
+
+  /// No description provided for @finalization.
+  ///
+  /// In en, this message translates to:
+  /// **'Finalization'**
+  String get finalization;
 }
 
 class _AppLocalizationsDelegate

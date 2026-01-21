@@ -704,16 +704,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get overview => 'نظرة عامة';
 
   @override
-  String get activeService => 'خدمة نشطة';
+  String get activeService => 'الخدمة النشطة';
 
   @override
-  String get daysRemaining => 'أيام متبقية';
+  String get daysRemaining => 'الأيام المتبقية';
 
   @override
-  String get globalProgress => 'التقدم العام';
+  String get globalProgress => 'التقدم الإجمالي';
 
   @override
-  String get servicesCompleted => 'خدمات مكتملة';
+  String get servicesCompleted => 'الخدمات المكتملة';
 
   @override
   String get inProgress => 'قيد التنفيذ';
@@ -866,7 +866,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get gotIt => 'فهمت';
 
   @override
-  String get dashboardTitle => 'لوحة التحكم';
+  String get dashboardTitle => 'لوحة تحكم الخدمة';
 
   @override
   String get startDate => 'تاريخ البدء';
@@ -917,22 +917,22 @@ class AppLocalizationsAr extends AppLocalizations {
   String get userGuide => 'دليل المستخدم';
 
   @override
-  String get completeDocumentation => 'توثيق كامل';
+  String get completeDocumentation => 'الوثائق الكاملة';
 
   @override
-  String get videoTutorials => 'دروس فيديو';
+  String get videoTutorials => 'دروس الفيديو';
 
   @override
-  String get videoTraining => 'تدريب فيديو';
+  String get videoTraining => 'تدريب الفيديو';
 
   @override
   String get faq => 'الأسئلة الشائعة';
 
   @override
-  String get frequentQuestions => 'أسئلة متكررة';
+  String get frequentQuestions => 'الأسئلة المتكررة';
 
   @override
-  String get templates => 'قوالب';
+  String get templates => 'القوالب';
 
   @override
   String get readyToUseTemplates => 'قوالب جاهزة للاستخدام';
@@ -1173,4 +1173,381 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get payment => 'الدفع';
+
+  @override
+  String get packStartMonthlyPrice => 'دج 4,500';
+
+  @override
+  String get packStartAnnualPrice => 'دج 48,000';
+
+  @override
+  String get packPremiumMonthlyPrice => 'دج 8,500';
+
+  @override
+  String get packPremiumAnnualPrice => 'دج 91,800';
+
+  @override
+  String get customServiceMonthlyPrice => 'حسب العرض';
+
+  @override
+  String get customServiceAnnualPrice => 'حسب العرض';
+
+  @override
+  String get feature1 => 'إنشاء 3 حسابات اجتماعية';
+
+  @override
+  String get feature2 => 'هوية بصرية مخصصة';
+
+  @override
+  String get feature3 => '5 منشورات أولية';
+
+  @override
+  String get feature4 => 'موقع عرض بسيط';
+
+  @override
+  String get feature5 => 'الوصول إلى لوحة التحكم';
+
+  @override
+  String get feature6 => 'دعم بريد إلكتروني 24/7';
+
+  @override
+  String get info1 => 'ضمان استرداد الأموال لمدة 30 يومًا';
+
+  @override
+  String get info2 => 'مساعدة عبر البريد الإلكتروني خلال 24 ساعة';
+
+  @override
+  String get info3 => 'مساعدة مجانية في الإعداد';
+
+  @override
+  String get info4 => 'إلغاء في أي وقت';
+
+  @override
+  String get info5 => 'التحديثات المنتظمة مشمولة';
+
+  @override
+  String get info6 => 'الوصول إلى المجتمع';
+
+  @override
+  String get packStartDetails =>
+      'مثالي للشركات الناشئة التي ترغب في تطوير وجودها عبر الإنترنت. تتضمن هذه الحزمة كل ما تحتاجه للبدء في التسويق الرقمي.';
+
+  @override
+  String get serviceFeature1Title => 'إنشاء حساب';
+
+  @override
+  String get serviceFeature1Desc => 'إعداد وسائل التواصل الاجتماعي';
+
+  @override
+  String get serviceFeature2Title => 'الهوية البصرية';
+
+  @override
+  String get serviceFeature2Desc => 'تصميم الشعار والهوية البصرية';
+
+  @override
+  String get serviceFeature3Title => 'المحتوى الأولي';
+
+  @override
+  String get serviceFeature3Desc => 'إنشاء المنشورات الأولى';
+
+  @override
+  String get serviceFeature4Title => 'موقع العرض';
+
+  @override
+  String get serviceFeature4Desc => 'تطوير ويب بسيط';
+
+  @override
+  String get start => 'بدء';
+
+  @override
+  String get configure => 'تهيئة';
+
+  @override
+  String get view => 'عرض';
+
+  @override
+  String get edit => 'تحرير';
+
+  @override
+  String get optimize => 'تحسين';
+
+  @override
+  String get viewReport => 'عرض التقرير';
+
+  @override
+  String get viewAnalysis => 'عرض التحليل';
+
+  @override
+  String get step1 => 'تحليل';
+
+  @override
+  String get step2 => 'إعداد';
+
+  @override
+  String get step3 => 'تحقق';
+
+  @override
+  String get step4 => 'إنهاء';
+
+  @override
+  String get wireframe => 'النموذج الهيكلي';
+
+  @override
+  String get development => 'التطوير';
+
+  @override
+  String get test => 'اختبار';
+
+  @override
+  String get launch => 'إطلاق';
+
+  @override
+  String get strategy => 'إستراتيجية';
+
+  @override
+  String get creation => 'إبداع';
+
+  @override
+  String get approval => 'موافقة';
+
+  @override
+  String get publication => 'نشر';
+
+  @override
+  String get audit => 'تدقيق';
+
+  @override
+  String get execution => 'تنفيذ';
+
+  @override
+  String get optimization => 'تحسين';
+
+  @override
+  String get planning => 'تخطيط';
+
+  @override
+  String get validation => 'التحقق';
+
+  @override
+  String get briefing => 'الإحاطة';
+
+  @override
+  String get revision => 'المراجعة';
+
+  @override
+  String get setup => 'الإعداد';
+
+  @override
+  String get collection => 'جمع';
+
+  @override
+  String get analysis => 'التحليل';
+
+  @override
+  String get reporting => 'تقرير';
+
+  @override
+  String get script => 'سيناريو';
+
+  @override
+  String get shooting => 'تصوير';
+
+  @override
+  String get editing => 'مونتاج';
+
+  @override
+  String get diagnosis => 'تشخيص';
+
+  @override
+  String get recommendations => 'توصيات';
+
+  @override
+  String get actionPlan => 'خطة عمل';
+
+  @override
+  String get technicalAnalysis => 'تحليل تقني';
+
+  @override
+  String get contentAudit => 'تدقيق المحتوى';
+
+  @override
+  String get competitiveAnalysis => 'تحليل المنافسة';
+
+  @override
+  String get premiumFeature1 => 'إدارة شبكتين اجتماعيتين';
+
+  @override
+  String get premiumFeature2 => 'تقويم تحريري';
+
+  @override
+  String get premiumFeature3 => '12 منشورًا/شهر';
+
+  @override
+  String get premiumFeature4 => 'تقارير خفيفة';
+
+  @override
+  String get premiumFeature5 => 'تحليلات متقدمة';
+
+  @override
+  String get premiumFeature6 => 'دعم ذو أولوية';
+
+  @override
+  String get premiumInfo1 => 'مساعدة ذات أولوية خلال 12 ساعة';
+
+  @override
+  String get premiumInfo2 => 'مراجعة إستراتيجية شهرية';
+
+  @override
+  String get premiumInfo3 => 'تخطيط التقويم التحريري';
+
+  @override
+  String get premiumInfo4 => 'لوحة تحكم تحليل الأداء';
+
+  @override
+  String get premiumInfo5 => 'الوصول إلى ندوات عبر الإنترنت حصرية';
+
+  @override
+  String get premiumInfo6 => 'إرشاد شهري';
+
+  @override
+  String get packPremiumDetails =>
+      'مثالي للشركات الناشئة والشركات الصغيرة والمتوسطة في نمو كامل. يتضمن هذا الاشتراك الشهري إدارة مستمرة لوسائل التواصل الاجتماعي وتخطيط المحتوى.';
+
+  @override
+  String get premiumService1Title => 'إدارة وسائل التواصل الاجتماعي';
+
+  @override
+  String get premiumService1Desc => 'إدارة يومية للحسابات';
+
+  @override
+  String get premiumService2Title => 'التقويم التحريري';
+
+  @override
+  String get premiumService2Desc => 'تخطيط محتوى شهري';
+
+  @override
+  String get premiumService3Title => 'إنشاء محتوى';
+
+  @override
+  String get premiumService3Desc => '12 منشورًا شهريًا';
+
+  @override
+  String get premiumService4Title => 'تحليلات';
+
+  @override
+  String get premiumService4Desc => 'تقارير الأداء';
+
+  @override
+  String get customFeature1 => 'تدقيق SEO كامل';
+
+  @override
+  String get customFeature2 => 'حملات إعلانية (إعلانات)';
+
+  @override
+  String get customFeature3 => 'إنشاء محتوى فيديو متقدم';
+
+  @override
+  String get customFeature4 => 'تحليل الأعمال';
+
+  @override
+  String get customFeature5 => 'استشارة إستراتيجية';
+
+  @override
+  String get customFeature6 => 'دعم VIP 24/7';
+
+  @override
+  String get customInfo1 => 'مدير حساب مخصص';
+
+  @override
+  String get customInfo2 => 'دعم هاتفي 24/7';
+
+  @override
+  String get customInfo3 => 'تقارير مخصصة';
+
+  @override
+  String get customInfo4 => 'جلسات استشارة إستراتيجية';
+
+  @override
+  String get customInfo5 => 'وصول غير محدود للموارد';
+
+  @override
+  String get customInfo6 => 'تدريبات مخصصة';
+
+  @override
+  String get customServiceDetails =>
+      'خدمات متميزة حسب الطلب للشركات الراسخة. اختر من بين خدمات التسويق المتقدمة المصممة خصيصًا لاحتياجاتك المحددة. اتصل بنا للحصول على عرض أسعار مخصص.';
+
+  @override
+  String get customService1Title => 'تدقيق SEO';
+
+  @override
+  String get customService1Desc => 'تحليل SEO كامل';
+
+  @override
+  String get customService2Title => 'حملات إعلانية';
+
+  @override
+  String get customService2Desc => 'إدارة الإعلانات الرقمية';
+
+  @override
+  String get customService3Title => 'تسويق الفيديو';
+
+  @override
+  String get customService3Desc => 'إنشاء محتوى فيديو';
+
+  @override
+  String get customService4Title => 'تحليل إستراتيجي';
+
+  @override
+  String get customService4Desc => 'استشارة أعمال';
+
+  @override
+  String get packStartFeatures =>
+      'Création de 3 comptes sociaux, Identité visuelle personnalisée, 5 publications initiales, Site vitrine simple, Accès au tableau de bord, Support email 24/7';
+
+  @override
+  String get packStartAdditionalInfo =>
+      'ضمان استرداد الأموال لمدة 30 يومًا • مساعدة عبر البريد الإلكتروني خلال 24 ساعة • مساعدة مجانية في الإعداد • إلغاء في أي وقت • تشمل التحديثات المنتظمة • الوصول إلى المجتمع';
+
+  @override
+  String get accountCreation => 'إنشاء الحساب';
+
+  @override
+  String get accountCreationDesc => 'إعداد وسائل التواصل الاجتماعي';
+
+  @override
+  String get accountCreationAction => 'ابدأ';
+
+  @override
+  String get branding => 'العلامة التجارية';
+
+  @override
+  String get brandingDesc => 'تصميم الشعار والهوية البصرية';
+
+  @override
+  String get brandingAction => 'ابدأ';
+
+  @override
+  String get initialContent => 'المحتوى الأولي';
+
+  @override
+  String get initialContentDesc => 'إنشاء المنشورات الأولى';
+
+  @override
+  String get initialContentAction => 'جدولة';
+
+  @override
+  String get showcaseWebsite => 'موقع العرض';
+
+  @override
+  String get showcaseWebsiteDesc => 'تطوير ويب بسيط';
+
+  @override
+  String get showcaseWebsiteAction => 'تهيئة';
+
+  @override
+  String get design => 'التصميم';
+
+  @override
+  String get finalization => 'الإنهاء';
 }

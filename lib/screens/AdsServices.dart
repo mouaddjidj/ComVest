@@ -2734,246 +2734,9 @@ class _PricingScreenState extends State<PricingScreen> {
   late PageController _pageController;
   int _currentPage = 0;
 
-  late List<PricingPackage> packages;
-
   @override
   void initState() {
     super.initState();
-    
-    packages = [
-      PricingPackage(
-        title: 'PACK START',
-        description: 'Ideal for starting',
-        monthlyPrice: 'DA 4,500',
-        annualPrice: 'DA 48,000',
-        features: [
-          'Creation of 3 social accounts',
-          'Custom branding',
-          '5 initial posts',
-          'Simple showcase website',
-          'Dashboard access',
-          '24/7 email support',
-        ],
-        primaryColor: const Color(0xFF4A90E2),
-        secondaryColor: const Color(0xFF357ABD),
-        details: 'Ideal for young companies wanting to develop their online presence. This pack includes everything needed to start in digital marketing.',
-        additionalInfo: [
-          '30-day money-back guarantee',
-          'Email assistance within 24 hours',
-          'Free setup assistance',
-          'Cancel anytime',
-          'Regular updates included',
-          'Community access',
-        ],
-        serviceFeatures: [
-          ServiceFeature(
-            title: 'Account Creation',
-            description: 'Social media setup',
-            icon: Icons.account_circle,
-            status: 'pending',
-            actionButtonText: 'Start',
-            color: const Color(0xFF4A90E2),
-            progress: 0.0,
-            steps: ['Analysis', 'Setup', 'Validation'],
-          ),
-          ServiceFeature(
-            title: 'Branding',
-            description: 'Logo and visual identity design',
-            icon: Icons.palette,
-            status: 'pending',
-            actionButtonText: 'Start',
-            color: const Color(0xFF9B59B6),
-            progress: 0.0,
-            steps: ['Briefing', 'Design', 'Revision', 'Finalization'],
-          ),
-          ServiceFeature(
-            title: 'Initial Content',
-            description: 'Creation of first posts',
-            icon: Icons.create,
-            status: 'pending',
-            actionButtonText: 'Schedule',
-            color: const Color(0xFFE67E22),
-            progress: 0.0,
-            steps: ['Strategy', 'Creation', 'Approval', 'Publication'],
-          ),
-          ServiceFeature(
-            title: 'Showcase Website',
-            description: 'Simple web development',
-            icon: Icons.language,
-            status: 'pending',
-            actionButtonText: 'Configure',
-            color: const Color(0xFF00A859),
-            progress: 0.0,
-            steps: ['Wireframe', 'Development', 'Test', 'Launch'],
-          ),
-        ],
-        metrics: {
-          'performance': 85,
-          'storage': 65,
-          'users': 3,
-          'uptime': 99.9,
-        },
-      ),
-      PricingPackage(
-        title: 'PACK PREMIUM',
-        description: 'Complete solution',
-        monthlyPrice: 'DA 8,500',
-        annualPrice: 'DA 91,800',
-        features: [
-          'Management of 2 social networks',
-          'Editorial calendar',
-          '12 posts/month',
-          'Light reporting',
-          'Advanced analytics',
-          'Priority support',
-        ],
-        primaryColor: const Color(0xFF9B59B6),
-        secondaryColor: const Color(0xFFE91E8C),
-        details: 'Ideal for young companies and micro-enterprises in full growth. This monthly subscription includes continuous social media management and content planning.',
-        additionalInfo: [
-          'Priority assistance within 12 hours',
-          'Monthly strategic review',
-          'Editorial calendar planning',
-          'Performance analysis dashboard',
-          'Access to exclusive webinars',
-          'Monthly mentoring',
-        ],
-        serviceFeatures: [
-          ServiceFeature(
-            title: 'Social Media Management',
-            description: 'Daily account management',
-            icon: Icons.thumb_up,
-            status: 'in_progress',
-            actionButtonText: 'Continue',
-            color: const Color(0xFF9B59B6),
-            progress: 0.6,
-            steps: ['Audit', 'Strategy', 'Execution', 'Optimization'],
-            startDate: DateTime.now().subtract(const Duration(days: 15)),
-            endDate: DateTime.now().add(const Duration(days: 15)),
-          ),
-          ServiceFeature(
-            title: 'Editorial Calendar',
-            description: 'Monthly content planning',
-            icon: Icons.calendar_today,
-            status: 'completed',
-            actionButtonText: 'View',
-            color: const Color(0xFF4A90E2),
-            progress: 1.0,
-            steps: ['Planning', 'Creation', 'Validation'],
-            startDate: DateTime.now().subtract(const Duration(days: 30)),
-            endDate: DateTime.now().subtract(const Duration(days: 10)),
-          ),
-          ServiceFeature(
-            title: 'Content Creation',
-            description: '12 posts per month',
-            icon: Icons.edit,
-            status: 'in_progress',
-            actionButtonText: 'Edit',
-            color: const Color(0xFFE67E22),
-            progress: 0.4,
-            steps: ['Briefing', 'Creation', 'Revision', 'Publication'],
-            startDate: DateTime.now().subtract(const Duration(days: 10)),
-            endDate: DateTime.now().add(const Duration(days: 20)),
-          ),
-          ServiceFeature(
-            title: 'Analytics',
-            description: 'Performance reports',
-            icon: Icons.analytics,
-            status: 'pending',
-            actionButtonText: 'Configure',
-            color: const Color(0xFF00A859),
-            progress: 0.0,
-            steps: ['Setup', 'Collection', 'Analysis', 'Reporting'],
-          ),
-        ],
-        metrics: {
-          'performance': 92,
-          'storage': 85,
-          'users': 5,
-          'uptime': 99.95,
-        },
-      ),
-      PricingPackage(
-        title: 'CUSTOM SERVICE',
-        description: 'Personalized solution',
-        monthlyPrice: 'On Quote',
-        annualPrice: 'On Quote',
-        features: [
-          'Complete SEO audit',
-          'Advertising campaigns (Ads)',
-          'Advanced video content creation',
-          'Business analysis',
-          'Strategic consultation',
-          'VIP 24/7 support',
-        ],
-        primaryColor: const Color(0xFFE67E22),
-        secondaryColor: const Color(0xFFF39C12),
-        details: 'Premium à la carte services for established businesses. Choose from advanced marketing services tailored to your specific needs. Contact us for a personalized quote.',
-        additionalInfo: [
-          'Dedicated account manager',
-          '24/7 phone support',
-          'Customized reports',
-          'Strategic consultation sessions',
-          'Unlimited resource access',
-          'Personalized trainings',
-        ],
-        serviceFeatures: [
-          ServiceFeature(
-            title: 'SEO Audit',
-            description: 'Complete SEO analysis',
-            icon: Icons.search,
-            status: 'completed',
-            actionButtonText: 'View report',
-            color: const Color(0xFFE67E22),
-            progress: 1.0,
-            steps: ['Technical analysis', 'Content audit', 'Competitive analysis', 'Report'],
-            startDate: DateTime.now().subtract(const Duration(days: 45)),
-            endDate: DateTime.now().subtract(const Duration(days: 15)),
-          ),
-          ServiceFeature(
-            title: 'Ads Campaigns',
-            description: 'Digital ad management',
-            icon: Icons.ads_click,
-            status: 'in_progress',
-            actionButtonText: 'Optimize',
-            color: const Color(0xFF9B59B6),
-            progress: 0.75,
-            steps: ['Strategy', 'Creation', 'Launch', 'Optimization'],
-            startDate: DateTime.now().subtract(const Duration(days: 30)),
-            endDate: DateTime.now().add(const Duration(days: 30)),
-          ),
-          ServiceFeature(
-            title: 'Video Marketing',
-            description: 'Video content creation',
-            icon: Icons.videocam,
-            status: 'pending',
-            actionButtonText: 'Schedule',
-            color: const Color(0xFF4A90E2),
-            progress: 0.0,
-            steps: ['Script', 'Shooting', 'Editing', 'Publication'],
-          ),
-          ServiceFeature(
-            title: 'Strategic Analysis',
-            description: 'Business consultation',
-            icon: Icons.business_center,
-            status: 'completed',
-            actionButtonText: 'View analysis',
-            color: const Color(0xFF00A859),
-            progress: 1.0,
-            steps: ['Diagnosis', 'Analysis', 'Recommendations', 'Action plan'],
-            startDate: DateTime.now().subtract(const Duration(days: 60)),
-            endDate: DateTime.now().subtract(const Duration(days: 30)),
-          ),
-        ],
-        metrics: {
-          'performance': 97,
-          'storage': 95,
-          'users': 10,
-          'uptime': 99.99,
-        },
-      ),
-    ];
-    
     _pageController = PageController(
       viewportFraction: 0.85,
       initialPage: _currentPage,
@@ -2996,6 +2759,244 @@ class _PricingScreenState extends State<PricingScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    
+    // Define packages inside build method to access l10n
+    // In your PricingScreen build method
+final packages = [
+  PricingPackage(
+    title: l10n.packStart,
+    description: l10n.packStartDesc,
+    monthlyPrice: l10n.packStartMonthlyPrice,
+    annualPrice: l10n.packStartAnnualPrice,
+    features: [
+     l10n.feature1,
+l10n.feature2,
+l10n.feature3,
+l10n.feature4,
+l10n.feature5,
+l10n.feature6,
+    ],
+    primaryColor: const Color(0xFF4A90E2),
+    secondaryColor: const Color(0xFF357ABD),
+    details: l10n.packStartDetails,
+    additionalInfo: [
+      l10n.info1,
+l10n.info2,
+l10n.info3,
+l10n.info4,
+l10n.info5,
+l10n.info6,
+    ],
+    serviceFeatures: [
+      ServiceFeature(
+        title: l10n.serviceFeature1Title,
+        description: l10n.serviceFeature1Desc,
+        icon: Icons.account_circle,
+        status: 'pending',
+        actionButtonText: l10n.start,
+        color: const Color(0xFF4A90E2),
+        progress: 0.0,
+        steps: [l10n.analysis, l10n.setup, l10n.validation],
+      ),
+      ServiceFeature(
+        title: l10n.serviceFeature2Title,
+        description: l10n.serviceFeature2Desc,
+        icon: Icons.palette,
+        status: 'pending',
+        actionButtonText: l10n.start,
+        color: const Color(0xFF9B59B6),
+        progress: 0.0,
+        steps: [l10n.briefing, l10n.design, l10n.revision, l10n.finalization],
+      ),
+      ServiceFeature(
+        title: l10n.serviceFeature3Title,
+        description: l10n.serviceFeature3Desc,
+        icon: Icons.create,
+        status: 'pending',
+        actionButtonText: l10n.schedule,
+        color: const Color(0xFFE67E22),
+        progress: 0.0,
+        steps: [l10n.strategy, l10n.creation, l10n.approval, l10n.publication],
+      ),
+      ServiceFeature(
+        title: l10n.serviceFeature4Title,
+        description: l10n.serviceFeature4Desc,
+        icon: Icons.language,
+        status: 'pending',
+        actionButtonText: l10n.configure,
+        color: const Color(0xFF00A859),
+        progress: 0.0,
+        steps: [l10n.wireframe, l10n.development, l10n.test, l10n.launch],
+      ),
+    ],
+    metrics: {
+      'performance': 85,
+      'storage': 65,
+      'users': 3,
+      'uptime': 99.9,
+    },
+  ),
+  
+  PricingPackage(
+    title: l10n.packPremium,
+    description: l10n.packPremiumDesc,
+    monthlyPrice: l10n.packPremiumMonthlyPrice,
+    annualPrice: l10n.packPremiumAnnualPrice,
+    features: [
+     l10n.premiumFeature1,
+l10n.premiumFeature2,
+l10n.premiumFeature3,
+l10n.premiumFeature4,
+l10n.premiumFeature5,
+l10n.premiumFeature6,
+    ],
+    primaryColor: const Color(0xFF9B59B6),
+    secondaryColor: const Color(0xFFE91E8C),
+    details: l10n.packPremiumDetails,
+    additionalInfo: [
+      l10n.premiumInfo1,
+l10n.premiumInfo2,
+l10n.premiumInfo3,
+l10n.premiumInfo4,
+l10n.premiumInfo5,
+l10n.premiumInfo6,
+    ],
+    serviceFeatures: [
+      ServiceFeature(
+        title: l10n.premiumService1Title,
+        description: l10n.premiumService1Desc,
+        icon: Icons.thumb_up,
+        status: 'in_progress',
+        actionButtonText: l10n.continueText,
+        color: const Color(0xFF9B59B6),
+        progress: 0.6,
+        steps: [l10n.audit, l10n.strategy, l10n.execution, l10n.optimization],
+        startDate: DateTime.now().subtract(const Duration(days: 15)),
+        endDate: DateTime.now().add(const Duration(days: 15)),
+      ),
+      ServiceFeature(
+        title: l10n.premiumService2Title,
+        description: l10n.premiumService2Desc,
+        icon: Icons.calendar_today,
+        status: 'completed',
+        actionButtonText: l10n.view,
+        color: const Color(0xFF4A90E2),
+        progress: 1.0,
+        steps: [l10n.planning, l10n.creation, l10n.validation],
+        startDate: DateTime.now().subtract(const Duration(days: 30)),
+        endDate: DateTime.now().subtract(const Duration(days: 10)),
+      ),
+      ServiceFeature(
+        title: l10n.premiumService3Title,
+        description: l10n.premiumService3Desc,
+        icon: Icons.edit,
+        status: 'in_progress',
+        actionButtonText: l10n.edit,
+        color: const Color(0xFFE67E22),
+        progress: 0.4,
+        steps: [l10n.briefing, l10n.creation, l10n.revision, l10n.publication],
+        startDate: DateTime.now().subtract(const Duration(days: 10)),
+        endDate: DateTime.now().add(const Duration(days: 20)),
+      ),
+      ServiceFeature(
+        title: l10n.premiumService4Title,
+        description: l10n.premiumService4Desc,
+        icon: Icons.analytics,
+        status: 'pending',
+        actionButtonText: l10n.configure,
+        color: const Color(0xFF00A859),
+        progress: 0.0,
+        steps: [l10n.setup, l10n.collection, l10n.analysis, l10n.reporting],
+      ),
+    ],
+    metrics: {
+      'performance': 92,
+      'storage': 85,
+      'users': 5,
+      'uptime': 99.95,
+    },
+  ),
+  
+  PricingPackage(
+    title: l10n.customService,
+    description: l10n.customServiceDesc,
+    monthlyPrice: l10n.customServiceMonthlyPrice,
+    annualPrice: l10n.customServiceAnnualPrice,
+    features: [
+      l10n.customFeature1,
+l10n.customFeature2,
+l10n.customFeature3,
+l10n.customFeature4,
+l10n.customFeature5,
+l10n.customFeature6,
+    ],
+    primaryColor: const Color(0xFFE67E22),
+    secondaryColor: const Color(0xFFF39C12),
+    details: l10n.customServiceDetails,
+    additionalInfo: [
+     l10n.customInfo1,
+l10n.customInfo2,
+l10n.customInfo3,
+l10n.customInfo4,
+l10n.customInfo5,
+l10n.customInfo6,
+    ],
+    serviceFeatures: [
+      ServiceFeature(
+        title: l10n.customService1Title,
+        description: l10n.customService1Desc,
+        icon: Icons.search,
+        status: 'completed',
+        actionButtonText: l10n.viewReport,
+        color: const Color(0xFFE67E22),
+        progress: 1.0,
+        steps: [l10n.technicalAnalysis, l10n.contentAudit, l10n.competitiveAnalysis, l10n.report],
+        startDate: DateTime.now().subtract(const Duration(days: 45)),
+        endDate: DateTime.now().subtract(const Duration(days: 15)),
+      ),
+      ServiceFeature(
+        title: l10n.customService2Title,
+        description: l10n.customService2Desc,
+        icon: Icons.ads_click,
+        status: 'in_progress',
+        actionButtonText: l10n.optimize,
+        color: const Color(0xFF9B59B6),
+        progress: 0.75,
+        steps: [l10n.strategy, l10n.creation, l10n.launch, l10n.optimization],
+        startDate: DateTime.now().subtract(const Duration(days: 30)),
+        endDate: DateTime.now().add(const Duration(days: 30)),
+      ),
+      ServiceFeature(
+        title: l10n.customService3Title,
+        description: l10n.customService3Desc,
+        icon: Icons.videocam,
+        status: 'pending',
+        actionButtonText: l10n.schedule,
+        color: const Color(0xFF4A90E2),
+        progress: 0.0,
+        steps: [l10n.script, l10n.shooting, l10n.editing, l10n.publication],
+      ),
+      ServiceFeature(
+        title: l10n.customService4Title,
+        description: l10n.customService4Desc,
+        icon: Icons.business_center,
+        status: 'completed',
+        actionButtonText: l10n.viewAnalysis,
+        color: const Color(0xFF00A859),
+        progress: 1.0,
+        steps: [l10n.diagnosis, l10n.analysis, l10n.recommendations, l10n.actionPlan],
+        startDate: DateTime.now().subtract(const Duration(days: 60)),
+        endDate: DateTime.now().subtract(const Duration(days: 30)),
+      ),
+    ],
+    metrics: {
+      'performance': 97,
+      'storage': 95,
+      'users': 10,
+      'uptime': 99.99,
+    },
+  ),
+];
     
     return Scaffold(
       backgroundColor: const Color(0xFFF5F7FA),
@@ -3178,7 +3179,10 @@ class PricingCard extends StatelessWidget {
   final PricingPackage package;
   final VoidCallback onViewDetails;
   final AppLocalizations l10n;
-
+bool _isArabic(BuildContext context) {
+  final locale = Localizations.localeOf(context);
+  return locale.languageCode == 'ar';
+}
   const PricingCard({
     super.key,
     required this.package,
@@ -3187,7 +3191,7 @@ class PricingCard extends StatelessWidget {
   });
 
   void _showPaymentOptions(BuildContext context, PricingPackage package, AppLocalizations l10n) {
-    if (package.title == 'CUSTOM SERVICE') {
+    if (package.title == l10n.customService) {
       _showContactForm(context, package, l10n);
       return;
     }
@@ -3367,8 +3371,8 @@ class PricingCard extends StatelessWidget {
   }
 
   void _payWithBaridimob(BuildContext context, PricingPackage package, AppLocalizations l10n) {
-    final monthlyAmount = package.title == 'PACK START' ? 4500 : 8500;
-    final annualAmount = package.title == 'PACK START' ? 48000 : 91800;
+    final monthlyAmount = package.title == l10n.packStart ? 4500 : 8500;
+    final annualAmount = package.title == l10n.packStart ? 48000 : 91800;
     
     showDialog(
       context: context,
@@ -3455,8 +3459,8 @@ class PricingCard extends StatelessWidget {
   }
 
   void _payWithDahabiya(BuildContext context, PricingPackage package, AppLocalizations l10n) {
-    final monthlyAmount = package.title == 'PACK START' ? 4500 : 8500;
-    final annualAmount = package.title == 'PACK START' ? 48000 : 91800;
+    final monthlyAmount = package.title == l10n.packStart ? 4500 : 8500;
+    final annualAmount = package.title == l10n.packStart ? 48000 : 91800;
     
     showDialog(
       context: context,
@@ -3797,46 +3801,57 @@ class PricingCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(30),
         child: Column(
           children: [
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(vertical: 35),
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    package.primaryColor,
-                    package.secondaryColor ??
-                        package.primaryColor.withOpacity(0.8),
-                  ],
-                ),
-              ),
-              child: Column(
-                children: [
-                  Text(
-                    package.title,
-                    style: GoogleFonts.poppins(
-                      color: Colors.white,
-                      fontSize: 24,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 2,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    package.description,
-                    style: GoogleFonts.poppins(
-                      color: Colors.white.withOpacity(0.9),
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            
+           Container(
+  width: double.infinity,
+  padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 10), // Added horizontal padding
+  decoration: BoxDecoration(
+    gradient: LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [
+        package.primaryColor,
+        package.secondaryColor ??
+            package.primaryColor.withOpacity(0.8),
+      ],
+    ),
+  ),
+  child: Column(
+    children: [
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5),
+        child: Text(
+          package.title,
+          style: GoogleFonts.poppins(
+            color: Colors.white,
+            fontSize: _isArabic(context) ? 20 : 24, // Smaller for Arabic
+            fontWeight: FontWeight.w700,
+            letterSpacing: _isArabic(context) ? 0.0 : 2, // No spacing for Arabic
+          ),
+          textAlign: TextAlign.center,
+          overflow: TextOverflow.ellipsis,
+          maxLines: 1,
+        ),
+      ),
+      const SizedBox(height: 6), // Reduced from 8
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5),
+        child: Text(
+          package.description,
+          style: GoogleFonts.poppins(
+            color: Colors.white.withOpacity(0.9),
+            fontSize: _isArabic(context) ? 12 : 14, // Smaller for Arabic
+            fontWeight: FontWeight.w400,
+          ),
+          textAlign: TextAlign.center,
+          overflow: TextOverflow.ellipsis,
+          maxLines: 1,
+        ),
+      ),
+    ],
+  ),
+),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 25),
+              padding: const EdgeInsets.symmetric(vertical: 20),
               child: Column(
                 children: [
                   Row(
@@ -3857,7 +3872,7 @@ class PricingCard extends StatelessWidget {
                           '/${l10n.monthly.toLowerCase()}',
                           style: GoogleFonts.poppins(
                             color: const Color(0xFF718096),
-                            fontSize: 18,
+                            fontSize: 15,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -4038,7 +4053,7 @@ class PricingCard extends StatelessWidget {
                     },
                     child: Center(
                       child: Text(
-                        package.title == 'CUSTOM SERVICE' 
+                        package.title == l10n.customService 
                           ? l10n.contactForQuote.toUpperCase()
                           : l10n.buyNow.toUpperCase(),
                         style: GoogleFonts.poppins(

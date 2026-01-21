@@ -718,16 +718,16 @@ class AppLocalizationsFr extends AppLocalizations {
   String get resources => 'Ressources';
 
   @override
-  String get overview => 'Vue d\'ensemble';
+  String get overview => 'Aperçu';
 
   @override
   String get activeService => 'Service Actif';
 
   @override
-  String get daysRemaining => 'jours restants';
+  String get daysRemaining => 'Jours restants';
 
   @override
-  String get globalProgress => 'Progression Globale';
+  String get globalProgress => 'Progrès global';
 
   @override
   String get servicesCompleted => 'Services terminés';
@@ -739,7 +739,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get pending => 'En attente';
 
   @override
-  String get recentActivities => 'Activités Récentes';
+  String get recentActivities => 'Activités récentes';
 
   @override
   String get viewAll => 'Voir tout';
@@ -886,7 +886,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get gotIt => 'COMPRIS';
 
   @override
-  String get dashboardTitle => 'Tableau de Bord';
+  String get dashboardTitle => 'Tableau de bord';
 
   @override
   String get startDate => 'Date de début';
@@ -934,7 +934,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get payAnnually => 'PAYER ANNUEL';
 
   @override
-  String get userGuide => 'Guide utilisateur';
+  String get userGuide => 'Guide de l\'utilisateur';
 
   @override
   String get completeDocumentation => 'Documentation complète';
@@ -976,7 +976,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get profile => 'Profil';
 
   @override
-  String get days => 'jours';
+  String get days => 'Jours';
 
   @override
   String get na => 'N/D';
@@ -1046,7 +1046,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get newReport => 'Nouveau rapport';
 
   @override
-  String get schedule => 'Programmer';
+  String get schedule => 'Planifier';
 
   @override
   String get export => 'Exporter';
@@ -1198,4 +1198,381 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get payment => 'paiement';
+
+  @override
+  String get packStartMonthlyPrice => '4 500 DA';
+
+  @override
+  String get packStartAnnualPrice => '48 000 DA';
+
+  @override
+  String get packPremiumMonthlyPrice => '8 500 DA';
+
+  @override
+  String get packPremiumAnnualPrice => '91 800 DA';
+
+  @override
+  String get customServiceMonthlyPrice => 'Sur devis';
+
+  @override
+  String get customServiceAnnualPrice => 'Sur devis';
+
+  @override
+  String get feature1 => 'Création de 3 comptes sociaux';
+
+  @override
+  String get feature2 => 'Identité visuelle personnalisée';
+
+  @override
+  String get feature3 => '5 publications initiales';
+
+  @override
+  String get feature4 => 'Site vitrine simple';
+
+  @override
+  String get feature5 => 'Accès au tableau de bord';
+
+  @override
+  String get feature6 => 'Support email 24/7';
+
+  @override
+  String get info1 => 'Garantie de remboursement de 30 jours';
+
+  @override
+  String get info2 => 'Assistance par email sous 24 heures';
+
+  @override
+  String get info3 => 'Assistance gratuite à l\'installation';
+
+  @override
+  String get info4 => 'Annulation à tout moment';
+
+  @override
+  String get info5 => 'Mises à jour régulières incluses';
+
+  @override
+  String get info6 => 'Accès à la communauté';
+
+  @override
+  String get packStartDetails =>
+      'Idéal pour les jeunes entreprises souhaitant développer leur présence en ligne. Ce pack comprend tout le nécessaire pour démarrer en marketing digital.';
+
+  @override
+  String get serviceFeature1Title => 'Création de compte';
+
+  @override
+  String get serviceFeature1Desc => 'Configuration des réseaux sociaux';
+
+  @override
+  String get serviceFeature2Title => 'Identité visuelle';
+
+  @override
+  String get serviceFeature2Desc => 'Design du logo et de l\'identité visuelle';
+
+  @override
+  String get serviceFeature3Title => 'Contenu initial';
+
+  @override
+  String get serviceFeature3Desc => 'Création des premières publications';
+
+  @override
+  String get serviceFeature4Title => 'Site vitrine';
+
+  @override
+  String get serviceFeature4Desc => 'Développement web simple';
+
+  @override
+  String get start => 'Démarrer';
+
+  @override
+  String get configure => 'Configurer';
+
+  @override
+  String get view => 'Voir';
+
+  @override
+  String get edit => 'Modifier';
+
+  @override
+  String get optimize => 'Optimiser';
+
+  @override
+  String get viewReport => 'Voir le rapport';
+
+  @override
+  String get viewAnalysis => 'Voir l\'analyse';
+
+  @override
+  String get step1 => 'Analyse';
+
+  @override
+  String get step2 => 'Configuration';
+
+  @override
+  String get step3 => 'Validation';
+
+  @override
+  String get step4 => 'Finalisation';
+
+  @override
+  String get wireframe => 'Maquette';
+
+  @override
+  String get development => 'Développement';
+
+  @override
+  String get test => 'Test';
+
+  @override
+  String get launch => 'Lancement';
+
+  @override
+  String get strategy => 'Stratégie';
+
+  @override
+  String get creation => 'Création';
+
+  @override
+  String get approval => 'Approbation';
+
+  @override
+  String get publication => 'Publication';
+
+  @override
+  String get audit => 'Audit';
+
+  @override
+  String get execution => 'Exécution';
+
+  @override
+  String get optimization => 'Optimisation';
+
+  @override
+  String get planning => 'Planification';
+
+  @override
+  String get validation => 'Validation';
+
+  @override
+  String get briefing => 'Briefing';
+
+  @override
+  String get revision => 'Révision';
+
+  @override
+  String get setup => 'Configuration';
+
+  @override
+  String get collection => 'Collecte';
+
+  @override
+  String get analysis => 'Analyse';
+
+  @override
+  String get reporting => 'Rapportage';
+
+  @override
+  String get script => 'Script';
+
+  @override
+  String get shooting => 'Tournage';
+
+  @override
+  String get editing => 'Montage';
+
+  @override
+  String get diagnosis => 'Diagnostic';
+
+  @override
+  String get recommendations => 'Recommandations';
+
+  @override
+  String get actionPlan => 'Plan d\'action';
+
+  @override
+  String get technicalAnalysis => 'Analyse technique';
+
+  @override
+  String get contentAudit => 'Audit de contenu';
+
+  @override
+  String get competitiveAnalysis => 'Analyse concurrentielle';
+
+  @override
+  String get premiumFeature1 => 'Gestion de 2 réseaux sociaux';
+
+  @override
+  String get premiumFeature2 => 'Calendrier éditorial';
+
+  @override
+  String get premiumFeature3 => '12 publications/mois';
+
+  @override
+  String get premiumFeature4 => 'Reporting léger';
+
+  @override
+  String get premiumFeature5 => 'Analyses avancées';
+
+  @override
+  String get premiumFeature6 => 'Support prioritaire';
+
+  @override
+  String get premiumInfo1 => 'Assistance prioritaire sous 12 heures';
+
+  @override
+  String get premiumInfo2 => 'Revue stratégique mensuelle';
+
+  @override
+  String get premiumInfo3 => 'Planification du calendrier éditorial';
+
+  @override
+  String get premiumInfo4 => 'Tableau de bord d\'analyse des performances';
+
+  @override
+  String get premiumInfo5 => 'Accès à des webinaires exclusifs';
+
+  @override
+  String get premiumInfo6 => 'Mentorat mensuel';
+
+  @override
+  String get packPremiumDetails =>
+      'Idéal pour les jeunes entreprises et micro-entreprises en pleine croissance. Cet abonnement mensuel comprend une gestion continue des réseaux sociaux et la planification du contenu.';
+
+  @override
+  String get premiumService1Title => 'Gestion des réseaux sociaux';
+
+  @override
+  String get premiumService1Desc => 'Gestion quotidienne des comptes';
+
+  @override
+  String get premiumService2Title => 'Calendrier éditorial';
+
+  @override
+  String get premiumService2Desc => 'Planification mensuelle du contenu';
+
+  @override
+  String get premiumService3Title => 'Création de contenu';
+
+  @override
+  String get premiumService3Desc => '12 publications par mois';
+
+  @override
+  String get premiumService4Title => 'Analyses';
+
+  @override
+  String get premiumService4Desc => 'Rapports de performance';
+
+  @override
+  String get customFeature1 => 'Audit SEO complet';
+
+  @override
+  String get customFeature2 => 'Campagnes publicitaires (Ads)';
+
+  @override
+  String get customFeature3 => 'Création de contenu vidéo avancé';
+
+  @override
+  String get customFeature4 => 'Analyse commerciale';
+
+  @override
+  String get customFeature5 => 'Consultation stratégique';
+
+  @override
+  String get customFeature6 => 'Support VIP 24/7';
+
+  @override
+  String get customInfo1 => 'Gestionnaire de compte dédié';
+
+  @override
+  String get customInfo2 => 'Support téléphonique 24/7';
+
+  @override
+  String get customInfo3 => 'Rapports personnalisés';
+
+  @override
+  String get customInfo4 => 'Sessions de consultation stratégique';
+
+  @override
+  String get customInfo5 => 'Accès illimité aux ressources';
+
+  @override
+  String get customInfo6 => 'Formations personnalisées';
+
+  @override
+  String get customServiceDetails =>
+      'Services premium à la carte pour les entreprises établies. Choisissez parmi des services marketing avancés adaptés à vos besoins spécifiques. Contactez-nous pour un devis personnalisé.';
+
+  @override
+  String get customService1Title => 'Audit SEO';
+
+  @override
+  String get customService1Desc => 'Analyse SEO complète';
+
+  @override
+  String get customService2Title => 'Campagnes publicitaires';
+
+  @override
+  String get customService2Desc => 'Gestion des annonces numériques';
+
+  @override
+  String get customService3Title => 'Marketing vidéo';
+
+  @override
+  String get customService3Desc => 'Création de contenu vidéo';
+
+  @override
+  String get customService4Title => 'Analyse stratégique';
+
+  @override
+  String get customService4Desc => 'Consultation commerciale';
+
+  @override
+  String get packStartFeatures =>
+      'Création de 3 comptes sociaux, Identité visuelle personnalisée, 5 publications initiales, Site vitrine simple, Accès au tableau de bord, Support email 24/7';
+
+  @override
+  String get packStartAdditionalInfo =>
+      'Garantie de remboursement de 30 jours • Assistance par email sous 24 heures • Assistance gratuite à l\'installation • Annulation à tout moment • Mises à jour régulières incluses • Accès à la communauté';
+
+  @override
+  String get accountCreation => 'Création de compte';
+
+  @override
+  String get accountCreationDesc => 'Configuration des réseaux sociaux';
+
+  @override
+  String get accountCreationAction => 'Démarrer';
+
+  @override
+  String get branding => 'Identité visuelle';
+
+  @override
+  String get brandingDesc => 'Design du logo et de l\'identité visuelle';
+
+  @override
+  String get brandingAction => 'Démarrer';
+
+  @override
+  String get initialContent => 'Contenu initial';
+
+  @override
+  String get initialContentDesc => 'Création des premières publications';
+
+  @override
+  String get initialContentAction => 'Planifier';
+
+  @override
+  String get showcaseWebsite => 'Site vitrine';
+
+  @override
+  String get showcaseWebsiteDesc => 'Développement web simple';
+
+  @override
+  String get showcaseWebsiteAction => 'Configurer';
+
+  @override
+  String get design => 'Design';
+
+  @override
+  String get finalization => 'Finalisation';
 }

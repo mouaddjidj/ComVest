@@ -708,16 +708,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get activeService => 'Active Service';
 
   @override
-  String get daysRemaining => 'days remaining';
+  String get daysRemaining => 'Days Remaining';
 
   @override
   String get globalProgress => 'Global Progress';
 
   @override
-  String get servicesCompleted => 'Services completed';
+  String get servicesCompleted => 'Services Completed';
 
   @override
-  String get inProgress => 'In progress';
+  String get inProgress => 'In Progress';
 
   @override
   String get pending => 'Pending';
@@ -869,13 +869,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get gotIt => 'GOT IT';
 
   @override
-  String get dashboardTitle => 'Dashboard';
+  String get dashboardTitle => 'Service Dashboard';
 
   @override
-  String get startDate => 'Start date';
+  String get startDate => 'Start Date';
 
   @override
-  String get endDate => 'End date';
+  String get endDate => 'End Date';
 
   @override
   String get performance => 'Performance';
@@ -938,7 +938,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get templates => 'Templates';
 
   @override
-  String get readyToUseTemplates => 'Ready to Use Templates';
+  String get readyToUseTemplates => 'Ready-to-use Templates';
 
   @override
   String get community => 'Community';
@@ -959,7 +959,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profile => 'Profile';
 
   @override
-  String get days => 'days';
+  String get days => 'Days';
 
   @override
   String get na => 'N/A';
@@ -1178,4 +1178,381 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get payment => 'payment';
+
+  @override
+  String get packStartMonthlyPrice => '4,500 DA';
+
+  @override
+  String get packStartAnnualPrice => '48,000 DA';
+
+  @override
+  String get packPremiumMonthlyPrice => '8,500 DA';
+
+  @override
+  String get packPremiumAnnualPrice => '91,800 DA';
+
+  @override
+  String get customServiceMonthlyPrice => 'On Quote';
+
+  @override
+  String get customServiceAnnualPrice => 'On Quote';
+
+  @override
+  String get feature1 => 'Creation of 3 social accounts';
+
+  @override
+  String get feature2 => 'Custom visual identity';
+
+  @override
+  String get feature3 => '5 initial publications';
+
+  @override
+  String get feature4 => 'Simple showcase website';
+
+  @override
+  String get feature5 => 'Dashboard access';
+
+  @override
+  String get feature6 => '24/7 email support';
+
+  @override
+  String get info1 => '30-day money back guarantee';
+
+  @override
+  String get info2 => 'Email assistance within 24 hours';
+
+  @override
+  String get info3 => 'Free installation assistance';
+
+  @override
+  String get info4 => 'Cancel anytime';
+
+  @override
+  String get info5 => 'Regular updates included';
+
+  @override
+  String get info6 => 'Community access';
+
+  @override
+  String get packStartDetails =>
+      'Ideal for young companies wanting to develop their online presence. This pack includes everything needed to start in digital marketing.';
+
+  @override
+  String get serviceFeature1Title => 'Account Creation';
+
+  @override
+  String get serviceFeature1Desc => 'Social media setup';
+
+  @override
+  String get serviceFeature2Title => 'Visual Identity';
+
+  @override
+  String get serviceFeature2Desc => 'Logo and visual identity design';
+
+  @override
+  String get serviceFeature3Title => 'Initial Content';
+
+  @override
+  String get serviceFeature3Desc => 'Creation of first publications';
+
+  @override
+  String get serviceFeature4Title => 'Showcase Website';
+
+  @override
+  String get serviceFeature4Desc => 'Simple web development';
+
+  @override
+  String get start => 'Start';
+
+  @override
+  String get configure => 'Configure';
+
+  @override
+  String get view => 'View';
+
+  @override
+  String get edit => 'Edit';
+
+  @override
+  String get optimize => 'Optimize';
+
+  @override
+  String get viewReport => 'View Report';
+
+  @override
+  String get viewAnalysis => 'View Analysis';
+
+  @override
+  String get step1 => 'Analysis';
+
+  @override
+  String get step2 => 'Configuration';
+
+  @override
+  String get step3 => 'Validation';
+
+  @override
+  String get step4 => 'Finalization';
+
+  @override
+  String get wireframe => 'Wireframe';
+
+  @override
+  String get development => 'Development';
+
+  @override
+  String get test => 'Test';
+
+  @override
+  String get launch => 'Launch';
+
+  @override
+  String get strategy => 'Strategy';
+
+  @override
+  String get creation => 'Creation';
+
+  @override
+  String get approval => 'Approval';
+
+  @override
+  String get publication => 'Publication';
+
+  @override
+  String get audit => 'Audit';
+
+  @override
+  String get execution => 'Execution';
+
+  @override
+  String get optimization => 'Optimization';
+
+  @override
+  String get planning => 'Planning';
+
+  @override
+  String get validation => 'Validation';
+
+  @override
+  String get briefing => 'Briefing';
+
+  @override
+  String get revision => 'Revision';
+
+  @override
+  String get setup => 'Setup';
+
+  @override
+  String get collection => 'Collection';
+
+  @override
+  String get analysis => 'Analysis';
+
+  @override
+  String get reporting => 'Reporting';
+
+  @override
+  String get script => 'Script';
+
+  @override
+  String get shooting => 'Shooting';
+
+  @override
+  String get editing => 'Editing';
+
+  @override
+  String get diagnosis => 'Diagnosis';
+
+  @override
+  String get recommendations => 'Recommendations';
+
+  @override
+  String get actionPlan => 'Action plan';
+
+  @override
+  String get technicalAnalysis => 'Technical analysis';
+
+  @override
+  String get contentAudit => 'Content audit';
+
+  @override
+  String get competitiveAnalysis => 'Competitive analysis';
+
+  @override
+  String get premiumFeature1 => 'Management of 2 social networks';
+
+  @override
+  String get premiumFeature2 => 'Editorial calendar';
+
+  @override
+  String get premiumFeature3 => '12 publications/month';
+
+  @override
+  String get premiumFeature4 => 'Light reporting';
+
+  @override
+  String get premiumFeature5 => 'Advanced analytics';
+
+  @override
+  String get premiumFeature6 => 'Priority support';
+
+  @override
+  String get premiumInfo1 => 'Priority assistance within 12 hours';
+
+  @override
+  String get premiumInfo2 => 'Monthly strategic review';
+
+  @override
+  String get premiumInfo3 => 'Editorial calendar planning';
+
+  @override
+  String get premiumInfo4 => 'Performance analytics dashboard';
+
+  @override
+  String get premiumInfo5 => 'Access to exclusive webinars';
+
+  @override
+  String get premiumInfo6 => 'Monthly mentoring';
+
+  @override
+  String get packPremiumDetails =>
+      'Ideal for young businesses and micro-enterprises in full growth. This monthly subscription includes ongoing social media management and content planning.';
+
+  @override
+  String get premiumService1Title => 'Social Media Management';
+
+  @override
+  String get premiumService1Desc => 'Daily account management';
+
+  @override
+  String get premiumService2Title => 'Editorial Calendar';
+
+  @override
+  String get premiumService2Desc => 'Monthly content planning';
+
+  @override
+  String get premiumService3Title => 'Content Creation';
+
+  @override
+  String get premiumService3Desc => '12 publications per month';
+
+  @override
+  String get premiumService4Title => 'Analytics';
+
+  @override
+  String get premiumService4Desc => 'Performance reports';
+
+  @override
+  String get customFeature1 => 'Complete SEO audit';
+
+  @override
+  String get customFeature2 => 'Advertising campaigns (Ads)';
+
+  @override
+  String get customFeature3 => 'Advanced video content creation';
+
+  @override
+  String get customFeature4 => 'Business analysis';
+
+  @override
+  String get customFeature5 => 'Strategic consultation';
+
+  @override
+  String get customFeature6 => '24/7 VIP support';
+
+  @override
+  String get customInfo1 => 'Dedicated account manager';
+
+  @override
+  String get customInfo2 => '24/7 phone support';
+
+  @override
+  String get customInfo3 => 'Custom reports';
+
+  @override
+  String get customInfo4 => 'Strategic consultation sessions';
+
+  @override
+  String get customInfo5 => 'Unlimited resource access';
+
+  @override
+  String get customInfo6 => 'Personalized training';
+
+  @override
+  String get customServiceDetails =>
+      'Premium à la carte services for established businesses. Choose from advanced marketing services tailored to your specific needs. Contact us for a personalized quote.';
+
+  @override
+  String get customService1Title => 'SEO Audit';
+
+  @override
+  String get customService1Desc => 'Complete SEO analysis';
+
+  @override
+  String get customService2Title => 'Advertising Campaigns';
+
+  @override
+  String get customService2Desc => 'Digital ad management';
+
+  @override
+  String get customService3Title => 'Video Marketing';
+
+  @override
+  String get customService3Desc => 'Video content creation';
+
+  @override
+  String get customService4Title => 'Strategic Analysis';
+
+  @override
+  String get customService4Desc => 'Business consultation';
+
+  @override
+  String get packStartFeatures =>
+      'Creation of 3 social accounts, Custom visual identity, 5 initial publications, Simple showcase website, Dashboard access, 24/7 email support';
+
+  @override
+  String get packStartAdditionalInfo =>
+      '30-day money back guarantee • Email assistance within 24 hours • Free installation assistance • Cancel anytime • Regular updates included • Community access';
+
+  @override
+  String get accountCreation => 'Account Creation';
+
+  @override
+  String get accountCreationDesc => 'Social media setup';
+
+  @override
+  String get accountCreationAction => 'Start';
+
+  @override
+  String get branding => 'Branding';
+
+  @override
+  String get brandingDesc => 'Logo and visual identity design';
+
+  @override
+  String get brandingAction => 'Start';
+
+  @override
+  String get initialContent => 'Initial Content';
+
+  @override
+  String get initialContentDesc => 'Creation of first publications';
+
+  @override
+  String get initialContentAction => 'Schedule';
+
+  @override
+  String get showcaseWebsite => 'Showcase Website';
+
+  @override
+  String get showcaseWebsiteDesc => 'Simple web development';
+
+  @override
+  String get showcaseWebsiteAction => 'Configure';
+
+  @override
+  String get design => 'Design';
+
+  @override
+  String get finalization => 'Finalization';
 }
