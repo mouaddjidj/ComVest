@@ -844,7 +844,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get upgradeOptions => 'VIEW OPTIONS';
 
   @override
-  String get contactSupport => 'Contact support';
+  String get contactSupport => 'Contact Support';
 
   @override
   String get howToContact => 'How would you like to contact our support team?';
@@ -2342,4 +2342,55 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get day => 'day';
+
+  @override
+  String get account => 'Account';
+
+  @override
+  String get emailAlerts => 'Email Alerts';
+
+  @override
+  String get pushNotifications => 'Push Notifications';
+
+  @override
+  String get darkMode => 'Dark Mode';
+
+  @override
+  String get reportFrequency => 'Report Frequency';
+
+  @override
+  String get riskTolerance => 'Risk Tolerance';
+
+  @override
+  String get preferredSectors => 'Preferred Sectors';
+
+  @override
+  String get investmentPreferences => 'Investment Preferences';
+
+  @override
+  String get dangerZone => 'Danger Zone';
+
+  @override
+  String get deleteAccount => 'Delete Account';
+
+  @override
+  String get twoFactorAuth => 'Two-Factor Authentication';
+
+  @override
+  String get activeSessions => 'Active Sessions';
+
+  @override
+  String get loginHistory => 'Login History';
+
+  @override
+  String get legalDocuments => 'Legal Documents';
+
+  @override
+  String get editProfile => 'Edit Profile';
+
+  @override
+  String get preferences => 'Preferences';
+
+  @override
+  String get notificationsEnabled => 'Enabled';
 }

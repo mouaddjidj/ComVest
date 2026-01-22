@@ -1729,7 +1729,7 @@ abstract class AppLocalizations {
   /// No description provided for @contactSupport.
   ///
   /// In en, this message translates to:
-  /// **'Contact support'**
+  /// **'Contact Support'**
   String get contactSupport;
 
   /// No description provided for @howToContact.
@@ -4641,6 +4641,108 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'day'**
   String get day;
+
+  /// No description provided for @account.
+  ///
+  /// In en, this message translates to:
+  /// **'Account'**
+  String get account;
+
+  /// No description provided for @emailAlerts.
+  ///
+  /// In en, this message translates to:
+  /// **'Email Alerts'**
+  String get emailAlerts;
+
+  /// No description provided for @pushNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Push Notifications'**
+  String get pushNotifications;
+
+  /// No description provided for @darkMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark Mode'**
+  String get darkMode;
+
+  /// No description provided for @reportFrequency.
+  ///
+  /// In en, this message translates to:
+  /// **'Report Frequency'**
+  String get reportFrequency;
+
+  /// No description provided for @riskTolerance.
+  ///
+  /// In en, this message translates to:
+  /// **'Risk Tolerance'**
+  String get riskTolerance;
+
+  /// No description provided for @preferredSectors.
+  ///
+  /// In en, this message translates to:
+  /// **'Preferred Sectors'**
+  String get preferredSectors;
+
+  /// No description provided for @investmentPreferences.
+  ///
+  /// In en, this message translates to:
+  /// **'Investment Preferences'**
+  String get investmentPreferences;
+
+  /// No description provided for @dangerZone.
+  ///
+  /// In en, this message translates to:
+  /// **'Danger Zone'**
+  String get dangerZone;
+
+  /// No description provided for @deleteAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Account'**
+  String get deleteAccount;
+
+  /// No description provided for @twoFactorAuth.
+  ///
+  /// In en, this message translates to:
+  /// **'Two-Factor Authentication'**
+  String get twoFactorAuth;
+
+  /// No description provided for @activeSessions.
+  ///
+  /// In en, this message translates to:
+  /// **'Active Sessions'**
+  String get activeSessions;
+
+  /// No description provided for @loginHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Login History'**
+  String get loginHistory;
+
+  /// No description provided for @legalDocuments.
+  ///
+  /// In en, this message translates to:
+  /// **'Legal Documents'**
+  String get legalDocuments;
+
+  /// No description provided for @editProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Profile'**
+  String get editProfile;
+
+  /// No description provided for @preferences.
+  ///
+  /// In en, this message translates to:
+  /// **'Preferences'**
+  String get preferences;
+
+  /// No description provided for @notificationsEnabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Enabled'**
+  String get notificationsEnabled;
 }
 
 class _AppLocalizationsDelegate

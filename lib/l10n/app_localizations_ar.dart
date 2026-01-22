@@ -123,7 +123,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get cancel => 'إلغاء';
 
   @override
-  String get selectLanguage => 'اختر اللغة';
+  String get selectLanguage => 'العربية';
 
   @override
   String get language => 'العربية';
@@ -501,7 +501,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get confirmPasswordHintInvestor => 'أعد إدخال كلمة المرور';
 
   @override
-  String get professionalBackground => 'خلفية مهنية';
+  String get professionalBackground => 'الخلفية المهنية';
 
   @override
   String get professionalBackgroundHint => 'صف بإيجاز خبرتك المهنية...';
@@ -812,7 +812,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get logout => 'تسجيل الخروج';
 
   @override
-  String get confirmLogout => 'هل أنت متأكد من تسجيل الخروج؟';
+  String get confirmLogout => 'هل أنت متأكد أنك تريد تسجيل الخروج؟';
 
   @override
   String get logoutConfirm => 'تسجيل الخروج';
@@ -920,7 +920,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get completeDocumentation => 'الوثائق الكاملة';
 
   @override
-  String get videoTutorials => 'دروس الفيديو';
+  String get videoTutorials => 'الدروس بالفيديو';
 
   @override
   String get videoTraining => 'تدريب الفيديو';
@@ -2332,4 +2332,55 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get day => 'يوم';
+
+  @override
+  String get account => 'الحساب';
+
+  @override
+  String get emailAlerts => 'تنبيهات البريد الإلكتروني';
+
+  @override
+  String get pushNotifications => 'الإشعارات الفورية';
+
+  @override
+  String get darkMode => 'الوضع الداكن';
+
+  @override
+  String get reportFrequency => 'تواتر التقارير';
+
+  @override
+  String get riskTolerance => 'تحمل المخاطر';
+
+  @override
+  String get preferredSectors => 'القطاعات المفضلة';
+
+  @override
+  String get investmentPreferences => 'تفضيلات الاستثمار';
+
+  @override
+  String get dangerZone => 'منطقة الخطر';
+
+  @override
+  String get deleteAccount => 'حذف الحساب';
+
+  @override
+  String get twoFactorAuth => 'المصادقة الثنائية';
+
+  @override
+  String get activeSessions => 'الجلسات النشطة';
+
+  @override
+  String get loginHistory => 'سجل الدخول';
+
+  @override
+  String get legalDocuments => 'الوثائق القانونية';
+
+  @override
+  String get editProfile => 'تعديل الملف الشخصي';
+
+  @override
+  String get preferences => 'التفضيلات';
+
+  @override
+  String get notificationsEnabled => 'مفعلة';
 }

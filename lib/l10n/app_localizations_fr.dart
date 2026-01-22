@@ -24,7 +24,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get signup => 'S\'inscrire';
 
   @override
-  String get email => 'Email';
+  String get email => 'E-mail';
 
   @override
   String get emailHint => 'Entrez votre email professionnel';
@@ -492,7 +492,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get investmentAmountHint => 'ex. 10 000 - 50 000 USD';
 
   @override
-  String get interestedSectors => 'Secteurs préférés';
+  String get interestedSectors => 'Secteurs d\'intérêt';
 
   @override
   String get selectSectorsHint =>
@@ -514,7 +514,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get confirmPasswordHintInvestor => 'Retapez votre mot de passe';
 
   @override
-  String get professionalBackground => 'Expérience professionnelle';
+  String get professionalBackground => 'Parcours professionnel';
 
   @override
   String get professionalBackgroundHint =>
@@ -685,7 +685,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get plan => 'Forfait';
 
   @override
-  String get paymentMethod => 'Mode de paiement';
+  String get paymentMethod => 'Moyen de paiement';
 
   @override
   String get period => 'Période';
@@ -829,7 +829,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get logout => 'Déconnexion';
 
   @override
-  String get confirmLogout => 'Êtes-vous sûr de vouloir vous déconnecter?';
+  String get confirmLogout => 'Êtes-vous sûr de vouloir vous déconnecter ?';
 
   @override
   String get logoutConfirm => 'Déconnexion';
@@ -860,7 +860,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get upgradeOptions => 'VOIR LES OPTIONS';
 
   @override
-  String get contactSupport => 'Contactez le support';
+  String get contactSupport => 'Contacter le support';
 
   @override
   String get howToContact =>
@@ -2366,4 +2366,55 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get day => 'day';
+
+  @override
+  String get account => 'Compte';
+
+  @override
+  String get emailAlerts => 'Alertes par email';
+
+  @override
+  String get pushNotifications => 'Notifications push';
+
+  @override
+  String get darkMode => 'Mode sombre';
+
+  @override
+  String get reportFrequency => 'Fréquence des rapports';
+
+  @override
+  String get riskTolerance => 'Risque toléré';
+
+  @override
+  String get preferredSectors => 'Secteurs préférés';
+
+  @override
+  String get investmentPreferences => 'Préférences d\'investissement';
+
+  @override
+  String get dangerZone => 'Zone de danger';
+
+  @override
+  String get deleteAccount => 'Supprimer le compte';
+
+  @override
+  String get twoFactorAuth => 'Authentification à deux facteurs';
+
+  @override
+  String get activeSessions => 'Sessions actives';
+
+  @override
+  String get loginHistory => 'Historique de connexion';
+
+  @override
+  String get legalDocuments => 'Documents légaux';
+
+  @override
+  String get editProfile => 'Modifier le profil';
+
+  @override
+  String get preferences => 'Préférences';
+
+  @override
+  String get notificationsEnabled => 'Activées';
 }
