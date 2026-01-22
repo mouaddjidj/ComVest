@@ -2423,7 +2423,7 @@ class PackageDetailDialog extends StatelessWidget {
               ),
               
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 25),
+                padding: const EdgeInsets.symmetric(vertical: 20),
                 child: Column(
                   children: [
                     Row(
@@ -2636,11 +2636,11 @@ class PackageDetailDialog extends StatelessWidget {
                         l10n.additionalInfo,
                         style: GoogleFonts.poppins(
                           color: const Color(0xFF2D3748),
-                          fontSize: 16,
+                          fontSize: 10,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      const SizedBox(height: 15),
+                      const SizedBox(height: 20),
                       ...package.additionalInfo.map((info) => Padding(
                         padding: const EdgeInsets.only(bottom: 10),
                         child: Row(
@@ -2702,7 +2702,7 @@ class PackageDetailDialog extends StatelessWidget {
                                 l10n.close.toUpperCase(),
                                 style: GoogleFonts.poppins(
                                   color: const Color(0xFF4A5568),
-                                  fontSize: 15,
+                                  fontSize: 10,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
@@ -3020,7 +3020,7 @@ class _PricingScreenState extends State<PricingScreen> {
       ),
       body: Column(
         children: [
-          const SizedBox(height: 20),
+          const SizedBox(height: 10),
           Text(
             l10n.pricingSubtitle,
             style: GoogleFonts.poppins(
@@ -3028,7 +3028,7 @@ class _PricingScreenState extends State<PricingScreen> {
               fontSize: 14,
             ),
           ),
-          const SizedBox(height: 30),
+          const SizedBox(height: 0),
           Expanded(
             child: PageView.builder(
               controller: _pageController,
@@ -3887,7 +3887,7 @@ class PricingCard extends StatelessWidget {
                         package.monthlyPrice,
                         style: GoogleFonts.poppins(
                           color: const Color(0xFF2D3748),
-                          fontSize: 52,
+                          fontSize: 40,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
@@ -4011,7 +4011,7 @@ class PricingCard extends StatelessWidget {
                               size: 16,
                             ),
                           ),
-                          const SizedBox(width: 15),
+                          const SizedBox(width: 20),
                           Expanded(
                             child: Text(
                               package.features[index],
@@ -4043,6 +4043,7 @@ class PricingCard extends StatelessWidget {
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                     ),
+                   
                   ),
                 ],
               ),

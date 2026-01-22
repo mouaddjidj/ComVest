@@ -1258,7 +1258,7 @@ class AppLocalizationsFr extends AppLocalizations {
       'Idéal pour les jeunes entreprises souhaitant développer leur présence en ligne. Ce pack comprend tout le nécessaire pour démarrer en marketing digital.';
 
   @override
-  String get serviceFeature1Title => 'Création de compte';
+  String get serviceFeature1Title => 'Création  compte';
 
   @override
   String get serviceFeature1Desc => 'Configuration des réseaux sociaux';
@@ -1538,7 +1538,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get accountCreation => 'Création de compte';
 
   @override
-  String get accountCreationDesc => 'Configuration des réseaux sociaux';
+  String get accountCreationDesc => 'Configuration ';
 
   @override
   String get accountCreationAction => 'Démarrer';
