@@ -1538,7 +1538,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get accountCreation => 'Création de compte';
 
   @override
-  String get accountCreationDesc => 'Configuration ';
+  String get accountCreationDesc => 'Configuration des réseaux sociaux ';
 
   @override
   String get accountCreationAction => 'Démarrer';
