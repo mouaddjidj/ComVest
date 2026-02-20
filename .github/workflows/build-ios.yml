@@ -12,7 +12,7 @@ jobs:
     runs-on: macos-latest
     
     steps:
-      - uses: actions/checkout@v4  # Also updated to v4
+      - uses: actions/checkout@v4
       
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
@@ -23,25 +23,34 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
       
+      - name: Ensure iOS platform exists
+        run: |
+          if [ ! -d "ios" ]; then
+            echo "📱 Creating iOS platform files..."
+            flutter create --platforms=ios .
+          else
+            echo "✅ iOS folder exists"
+          fi
+      
       - name: Build iOS
         run: |
+          echo "🏗️ Building iOS..."
           flutter build ios --release --no-codesign
-          # Create Payload folder and copy .app
           mkdir -p build/ios/ipa/Payload
           cp -R build/ios/iphoneos/Runner.app build/ios/ipa/Payload/
-          # Create IPA
           cd build/ios/ipa
           zip -r ../../../ComVest.ipa Payload
+          echo "✅ IPA created successfully"
       
       - name: Upload IPA
-        uses: actions/upload-artifact@v4  # CHANGED TO v4
+        uses: actions/upload-artifact@v4
         with:
           name: ComVest-iOS-App
           path: ComVest.ipa
           
       - name: Upload build logs (if failed)
         if: failure()
-        uses: actions/upload-artifact@v4  # CHANGED TO v4
+        uses: actions/upload-artifact@v4
         with:
           name: build-logs
           path: |
