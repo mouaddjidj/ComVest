@@ -1,0 +1,49 @@
+name: Build iOS IPA for ComVest
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-ios:
+    runs-on: macos-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.x'
+          channel: 'stable'
+      
+      - name: Install dependencies
+        run: flutter pub get
+      
+      - name: Build iOS
+        run: |
+          flutter build ios --release --no-codesign
+          # Create Payload folder and copy .app
+          mkdir -p build/ios/ipa/Payload
+          cp -R build/ios/iphoneos/Runner.app build/ios/ipa/Payload/
+          # Create IPA
+          cd build/ios/ipa
+          zip -r ../../../ComVest.ipa Payload
+      
+      - name: Upload IPA
+        uses: actions/upload-artifact@v3
+        with:
+          name: ComVest-iOS-App
+          path: ComVest.ipa
+          
+      - name: Upload build logs (if failed)
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-logs
+          path: |
+            build/ios/iphoneos/**/*.log
+            /Users/runner/Library/Logs/github/failure-logs.log
