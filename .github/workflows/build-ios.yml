@@ -1,9 +1,11 @@
-name: Build iOS IPA (Diagnostic)
+name: Build iOS IPA for ComVest
 
 on:
-  workflow_dispatch:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build-ios:
