@@ -1,43 +1,92 @@
-- name: Build iOS
-  run: |
-    echo "🏗️ Building iOS..."
-    flutter build ios --release --no-codesign
-    
-    # Check if .app was built
-    if [ ! -d "build/ios/iphoneos/Runner.app" ]; then
-      echo "❌ ERROR: Runner.app not found!"
-      echo "Contents of build/ios/iphoneos:"
-      ls -la build/ios/iphoneos/ || true
-      exit 1
-    fi
-    
-    echo "✅ Runner.app found. Contents:"
-    ls -la build/ios/iphoneos/Runner.app/
-    
-    # Create IPA structure
-    mkdir -p build/ios/ipa/Payload
-    cp -R build/ios/iphoneos/Runner.app build/ios/ipa/Payload/
-    
-    # Verify copy worked
-    if [ ! -f "build/ios/ipa/Payload/Runner.app/Info.plist" ]; then
-      echo "❌ ERROR: Info.plist not copied!"
-      echo "Contents of build/ios/ipa/Payload/Runner.app:"
-      ls -la build/ios/ipa/Payload/Runner.app/ || true
-      exit 1
-    fi
-    
-    echo "✅ Info.plist copied successfully"
-    
-    # Create IPA
-    cd build/ios/ipa
-    zip -r ../../../ComVest.ipa Payload
-    cd ../../..
-    
-    # Verify IPA was created
-    if [ ! -f "ComVest.ipa" ]; then
-      echo "❌ ERROR: IPA not created!"
-      exit 1
-    fi
-    
-    echo "✅ IPA created successfully"
-    echo "IPA size: $(du -h ComVest.ipa | cut -f1)"
+name: Build iOS IPA for ComVest
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-ios:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.x'
+          channel: 'stable'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Ensure iOS platform exists
+        run: |
+          if [ ! -d "ios" ]; then
+            echo "📱 Creating iOS platform files..."
+            flutter create --platforms=ios .
+          else
+            echo "✅ iOS folder exists"
+          fi
+
+      - name: Build iOS with Verification
+        run: |
+          echo "🏗️ Building iOS..."
+          flutter build ios --release --no-codesign
+          
+          # Check if .app was built
+          if [ ! -d "build/ios/iphoneos/Runner.app" ]; then
+            echo "❌ ERROR: Runner.app not found!"
+            echo "Contents of build/ios/iphoneos:"
+            ls -la build/ios/iphoneos/ || true
+            exit 1
+          fi
+          
+          echo "✅ Runner.app found. Contents:"
+          ls -la build/ios/iphoneos/Runner.app/
+          
+          # Create IPA structure
+          mkdir -p build/ios/ipa/Payload
+          cp -R build/ios/iphoneos/Runner.app build/ios/ipa/Payload/
+          
+          # Verify copy worked
+          if [ ! -f "build/ios/ipa/Payload/Runner.app/Info.plist" ]; then
+            echo "❌ ERROR: Info.plist not copied!"
+            echo "Contents of build/ios/ipa/Payload/Runner.app:"
+            ls -la build/ios/ipa/Payload/Runner.app/ || true
+            exit 1
+          fi
+          
+          echo "✅ Info.plist copied successfully"
+          
+          # Create IPA
+          cd build/ios/ipa
+          zip -r ../../../ComVest.ipa Payload
+          cd ../../..
+          
+          # Verify IPA was created
+          if [ ! -f "ComVest.ipa" ]; then
+            echo "❌ ERROR: IPA not created!"
+            exit 1
+          fi
+          
+          echo "✅ IPA created successfully"
+          echo "IPA size: $(du -h ComVest.ipa | cut -f1)"
+
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: ComVest-iOS-App
+          path: ComVest.ipa
+
+      - name: Upload build logs (if failed)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-logs
+          path: |
+            build/ios/iphoneos/**/*.log
+            /Users/runner/Library/Logs/github/failure-logs.log
