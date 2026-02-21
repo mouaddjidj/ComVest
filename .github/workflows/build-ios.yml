@@ -10,19 +10,19 @@ on:
 jobs:
   build-ios:
     runs-on: macos-latest
-    
+
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.x'
           channel: 'stable'
-      
+
       - name: Install dependencies
         run: flutter pub get
-      
+
       - name: Ensure iOS platform exists
         run: |
           if [ ! -d "ios" ]; then
@@ -31,23 +31,88 @@ jobs:
           else
             echo "✅ iOS folder exists"
           fi
-      
+
+      - name: Verify Info.plist exists in project
+        run: |
+          if [ -f "ios/Runner/Info.plist" ]; then
+            echo "✅ Info.plist found in project"
+            ls -la ios/Runner/Info.plist
+            echo "First 10 lines of Info.plist:"
+            head -10 ios/Runner/Info.plist
+          else
+            echo "❌ Info.plist MISSING in project!"
+            exit 1
+          fi
+
       - name: Build iOS
         run: |
           echo "🏗️ Building iOS..."
           flutter build ios --release --no-codesign
+          
+          # Verify .app was built
+          if [ -d "build/ios/iphoneos/Runner.app" ]; then
+            echo "✅ .app built successfully"
+            ls -la build/ios/iphoneos/Runner.app/
+          else
+            echo "❌ .app build failed"
+            exit 1
+          fi
+          
+          # Create IPA structure
           mkdir -p build/ios/ipa/Payload
           cp -R build/ios/iphoneos/Runner.app build/ios/ipa/Payload/
+          
+          # Verify Info.plist was copied
+          if [ -f "build/ios/ipa/Payload/Runner.app/Info.plist" ]; then
+            echo "✅ Info.plist copied to Payload"
+            ls -la build/ios/ipa/Payload/Runner.app/Info.plist
+          else
+            echo "❌ Info.plist MISSING in Payload!"
+            exit 1
+          fi
+          
+          # Create IPA
           cd build/ios/ipa
           zip -r ../../../ComVest.ipa Payload
-          echo "✅ IPA created successfully"
-      
+          cd ../../..
+          
+          # Verify IPA was created and has content
+          if [ -f "ComVest.ipa" ]; then
+            echo "✅ IPA created successfully"
+            echo "IPA size: $(du -h ComVest.ipa | cut -f1)"
+            echo "IPA info:"
+            file ComVest.ipa || true
+          else
+            echo "❌ IPA creation failed"
+            exit 1
+          fi
+
+      - name: Verify IPA contents
+        run: |
+          echo "🔍 Verifying IPA contents..."
+          # Extract IPA to check contents
+          mkdir -p ipa_check
+          unzip -q ComVest.ipa -d ipa_check
+          
+          if [ -f "ipa_check/Payload/Runner.app/Info.plist" ]; then
+            echo "✅ Info.plist found in final IPA"
+            echo "Bundle ID from IPA:"
+            grep -A1 CFBundleIdentifier ipa_check/Payload/Runner.app/Info.plist || true
+          else
+            echo "❌ Info.plist MISSING in final IPA!"
+            ls -la ipa_check/Payload/Runner.app/ || true
+            exit 1
+          fi
+          
+          # Clean up
+          rm -rf ipa_check
+
       - name: Upload IPA
         uses: actions/upload-artifact@v4
         with:
           name: ComVest-iOS-App
           path: ComVest.ipa
-          
+
       - name: Upload build logs (if failed)
         if: failure()
         uses: actions/upload-artifact@v4
