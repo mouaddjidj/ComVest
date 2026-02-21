@@ -1,23 +1,14 @@
 workflows:
-  ios-workflow:
-    name: Build iOS IPA
-    max_build_duration: 30
+  ios-simulator:
+    name: Build iOS for Simulator
     environment:
       flutter: stable
       xcode: latest
-      cocoapods: default
     scripts:
       - flutter clean
       - flutter pub get
-      - flutter build ios --release --no-codesign
-      - |
-        # Create IPA properly
-        mkdir -p Payload
-        cp -r build/ios/iphoneos/Runner.app Payload/
-        zip -r ComVest.ipa Payload/
+      - flutter build ios --simulator
+      - cd build/ios/iphonesimulator
+      - zip -r ../../../Runner-simulator.zip Runner.app
     artifacts:
-      - ComVest.ipa
-    publishing:
-      email:
-        recipients:
-          - your-email@example.com
+      - Runner-simulator.zip
